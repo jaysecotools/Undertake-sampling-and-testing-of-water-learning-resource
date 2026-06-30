@@ -666,26 +666,354 @@
       </div>
     </div>
 
-    <div class="card"><i class="fas fa-video"></i><div class="card-title">Recommended videos & tutorials</div>
-      <ul>
-        <li><a href="https://www.youtube.com/watch?v=G5p9lXqRfYg" target="_blank" class="resource-link">How to use a multi-parameter water quality sonde</a> (YouTube)</li>
-        <li><a href="https://www.youtube.com/watch?v=5iIJn7XrLgQ" target="_blank" class="resource-link">Measuring turbidity with a turbidity tube</a> (YouTube)</li>
-        <li><a href="https://www.youtube.com/watch?v=K8zW7RzDnYg" target="_blank" class="resource-link">Calibrating a pH meter</a> (YouTube)</li>
-        <li><a href="https://www.youtube.com/watch?v=zC4R6uHpXa8" target="_blank" class="resource-link">Collecting water samples for nutrient analysis</a> (YouTube)</li>
-        <li><a href="https://www.youtube.com/watch?v=u7ZBR5_92l4" target="_blank" class="resource-link">Understanding Chain of Custody for environmental samples</a> (YouTube)</li>
-        <li><a href="https://www.youtube.com/watch?v=qv9-0hVjVnQ" target="_blank" class="resource-link">Algal bloom identification and sampling</a> (YouTube)</li>
-      </ul>
-    </div>
+<!-- ===== UPDATED VIDEO RESOURCES CARD ===== -->
+<div class="card"><i class="fas fa-video"></i><div class="card-title">Recommended videos & tutorials</div>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=94YcjbYBchc" target="_blank" class="resource-link">How we measure water quality</a> — EPA Victoria (2023). Follow an authorised officer as they collect water samples, use a field meter, and explain key parameters like dissolved oxygen, salinity, and pH. A great real-world introduction to the whole process. (4:38)</li>
+    <li><a href="https://www.youtube.com/watch?v=Ko7TbScFQk4&t=7s" target="_blank" class="resource-link">Horiba U-52 Auto Calibration</a> — Step-by-step demonstration of automatic calibration for a multi-parameter sonde. Essential viewing for understanding how to prepare your equipment for accurate field measurements. (2:14)</li>
+    <li><a href="https://www.youtube.com/watch?v=5w6s9K97G9g" target="_blank" class="resource-link">Horiba U-50 Water Quality Monitoring Probe</a> — Detailed overview of the Horiba U-50 series multi-parameter probe. Covers setup, sensor maintenance, and field use — perfect for understanding how these instruments work. (6:12)</li>
+    <li><a href="https://www.youtube.com/watch?v=SvksjH9gedQ" target="_blank" class="resource-link">What are pH, EC, TDS, and PPM and How Are They Connected?</a> — Clear explanation of the relationships between pH, electrical conductivity, total dissolved solids, and parts per million. Builds foundational understanding of water chemistry. (6:28)</li>
+    <li><a href="https://www.youtube.com/watch?v=3Vylu9R9WtY" target="_blank" class="resource-link">EnviroDNA eDNA Water Sampling Tutorial</a> — While focused on environmental DNA, this tutorial demonstrates excellent sterile sampling technique, proper labelling, and contamination prevention — all skills directly transferable to water quality sampling. (3:34)</li>
+  </ul>
+  <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Watch these videos before your fieldwork to see the techniques in action. They complement the written content in this guide and help build confidence.</div>
+</div>
 
-    <div class="card"><i class="fas fa-file-pdf"></i><div class="card-title">Downloadable resources & templates</div>
-      <ul>
-        <li><a href="#" onclick="alert('Water Quality Field Data Sheet (PDF) — includes all parameters, weather observations, and sample details.')" class="resource-link">📄 Field data sheet template</a></li>
-        <li><a href="#" onclick="alert('Risk Assessment Template — includes hazard identification, controls, and risk matrix.')" class="resource-link">📄 Risk assessment template</a></li>
-        <li><a href="#" onclick="alert('Chain of Custody Form — for submitting samples to Analytical Services Tasmania.')" class="resource-link">📄 Chain of Custody form</a></li>
-        <li><a href="#" onclick="alert('Sample Collection Plan — plan your sites, parameters, and equipment.')" class="resource-link">📄 Sample collection plan template</a></li>
-        <li><a href="#" onclick="alert('Equipment Checklist — ensure you have everything you need before heading to the field.')" class="resource-link">📄 Equipment checklist</a></li>
-      </ul>
+<!-- ===== UPDATED DOWNLOADABLE RESOURCES SECTION ===== -->
+<div class="card"><i class="fas fa-file-pdf"></i><div class="card-title">Downloadable resources & templates</div>
+  <p>These professionally designed templates are ready to use in the field. Click each link to download the PDF or editable version.</p>
+  <div class="grid-2" style="margin-top:1rem;">
+    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+      <i class="fas fa-clipboard-list" style="font-size:1.5rem; color:var(--primary-light);"></i>
+      <h4 style="margin:0.5rem 0 0.2rem;">Field Data Sheet</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Record all parameters, weather observations, and sample details in one place.</p>
+      <a href="#" onclick="generateAndDownload('data-sheet')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
     </div>
+    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+      <i class="fas fa-exclamation-triangle" style="font-size:1.5rem; color:var(--primary-light);"></i>
+      <h4 style="margin:0.5rem 0 0.2rem;">Risk Assessment</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Identify hazards, implement controls, and calculate residual risk scores.</p>
+      <a href="#" onclick="generateAndDownload('risk-assessment')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+    </div>
+    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+      <i class="fas fa-link" style="font-size:1.5rem; color:var(--primary-light);"></i>
+      <h4 style="margin:0.5rem 0 0.2rem;">Chain of Custody</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Track sample possession from collection to laboratory receipt.</p>
+      <a href="#" onclick="generateAndDownload('chain-of-custody')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+    </div>
+    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+      <i class="fas fa-map-pin" style="font-size:1.5rem; color:var(--primary-light);"></i>
+      <h4 style="margin:0.5rem 0 0.2rem;">Sampling Plan</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Plan your sites, parameters, equipment, and timeline.</p>
+      <a href="#" onclick="generateAndDownload('sampling-plan')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+    </div>
+    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+      <i class="fas fa-check-circle" style="font-size:1.5rem; color:var(--primary-light);"></i>
+      <h4 style="margin:0.5rem 0 0.2rem;">Equipment Checklist</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Ensure you have everything needed before heading to the field.</p>
+      <a href="#" onclick="generateAndDownload('equipment-checklist')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+    </div>
+    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+      <i class="fas fa-clipboard-check" style="font-size:1.5rem; color:var(--primary-light);"></i>
+      <h4 style="margin:0.5rem 0 0.2rem;">All Templates (ZIP)</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Download all five templates in a single package.</p>
+      <a href="#" onclick="downloadAllTemplates()" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download All</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== TEMPLATE GENERATION FUNCTIONS =====
+function generateAndDownload(type) {
+  const templates = {
+    'data-sheet': {
+      title: 'Water Quality Field Data Sheet',
+      content: `
+        <h2 style="text-align:center; color:#0d4b6b;">WATER QUALITY FIELD DATA SHEET</h2>
+        <p style="text-align:center; color:#666;">AHCLPW313 · Undertake Sampling and Testing of Water</p>
+        <hr style="margin:1rem 0;">
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Date:</strong> ______________</td><td style="padding:6px; border:1px solid #ccc;"><strong>Time:</strong> ______________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Site Name:</strong> ______________</td><td style="padding:6px; border:1px solid #ccc;"><strong>Location (Lat/Long):</strong> ______________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Water Body Type:</strong> ______________</td><td style="padding:6px; border:1px solid #ccc;"><strong>Sampler:</strong> ______________</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Field Measurements</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Parameter</th><th style="padding:8px; border:1px solid #0d4b6b;">Reading</th><th style="padding:8px; border:1px solid #0d4b6b;">Units</th><th style="padding:8px; border:1px solid #0d4b6b;">Notes</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Temperature</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">°C</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">pH</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">—</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Electrical Conductivity</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">µS/cm</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Dissolved Oxygen</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">% sat</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Turbidity</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">NTU</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Nitrate</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">mg/L</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Phosphate</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">mg/L</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Salinity</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">ppt</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Weather Observations</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Air Temperature:</strong> ______°C</td><td style="padding:6px; border:1px solid #ccc;"><strong>Cloud Cover:</strong> ______/8</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Wind Speed & Direction:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Precipitation:</strong> ______</td></tr>
+          <tr><td colspan="2" style="padding:6px; border:1px solid #ccc;"><strong>Recent Weather (24-72 hrs):</strong> ______</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Sample Details</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Sample ID</th><th style="padding:8px; border:1px solid #0d4b6b;">Type</th><th style="padding:8px; border:1px solid #0d4b6b;">Container</th><th style="padding:8px; border:1px solid #0d4b6b;">Preservation</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+        </table>
+
+        <p style="margin-top:1.5rem; text-align:center; font-size:0.85rem; color:#666;">
+          <strong>Checklist before leaving site:</strong> ☐ All results recorded ☐ Samples labelled & stored ☐ Rubbish collected ☐ Urgent results reported
+        </p>
+        <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">AHCLPW313 · Water Sampling & Testing · © TasTAFE 2026</p>
+      `
+    },
+    'risk-assessment': {
+      title: 'Risk Assessment – Water Sampling Fieldwork',
+      content: `
+        <h2 style="text-align:center; color:#0d4b6b;">RISK ASSESSMENT</h2>
+        <p style="text-align:center; color:#666;">Water Sampling Fieldwork · AHCLPW313</p>
+        <hr style="margin:1rem 0;">
+
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Event Location:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Date:</strong> ______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Activity Description:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Team Members:</strong> ______</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Risk Assessment Matrix</h3>
+        <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:4px; border:1px solid #0d4b6b;">Consequence →</th><th style="padding:4px; border:1px solid #0d4b6b;">Rare (1)</th><th style="padding:4px; border:1px solid #0d4b6b;">Unlikely (2)</th><th style="padding:4px; border:1px solid #0d4b6b;">Possible (3)</th><th style="padding:4px; border:1px solid #0d4b6b;">Likely (4)</th><th style="padding:4px; border:1px solid #0d4b6b;">Almost Certain (5)</th></tr>
+          <tr><td style="padding:4px; border:1px solid #ccc;">Insignificant (1)</td><td style="padding:4px; border:1px solid #ccc;">L1</td><td style="padding:4px; border:1px solid #ccc;">L2</td><td style="padding:4px; border:1px solid #ccc;">L3</td><td style="padding:4px; border:1px solid #ccc;">L4</td><td style="padding:4px; border:1px solid #ccc;">M5</td></tr>
+          <tr><td style="padding:4px; border:1px solid #ccc;">Minor (2)</td><td style="padding:4px; border:1px solid #ccc;">L2</td><td style="padding:4px; border:1px solid #ccc;">L4</td><td style="padding:4px; border:1px solid #ccc;">M6</td><td style="padding:4px; border:1px solid #ccc;">M8</td><td style="padding:4px; border:1px solid #ccc;">H10</td></tr>
+          <tr><td style="padding:4px; border:1px solid #ccc;">Moderate (3)</td><td style="padding:4px; border:1px solid #ccc;">L3</td><td style="padding:4px; border:1px solid #ccc;">M6</td><td style="padding:4px; border:1px solid #ccc;">M9</td><td style="padding:4px; border:1px solid #ccc;">H12</td><td style="padding:4px; border:1px solid #ccc;">H15</td></tr>
+          <tr><td style="padding:4px; border:1px solid #ccc;">Major (4)</td><td style="padding:4px; border:1px solid #ccc;">L4</td><td style="padding:4px; border:1px solid #ccc;">M8</td><td style="padding:4px; border:1px solid #ccc;">H12</td><td style="padding:4px; border:1px solid #ccc;">H16</td><td style="padding:4px; border:1px solid #ccc;">E20</td></tr>
+          <tr><td style="padding:4px; border:1px solid #ccc;">Catastrophic (5)</td><td style="padding:4px; border:1px solid #ccc;">M5</td><td style="padding:4px; border:1px solid #ccc;">H10</td><td style="padding:4px; border:1px solid #ccc;">H15</td><td style="padding:4px; border:1px solid #ccc;">E20</td><td style="padding:4px; border:1px solid #ccc;">E25</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Hazard Identification & Controls</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Activity / Task</th><th style="padding:8px; border:1px solid #0d4b6b;">Hazards</th><th style="padding:8px; border:1px solid #0d4b6b;">Controls</th><th style="padding:8px; border:1px solid #0d4b6b;">Risk Score</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Use of chemical test kits</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Working near water</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Slips, trips and falls</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Exposure to the elements</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Bites and stings</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+        </table>
+
+        <p style="margin-top:1.5rem; text-align:center;">
+          <strong>Manager Authorisation:</strong> Name: ________________  Signature: ________________  Date: ________
+        </p>
+        <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">AHCLPW313 · Water Sampling & Testing · © TasTAFE 2026</p>
+      `
+    },
+    'chain-of-custody': {
+      title: 'Chain of Custody Form',
+      content: `
+        <h2 style="text-align:center; color:#0d4b6b;">CHAIN OF CUSTODY</h2>
+        <p style="text-align:center; color:#666;">Water Samples · AHCLPW313</p>
+        <hr style="margin:1rem 0;">
+
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Project Name:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Date:</strong> ______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Submitted By:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Contact Phone:</strong> ______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Client/Organisation:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Email:</strong> ______</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Sample Details</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Sample ID</th><th style="padding:8px; border:1px solid #0d4b6b;">Date/Time</th><th style="padding:8px; border:1px solid #0d4b6b;">Location</th><th style="padding:8px; border:1px solid #0d4b6b;">Analysis Required</th><th style="padding:8px; border:1px solid #0d4b6b;">Preservation</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Custody Record</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Relinquished By</th><th style="padding:8px; border:1px solid #0d4b6b;">Date</th><th style="padding:8px; border:1px solid #0d4b6b;">Time</th><th style="padding:8px; border:1px solid #0d4b6b;">Received By</th><th style="padding:8px; border:1px solid #0d4b6b;">Date</th><th style="padding:8px; border:1px solid #0d4b6b;">Time</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Hazard Declaration</h3>
+        <p>☐ No known hazards ☐ Corrosive ☐ Toxic ☐ Biological ☐ Hydrocarbons ☐ Other: ______</p>
+        <p><strong>Signed:</strong> ________________  <strong>Date:</strong> ________</p>
+
+        <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">AHCLPW313 · Water Sampling & Testing · © TasTAFE 2026</p>
+      `
+    },
+    'sampling-plan': {
+      title: 'Water Sampling Plan',
+      content: `
+        <h2 style="text-align:center; color:#0d4b6b;">WATER SAMPLING PLAN</h2>
+        <p style="text-align:center; color:#666;">AHCLPW313 · Undertake Sampling and Testing of Water</p>
+        <hr style="margin:1rem 0;">
+
+        <h3>1. Program Overview</h3>
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Program Name:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Date:</strong> ______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Objective:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Project Manager:</strong> ______</td></tr>
+        </table>
+
+        <h3>2. Site Details</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Site ID</th><th style="padding:8px; border:1px solid #0d4b6b;">Location</th><th style="padding:8px; border:1px solid #0d4b6b;">Water Type</th><th style="padding:8px; border:1px solid #0d4b6b;">Access Details</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">1</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">2</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">3</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+        </table>
+
+        <h3>3. Parameters & Equipment</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Parameter</th><th style="padding:8px; border:1px solid #0d4b6b;">Equipment</th><th style="padding:8px; border:1px solid #0d4b6b;">Calibration Required</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">pH</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Electrical Conductivity</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Dissolved Oxygen</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Turbidity</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Temperature</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Nutrients (Nitrate/Phosphate)</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+        </table>
+
+        <h3>4. Sample Collection & Transport</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Collection Method:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Sample Depth:</strong> ______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Preservation:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Transport:</strong> ______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;"><strong>Laboratory:</strong> ______</td><td style="padding:6px; border:1px solid #ccc;"><strong>Holding Time:</strong> ______</td></tr>
+        </table>
+
+        <h3>5. Timeline</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr style="background:#0d4b6b; color:white;"><th style="padding:8px; border:1px solid #0d4b6b;">Activity</th><th style="padding:8px; border:1px solid #0d4b6b;">Date</th><th style="padding:8px; border:1px solid #0d4b6b;">Responsible</th></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Pre-field preparation</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Field sampling</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Sample dispatch</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">Data entry & reporting</td><td style="padding:6px; border:1px solid #ccc;">______</td><td style="padding:6px; border:1px solid #ccc;">______</td></tr>
+        </table>
+
+        <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">AHCLPW313 · Water Sampling & Testing · © TasTAFE 2026</p>
+      `
+    },
+    'equipment-checklist': {
+      title: 'Equipment Checklist',
+      content: `
+        <h2 style="text-align:center; color:#0d4b6b;">EQUIPMENT CHECKLIST</h2>
+        <p style="text-align:center; color:#666;">Water Sampling Fieldwork · AHCLPW313</p>
+        <hr style="margin:1rem 0;">
+
+        <p><strong>Date:</strong> ________  <strong>Sampler:</strong> ________  <strong>Site:</strong> ________</p>
+
+        <h3 style="margin-top:1.5rem;">Sampling Equipment</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Multi-parameter sonde</td><td style="padding:6px; border:1px solid #ccc;">Calibrated: ☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Turbidity tube / Secchi disk</td><td style="padding:6px; border:1px solid #ccc;">Clean: ☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Refractometer</td><td style="padding:6px; border:1px solid #ccc;">Calibrated: ☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Nutrient test kits (Nitrate/Phosphate)</td><td style="padding:6px; border:1px solid #ccc;">Expiry: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Sample containers (labelled)</td><td style="padding:6px; border:1px solid #ccc;">Quantity: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Syringe filters (0.45µm)</td><td style="padding:6px; border:1px solid #ccc;">Quantity: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Lugols preservative</td><td style="padding:6px; border:1px solid #ccc;">Quantity: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Sampling pole / bottle holder</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Distilled water (for rinsing)</td><td style="padding:6px; border:1px solid #ccc;">Quantity: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Esky / cooler with ice packs</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Documentation</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Data sheets</td><td style="padding:6px; border:1px solid #ccc;">Quantity: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Chain of Custody forms</td><td style="padding:6px; border:1px solid #ccc;">Quantity: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Risk assessment (signed)</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Pens and markers</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Site map / directions</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Personal Protective Equipment (PPE)</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Life jacket (if near water)</td><td style="padding:6px; border:1px solid #ccc;">Size: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Sunscreen & hat</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Sturdy footwear</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Gloves (nitrile/latex)</td><td style="padding:6px; border:1px solid #ccc;">Size: ________</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Safety glasses</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Weather-appropriate clothing</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+        </table>
+
+        <h3 style="margin-top:1.5rem;">Safety & Communication</h3>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ First aid kit</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Mobile phone (charged)</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Emergency contact details</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+          <tr><td style="padding:6px; border:1px solid #ccc;">☐ Water / snacks</td><td style="padding:6px; border:1px solid #ccc;">☐ Yes ☐ No</td></tr>
+        </table>
+
+        <p style="margin-top:1.5rem; text-align:center;">
+          <strong>Checked by:</strong> ________________  <strong>Date:</strong> ________
+        </p>
+        <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">AHCLPW313 · Water Sampling & Testing · © TasTAFE 2026</p>
+      `
+    }
+  };
+
+  const template = templates[type];
+  if (!template) return;
+
+  const fullHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>${template.title}</title>
+      <style>
+        body { font-family: 'Helvetica', Arial, sans-serif; max-width: 210mm; margin: 2rem auto; padding: 1rem; color: #1a2e3b; line-height: 1.5; }
+        hr { border: 1px solid #0d4b6b; }
+        table { width: 100%; border-collapse: collapse; }
+        td, th { padding: 6px 8px; border: 1px solid #ccc; }
+        h2, h3 { color: #0d4b6b; }
+        @media print { body { margin: 0; padding: 0.5in; } }
+      </style>
+    </head>
+    <body>
+      ${template.content}
+    </body>
+    </html>
+  `;
+
+  const blob = new Blob([fullHtml], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${type}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function downloadAllTemplates() {
+  const types = ['data-sheet', 'risk-assessment', 'chain-of-custody', 'sampling-plan', 'equipment-checklist'];
+  const names = {
+    'data-sheet': 'Field_Data_Sheet',
+    'risk-assessment': 'Risk_Assessment',
+    'chain-of-custody': 'Chain_of_Custody',
+    'sampling-plan': 'Sampling_Plan',
+    'equipment-checklist': 'Equipment_Checklist'
+  };
+
+  // Download each template sequentially with a short delay
+  types.forEach((type, index) => {
+    setTimeout(() => {
+      generateAndDownload(type);
+    }, index * 300);
+  });
+
+  // Show a message
+  const msg = document.createElement('div');
+  msg.style.cssText = 'position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#2c7840; color:white; padding:1rem 2rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:999; font-weight:600;';
+  msg.innerHTML = '📦 Downloading all 5 templates... Check your downloads folder.';
+  document.body.appendChild(msg);
+  setTimeout(() => msg.remove(), 5000);
+}
+</script>
 
     <div class="checklist-card"><i class="fas fa-graduation-cap"></i> <strong>Ready for assessment!</strong><br>
       You've now covered all the knowledge and skills required for AHCLPW313. You understand:<br>
