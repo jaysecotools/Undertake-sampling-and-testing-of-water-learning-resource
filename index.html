@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>AHCLPW313 · Water Sampling & Testing · Learning Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #0d4b6b;
+      --primary-light: #3c7a9e;
+      --accent: #e68a2e;
+      --accent-soft: #fdebd0;
+      --bg: #eef5f7;
+      --card-bg: #ffffff;
+      --border: #b8d0db;
+      --text: #1a2e3b;
+      --shadow: 0 16px 32px -12px rgba(0,20,30,0.18);
+      --radius: 1.2rem;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #cbdde4;
+      padding: 1rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .master {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      background: linear-gradient(145deg, #0a3b52, #146a8a);
+      color: white;
+      padding: 2rem 2.5rem;
+      border-bottom: 8px solid var(--accent);
+    }
+    .hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; }
+    .hero h1 i { color: var(--accent); margin-right: 12px; }
+    .hero-badges { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .hero-badges span {
+      background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
+      padding: 0.4rem 1.2rem; border-radius: 60px; font-size: 0.8rem;
+      border-left: 3px solid var(--accent); font-weight: 500;
+    }
+    .tab-bar {
+      background: #0a3346;
+      padding: 0.5rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .tab {
+      background: transparent;
+      border: none;
+      color: #cfe1ec;
+      font-weight: 600;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tab:hover { background: #1d5b7a; color: white; border-radius: 8px 8px 0 0; }
+    .tab.active { color: white; border-bottom-color: var(--accent); background: linear-gradient(transparent 70%, rgba(230,138,46,0.2)); }
+    .tab-content { display: none; padding: 2rem 2.5rem; background: white; animation: fadeIn 0.25s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); color: #0a3b52; margin: 0.5rem 0 1.5rem; border-left: 12px solid var(--accent); padding-left: 1rem; font-weight: 700; }
+    h3 { font-size: 1.4rem; color: #1a5a78; margin: 1.8rem 0 0.8rem; border-bottom: 3px solid #d6e5ed; padding-bottom: 0.4rem; font-weight: 600; }
+    .grid-2, .grid-3 { display: grid; gap: 1.8rem; margin: 1.8rem 0; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      background: var(--bg); border-radius: var(--radius); padding: 1.5rem;
+      border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: transform 0.15s;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card i { font-size: 2rem; color: var(--primary-light); margin-bottom: 0.6rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; border-radius: 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    th { background: var(--primary); color: white; padding: 10px 12px; font-weight: 600; text-align: left; }
+    td { border: 1px solid var(--border); padding: 10px 12px; background: white; vertical-align: top; }
+    .checklist-card { background: var(--accent-soft); border: 3px solid var(--accent); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; }
+    .btn {
+      background: var(--accent); color: #1a2e3b; font-weight: 700; border: none;
+      padding: 0.5rem 1.2rem; border-radius: 60px; cursor: pointer; transition: 0.2s;
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: #0a3b52; color: white; transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    .btn-danger { background: #b34343; color: white; }
+    .btn-danger:hover { background: #822e2e; }
+    .quiz-card { background: linear-gradient(145deg, #0d4b6b, #0a3b52); border-radius: var(--radius); padding: 1.8rem; color: white; margin: 1.8rem 0; }
+    .quiz-card h3 { color: white !important; border-bottom-color: rgba(255,255,255,0.25); }
+    .quiz-question { background: rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.2rem; margin: 1rem 0; }
+    .quiz-question .quiz-question-text { color: white; font-weight: 600; margin-bottom: 0.6rem; }
+    .quiz-option { background: rgba(255,255,255,0.1); margin: 0.4rem 0; padding: 0.5rem 1rem; border-radius: 40px; cursor: pointer; display: flex; align-items: center; gap: 10px; color: white; transition: 0.1s; }
+    .quiz-option:hover { background: rgba(255,255,255,0.25); }
+    .quiz-option input { accent-color: var(--accent); transform: scale(1.05); margin-right: 6px; }
+    .feedback-correct { background: #2c7840; color: white; padding: 6px 14px; border-radius: 60px; margin-top: 8px; display: inline-block; }
+    .feedback-incorrect { background: #b34343; color: white; padding: 6px 14px; border-radius: 60px; margin-top: 8px; display: inline-block; }
+    .scenario { background: var(--accent-soft); border-radius: var(--radius); padding: 1.3rem; margin: 1.2rem 0; border-left: 10px solid var(--accent); }
+    .scenario-option { background: white; border-radius: 60px; padding: 0.5rem 1rem; margin: 0.5rem 0; cursor: pointer; border: 2px solid #d0dce3; transition: 0.1s; }
+    .scenario-option.selected { background: var(--primary); color: white; border-color: var(--accent); }
+    .data-table-container { max-height: 400px; overflow-y: auto; margin: 1rem 0; }
+    .data-table-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; align-items: center; }
+    .data-table-controls input, .data-table-controls select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; background: white; }
+    .editable-row input { width: 100%; padding: 4px; border: 1px solid var(--border); border-radius: 4px; }
+    .glossary-term { background: var(--bg); border-bottom: 2px dotted var(--primary); cursor: help; padding: 0 6px; border-radius: 12px; position: relative; display: inline-block; margin: 2px; }
+    .glossary-term .tooltip { display: none; position: absolute; bottom: 130%; left: 0; background: var(--primary); color: white; padding: 6px 14px; border-radius: 12px; width: 240px; font-size: 0.75rem; z-index: 200; box-shadow: var(--shadow); }
+    .glossary-term:hover .tooltip { display: block; }
+    footer { background: #0a3346; color: #d6e5ed; padding: 2rem; margin-top: 2rem; border-top: 8px solid var(--accent); text-align: center; }
+    @media (max-width: 768px) { .tab-content { padding: 1.2rem; } .tab { padding: 0.4rem 0.6rem; font-size: 0.7rem; } }
+    @media print { .tab-bar, .btn, .hero { display: none; } .tab-content { display: block !important; } }
+  </style>
+</head>
+<body>
+<div class="master">
+  <div class="hero">
+    <h1><i class="fas fa-droplet"></i> AHCLPW313 · Undertake Sampling & Testing of Water</h1>
+    <div style="font-size:1.1rem; font-weight:400; margin-top:0.3rem;">Comprehensive Learning Guide · Assessment Package v7.1</div>
+    <div class="hero-badges">
+      <span><i class="fas fa-map-pin"></i> Freshwater · Marine · Estuarine</span>
+      <span><i class="fas fa-flask"></i> pH · EC · DO · Turbidity · Nutrients</span>
+      <span><i class="fas fa-clipboard-check"></i> Aligned to AHC Training Package</span>
+      <span><i class="fas fa-syringe"></i> Sampling & Lab Dispatch</span>
+    </div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab(event,'tab0')"><i class="fas fa-book-open"></i> 1. Knowledge</button>
+    <button class="tab" onclick="switchTab(event,'tab1')"><i class="fas fa-map"></i> 2. Plan & Prepare</button>
+    <button class="tab" onclick="switchTab(event,'tab2')"><i class="fas fa-water"></i> 3. Conduct & Record</button>
+    <button class="tab" onclick="switchTab(event,'tab3')"><i class="fas fa-tasks"></i> 4. Complete & Dispatch</button>
+    <button class="tab" onclick="switchTab(event,'tab4')"><i class="fas fa-puzzle-piece"></i> 5. Quizzes & Scenarios</button>
+    <button class="tab" onclick="switchTab(event,'tab5')"><i class="fas fa-database"></i> 6. Equipment & Standards</button>
+    <button class="tab" onclick="switchTab(event,'tab6')"><i class="fas fa-file-alt"></i> 7. Forms & Resources</button>
+  </div>
+
+  <!-- TAB 0: KNOWLEDGE QUESTIONS -->
+  <div id="tab0" class="tab-content active">
+    <h2><i class="fas fa-question-circle"></i> Core Knowledge (Assessment Task 1)</h2>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-search"></i><h3>1. Reasons for water testing</h3>
+        <ul><li>Monitor water quality over time & detect change</li><li>Establish baseline data</li><li>Detect nutrients, pollution, contamination</li><li>Meet environmental permit requirements</li><li>Investigate fish kills / adverse events</li><li>Compliance with drinking water standards</li></ul>
+      </div>
+      <div class="card"><i class="fas fa-river"></i><h3>2. Water body characteristics</h3>
+        <table style="font-size:0.85rem;"><tr><th>Type</th><th>Salinity (ppt)</th><th>DO (% sat)</th><th>pH</th></tr>
+        <tr><td>Upland river</td><td>0 – 0.5</td><td>90-110</td><td>6.5-7.5</td></tr>
+        <tr><td>Lakes/reservoirs</td><td>0 – 0.5</td><td>90-110</td><td>6.5-8.0</td></tr>
+        <tr><td>Open lower estuary</td><td>0 – 35</td><td>90-110</td><td>7.0-8.5</td></tr>
+        <tr><td>Offshore marine</td><td>~35</td><td>90-110</td><td>7.5-8.5</td></tr></table>
+      </div>
+      <div class="card"><i class="fas fa-book"></i><h3>3. Guidelines & standards</h3>
+        <p>Australian Drinking Water Guidelines, ANZECC Guidelines, <a href="#" onclick="alert('https://esdat.net/environmental-standards/')">esdat.net</a>, Analytical Services Tasmania (AST) holding times.</p>
+      </div>
+      <div class="card"><i class="fas fa-eye"></i><h3>4. Equipment identification</h3>
+        <p><strong>Turbidity tube</strong> – measures NTU (cloudiness). Fill, look down, read scale. Clean & dry after use.<br>
+        <strong>Refractometer</strong> – measures salinity (ppt). Calibrate with distilled water, place 2-3 drops on prism, read boundary line.</p>
+      </div>
+      <div class="card"><i class="fas fa-snowflake"></i><h3>5. Sample preservation</h3>
+        <p><strong>a)</strong> Chill immediately to slow biological/chemical change.<br>
+        <strong>b)</strong> Freeze within 24h if not analysed same day; hold up to 28 days (nutrients).</p>
+      </div>
+      <div class="card"><i class="fas fa-link"></i><h3>6. Chain of Custody (AST)</h3>
+        <p><strong>a)</strong> Records who possessed samples from collection to lab arrival.<br>
+        <strong>b)</strong> Ensures integrity & legal defensibility.</p>
+      </div>
+      <div class="card"><i class="fas fa-tag"></i><h3>7. Labelling & packaging</h3>
+        <p><strong>a)</strong> Label: date, site, test, time collected.<br>
+        <strong>b)</strong> Group each site’s samples in labelled bag; keep cool & dark in insulated esky.</p>
+      </div>
+      <div class="card"><i class="fas fa-chart-line"></i><h3>8. Parameter definitions & procedure</h3>
+        <p><strong>Temp</strong> (°C) – thermometer/sonde.<br>
+        <strong>pH</strong> (0-14) – meter/strips.<br>
+        <strong>EC</strong> (µS/cm, mS/m) – conductivity sensor.<br>
+        <strong>DO</strong> (mg/L, % sat) – DO probe.<br>
+        <strong>Turbidity</strong> (NTU) – turbidity tube, Secchi disk, sonde.</p>
+      </div>
+      <div class="card"><i class="fas fa-vial"></i><h3>9. AST sample containers</h3>
+        <p><strong>Total nutrients:</strong> 250mL plastic, cool/freeze, 28 days.<br>
+        <strong>Dissolved nutrients:</strong> 50mL plastic, filter 0.45µm, freeze, 28 days (nitrite 2 days).<br>
+        <strong>Algal ID:</strong> 375/500mL plastic, Lugols 1% v/v, 6 months.</p>
+      </div>
+      <div class="card"><i class="fas fa-sun"></i><h3>10. Field directional changes & hazards</h3>
+        <p><strong>Hot still sunny day, shallow algal bloom:</strong> Temp ↑, DO ↑ (day) ↓ (night), pH ↑ (day) ↓ (night). Hazard: UV, heat, man overboard. Controls: sunscreen, life jacket.</p>
+        <p><strong>Windy cloudy day, no bloom:</strong> Temp/DO/pH stable, turbidity ↑. Hazard: rough water, cold. Controls: warm/wind gear, life jacket, consider postponing.</p>
+      </div>
+      <div class="card"><i class="fas fa-calculator"></i><h3>11. Lugols calculation</h3>
+        <p>500 mL × 1% = <strong>5 mL</strong> Lugols preservative.</p>
+      </div>
+    </div>
+    <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Knowledge check:</strong> All answers align with KE1.1–KE4, Numeracy. Review the full teacher guide for detailed exemplars.</div>
+  </div>
+
+  <!-- TAB 1: PLAN & PREPARE -->
+  <div id="tab1" class="tab-content">
+    <h2><i class="fas fa-map"></i> Planning & Preparation (Tasks 2 & 4)</h2>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-edit"></i><h3>Proposed sites (≥3 water types)</h3>
+        <p><strong>Site 1:</strong> Freshwater river/stream – Lat -42.12345, Long 147.12345<br>
+        <strong>Site 2:</strong> Marine coastal/intertidal – Lat -43.23456, Long 148.23456<br>
+        <strong>Site 3:</strong> Farm dam / impoundment – Lat -41.34567, Long 147.34567</p>
+        <p><i class="fas fa-check"></i> Covers freshwater, marine, and lentic systems.</p>
+      </div>
+      <div class="card"><i class="fas fa-tools"></i><h3>Equipment for in-situ tests</h3>
+        <ul><li>Multi-parameter sonde (pH, EC, DO, Temp, Turbidity)</li><li>Secchi disk / turbidity tube</li><li>Nitrate & phosphate test kits</li><li>Sampling pole, rope, bucket, clipboards</li><li>Gloves, rubbish bags, distilled water for calibration</li></ul>
+      </div>
+      <div class="card"><i class="fas fa-vial"></i><h3>Sample dispatch (AST)</h3>
+        <table style="font-size:0.8rem;"><tr><th>Parameter</th><th>Container</th><th>Preservation</th></tr>
+        <tr><td>Total Nutrients</td><td>250mL plastic</td><td>Cool, freeze ≤24h</td></tr>
+        <tr><td>Dissolved Nutrients</td><td>50mL plastic, 0.45µm filtered</td><td>Freeze ≤24h</td></tr>
+        <tr><td>Algal ID</td><td>500mL plastic</td><td>Lugols 1% v/v</td></tr>
+        <tr><td>Metals</td><td>Red labelled plastic</td><td>Acidify pH<2 (lab advice)</td></tr></table>
+      </div>
+      <div class="card"><i class="fas fa-clipboard-list"></i><h3>Risk assessment (Task 2)</h3>
+        <p><strong>Hazards & controls:</strong><br>
+        • Chemical kits – PPE, MSDS, wash station<br>
+        • Working near water – life jackets, buddy system<br>
+        • Slips/trips – clear paths, non-slip footwear<br>
+        • Exposure – sunscreen, hats, hydration<br>
+        • Bites/stings – insect repellent, first aid</p>
+        <p><strong>Risk score:</strong> Residual after controls (L/M/H).</p>
+      </div>
+    </div>
+    <div class="card"><i class="fas fa-cloud-sun"></i><h3>Weather forecast check (day before)</h3>
+      <p><strong>Example:</strong> Sunny, 22°C, wind NW 10 km/h, UV 7, no rain. ✅ Suitable for fieldwork.<br>
+      If high wind or storms → postpone.</p>
+    </div>
+    <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>Pre-departure checks:</strong> Confirm methodologies with supervisor, verify equipment calibration, check expiry of test kits, pre-label containers, complete risk assessment.</div>
+  </div>
+
+  <!-- TAB 2: CONDUCT & RECORD -->
+  <div id="tab2" class="tab-content">
+    <h2><i class="fas fa-water"></i> Conducting Sampling & Testing (Task 3)</h2>
+    <div class="card"><i class="fas fa-table"></i><h3>Water quality data sheet (example)</h3>
+      <table><tr><th>Parameter</th><th>Site 1 (River) 09:30</th><th>Site 2 (Marine) 11:00</th><th>Site 3 (Dam) 13:15</th></tr>
+      <tr><td>pH</td><td>7.2</td><td>8.1</td><td>6.9</td></tr>
+      <tr><td>EC (µS/cm)</td><td>245</td><td>53200</td><td>890</td></tr>
+      <tr><td>DO (% sat)</td><td>96</td><td>102</td><td>88</td></tr>
+      <tr><td>Turbidity (NTU)</td><td>4.5</td><td>12.3</td><td>28.7</td></tr>
+      <tr><td>Temp (°C)</td><td>14.2</td><td>17.8</td><td>21.5</td></tr>
+      <tr><td>Nitrate (mg/L)</td><td>0.12</td><td>0.05</td><td>0.78</td></tr>
+    </table>
+    <p><i class="fas fa-check-circle" style="color:green;"></i> All results recorded, rubbish collected, urgent results (if any) reported.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-cloud"></i><h3>Weather observations</h3>
+        <p><strong>Site 1:</strong> Air 16°C, clear sky, calm<br>
+        <strong>Site 2:</strong> Air 19°C, 2/8 cloud, light breeze<br>
+        <strong>Site 3:</strong> Air 23°C, 4/8 cloud, gusty</p>
+        <p>Past 72h: 5mm rain – turbidity elevated at dam.</p>
+      </div>
+      <div class="card"><i class="fas fa-exclamation-triangle"></i><h3>Outlier / urgent reporting</h3>
+        <p>If DO < 60% or pH < 6.0 or > 9.0, report to supervisor and EPA. In this example, all values within healthy ranges.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: COMPLETE & DISPATCH -->
+  <div id="tab3" class="tab-content">
+    <h2><i class="fas fa-tasks"></i> Completion & Dispatch (Task 5)</h2>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-box"></i><h3>Sample packaging & transport</h3>
+        <ul><li>Group samples per site in labelled zip-lock bags.</li><li>Place in insulated esky with ice bricks (keep < 4°C).</li><li>Complete Chain of Custody form.</li><li>Deliver to AST or courier with ice.</li></ul>
+      </div>
+      <div class="card"><i class="fas fa-file-signature"></i><h3>AST Submission Form (excerpt)</h3>
+        <p><strong>Chain of Custody:</strong> Relinquished by (sampler) → Received by lab.<br>
+        <strong>Hazards:</strong> If algal toxins, mark “Cyanobacteria” and use PPE.<br>
+        <strong>Project:</strong> “AHCLPW313 Field Sampling”, PO #12345.</p>
+      </div>
+    </div>
+    <div class="card"><i class="fas fa-broom"></i><h3>Post-fieldwork</h3>
+      <ul><li>Clean equipment: rinse sonde, turbidity tube, refractometer with distilled water; dry and store.</li>
+      <li>Report faulty equipment to supervisor.</li>
+      <li>Enter data into water quality database (validated, legible).</li>
+      <li>Notify supervisor of any urgent results.</li></ul>
+    </div>
+    <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>Traceability:</strong> All samples accompanied by AST submission form with full Chain of Custody. Samples held for 28 days (frozen) or 6 months (Lugols-preserved algae).</div>
+  </div>
+
+  <!-- TAB 4: QUIZZES & SCENARIOS -->
+  <div id="tab4" class="tab-content">
+    <h2><i class="fas fa-puzzle-piece"></i> Interactive Knowledge Checks</h2>
+    <div class="quiz-card">
+      <h3>📝 Water Sampling & Testing Quiz (8 questions)</h3>
+      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">1. Which parameter is measured in NTU?</div>
+        <div class="quiz-option"><input type="radio" name="q1" value="A"> pH</div>
+        <div class="quiz-option"><input type="radio" name="q1" value="B"> Turbidity</div>
+        <div class="quiz-option"><input type="radio" name="q1" value="C"> DO</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="C"><div class="quiz-question-text">2. Why chill nutrient samples immediately?</div>
+        <div class="quiz-option"><input type="radio" name="q2" value="A"> To increase pH</div>
+        <div class="quiz-option"><input type="radio" name="q2" value="B"> To preserve colour</div>
+        <div class="quiz-option"><input type="radio" name="q2" value="C"> To slow biological/chemical change</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="A"><div class="quiz-question-text">3. Which is a control for working near water?</div>
+        <div class="quiz-option"><input type="radio" name="q3" value="A"> Wear a life jacket</div>
+        <div class="quiz-option"><input type="radio" name="q3" value="B"> Wear sunscreen</div>
+        <div class="quiz-option"><input type="radio" name="q3" value="C"> Use a turbidity tube</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">4. Maximum holding time for frozen total nutrients?</div>
+        <div class="quiz-option"><input type="radio" name="q4" value="A"> 7 days</div>
+        <div class="quiz-option"><input type="radio" name="q4" value="B"> 28 days</div>
+        <div class="quiz-option"><input type="radio" name="q4" value="C"> 6 months</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="C"><div class="quiz-question-text">5. Chain of Custody records:</div>
+        <div class="quiz-option"><input type="radio" name="q5" value="A"> Water temperature</div>
+        <div class="quiz-option"><input type="radio" name="q5" value="B"> Lab analysis methods</div>
+        <div class="quiz-option"><input type="radio" name="q5" value="C"> Sample possession history</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="A"><div class="quiz-question-text">6. Which water type has salinity ~35 ppt?</div>
+        <div class="quiz-option"><input type="radio" name="q6" value="A"> Offshore marine</div>
+        <div class="quiz-option"><input type="radio" name="q6" value="B"> Upland river</div>
+        <div class="quiz-option"><input type="radio" name="q6" value="C"> Freshwater lake</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">7. What does a refractometer measure?</div>
+        <div class="quiz-option"><input type="radio" name="q7" value="A"> Turbidity</div>
+        <div class="quiz-option"><input type="radio" name="q7" value="B"> Salinity</div>
+        <div class="quiz-option"><input type="radio" name="q7" value="C"> pH</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="C"><div class="quiz-question-text">8. Lugols preservative for algal samples is added at:</div>
+        <div class="quiz-option"><input type="radio" name="q8" value="A"> 0.5% v/v</div>
+        <div class="quiz-option"><input type="radio" name="q8" value="B"> 2% v/v</div>
+        <div class="quiz-option"><input type="radio" name="q8" value="C"> 1% v/v</div><div class="quiz-feedback"></div></div>
+      <button class="btn btn-primary" onclick="checkQuiz()"><i class="fas fa-check"></i> Check Answers</button>
+      <button class="btn btn-outline" onclick="resetQuiz()" style="background:rgba(255,255,255,0.15); color:white;"><i class="fas fa-undo"></i> Reset</button>
+      <div id="quizScore" style="margin-top:1rem; font-weight:bold; color:white;"></div>
+    </div>
+
+    <h3>Workplace Scenarios</h3>
+    <div class="scenario"><h4>🌊 Scenario 1: High turbidity after rain</h4><p>You sample a river after 50mm rain. Turbidity reads 120 NTU (normally 5). What do you do?</p>
+      <div class="scenario-options" id="scen1opts"><div class="scenario-option" onclick="selectScen(1,'A')">A) Record and note rainfall; flag as outlier</div>
+      <div class="scenario-option" onclick="selectScen(1,'B')">B) Discard sample and recollect</div>
+      <div class="scenario-option" onclick="selectScen(1,'C')">C) Add more preservative</div></div>
+      <div id="scen1fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(1)">Reset</button></div>
+    <div class="scenario"><h4>🧪 Scenario 2: DO probe not stabilising</h4><p>Your DO reading fluctuates between 70-110% at a marine site. What is your first action?</p>
+      <div class="scenario-options" id="scen2opts"><div class="scenario-option" onclick="selectScen(2,'A')">A) Replace probe immediately</div>
+      <div class="scenario-option" onclick="selectScen(2,'B')">B) Check calibration, ensure no bubbles, wait for stabilisation</div>
+      <div class="scenario-option" onclick="selectScen(2,'C')">C) Record average value</div></div>
+      <div id="scen2fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(2)">Reset</button></div>
+  </div>
+
+  <!-- TAB 5: EQUIPMENT & STANDARDS -->
+  <div id="tab5" class="tab-content">
+    <h2><i class="fas fa-tools"></i> Equipment & Reference Standards</h2>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-microscope"></i><h3>Equipment operation & maintenance</h3>
+        <ul><li><strong>Multi-sonde:</strong> Rinse with distilled water, store with moisture cap, calibrate before each use.</li>
+        <li><strong>Turbidity tube:</strong> Clean with soft brush, rinse, dry; store upright.</li>
+        <li><strong>Refractometer:</strong> Calibrate with distilled water (0 ppt), wipe prism with lens tissue.</li>
+        <li><strong>Secchi disk:</strong> Lower slowly, record depth of disappearance; clean after use.</li></ul>
+      </div>
+      <div class="card"><i class="fas fa-book"></i><h3>Water quality standards (Australia)</h3>
+        <ul><li><strong>ANZECC 2000</strong> – freshwater & marine guidelines</li>
+        <li><strong>Australian Drinking Water Guidelines</strong> – health-based limits</li>
+        <li><strong>AST Holding Times</strong> – <a href="#" onclick="alert('https://analyticalservices.tas.gov.au/Documents/Holding%20times%20recommendations%20for%20waters.pdf')">AST hold times</a></li>
+        <li><strong>esdat.net</strong> – environmental standards database</li></ul>
+      </div>
+    </div>
+    <div class="card"><i class="fas fa-flask"></i><h3>Test kits & chemical safety</h3>
+      <p>Nitrate/Phosphate kits: check expiry, use PPE (gloves, goggles), dispose of waste according to SDS. For dissolved nutrients, filter through 0.45µm syringe filter into 50mL tube.</p>
+    </div>
+  </div>
+
+  <!-- TAB 6: FORMS & RESOURCES -->
+  <div id="tab6" class="tab-content">
+    <h2><i class="fas fa-file-alt"></i> Forms, Chain of Custody & Links</h2>
+    <div class="card"><i class="fas fa-clipboard"></i><h3>AST Submission Form – Key fields</h3>
+      <ul><li><strong>Safety:</strong> Hazards (e.g., algal toxins, hydrocarbons) – signed by submitter.</li>
+      <li><strong>Customer details:</strong> Name, invoice contact, ABN.</li>
+      <li><strong>Chain of Custody:</strong> Relinquished by → Received by (date/time).</li>
+      <li><strong>Sample ID & analyses:</strong> Tick boxes for pH, EC, nutrients, metals, algal ID, etc.</li>
+      <li><strong>Preservation & hold:</strong> Indicate if samples require freezing or acidification.</li></ul>
+      <p><i class="fas fa-external-link-alt"></i> <a href="#" onclick="alert('https://analyticalservices.tas.gov.au/our-services/containers-samples-and-submissions')">AST Sampling & Bottle Types</a></p>
+    </div>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-link"></i><h3>Useful links</h3>
+        <ul><li><a href="#" onclick="alert('https://www.waterquality.gov.au/guidelines')">Water Quality Australia</a></li>
+        <li><a href="#" onclick="alert('https://analyticalservices.tas.gov.au/')">Analytical Services Tasmania</a></li>
+        <li><a href="#" onclick="alert('https://esdat.net/environmental-standards/')">Environmental Standards (esdat)</a></li></ul>
+      </div>
+      <div class="card"><i class="fas fa-download"></i><h3>Downloadable resources</h3>
+        <p>AST submission form, holding times guide, sampling bottle types – available at <a href="#" onclick="alert('https://analyticalservices.tas.gov.au/our-services/containers-samples-and-submissions')">AST website</a>.</p>
+      </div>
+    </div>
+    <div class="checklist-card"><i class="fas fa-graduation-cap"></i> <strong>Assessment completion:</strong> Ensure all tasks (1–5) are signed off by assessor. Use this guide to review knowledge, practice scenarios, and prepare for fieldwork.</div>
+  </div>
+
+  <footer>
+    <p><i class="fas fa-droplet"></i> AHCLPW313 · Undertake Sampling and Testing of Water · v7.1</p>
+    <p>Developed for TasTAFE Primary Industries · 2026</p>
+  </footer>
+</div>
+
+<script>
+// ===== TAB SWITCHING =====
+function switchTab(e, tabId) {
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  e.currentTarget.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ===== QUIZ =====
+function checkQuiz() {
+  let score = 0, total = 8;
+  for(let i=1; i<=total; i++) {
+    const q = document.querySelector(`.quiz-question[data-correct]`); // we'll iterate differently
+  }
+  // better: use specific selectors
+  const questions = document.querySelectorAll('.quiz-question');
+  questions.forEach((q, idx) => {
+    const radios = q.querySelectorAll('input[type="radio"]');
+    const selected = Array.from(radios).find(r => r.checked);
+    const fb = q.querySelector('.quiz-feedback');
+    const correct = q.dataset.correct;
+    if(selected && selected.value === correct) {
+      fb.innerHTML = '✓ Correct';
+      fb.className = 'feedback-correct';
+      score++;
+    } else if(selected) {
+      fb.innerHTML = '✗ Incorrect. Review material.';
+      fb.className = 'feedback-incorrect';
+    } else {
+      fb.innerHTML = '⚠ Select an answer.';
+      fb.className = 'feedback-incorrect';
+    }
+    fb.style.display = 'inline-block';
+  });
+  document.getElementById('quizScore').innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? '🏆 Excellent!' : 'Review and try again.'}`;
+}
+
+function resetQuiz() {
+  document.querySelectorAll('.quiz-question input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.quiz-feedback').forEach(f => { f.innerHTML = ''; f.style.display = 'none'; f.className = 'quiz-feedback'; });
+  document.getElementById('quizScore').innerHTML = '';
+}
+
+// ===== SCENARIOS =====
+function selectScen(num, choice) {
+  const opts = document.querySelectorAll(`#scen${num}opts .scenario-option`);
+  opts.forEach(o => o.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  const fb = document.getElementById(`scen${num}fb`);
+  const msgs = {
+    1: { A: '✅ Correct: note the rainfall anomaly, continue monitoring.', B: '❌ Not necessary; record and flag.', C: '❌ Preservative doesn’t fix turbidity.' },
+    2: { A: '❌ Replace only after troubleshooting.', B: '✅ Correct: check calibration, bubble, stabilisation.', C: '❌ Never average unstable readings.' }
+  };
+  fb.innerHTML = `<strong>Feedback:</strong> ${msgs[num]?.[choice] || 'Review the scenario.'}`;
+  fb.style.display = 'block';
+}
+function resetScen(num) {
+  document.getElementById(`scen${num}fb`).style.display = 'none';
+  document.querySelectorAll(`#scen${num}opts .scenario-option`).forEach(o => o.classList.remove('selected'));
+}
+
+// ===== GLOSSARY TOOLTIP (already in CSS) =====
+// no extra JS needed
+
+console.log('AHCLPW313 Learning Guide loaded.');
+</script>
+</body>
+</html>
