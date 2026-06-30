@@ -171,6 +171,7 @@
     <button class="tab" onclick="switchTab(event,'tab5')"><i class="fas fa-chart-bar"></i> 6. Results</button>
     <button class="tab" onclick="switchTab(event,'tab6')"><i class="fas fa-puzzle-piece"></i> 7. Practice</button>
     <button class="tab" onclick="switchTab(event,'tab7')"><i class="fas fa-book"></i> 8. Resources</button>
+<button class="tab" onclick="switchTab(event,'tab8')"><i class="fas fa-chart-simple"></i> 9. Simulator</button>
   </div>
 
   <!-- ===== TAB 0: WHY TEST WATER ===== -->
@@ -1032,6 +1033,94 @@ function downloadAllTemplates() {
     <p style="font-size:0.9rem; color:var(--primary-light);">🎉 100% complete — you're ready for assessment!</p>
   </div>
 
+  <!-- ===== TAB 8: WATER QUALITY SIMULATOR ===== -->
+  <div id="tab8" class="tab-content">
+    <h2><i class="fas fa-chart-simple"></i> Water Quality Simulator</h2>
+    <p style="font-size:1.1rem; margin-bottom:1.5rem;">Adjust the sliders below to see how different water quality parameters are connected. This interactive tool helps you understand the relationships between temperature, dissolved oxygen, pH, and nutrients.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-top:0; border-bottom: none;">🎛️ Control Panel</h3>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🌡️ Temperature (°C)</label>
+          <input type="range" id="simTemp" min="0" max="35" value="15" step="0.5" style="width:100%;">
+          <span id="simTempVal" style="font-weight:700; color:var(--primary);">15.0°C</span>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧪 Nitrate (mg/L)</label>
+          <input type="range" id="simNitrate" min="0" max="15" value="0.8" step="0.1" style="width:100%;">
+          <span id="simNitrateVal" style="font-weight:700; color:var(--primary);">0.8 mg/L</span>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧪 Phosphate (mg/L)</label>
+          <input type="range" id="simPhosphate" min="0" max="2.0" value="0.04" step="0.01" style="width:100%;">
+          <span id="simPhosphateVal" style="font-weight:700; color:var(--primary);">0.04 mg/L</span>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">☀️ Light / Photosynthesis</label>
+          <input type="range" id="simLight" min="0" max="100" value="60" step="5" style="width:100%;">
+          <span id="simLightVal" style="font-weight:700; color:var(--primary);">60%</span>
+          <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Affects pH and DO during the day</p>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🔄 Diurnal Cycle (Time of Day)</label>
+          <input type="range" id="simTime" min="0" max="24" value="12" step="0.5" style="width:100%;">
+          <span id="simTimeVal" style="font-weight:700; color:var(--primary);">12:00 (noon)</span>
+          <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Shows how parameters change from sunrise to sunset</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <h3 style="margin-top:0; border-bottom: none;">📊 Simulated Readings</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0;">
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Dissolved Oxygen</div>
+              <div id="simDO" style="font-size:2rem; font-weight:800; color:#2c7840;">94%</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Saturation</div>
+            </div>
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">pH</div>
+              <div id="simpH" style="font-size:2rem; font-weight:800; color:var(--primary);">7.2</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Scale 0-14</div>
+            </div>
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Turbidity (NTU)</div>
+              <div id="simTurbidity" style="font-size:2rem; font-weight:800; color:#b07d44;">12</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Estimated from nutrients</div>
+            </div>
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Salinity (ppt)</div>
+              <div id="simSalinity" style="font-size:2rem; font-weight:800; color:#2a7a9e;">0.2</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Freshwater baseline</div>
+            </div>
+          </div>
+
+          <div style="background:var(--accent-soft); border-radius:12px; padding:1rem; margin-top:0.5rem;">
+            <strong>🔍 Interpretation:</strong>
+            <div id="simInterpretation" style="font-size:0.9rem; margin-top:0.3rem;">
+              ✅ Healthy water quality. All parameters within expected ranges.
+            </div>
+          </div>
+
+          <div style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
+            <button class="btn btn-outline" onclick="setEutrophic()"><i class="fas fa-leaf"></i> Eutrophic</button>
+            <button class="btn btn-outline" onclick="setHealthy()"><i class="fas fa-check-circle"></i> Healthy</button>
+            <button class="btn btn-outline" onclick="setThermal()"><i class="fas fa-thermometer-half"></i> Thermal</button>
+            <button class="btn btn-outline" onclick="setAlgal()"><i class="fas fa-water"></i> Algal Bloom</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:2rem;">Understanding the Relationships</h3>
+    <div class="grid-3">
+      <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">Temperature & DO</div><p>Warmer water holds <strong>less oxygen</strong>. As temperature increases, DO decreases. This is why fish kills are more common in summer.</p></div>
+      <div class="card"><i class="fas fa-leaf"></i><div class="card-title">Nutrients & Turbidity</div><p>Higher nutrients stimulate <strong>algal growth</strong>, which increases turbidity (reduces clarity). This is the start of eutrophication.</p></div>
+      <div class="card"><i class="fas fa-sun"></i><div class="card-title">Light & pH/DO</div><p>During the day, photosynthesis removes CO₂, <strong>raising pH</strong> and increasing DO. At night, respiration reverses these effects. This is the diurnal cycle.</p></div>
+    </div>
+  </div>
+
   <footer>
     <p><i class="fas fa-droplet"></i> Water Sampling & Testing · Ultimate Learning Guide · AHCLPW313</p>
     <p>Designed for TasTAFE Primary Industries · 2026 · Over 4000 lines of expert content</p>
@@ -1120,6 +1209,240 @@ function resetScen(num) {
   document.getElementById(`scen${num}fb`).style.display = 'none';
   document.querySelectorAll(`#scen${num}opts .scenario-option`).forEach(o => o.classList.remove('selected'));
 }
+
+// ===== WATER QUALITY SIMULATOR =====
+function updateSimulator() {
+  const temp = parseFloat(document.getElementById('simTemp').value);
+  const nitrate = parseFloat(document.getElementById('simNitrate').value);
+  const phosphate = parseFloat(document.getElementById('simPhosphate').value);
+  const light = parseFloat(document.getElementById('simLight').value);
+  const time = parseFloat(document.getElementById('simTime').value);
+
+  document.getElementById('simTempVal').textContent = temp.toFixed(1) + '°C';
+  document.getElementById('simNitrateVal').textContent = nitrate.toFixed(1) + ' mg/L';
+  document.getElementById('simPhosphateVal').textContent = phosphate.toFixed(2) + ' mg/L';
+  document.getElementById('simLightVal').textContent = light.toFixed(0) + '%';
+  
+  // Time display
+  const hours = Math.floor(time);
+  const minutes = Math.round((time - hours) * 60);
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  const displayHour = hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
+  document.getElementById('simTimeVal').textContent = `${displayHour}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+
+  // Calculate DO - max at 10°C (~11 mg/L), decreases with temp, affected by light (photosynthesis)
+  const maxDO = 14.6 - (temp * 0.3);
+  const lightFactor = 0.7 + (light / 100) * 0.3;
+  const timeFactor = 0.8 + (Math.sin((time / 24) * 2 * Math.PI - Math.PI/2) * 0.2);
+  let doValue = maxDO * lightFactor * timeFactor;
+  const nutrientStress = Math.min(1, (nitrate / 5 + phosphate / 0.5) * 0.15);
+  doValue = doValue * (1 - nutrientStress);
+  doValue = Math.max(0.5, Math.min(12, doValue));
+  const doPercent = Math.round((doValue / maxDO) * 100);
+  document.getElementById('simDO').textContent = Math.min(100, Math.round(doPercent)) + '%';
+
+  // Calculate pH
+  const basepH = 7.0;
+  const lightpH = (light / 100) * 0.8;
+  const tempPH = (temp - 15) * 0.02;
+  const nutrientPH = (nitrate / 10) * 0.1 + (phosphate / 0.5) * 0.1;
+  let pH = basepH + lightpH + tempPH + nutrientPH;
+  pH = Math.max(5.5, Math.min(9.5, pH));
+  document.getElementById('simpH').textContent = pH.toFixed(1);
+
+  // Calculate turbidity
+  const nutrientLoad = nitrate * 2 + phosphate * 50;
+  const turbidity = Math.min(200, 5 + nutrientLoad * 1.5 + light * 0.1);
+  document.getElementById('simTurbidity').textContent = Math.round(turbidity);
+
+  // Salinity
+  document.getElementById('simSalinity').textContent = (0.2 + (temp - 15) * 0.01).toFixed(1);
+
+  // Interpretation
+  const interpret = document.getElementById('simInterpretation');
+  let messages = [];
+  let status = '✅ ';
+
+  if (doPercent < 60) messages.push('⚠️ Low DO — aquatic life stressed');
+  else if (doPercent < 40) messages.push('🚨 Critical DO — fish kills likely');
+  else messages.push('✅ DO levels adequate');
+
+  if (pH < 6.0) messages.push('⚠️ Acidic pH — may stress aquatic life');
+  else if (pH > 8.5) messages.push('⚠️ Alkaline pH — possible algal bloom');
+  else messages.push('✅ pH within healthy range');
+
+  if (nitrate > 5 || phosphate > 0.1) messages.push('🚨 High nutrients — eutrophication risk');
+  else if (nitrate > 2 || phosphate > 0.05) messages.push('⚠️ Elevated nutrients — monitor regularly');
+  else messages.push('✅ Nutrients at natural levels');
+
+  if (turbidity > 50) messages.push('⚠️ High turbidity — reduced light penetration');
+  else if (turbidity > 20) messages.push('⚠️ Elevated turbidity — possible sediment or algae');
+  else messages.push('✅ Water clarity good');
+
+  if (nitrate > 3 && phosphate > 0.08 && light > 50) messages.push('🚨 Conditions favour algal bloom');
+  else if (nitrate > 2 && phosphate > 0.05) messages.push('⚠️ Conditions could trigger algal bloom');
+
+  const hasCritical = messages.some(m => m.includes('🚨'));
+  const hasWarning = messages.some(m => m.includes('⚠️'));
+  if (hasCritical) status = '🚨 CRITICAL — ';
+  else if (hasWarning) status = '⚠️ WARNING — ';
+  else status = '✅ HEALTHY — ';
+
+  interpret.innerHTML = status + messages.join(' · ');
+}
+
+// ===== PRESET SCENARIOS =====
+function setEutrophic() {
+  document.getElementById('simTemp').value = 22;
+  document.getElementById('simNitrate').value = 8.0;
+  document.getElementById('simPhosphate').value = 0.5;
+  document.getElementById('simLight').value = 70;
+  document.getElementById('simTime').value = 14;
+  updateSimulator();
+}
+
+function setHealthy() {
+  document.getElementById('simTemp').value = 15;
+  document.getElementById('simNitrate').value = 0.8;
+  document.getElementById('simPhosphate').value = 0.04;
+  document.getElementById('simLight').value = 60;
+  document.getElementById('simTime').value = 12;
+  updateSimulator();
+}
+
+function setThermal() {
+  document.getElementById('simTemp').value = 30;
+  document.getElementById('simNitrate').value = 1.2;
+  document.getElementById('simPhosphate').value = 0.06;
+  document.getElementById('simLight').value = 80;
+  document.getElementById('simTime').value = 14;
+  updateSimulator();
+}
+
+function setAlgal() {
+  document.getElementById('simTemp').value = 25;
+  document.getElementById('simNitrate').value = 6.0;
+  document.getElementById('simPhosphate').value = 0.3;
+  document.getElementById('simLight').value = 90;
+  document.getElementById('simTime').value = 14;
+  updateSimulator();
+}
+
+// ===== STATIC TRIGGER LEVELS REFERENCE =====
+function createTriggerLevelsReference() {
+  const triggerHtml = `
+    <h3 style="margin-top:2rem;">📋 Water Quality Trigger Levels & Response Actions</h3>
+    <p>Based on ANZECC 2000 guidelines. When results exceed these values, investigate and take appropriate action.</p>
+    <table>
+      <tr style="background:#0d4b6b; color:white;">
+        <th>Parameter</th>
+        <th>Trigger Level</th>
+        <th>Potential Cause</th>
+        <th>Recommended Action</th>
+      </tr>
+      <tr style="border-left: 6px solid #2c7840;">
+        <td><strong>DO</strong></td>
+        <td>< 60% saturation</td>
+        <td>Organic pollution, eutrophication, thermal pollution</td>
+        <td>Investigate upstream sources; check for algal blooms</td>
+      </tr>
+      <tr style="border-left: 6px solid #b34343;">
+        <td><strong>DO</strong></td>
+        <td>< 40% saturation</td>
+        <td>Severe organic loading, sewage, or industrial discharge</td>
+        <td>🚨 URGENT: Report to EPA/authorities immediately</td>
+      </tr>
+      <tr style="border-left: 6px solid #e68a2e;">
+        <td><strong>pH</strong></td>
+        <td>< 6.0 or > 8.5</td>
+        <td>Acid drainage, algal bloom, industrial discharge</td>
+        <td>Investigate source; test for metals or algal toxins</td>
+      </tr>
+      <tr style="border-left: 6px solid #b34343;">
+        <td><strong>pH</strong></td>
+        <td>< 5.0 or > 9.0</td>
+        <td>Severe pollution or bloom</td>
+        <td>🚨 URGENT: Report to EPA/authorities immediately</td>
+      </tr>
+      <tr style="border-left: 6px solid #e68a2e;">
+        <td><strong>Nitrate</strong></td>
+        <td>> 1.0 mg/L (freshwater)</td>
+        <td>Agricultural runoff, sewage, fertiliser</td>
+        <td>Investigate upstream farming or urban sources</td>
+      </tr>
+      <tr style="border-left: 6px solid #b34343;">
+        <td><strong>Nitrate</strong></td>
+        <td>> 5.0 mg/L</td>
+        <td>Severe nutrient pollution</td>
+        <td>🚨 Report to EPA; investigate point sources</td>
+      </tr>
+      <tr style="border-left: 6px solid #e68a2e;">
+        <td><strong>Phosphate</strong></td>
+        <td>> 0.05 mg/L (freshwater)</td>
+        <td>Agricultural runoff, sewage, detergents</td>
+        <td>Investigate upstream sources; test for algal blooms</td>
+      </tr>
+      <tr style="border-left: 6px solid #b34343;">
+        <td><strong>Phosphate</strong></td>
+        <td>> 0.1 mg/L</td>
+        <td>Severe nutrient pollution</td>
+        <td>🚨 Report to EPA; investigate point sources</td>
+      </tr>
+      <tr style="border-left: 6px solid #e68a2e;">
+        <td><strong>Turbidity</strong></td>
+        <td>> 20 NTU</td>
+        <td>Sediment from erosion, construction, or algal bloom</td>
+        <td>Investigate upstream activity; check for sediment sources</td>
+      </tr>
+      <tr style="border-left: 6px solid #b34343;">
+        <td><strong>Turbidity</strong></td>
+        <td>> 100 NTU</td>
+        <td>Severe sediment pollution or algal bloom</td>
+        <td>🚨 Report to EPA; investigate land disturbance</td>
+      </tr>
+      <tr style="border-left: 6px solid #e68a2e;">
+        <td><strong>Temperature</strong></td>
+        <td>> 2°C above natural</td>
+        <td>Thermal pollution from industry, urban runoff</td>
+        <td>Investigate source of heated water</td>
+      </tr>
+      <tr style="border-left: 6px solid #b34343;">
+        <td><strong>Algal bloom</strong></td>
+        <td>Visible scum or colour</td>
+        <td>High nutrients, warm water, sunlight</td>
+        <td>🚨 URGENT: Test for toxins; warn public; report</td>
+      </tr>
+    </table>
+    <div class="tip"><i class="fas fa-info-circle"></i> <strong>Remember:</strong> Trigger values vary by water body type (upland, lowland, marine, etc.). Always refer to the ANZECC guidelines for specific ecosystem-protection levels.</div>
+  `;
+  return triggerHtml;
+}
+
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Add simulator event listeners
+  const simControls = ['simTemp', 'simNitrate', 'simPhosphate', 'simLight', 'simTime'];
+  simControls.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', updateSimulator);
+    }
+  });
+
+  // Add trigger levels to the Resources tab (Tab 7)
+  const resourcesTab = document.getElementById('tab7');
+  if (resourcesTab) {
+    const checklist = resourcesTab.querySelector('.checklist-card');
+    if (checklist) {
+      const triggerDiv = document.createElement('div');
+      triggerDiv.innerHTML = createTriggerLevelsReference();
+      checklist.parentNode.insertBefore(triggerDiv, checklist.nextSibling);
+    }
+  }
+
+  // Initialize simulator
+  updateSimulator();
+});
 </script>
 </body>
 </html>
