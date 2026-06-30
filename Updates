@@ -1,0 +1,11 @@
+<!-- ===== UPDATED VIDEO RESOURCES CARD ===== -->
+<div class="card"><i class="fas fa-video"></i><div class="card-title">Recommended videos & tutorials</div>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=94YcjbYBchc" target="_blank" class="resource-link">How we measure water quality</a> — EPA Victoria (2023). Follow an authorised officer as they collect water samples, use a field meter, and explain key parameters like dissolved oxygen, salinity, and pH. A great real-world introduction to the whole process. (4:38)</li>
+    <li><a href="https://www.youtube.com/watch?v=Ko7TbScFQk4&t=7s" target="_blank" class="resource-link">Horiba U-52 Auto Calibration</a> — Step-by-step demonstration of automatic calibration for a multi-parameter sonde. Essential viewing for understanding how to prepare your equipment for accurate field measurements. (2:14)</li>
+    <li><a href="https://www.youtube.com/watch?v=5w6s9K97G9g" target="_blank" class="resource-link">Horiba U-50 Water Quality Monitoring Probe</a> — Detailed overview of the Horiba U-50 series multi-parameter probe. Covers setup, sensor maintenance, and field use — perfect for understanding how these instruments work. (6:12)</li>
+    <li><a href="https://www.youtube.com/watch?v=SvksjH9gedQ" target="_blank" class="resource-link">What are pH, EC, TDS, and PPM and How Are They Connected?</a> — Clear explanation of the relationships between pH, electrical conductivity, total dissolved solids, and parts per million. Builds foundational understanding of water chemistry. (6:28)</li>
+    <li><a href="https://www.youtube.com/watch?v=3Vylu9R9WtY" target="_blank" class="resource-link">EnviroDNA eDNA Water Sampling Tutorial</a> — While focused on environmental DNA, this tutorial demonstrates excellent sterile sampling technique, proper labelling, and contamination prevention — all skills directly transferable to water quality sampling. (3:34)</li>
+  </ul>
+  <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Watch these videos before your fieldwork to see the techniques in action. They complement the written content in this guide and help build confidence.</div>
+</div>
