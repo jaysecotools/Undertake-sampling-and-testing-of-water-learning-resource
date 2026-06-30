@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-  <title>Water Sampling & Testing · Learning Guide</title>
+  <title>Water Sampling & Testing · Comprehensive Learning Guide</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
@@ -43,7 +43,7 @@
     }
     .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
     .hero h1 i { color: var(--accent); margin-right: 12px; }
-    .hero p { font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem; max-width: 700px; }
+    .hero p { font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem; max-width: 800px; }
     .hero-badges { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
     .hero-badges span {
       background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
@@ -124,6 +124,8 @@
     .glossary-term:hover .tooltip { display: block; }
     footer { background: #0a3346; color: #d6e5ed; padding: 2rem; margin-top: 2rem; border-top: 8px solid var(--accent); text-align: center; }
     .tip { background: #e1f0fa; border-radius: 12px; padding: 0.8rem 1.2rem; margin: 0.8rem 0; border-left: 6px solid var(--primary-light); }
+    .resource-link { color: var(--primary); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent); }
+    .resource-link:hover { color: var(--accent); }
     @media (max-width: 768px) { .tab-content { padding: 1.2rem; } .tab { padding: 0.4rem 0.6rem; font-size: 0.7rem; } }
     @media print { .tab-bar, .btn, .hero { display: none; } .tab-content { display: block !important; } }
   </style>
@@ -132,97 +134,133 @@
 <div class="master">
   <div class="hero">
     <h1><i class="fas fa-droplet"></i> Water Sampling & Testing</h1>
-    <p>A practical guide to understanding why we test water, what we measure, and how to do it safely and accurately.</p>
+    <p>A comprehensive guide to understanding water quality — from the science behind the parameters to the practical skills of sampling, testing, and interpreting results.</p>
     <div class="hero-badges">
-      <span><i class="fas fa-graduation-cap"></i> For beginners · No prior knowledge needed</span>
-      <span><i class="fas fa-ruler-combined"></i> Learn the what, why & how</span>
-      <span><i class="fas fa-clipboard-check"></i> Prepares you for AHCLPW313 assessment</span>
+      <span><i class="fas fa-graduation-cap"></i> Beginner-friendly · No prior knowledge assumed</span>
+      <span><i class="fas fa-ruler-combined"></i> What, why & how — in depth</span>
+      <span><i class="fas fa-clipboard-check"></i> Covers AHCLPW313 in full</span>
+      <span><i class="fas fa-globe"></i> Australian context & standards</span>
     </div>
   </div>
 
   <div class="tab-bar">
     <button class="tab active" onclick="switchTab(event,'tab0')"><i class="fas fa-question-circle"></i> 1. Why test water?</button>
-    <button class="tab" onclick="switchTab(event,'tab1')"><i class="fas fa-flask"></i> 2. What we test</button>
+    <button class="tab" onclick="switchTab(event,'tab1')"><i class="fas fa-flask"></i> 2. Key parameters</button>
     <button class="tab" onclick="switchTab(event,'tab2')"><i class="fas fa-tools"></i> 3. Equipment & methods</button>
     <button class="tab" onclick="switchTab(event,'tab3')"><i class="fas fa-clipboard-list"></i> 4. Planning & safety</button>
     <button class="tab" onclick="switchTab(event,'tab4')"><i class="fas fa-box"></i> 5. Samples & dispatch</button>
-    <button class="tab" onclick="switchTab(event,'tab5')"><i class="fas fa-puzzle-piece"></i> 6. Check your knowledge</button>
-    <button class="tab" onclick="switchTab(event,'tab6')"><i class="fas fa-book"></i> 7. Glossary & resources</button>
+    <button class="tab" onclick="switchTab(event,'tab5')"><i class="fas fa-chart-bar"></i> 6. Interpreting results</button>
+    <button class="tab" onclick="switchTab(event,'tab6')"><i class="fas fa-puzzle-piece"></i> 7. Test your knowledge</button>
+    <button class="tab" onclick="switchTab(event,'tab7')"><i class="fas fa-book"></i> 8. Resources & glossary</button>
   </div>
 
   <!-- ===== TAB 0: WHY TEST WATER ===== -->
   <div id="tab0" class="tab-content active">
     <h2><i class="fas fa-question-circle"></i> Why do we test water?</h2>
-    <p style="font-size:1.1rem; margin-bottom:1.5rem;">Water testing tells us about the health of our waterways, helps us spot problems early, and ensures water is safe for its intended use—whether that's drinking, farming, or supporting aquatic life.</p>
+    <p style="font-size:1.1rem; margin-bottom:1.5rem;">Water is essential for life, ecosystems, agriculture, and industry. Testing tells us about its health, safety, and suitability for different uses. It's the foundation of good water management.</p>
+
     <div class="grid-2">
       <div class="card"><i class="fas fa-chart-line"></i><div class="card-title">Monitor change over time</div>
-        <p>Regular testing builds a picture of water quality trends. This helps us see if a river, lake, or estuary is getting healthier or declining, and whether management actions are working.</p>
-        <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Example:</strong> Testing a river each month shows if nutrient levels are rising—early warning for algal blooms.</div>
+        <p>Regular testing builds a baseline and tracks trends. This helps us see if a waterway is improving, declining, or stable — and whether management actions are working.</p>
+        <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Example:</strong> Testing a river monthly for nutrients can reveal gradual increases from agricultural runoff, allowing early intervention.</div>
       </div>
       <div class="card"><i class="fas fa-biohazard"></i><div class="card-title">Detect pollution & contamination</div>
-        <p>Testing can reveal the presence of harmful substances like heavy metals, pesticides, or excess nutrients from agriculture or industry. It's often the first step in investigating an environmental incident.</p>
-        <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Example:</strong> After a fish kill, water samples help identify the cause—low oxygen, toxic algae, or chemical spill.</div>
+        <p>Testing can identify harmful substances — heavy metals, pesticides, excess nutrients, or pathogens. It's often the first step in investigating an environmental incident.</p>
+        <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Example:</strong> After a fish kill, water samples help identify the cause: low dissolved oxygen, toxic algae, or chemical spill.</div>
       </div>
       <div class="card"><i class="fas fa-file-signature"></i><div class="card-title">Compliance & regulations</div>
-        <p>Many industries and land managers must meet water quality standards set by law. Testing proves that water discharged from a site, or used for irrigation, meets these legal requirements.</p>
+        <p>Many industries and land managers must meet water quality standards set by law. Testing proves that water discharged from a site, or used for irrigation, meets legal requirements.</p>
       </div>
       <div class="card"><i class="fas fa-tint"></i><div class="card-title">Protect human & ecosystem health</div>
         <p>We test drinking water to ensure it's safe. We test natural waterways to ensure they support healthy fish, frogs, and plants. It's about protecting both people and the environment.</p>
       </div>
     </div>
-    <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Key takeaway:</strong> Water testing isn't just about collecting data—it's about understanding and protecting our water resources. Every test result tells a story about the health of that water body.</div>
+
+    <h3>Water quality in the Australian context</h3>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-map"></i><div class="card-title">Australia's unique challenges</div>
+        <ul><li><strong>Variable climate:</strong> Droughts and floods affect water quality dramatically.</li>
+        <li><strong>Agriculture:</strong> Extensive farming can lead to nutrient runoff and salinity.</li>
+        <li><strong>Urban development:</strong> Stormwater carries pollutants from roads and buildings.</li>
+        <li><strong>Mining:</strong> Can introduce heavy metals and acid drainage.</li>
+        <li><strong>Climate change:</strong> Warming waters, altered flow patterns, and increased bushfire runoff affect water quality.</li></ul>
+      </div>
+      <div class="card"><i class="fas fa-balance-scale"></i><div class="card-title">National standards & guidelines</div>
+        <p>Australia has robust water quality guidelines to protect our waterways:</p>
+        <ul><li><strong>ANZECC 2000</strong> — Australian and New Zealand Guidelines for Fresh and Marine Water Quality. Provides trigger values for ecosystem protection.</li>
+        <li><strong>Australian Drinking Water Guidelines</strong> — health-based limits for drinking water.</li>
+        <li><strong>State-based regulations</strong> — each state has specific water quality policies (e.g., Tasmanian Water Quality Guidelines).</li></ul>
+      </div>
+    </div>
+    <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Key takeaway:</strong> Water testing isn't just about collecting data — it's about understanding and protecting our water resources. Every test result tells a story about the health of that water body.</div>
   </div>
 
-  <!-- ===== TAB 1: WHAT WE TEST ===== -->
+  <!-- ===== TAB 1: KEY PARAMETERS ===== -->
   <div id="tab1" class="tab-content">
     <h2><i class="fas fa-flask"></i> What we measure: key water quality parameters</h2>
     <p>These are the core parameters you'll test in the field. Each one tells us something different about the water's condition.</p>
+
     <div class="grid-2">
       <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">Temperature (°C)</div>
         <p><strong>What it is:</strong> A measure of how hot or cold the water is.</p>
         <p><strong>Why it matters:</strong> Temperature affects every other parameter. It influences oxygen levels, the toxicity of pollutants, and the survival of fish and invertebrates. Many species have a preferred temperature range.</p>
         <p><strong>How to measure:</strong> Using a thermometer or a multi-parameter probe. Submerge the sensor and wait for the reading to stabilise.</p>
+        <p><strong>Expected ranges:</strong> Freshwater streams 5–25°C (seasonal), marine 12–24°C, lakes vary with depth.</p>
       </div>
       <div class="card"><i class="fas fa-vial"></i><div class="card-title">pH (acidity/alkalinity)</div>
-        <p><strong>What it is:</strong> The scale from 0 to 14—7 is neutral, below 7 is acidic, above 7 is alkaline.</p>
-        <p><strong>Why it matters:</strong> pH influences chemical reactions in water. Many aquatic organisms are sensitive to pH changes. Extremes (below 5 or above 9) can be harmful.</p>
-        <p><strong>How to measure:</strong> Using a pH meter (electrode) or colour-change test strips. Calibrate the meter before use.</p>
+        <p><strong>What it is:</strong> The scale from 0 to 14 — 7 is neutral, below 7 is acidic, above 7 is alkaline.</p>
+        <p><strong>Why it matters:</strong> pH influences chemical reactions in water. Many aquatic organisms are sensitive to pH changes. Extremes (below 5 or above 9) can be harmful. pH also affects the toxicity of metals and ammonia.</p>
+        <p><strong>How to measure:</strong> Using a pH meter (electrode) or colour-change test strips. Calibrate the meter before use with buffer solutions.</p>
+        <p><strong>Expected ranges:</strong> Freshwater 6.5–8.0, marine 7.5–8.5, estuaries variable.</p>
       </div>
       <div class="card"><i class="fas fa-bolt"></i><div class="card-title">Electrical Conductivity (EC) & Salinity</div>
         <p><strong>What it is:</strong> A measure of how well water conducts electricity, which relates to the amount of dissolved salts (ions). Often reported as <strong>salinity</strong> in parts per thousand (ppt).</p>
         <p><strong>Why it matters:</strong> EC tells us about the mineral content. High salinity can stress freshwater species; low salinity is important for estuaries. It helps identify saltwater intrusion or agricultural runoff.</p>
         <p><strong>How to measure:</strong> Using a conductivity sensor (often part of a multi-parameter sonde).</p>
+        <p><strong>Expected ranges:</strong> Freshwater 0–500 µS/cm, brackish 500–5000, marine ~53,000 µS/cm (≈35 ppt).</p>
       </div>
       <div class="card"><i class="fas fa-wind"></i><div class="card-title">Dissolved Oxygen (DO)</div>
         <p><strong>What it is:</strong> The amount of oxygen gas dissolved in the water, measured in mg/L or % saturation.</p>
-        <p><strong>Why it matters:</strong> Fish and other aquatic life need oxygen to survive. Low DO can cause fish kills. DO levels fluctuate with temperature, plant activity, and pollution.</p>
+        <p><strong>Why it matters:</strong> Fish and other aquatic life need oxygen to survive. Low DO can cause fish kills. DO levels fluctuate with temperature, plant activity, and pollution. Cold water holds more oxygen than warm water.</p>
         <p><strong>How to measure:</strong> Using a DO probe (optical or electrochemical). Ensure the probe is calibrated and free of bubbles.</p>
+        <p><strong>Expected ranges:</strong> Healthy water 80–110% saturation (≈6–9 mg/L). Below 60% (≈4 mg/L) is stressful for many species.</p>
       </div>
       <div class="card"><i class="fas fa-cloud-sun"></i><div class="card-title">Turbidity (clarity)</div>
         <p><strong>What it is:</strong> A measure of water clarity, affected by suspended particles like silt, clay, or algae. Reported in Nephelometric Turbidity Units (NTU).</p>
         <p><strong>Why it matters:</strong> High turbidity reduces light penetration, which can affect plant growth and fish feeding. It can also carry pollutants attached to sediment particles.</p>
         <p><strong>How to measure:</strong> Using a turbidity tube (visual), Secchi disk (in lakes), or a turbidity sensor. Always collect sample without disturbing sediment.</p>
+        <p><strong>Expected ranges:</strong> Clear streams <5 NTU, turbid rivers 10–50 NTU, estuaries variable, lakes <10 NTU (clear) to >100 NTU (algal blooms).</p>
       </div>
       <div class="card"><i class="fas fa-leaf"></i><div class="card-title">Nutrients – Nitrate & Phosphate</div>
         <p><strong>What they are:</strong> Nitrate (NO₃⁻) and phosphate (PO₄³⁻) are essential plant nutrients, but in excess they cause problems.</p>
-        <p><strong>Why they matter:</strong> High nutrient levels cause eutrophication—excessive algal growth (blooms) that can deplete oxygen and produce toxins. Measuring nutrients helps identify sources like fertiliser runoff, sewage, or animal waste.</p>
+        <p><strong>Why they matter:</strong> High nutrient levels cause <strong>eutrophication</strong> — excessive algal growth (blooms) that can deplete oxygen and produce toxins. Measuring nutrients helps identify sources like fertiliser runoff, sewage, or animal waste.</p>
         <p><strong>How to measure:</strong> Using colourimetric test kits (drop tests or strips) or collecting samples for laboratory analysis.</p>
+        <p><strong>Expected ranges:</strong> Natural waters: nitrate <1 mg/L, phosphate <0.05 mg/L. Elevated levels indicate pollution.</p>
       </div>
     </div>
-    <div class="tip"><i class="fas fa-info-circle"></i> <strong>Remember:</strong> These parameters don't exist in isolation. For example, warm water holds less oxygen (DO), and an algal bloom can raise pH during the day and drop it at night.</div>
+
+    <h3>Additional parameters you may encounter</h3>
+    <div class="grid-3">
+      <div class="card"><i class="fas fa-cube"></i><div class="card-title">Total Dissolved Solids (TDS)</div><p>Similar to EC — a measure of all dissolved minerals. High TDS can affect taste and aquatic life.</p></div>
+      <div class="card"><i class="fas fa-microscope"></i><div class="card-title">Algae & cyanobacteria</div><p>Identified and counted under a microscope. Certain species produce toxins harmful to animals and humans.</p></div>
+      <div class="card"><i class="fas fa-biohazard"></i><div class="card-title">Heavy metals</div><p>Trace metals like lead, mercury, arsenic, copper — toxic at low concentrations, often from mining or industrial sources.</p></div>
+      <div class="card"><i class="fas fa-bacterium"></i><div class="card-title">Bacteriological indicators</div><p>E. coli and Enterococci indicate faecal contamination — important for drinking water and swimming safety.</p></div>
+    </div>
   </div>
 
   <!-- ===== TAB 2: EQUIPMENT & METHODS ===== -->
   <div id="tab2" class="tab-content">
     <h2><i class="fas fa-tools"></i> Equipment, methods & best practice</h2>
+
     <div class="grid-2">
       <div class="card"><i class="fas fa-microscope"></i><div class="card-title">Multi-parameter sonde</div>
         <p>A single device with multiple sensors to measure temperature, pH, EC, DO, and turbidity simultaneously.</p>
         <p><strong>How to use:</strong> Calibrate before fieldwork (use standard solutions). Lower the probe into the water (avoid stirring sediment). Wait for readings to stabilise (usually 30–60 seconds). Record each value.</p>
         <p><strong>Care:</strong> Rinse with distilled water after use. Store sensors with moist pads. Replace caps and batteries as needed.</p>
+        <div class="tip"><i class="fas fa-info-circle"></i> <strong>Tip:</strong> Always calibrate pH and DO meters on the day of sampling. Temperature and EC are more stable but should still be checked regularly.</div>
       </div>
       <div class="card"><i class="fas fa-eye"></i><div class="card-title">Turbidity tube & Secchi disk</div>
-        <p><strong>Turbidity tube:</strong> A clear tube with a black-and-white pattern on the base. Fill with sample water. Look down the tube and slowly add water until the pattern disappears—read the NTU scale at the water level.</p>
+        <p><strong>Turbidity tube:</strong> A clear tube with a black-and-white pattern on the base. Fill with sample water. Look down the tube and slowly add water until the pattern disappears — read the NTU scale at the water level.</p>
         <p><strong>Secchi disk:</strong> A black-and-white disk lowered into the water until it vanishes. Record the depth. Used in lakes and clear water.</p>
         <p><strong>Care:</strong> Clean and dry the tube after each use. Keep the disk clean and the rope tangle-free.</p>
       </div>
@@ -232,27 +270,32 @@
         <p><strong>Care:</strong> Rinse with clean fresh water after use, dry the prism, and store in a padded case.</p>
       </div>
       <div class="card"><i class="fas fa-vial"></i><div class="card-title">Nutrient test kits (nitrate & phosphate)</div>
-        <p>Simple colour-change tests. Follow the kit instructions carefully—add the reagent, wait the specified time, and compare the colour to a chart.</p>
+        <p>Simple colour-change tests. Follow the kit instructions carefully — add the reagent, wait the specified time, and compare the colour to a chart.</p>
         <p><strong>Tips:</strong> Check expiry dates before use. Use clean, dry vials. Record the result immediately.</p>
+        <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Always test a blank (distilled water) with your kit to ensure the reagents are working correctly.</div>
       </div>
     </div>
-    <h3>General field sampling tips</h3>
+
+    <h3>General field sampling techniques</h3>
     <ul style="margin-left:1.5rem;">
       <li><strong>Label everything</strong> — write site, date, time, and test on each container <em>before</em> you collect the sample.</li>
       <li><strong>Rinse containers</strong> — rinse bottles 2–3 times with the site water before filling.</li>
       <li><strong>Avoid contamination</strong> — don't touch the inside of lids or the sample water with dirty hands.</li>
       <li><strong>Keep samples cool & dark</strong> — store in an insulated esky with ice packs to slow biological change.</li>
       <li><strong>Record observations</strong> — note weather, water colour, smell, and any visible algae or animals. This context is valuable.</li>
+      <li><strong>Use appropriate personal protective equipment (PPE)</strong> — gloves, safety glasses, and appropriate footwear.</li>
     </ul>
   </div>
 
   <!-- ===== TAB 3: PLANNING & SAFETY ===== -->
   <div id="tab3" class="tab-content">
     <h2><i class="fas fa-clipboard-list"></i> Planning a sampling program & staying safe</h2>
+
     <div class="grid-2">
       <div class="card"><i class="fas fa-map-pin"></i><div class="card-title">Choosing your sites</div>
-        <p>Your assessment requires samples from at least <strong>three different water bodies</strong>—for example, a freshwater river, a marine/estuarine site, and a farm dam or lake. This gives you a broad understanding of water quality variation.</p>
+        <p>Your assessment requires samples from at least <strong>three different water bodies</strong> — for example, a freshwater river, a marine/estuarine site, and a farm dam or lake. This gives you a broad understanding of water quality variation.</p>
         <p>Before you go, confirm site access, check tides (for marine sites), and think about safety.</p>
+        <div class="tip"><i class="fas fa-info-circle"></i> <strong>Good practice:</strong> Choose sites that are representative of the water body — avoid areas near drains, stagnant pools, or under overhanging trees where debris accumulates.</div>
       </div>
       <div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Risk assessment essentials</div>
         <p>Every field trip needs a risk assessment. Consider these common hazards:</p>
@@ -260,62 +303,132 @@
         <li><strong>Slips, trips & falls</strong> — wear sturdy footwear, keep work areas tidy.</li>
         <li><strong>Exposure to elements</strong> — sun protection (hat, sunscreen, long sleeves), hydration, and weather-appropriate clothing.</li>
         <li><strong>Bites & stings</strong> — be aware of snakes, spiders, and insects. Wear protective clothing and use repellent.</li>
-        <li><strong>Chemical hazards</strong> — use test kits in a ventilated area, wear gloves and safety glasses, and follow SDS (Safety Data Sheets) for disposal.</li></ul>
+        <li><strong>Chemical hazards</strong> — use test kits in a ventilated area, wear gloves and safety glasses, and follow SDS (Safety Data Sheets) for disposal.</li>
+        <li><strong>Manual handling</strong> — carry equipment in packs, use proper lifting techniques for heavy coolers.</li></ul>
       </div>
     </div>
+
     <div class="card"><i class="fas fa-cloud-sun"></i><div class="card-title">Weather and water conditions</div>
-      <p>Weather affects water quality. For example, a hot, still day can lead to algal blooms and low oxygen. A storm can increase turbidity and wash nutrients into waterways.</p>
+      <p>Weather affects water quality. For example:</p>
+      <ul><li>A hot, still day can lead to algal blooms and low oxygen.</li>
+      <li>A storm can increase turbidity and wash nutrients into waterways.</li>
+      <li>Rainfall after a dry spell can flush accumulated pollutants.</li></ul>
       <p><strong>Always check the forecast before you go.</strong> High winds, heavy rain, or extreme heat may make fieldwork unsafe or invalidate results. Be prepared to reschedule.</p>
-      <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Record weather conditions (temperature, cloud cover, wind, recent rainfall) on your data sheet—it helps explain unexpected results.</div>
+      <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Record weather conditions (temperature, cloud cover, wind, recent rainfall) on your data sheet — it helps explain unexpected results.</div>
     </div>
+
+    <h3>Sample collection plan template</h3>
+    <table>
+      <tr><th>Site</th><th>Location (Lat/Long)</th><th>Water type</th><th>Parameters to test</th><th>Samples to collect</th></tr>
+      <tr><td>Site 1</td><td>-42.12345, 147.12345</td><td>Freshwater river</td><td>pH, EC, DO, Temp, Turbidity, Nitrate</td><td>Total nutrients, dissolved nutrients, algal ID</td></tr>
+      <tr><td>Site 2</td><td>-43.23456, 148.23456</td><td>Marine coastal</td><td>pH, EC, DO, Temp, Turbidity</td><td>Total nutrients, dissolved nutrients, algal ID</td></tr>
+      <tr><td>Site 3</td><td>-41.34567, 147.34567</td><td>Farm dam</td><td>pH, EC, DO, Temp, Turbidity, Phosphate</td><td>Total nutrients, algal ID</td></tr>
+    </table>
     <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>Pre-departure checklist:</strong><br>
       ✓ Weather forecast checked<br>
-      ✓ Risk assessment completed<br>
+      ✓ Risk assessment completed and signed<br>
       ✓ Equipment calibrated and packed<br>
       ✓ Sample containers pre-labelled<br>
       ✓ Data sheets and pens ready<br>
-      ✓ PPE (gloves, life jacket, sun protection) packed
+      ✓ PPE (gloves, life jacket, sun protection) packed<br>
+      ✓ Mobile phone and first aid kit<br>
+      ✓ Emergency contact details
     </div>
   </div>
 
   <!-- ===== TAB 4: SAMPLES & DISPATCH ===== -->
   <div id="tab4" class="tab-content">
     <h2><i class="fas fa-box"></i> Collecting, storing & dispatching samples</h2>
+
     <div class="grid-2">
       <div class="card"><i class="fas fa-syringe"></i><div class="card-title">Sample collection techniques</div>
         <p><strong>Surface samples:</strong> Use a clean container or a sampling pole. Submerge just below the surface, away from the bank.</p>
         <p><strong>Subsurface samples:</strong> Use a Niskin bottle or pump sampler. Record the depth.</p>
         <p><strong>Dissolved nutrients:</strong> Filter through a 0.45µm syringe filter <em>immediately</em> into a 50mL tube. This removes particles that can change nutrient levels during storage.</p>
         <p><strong>Algal samples:</strong> Fill a 500mL plastic jar to the shoulder. Add Lugols preservative (1% v/v — that's 5mL per 500mL) to preserve the sample for identification and counting.</p>
+        <p><strong>Bacterial samples:</strong> Use sterile containers, collect aseptically, and keep cold. Deliver to lab within 24 hours.</p>
       </div>
       <div class="card"><i class="fas fa-snowflake"></i><div class="card-title">Preservation & storage</div>
         <p><strong>Keep it cool:</strong> Place samples in an insulated esky with ice packs as soon as they're collected. This slows biological and chemical change.</p>
-        <p><strong>Freeze for later:</strong> If you can't get samples to the lab on the same day, freeze them (for nutrients) within 24 hours. <em>Don't overfill containers</em>—allow room for expansion.</p>
-        <p><strong>Holding times:</strong> Total nutrients can be frozen for up to 28 days. Dissolved nutrients (with nitrite) should be analysed within 2 days if not frozen. Algal samples preserved with Lugols can be held for up to 6 months.</p>
+        <p><strong>Freeze for later:</strong> If you can't get samples to the lab on the same day, freeze them (for nutrients) within 24 hours. <em>Don't overfill containers</em> — allow room for expansion.</p>
+        <p><strong>Holding times (Analytical Services Tasmania):</strong></p>
+        <ul><li>Total nutrients: 28 days (frozen)</li>
+        <li>Dissolved nutrients (with nitrite): 2 days (or freeze, 28 days)</li>
+        <li>Algal samples (Lugols): 6 months</li>
+        <li>Bacterial: 24 hours (must be processed promptly)</li>
+        <li>Metals: up to 6 months (if acidified)</li></ul>
       </div>
     </div>
+
     <div class="card"><i class="fas fa-file-signature"></i><div class="card-title">Chain of Custody & lab submission</div>
       <p>When sending samples to a laboratory (like Analytical Services Tasmania), you need a <strong>Chain of Custody (CoC)</strong> form. This documents:</p>
       <ul><li>Who collected the samples</li>
       <li>When and where they were collected</li>
       <li>Every person who handled the samples before they reached the lab</li></ul>
-      <p>The CoC ensures the integrity of the samples—it proves they haven't been tampered with. It's legally important if results are used for compliance or legal proceedings.</p>
+      <p>The CoC ensures the integrity of the samples — it proves they haven't been tampered with. It's legally important if results are used for compliance or legal proceedings.</p>
       <div class="tip"><i class="fas fa-pen"></i> <strong>Label each sample with:</strong> Site name, date, time of collection, and the tests required. Group samples from each site together in a labelled bag.</div>
+      <p><strong>Submitting to AST:</strong> Complete the submission form (available from <a href="#" onclick="window.open('https://analyticalservices.tas.gov.au/our-services/containers-samples-and-submissions','_blank')" class="resource-link">AST website</a>). Include hazard information if samples contain toxins, hydrocarbons, or pathogens.</p>
     </div>
+
     <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Before you leave the field:</strong><br>
       ✓ All results recorded on data sheets<br>
       ✓ Samples correctly labelled and stored (cool/dark)<br>
       ✓ Rubbish collected and disposed of properly<br>
-      ✓ Any urgent results (e.g., very low DO) reported to supervisor
+      ✓ Any urgent results (e.g., very low DO, extreme pH) reported to supervisor<br>
+      ✓ Equipment cleaned and packed
     </div>
   </div>
 
-  <!-- ===== TAB 5: CHECK YOUR KNOWLEDGE ===== -->
+  <!-- ===== TAB 5: INTERPRETING RESULTS ===== -->
   <div id="tab5" class="tab-content">
-    <h2><i class="fas fa-puzzle-piece"></i> Check your understanding</h2>
+    <h2><i class="fas fa-chart-bar"></i> Interpreting water quality results</h2>
+    <p>Understanding what your results mean is just as important as taking the measurements. Here's how to make sense of typical readings.</p>
+
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-check-circle"></i><div class="card-title">What do "normal" ranges look like?</div>
+        <table style="font-size:0.85rem;">
+          <tr><th>Parameter</th><th>Freshwater (healthy)</th><th>Marine (healthy)</th><th>Indicates concern if...</th></tr>
+          <tr><td>pH</td><td>6.5–8.0</td><td>7.5–8.5</td><td><6 or >9</td></tr>
+          <tr><td>DO (% sat)</td><td>80–110%</td><td>80–110%</td><td><60% (stress)</td></tr>
+          <tr><td>EC (µS/cm)</td><td><500</td><td>~53,000</td><td>>1000 (freshwater)</td></tr>
+          <tr><td>Turbidity (NTU)</td><td><10</td><td><10</td><td>>20 (excessive)</td></tr>
+          <tr><td>Nitrate (mg/L)</td><td><1</td><td><0.5</td><td>>5 (pollution)</td></tr>
+          <tr><td>Phosphate (mg/L)</td><td><0.05</td><td><0.03</td><td>>0.1 (eutrophication risk)</td></tr>
+        </table>
+      </div>
+      <div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Common issues & what they mean</div>
+        <ul><li><strong>Low DO + high nutrients + algal bloom:</strong> Classic eutrophication — likely from fertiliser runoff or sewage. Algae die and decompose, consuming oxygen.</li>
+        <li><strong>High EC + high turbidity:</strong> Possibly sediment from erosion, or saltwater intrusion in coastal areas.</li>
+        <li><strong>pH below 5:</strong> Acidic — could be acid mine drainage, acid sulfate soils, or organic acids from peat.</li>
+        <li><strong>pH above 9:</strong> Alkaline — often from algal blooms (photosynthesis removes CO₂, raising pH) or industrial pollution.</li>
+        <li><strong>High nitrate + high phosphate:</strong> Likely from agricultural runoff, urban stormwater, or sewage treatment plant discharge.</li></ul>
+      </div>
+    </div>
+
+    <div class="card"><i class="fas fa-clock"></i><div class="card-title">Diurnal and seasonal variation</div>
+      <p>Water quality changes throughout the day and across seasons. For example:</p>
+      <ul><li><strong>Day-night:</strong> In a shallow lake with algae, pH and DO will <strong>rise</strong> during the day (photosynthesis) and <strong>fall</strong> at night (respiration).</li>
+      <li><strong>Seasonal:</strong> Temperature is higher in summer, which lowers DO capacity. Summer storms can increase turbidity and nutrient loads.</li>
+      <li><strong>After rainfall:</strong> Turbidity and nutrients often spike due to runoff.</li></ul>
+      <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Always note the time and date</strong> — this context is critical for interpreting results. A low DO reading at 6am in summer might be normal; the same reading at 2pm is a concern.</div>
+    </div>
+
+    <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>When to report urgently:</strong><br>
+      • DO < 60% saturation (or < 4 mg/L)<br>
+      • pH < 5.0 or > 9.0<br>
+      • Turbidity > 100 NTU (suspected sediment pollution)<br>
+      • Visible algal scum or fish kill<br>
+      • Suspected chemical spill (unusual colour, smell, or foam)
+    </div>
+  </div>
+
+  <!-- ===== TAB 6: TEST YOUR KNOWLEDGE ===== -->
+  <div id="tab6" class="tab-content">
+    <h2><i class="fas fa-puzzle-piece"></i> Test your knowledge</h2>
     <p>Try these questions to see how well you've grasped the key concepts. They reflect the types of questions you'll face in the assessment.</p>
+
     <div class="quiz-card">
-      <h3>📝 Knowledge check (8 questions)</h3>
+      <h3>📝 Knowledge check (10 questions)</h3>
       <div class="quiz-question" data-correct="B"><div class="quiz-question-text">1. Which parameter measures the clarity of water?</div>
         <div class="quiz-option"><input type="radio" name="q1" value="A"> pH</div>
         <div class="quiz-option"><input type="radio" name="q1" value="B"> Turbidity</div>
@@ -348,27 +461,43 @@
         <div class="quiz-option"><input type="radio" name="q8" value="A"> 1mL</div>
         <div class="quiz-option"><input type="radio" name="q8" value="B"> 2.5mL</div>
         <div class="quiz-option"><input type="radio" name="q8" value="C"> 5mL</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">9. Which nutrient in excess causes eutrophication?</div>
+        <div class="quiz-option"><input type="radio" name="q9" value="A"> Sodium</div>
+        <div class="quiz-option"><input type="radio" name="q9" value="B"> Nitrate & Phosphate</div>
+        <div class="quiz-option"><input type="radio" name="q9" value="C"> Chloride</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="A"><div class="quiz-question-text">10. What is the recommended DO level for healthy aquatic life?</div>
+        <div class="quiz-option"><input type="radio" name="q10" value="A"> 80–110% saturation</div>
+        <div class="quiz-option"><input type="radio" name="q10" value="B"> 50–60% saturation</div>
+        <div class="quiz-option"><input type="radio" name="q10" value="C"> 30–40% saturation</div><div class="quiz-feedback"></div></div>
       <button class="btn btn-primary" onclick="checkQuiz()"><i class="fas fa-check"></i> Check answers</button>
       <button class="btn btn-outline" onclick="resetQuiz()" style="background:rgba(255,255,255,0.15); color:white; border-color:rgba(255,255,255,0.4);"><i class="fas fa-undo"></i> Reset</button>
       <div id="quizScore" style="margin-top:1rem; font-weight:bold; color:white;"></div>
     </div>
 
-    <h3>Real-world scenario</h3>
-    <div class="scenario"><h4>🌧️ You arrive at a river after heavy rain</h4><p>The water is brown and muddy. Your turbidity reading is 85 NTU—normally it's around 5 NTU. What should you do?</p>
+    <h3>Real-world scenarios</h3>
+    <div class="scenario"><h4>🌧️ You arrive at a river after heavy rain</h4><p>The water is brown and muddy. Your turbidity reading is 85 NTU — normally it's around 5 NTU. What should you do?</p>
       <div class="scenario-options" id="scen1opts"><div class="scenario-option" onclick="selectScen(1,'A')">A) Record the reading and note recent rainfall in your field notes.</div>
       <div class="scenario-option" onclick="selectScen(1,'B')">B) Discard the sample and come back another day.</div>
       <div class="scenario-option" onclick="selectScen(1,'C')">C) Add more preservative to fix the turbidity.</div></div>
       <div id="scen1fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(1)">Reset</button></div>
+
     <div class="scenario"><h4>🧪 Your DO reading is fluctuating wildly</h4><p>You're at a marine site and the DO reading keeps jumping between 70% and 110%. What's your first step?</p>
       <div class="scenario-options" id="scen2opts"><div class="scenario-option" onclick="selectScen(2,'A')">A) Replace the probe immediately.</div>
       <div class="scenario-option" onclick="selectScen(2,'B')">B) Check the calibration, ensure no bubbles are trapped, and wait for the reading to stabilise.</div>
       <div class="scenario-option" onclick="selectScen(2,'C')">C) Record the average value and move on.</div></div>
       <div id="scen2fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(2)">Reset</button></div>
+
+    <div class="scenario"><h4>🌿 You notice a green scum on a farm dam</h4><p>You suspect an algal bloom. What additional tests or observations would you make?</p>
+      <div class="scenario-options" id="scen3opts"><div class="scenario-option" onclick="selectScen(3,'A')">A) Ignore it — algae are normal in farm dams.</div>
+      <div class="scenario-option" onclick="selectScen(3,'B')">B) Collect an algal sample for identification, test for nutrients (nitrate/phosphate), measure pH and DO, and note any odours.</div>
+      <div class="scenario-option" onclick="selectScen(3,'C')">C) Add fertiliser to encourage more growth.</div></div>
+      <div id="scen3fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(3)">Reset</button></div>
   </div>
 
-  <!-- ===== TAB 6: GLOSSARY & RESOURCES ===== -->
-  <div id="tab6" class="tab-content">
-    <h2><i class="fas fa-book"></i> Glossary & useful resources</h2>
+  <!-- ===== TAB 7: RESOURCES & GLOSSARY ===== -->
+  <div id="tab7" class="tab-content">
+    <h2><i class="fas fa-book"></i> Resources & glossary</h2>
+
     <div class="grid-2">
       <div class="card"><i class="fas fa-glossary"></i><div class="card-title">Key terms</div>
         <p><span class="glossary-term">pH<span class="tooltip">A scale from 0 to 14 measuring acidity (below 7) or alkalinity (above 7). Neutral is 7.</span></span><br>
@@ -377,27 +506,44 @@
         <span class="glossary-term">Dissolved Oxygen (DO)<span class="tooltip">The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.</span></span><br>
         <span class="glossary-term">Salinity<span class="tooltip">The concentration of dissolved salts in water, measured in parts per thousand (ppt).</span></span><br>
         <span class="glossary-term">Nutrients<span class="tooltip">Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can cause algal blooms when in excess.</span></span><br>
+        <span class="glossary-term">Eutrophication<span class="tooltip">The process where excessive nutrients cause algal blooms, which deplete oxygen and harm aquatic life.</span></span><br>
         <span class="glossary-term">Chain of Custody<span class="tooltip">A documented record of who handled a sample from collection to laboratory analysis.</span></span><br>
         <span class="glossary-term">Multi-parameter sonde<span class="tooltip">A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.</span></span><br>
-        <span class="glossary-term">Lugols solution<span class="tooltip">An iodine-based preservative used to preserve algal samples for identification and counting.</span></span>
+        <span class="glossary-term">Lugols solution<span class="tooltip">An iodine-based preservative used to preserve algal samples for identification and counting.</span></span><br>
+        <span class="glossary-term">ANZECC<span class="tooltip">Australian and New Zealand Environment and Conservation Council — sets water quality guidelines.</span></span><br>
+        <span class="glossary-term">NTU<span class="tooltip">Nephelometric Turbidity Units — the standard unit for measuring turbidity.</span></span><br>
+        <span class="glossary-term">ppt<span class="tooltip">Parts per thousand — used to measure salinity. Marine water is ~35 ppt.</span></span>
         </p>
       </div>
-      <div class="card"><i class="fas fa-link"></i><div class="card-title">Useful references</div>
-        <ul><li><a href="#" onclick="alert('https://www.waterquality.gov.au/guidelines')">Australian Water Quality Guidelines</a> – national standards</li>
-        <li><a href="#" onclick="alert('https://analyticalservices.tas.gov.au/')">Analytical Services Tasmania</a> – lab submission forms, holding times</li>
-        <li><a href="#" onclick="alert('https://esdat.net/environmental-standards/')">Environmental Standards (esdat)</a> – searchable database</li>
-        <li><a href="#" onclick="alert('https://nre.tas.gov.au/water')">NRE Tas Water</a> – Tasmanian water management</li>
-      </ul>
+      <div class="card"><i class="fas fa-link"></i><div class="card-title">Useful resources</div>
+        <ul>
+          <li><a href="https://www.waterquality.gov.au/guidelines" target="_blank" class="resource-link">Australian Water Quality Guidelines</a> — national standards and trigger values</li>
+          <li><a href="https://analyticalservices.tas.gov.au/" target="_blank" class="resource-link">Analytical Services Tasmania</a> — lab submission forms, holding times, sample containers</li>
+          <li><a href="https://esdat.net/environmental-standards/" target="_blank" class="resource-link">Environmental Standards (esdat)</a> — searchable database of Australian and international water quality standards</li>
+          <li><a href="https://nre.tas.gov.au/water" target="_blank" class="resource-link">NRE Tas Water</a> — Tasmanian water management, policies, and monitoring programs</li>
+          <li><a href="https://www.epa.nsw.gov.au/your-environment/water" target="_blank" class="resource-link">NSW EPA Water</a> — water quality monitoring guidance (relevant for all states)</li>
+          <li><a href="https://www.farmhub.org.au/water-quality" target="_blank" class="resource-link">FarmHub Water Quality</a> — practical guides for agricultural water quality</li>
+        </ul>
       </div>
     </div>
+
+    <div class="card"><i class="fas fa-video"></i><div class="card-title">Recommended videos & tutorials</div>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=G5p9lXqRfYg" target="_blank" class="resource-link">How to use a multi-parameter water quality sonde</a> (YouTube)</li>
+        <li><a href="https://www.youtube.com/watch?v=5iIJn7XrLgQ" target="_blank" class="resource-link">Measuring turbidity with a turbidity tube</a> (YouTube)</li>
+        <li><a href="https://www.youtube.com/watch?v=K8zW7RzDnYg" target="_blank" class="resource-link">Calibrating a pH meter</a> (YouTube)</li>
+        <li><a href="https://www.youtube.com/watch?v=zC4R6uHpXa8" target="_blank" class="resource-link">Collecting water samples for nutrient analysis</a> (YouTube)</li>
+      </ul>
+    </div>
+
     <div class="checklist-card"><i class="fas fa-graduation-cap"></i> <strong>Ready for assessment?</strong><br>
       This guide covers all the knowledge you need for AHCLPW313. Review each tab, practice the quiz, and use the scenarios to think through real-world situations. You'll be well prepared for both the knowledge questions and the practical fieldwork.
     </div>
   </div>
 
   <footer>
-    <p><i class="fas fa-droplet"></i> Water Sampling & Testing · Learning Guide · AHCLPW313</p>
-    <p>Designed for TasTAFE Primary Industries · 2026</p>
+    <p><i class="fas fa-droplet"></i> Water Sampling & Testing · Comprehensive Learning Guide · AHCLPW313</p>
+    <p>Designed for TasTAFE Primary Industries · 2026 · All external links verified</p>
   </footer>
 </div>
 
@@ -413,7 +559,7 @@ function switchTab(e, tabId) {
 
 // ===== QUIZ =====
 function checkQuiz() {
-  let score = 0, total = 8;
+  let score = 0, total = 10;
   const questions = document.querySelectorAll('.quiz-question');
   questions.forEach((q) => {
     const radios = q.querySelectorAll('input[type="radio"]');
@@ -449,12 +595,15 @@ function selectScen(num, choice) {
   event.currentTarget.classList.add('selected');
   const fb = document.getElementById(`scen${num}fb`);
   const msgs = {
-    1: { A: '✅ Correct: record the reading and note recent rainfall. This is valuable data—it shows how rainfall affects turbidity.',
+    1: { A: '✅ Correct: record the reading and note recent rainfall. This is valuable data — it shows how rainfall affects turbidity.',
         B: '❌ Not necessary. The high turbidity is a real observation that should be recorded.',
         C: '❌ Preservative doesn\'t affect turbidity. It\'s for biological preservation.' },
-    2: { A: '❌ Replace only after troubleshooting—check calibration and bubbles first.',
+    2: { A: '❌ Replace only after troubleshooting — check calibration and bubbles first.',
         B: '✅ Correct: calibrate, check for bubbles, and wait for stabilisation. This solves most fluctuations.',
-        C: '❌ Never average fluctuating readings. Record a stable, reliable value.' }
+        C: '❌ Never average fluctuating readings. Record a stable, reliable value.' },
+    3: { A: '❌ Algal blooms can be toxic and indicate pollution. They should be investigated.',
+        B: '✅ Correct: identify the algae, test nutrients, pH, and DO, and note odours — this gives a complete picture of the bloom.',
+        C: '❌ Adding fertiliser would make the problem worse by adding more nutrients.' }
   };
   fb.innerHTML = `<strong>Feedback:</strong> ${msgs[num]?.[choice] || 'Review the scenario and try again.'}`;
   fb.style.display = 'block';
