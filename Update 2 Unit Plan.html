@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHCLPW313 Revised Unit Plan</title>
+    <style>
+        /* --- Reset & Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 2rem 2.5rem;
+        }
+        @media (max-width: 768px) {
+            body { padding: 1rem 0.5rem; }
+            .container { padding: 1.5rem 1rem; }
+        }
+
+        /* --- Typography --- */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f2b4b;
+            border-bottom: 4px solid #2b7a62;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1a4a5a;
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            border-left: 5px solid #2b7a62;
+            padding-left: 1rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d4a6b;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            margin-bottom: 0.75rem;
+        }
+        hr {
+            border: 0;
+            border-top: 2px dashed #dce5ef;
+            margin: 2.5rem 0;
+        }
+
+        /* --- Cards & Quick Reference --- */
+        .quick-ref {
+            background: #f0f7fc;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #d9e6f2;
+        }
+        .quick-ref-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0.5rem 1.5rem;
+        }
+        .quick-ref-grid .label {
+            font-weight: 600;
+            color: #0f3b4a;
+        }
+        .quick-ref-grid .value {
+            color: #1e293b;
+        }
+        @media (max-width: 600px) {
+            .quick-ref-grid { grid-template-columns: 1fr; gap: 0.2rem; }
+            .quick-ref-grid .label { font-weight: 700; }
+        }
+
+        /* --- Tables --- */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.25rem 0 1.75rem 0;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th {
+            background-color: #1e3a5f;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+        td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #e9edf2;
+            vertical-align: top;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .table-wrap.highlight th {
+            background-color: #2b7a62;
+        }
+
+        /* --- App Feature Grid (star ratings) --- */
+        .star-grid table td {
+            text-align: center;
+        }
+        .star-grid table th:first-child,
+        .star-grid table td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+        .star {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- Lists & Prompts --- */
+        ul, ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+        .prompt-list {
+            background: #f1f5f9;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2b7a62;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .prompt-list li {
+            list-style-type: "💬 ";
+            padding-left: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Utility --- */
+        .mt-2 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .text-muted { color: #64748b; font-size: 0.9rem; }
+
+        /* --- Tab Guide (quick) --- */
+        .tab-guide {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 0.4rem 1rem;
+            background: #f8fafc;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+        .tab-guide .tab-num {
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+        .tab-guide .tab-title {
+            font-weight: 600;
+        }
+        .tab-guide .tab-desc {
+            color: #475569;
+        }
+
+        @media (max-width: 600px) {
+            .tab-guide {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>AHCLPW313 Revised Unit Plan — Enhanced Version</h1>
+
+    <!-- Quick Reference Card -->
+    <div class="quick-ref">
+        <h3 style="margin-top:0; color:#0f2b4b;">Quick Reference Card</h3>
+        <div class="quick-ref-grid">
+            <span class="label">Course</span><span class="value">Certificate III in Conservation and Ecosystem Management</span>
+            <span class="label">Delivery Mode</span><span class="value">Blended (Classroom, Field-Based Learning &amp; App-Assisted)</span>
+            <span class="label">Total Hours</span><span class="value">40 (10 x 4-hour sessions)</span>
+            <span class="label">Key Resource</span><span class="value">Water Sampling &amp; Testing · Ultimate Learning Guide</span>
+            <span class="label">App Role</span><span class="value">Interactive textbook, reference guide, practice tool, fieldwork assistant</span>
+        </div>
+    </div>
+
+    <!-- App Tab Reference -->
+    <h2>App Tab Reference (UI Labels)</h2>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>UI Tab</th><th>App ID</th><th>Title</th></tr></thead>
+            <tbody>
+                <tr><td>Tab 1</td><td>tab0</td><td>Why test?</td></tr>
+                <tr><td>Tab 2</td><td>tab1</td><td>Parameters</td></tr>
+                <tr><td>Tab 3</td><td>tab2</td><td>Equipment</td></tr>
+                <tr><td>Tab 4</td><td>tab3</td><td>Planning</td></tr>
+                <tr><td>Tab 5</td><td>tab4</td><td>Samples</td></tr>
+                <tr><td>Tab 6</td><td>tab5</td><td>Results</td></tr>
+                <tr><td>Tab 7</td><td>tab6</td><td>Practice</td></tr>
+                <tr><td>Tab 8</td><td>tab7</td><td>Resources</td></tr>
+                <tr><td>Tab 9</td><td>tab8</td><td>Simulator</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <!-- Session by Session -->
+    <h2>Session-by-Session Detailed Plan</h2>
+
+    <!-- SESSION 1 -->
+    <h3>Session 1: Introduction to Water Sampling and Testing</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Understand the importance of water quality testing</li>
+        <li>Identify key legislative and workplace requirements</li>
+        <li>Recognise different water sampling techniques</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>Welcome &amp; Unit Overview</td><td>Instructor uses Tab 1: Why test? as presentation guide</td><td>Projector, App</td></tr>
+                <tr><td>0:30-1:15</td><td>Interactive Group Discussion</td><td>Students navigate Tab 1: Why test? — use cards for discussion prompts</td><td>Student devices</td></tr>
+                <tr><td>1:15-2:00</td><td>Video &amp; Analysis</td><td>Watch EPA Victoria video via Tab 8: Resources</td><td>App, Video</td></tr>
+                <tr><td>2:00-2:45</td><td>Local Context Activity</td><td>Students use Tab 1 — "Australia's unique challenges" section</td><td>App, Local data</td></tr>
+                <tr><td>2:45-3:30</td><td>Self-Directed Reading</td><td>Explore Tab 1 and Tab 2: Parameters</td><td>App</td></tr>
+                <tr><td>3:30-4:00</td><td>Reflection &amp; Wrap-up</td><td>Students note 3 key takeaways</td><td>Notebooks</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"What are some key factors affecting water quality in our region? Use the 'Australia's unique challenges' section in Tab 1 to help you."</li>
+            <li>"Why do different industries have different water quality standards? Check the 'Compliance &amp; regulations' card in Tab 1."</li>
+            <li>"How does water quality affect the local ecosystem? Look at the 'Protect human &amp; ecosystem health' section."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 2 -->
+    <h3>Session 2: Planning for Water Sampling</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Develop a water sampling plan</li>
+        <li>Identify safe work procedures and risk assessments</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>Review &amp; Recap</td><td>Quick quiz using Tab 7: Practice questions</td><td>App, Quiz</td></tr>
+                <tr><td>0:30-1:30</td><td>Case Study — Sampling Plan</td><td>Groups use Tab 8: Resources → "Downloadable resources &amp; templates" → "Sampling Plan"</td><td>App, Template</td></tr>
+                <tr><td>1:30-2:30</td><td>Risk Assessment Workshop</td><td>Students use Tab 4: Planning and "Risk Assessment" template</td><td>App, Template</td></tr>
+                <tr><td>2:30-3:15</td><td>Site Selection Activity</td><td>Use Tab 4: Planning — site selection table</td><td>App</td></tr>
+                <tr><td>3:15-3:45</td><td>Pre-Field Briefing</td><td>Review Tab 4 and Tab 5: Samples — equipment checklist</td><td>App</td></tr>
+                <tr><td>3:45-4:00</td><td>Plan Finalisation</td><td>Groups finalise their sampling plans</td><td>Completed templates</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"What risks might be present when sampling in different environments? Use the 'Risk assessment essentials' in Tab 4 to help you."</li>
+            <li>"How can you ensure consistency in sampling techniques? Review the 'Quality assurance' guidelines in Tab 3."</li>
+            <li>"Why is it important to document everything? Check the 'Chain of Custody' section in Tab 5."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 3 -->
+    <h3>Session 3: Field Techniques for Water Sampling</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Demonstrate correct water sampling techniques</li>
+        <li>Follow chain of custody procedures</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>Pre-Field Briefing</td><td>Review Tab 4: Planning and Tab 5: Samples</td><td>App, Equipment</td></tr>
+                <tr><td>0:30-1:00</td><td>Equipment Check</td><td>Use Tab 8: Resources → "Equipment Checklist"</td><td>App, Template</td></tr>
+                <tr><td>1:00-3:00</td><td>Field Trip — Sample Collection</td><td>Students access app in field — refer to Tab 3: Equipment and Tab 5: Samples</td><td>Mobile devices, Sampling equipment</td></tr>
+                <tr><td>3:00-3:30</td><td>Sample Labelling &amp; Storage</td><td>Follow Tab 5: Samples — "Preservation &amp; storage"</td><td>App, Coolers</td></tr>
+                <tr><td>3:30-3:45</td><td>Field Notes</td><td>Document observations using Tab 8 → "Field Data Sheet"</td><td>App, Template</td></tr>
+                <tr><td>3:45-4:00</td><td>Debrief</td><td>Quick review of techniques</td><td>Group discussion</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"Why is it important to label and preserve samples correctly? Check the 'Preservation &amp; storage' section in Tab 5."</li>
+            <li>"What factors can influence sample contamination? Review the 'Best practice' list in Tab 3."</li>
+            <li>"How do we ensure our samples are legally defensible? Refer to the 'Chain of Custody' section."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 4 -->
+    <h3>Session 4: On-Site Water Testing Methods</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Conduct on-site testing for pH, temperature, and dissolved oxygen</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:15</td><td>Equipment Calibration</td><td>Use Tab 3: Equipment — "Calibration procedure"</td><td>App, Meters</td></tr>
+                <tr><td>0:15-1:30</td><td>Practical Testing Session</td><td>Students follow Tab 3 equipment guides</td><td>App, Field kits</td></tr>
+                <tr><td>1:30-2:15</td><td>Simulator Activity</td><td>Use Tab 9: Simulator — predict how environmental conditions affect readings</td><td>App, Simulator</td></tr>
+                <tr><td>2:15-3:00</td><td>Results Interpretation</td><td>Students use Tab 6: Results — "Normal Ranges" table</td><td>App, Data sheets</td></tr>
+                <tr><td>3:00-3:30</td><td>Small Group Discussion</td><td>Compare real-time results with expected ranges</td><td>App, Results</td></tr>
+                <tr><td>3:30-4:00</td><td>Data Recording</td><td>Complete Tab 8 → "Field Data Sheet"</td><td>App, Template</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"How do environmental conditions impact on-site test results? Use the simulator in Tab 9 to see the effect of temperature on Dissolved Oxygen."</li>
+            <li>"What limitations do field tests have compared to lab tests? Compare the information in Tab 3 (Field) and Tab 6 (Lab/Interpretation)."</li>
+            <li>"Why does pH change throughout the day? Look at the 'Diurnal and seasonal variation' section in Tab 6."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 5 -->
+    <h3>Session 5: Laboratory Testing and Data Interpretation</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Understand laboratory analysis techniques</li>
+        <li>Interpret water quality data</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>Guest Speaker or Video</td><td>Use resources in Tab 8: Resources — AST links</td><td>App, Guest/Video</td></tr>
+                <tr><td>0:30-1:30</td><td>Lab Results Analysis</td><td>Students compare field results with simulated lab results</td><td>App, Data</td></tr>
+                <tr><td>1:30-2:30</td><td>Data Interpretation Workshop</td><td>Use Tab 6: Results and Tab 8 → "Trigger Levels"</td><td>App, Results</td></tr>
+                <tr><td>2:30-3:15</td><td>Case Study Review</td><td>Analyse the "Example results from a river monitoring program"</td><td>App, Tab 6</td></tr>
+                <tr><td>3:15-3:45</td><td>Report Writing Session</td><td>Use Tab 8 → "Field Data Sheet" and "Sampling Plan" as templates</td><td>App, Templates</td></tr>
+                <tr><td>3:45-4:00</td><td>Q&A / Clarification</td><td>Address questions about lab processes</td><td>Open discussion</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"What are the advantages of lab testing over field testing? Compare the information in Tab 3 and Tab 6."</li>
+            <li>"How can data trends inform environmental management decisions? Use the 'Case study' in Tab 6 as an example."</li>
+            <li>"What do the trigger levels tell us about water quality? Refer to the table in Tab 8."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 6 -->
+    <h3>Session 6: Assessing and Reporting Water Quality</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Compare test results to water quality guidelines</li>
+        <li>Document findings in a report</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>Group Presentations</td><td>Students present findings — use app to show data</td><td>App, Projector</td></tr>
+                <tr><td>0:30-1:30</td><td>Report Writing Exercise</td><td>Use Tab 7: Practice and Tab 8: Resources</td><td>App, Report templates</td></tr>
+                <tr><td>1:30-2:30</td><td>Guidelines Application</td><td>Compare results to Tab 1 and Tab 6 guidelines</td><td>App</td></tr>
+                <tr><td>2:30-3:15</td><td>Peer Review Session</td><td>Students review each other's draft reports</td><td>Draft reports</td></tr>
+                <tr><td>3:15-3:45</td><td>Revision &amp; Refinement</td><td>Incorporate feedback</td><td>App, Reports</td></tr>
+                <tr><td>3:45-4:00</td><td>Final Review</td><td>Use Tab 8 → "Ready for assessment!" checklist</td><td>App</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"What challenges arise when interpreting water quality data? Refer to the 'Common issues &amp; what they mean' and 'Diurnal and seasonal variation' sections in Tab 6."</li>
+            <li>"How can reporting influence environmental decision-making? Review the 'When to report urgently' checklist in Tab 6."</li>
+            <li>"What recommendations would you make based on your results? Use the 'Case study' recommendations as a model."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 7 -->
+    <h3>Session 7: Water Quality Management Strategies</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Identify water quality management strategies</li>
+        <li>Understand remediation methods</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>Review &amp; Connect</td><td>Revisit Tab 1 and Tab 6</td><td>App</td></tr>
+                <tr><td>0:30-1:30</td><td>Scenario Analysis</td><td>Use Tab 7: Practice — Scenarios</td><td>App, Scenarios</td></tr>
+                <tr><td>1:30-2:30</td><td>Management Brainstorm</td><td>Groups develop management responses to scenarios</td><td>App, Whiteboard</td></tr>
+                <tr><td>2:30-3:15</td><td>Simulator Exploration</td><td>Use Tab 9: Simulator — compare "Healthy" vs "Eutrophic"</td><td>App, Simulator</td></tr>
+                <tr><td>3:15-3:45</td><td>Catchment Management</td><td>Research using Tab 8: Resources links</td><td>App</td></tr>
+                <tr><td>3:45-4:00</td><td>Key Takeaways</td><td>Document management strategies</td><td>Notebooks</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"What are some common causes of water contamination? Review the 'Key Parameters' in Tab 2 to understand what each pollutant indicates."</li>
+            <li>"How can land management practices improve water quality? Consider the findings from the 'Healthy' vs. 'Eutrophic' scenarios in the Tab 9 simulator."</li>
+            <li>"What would you do if you discovered a fish kill? Use the 'When to report urgently' checklist in Tab 6."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 8 -->
+    <h3>Session 8: Advanced Water Testing Techniques</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Conduct advanced testing methods (turbidity, salinity, EC, BOD)</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:15</td><td>Equipment Setup</td><td>Reference Tab 3: Equipment</td><td>App, Advanced sensors</td></tr>
+                <tr><td>0:15-1:30</td><td>Hands-On Practical</td><td>Students use advanced sensors — guided by Tab 3</td><td>App, Equipment</td></tr>
+                <tr><td>1:30-2:30</td><td>Simulator Correlation</td><td>Use Tab 9: Simulator — change salinity, see effects</td><td>App, Simulator</td></tr>
+                <tr><td>2:30-3:15</td><td>Field vs Lab Comparison</td><td>Compare results using Tab 6</td><td>App, Data</td></tr>
+                <tr><td>3:15-3:45</td><td>Research Activity</td><td>Students research macroinvertebrates — use Tab 8 links</td><td>App</td></tr>
+                <tr><td>3:45-4:00</td><td>Technique Review</td><td>Q&amp;A on advanced techniques</td><td>Open discussion</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"How do different pollutants impact water ecosystems? Use the 'Water Quality Simulator' in Tab 9 to see how high nutrients and temperature affect Dissolved Oxygen."</li>
+            <li>"What role does biodiversity play in water health monitoring? Relate this back to the 'Protect human &amp; ecosystem health' section in Tab 1."</li>
+            <li>"Why is salinity important in marine environments? Use the simulator to see how salinity affects DO."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 9 -->
+    <h3>Session 9: Final Field Assessment</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Demonstrate proficiency in field sampling and testing</li>
+        <li>Apply risk management strategies</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>Pre-Assessment Briefing</td><td>Quick review — Tab 4: Planning, Tab 5: Samples</td><td>App</td></tr>
+                <tr><td>0:30-0:45</td><td>Equipment Check</td><td>Use Tab 8 → "Equipment Checklist"</td><td>App, Template</td></tr>
+                <tr><td>0:45-3:00</td><td>Independent Field Assessment</td><td>Students conduct full sampling procedure — use app as quick reference</td><td>Mobile devices, Equipment</td></tr>
+                <tr><td>3:00-3:30</td><td>Sample Processing</td><td>Follow Tab 5 preservation and storage procedures</td><td>App</td></tr>
+                <tr><td>3:30-3:45</td><td>Peer Review</td><td>Students give feedback using Tab 3 best-practice guides</td><td>App</td></tr>
+                <tr><td>3:45-4:00</td><td>Debrief &amp; Reflection</td><td>Discuss challenges and successes</td><td>Group discussion</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"What challenges did you encounter in the field? Could you use the app's troubleshooting tips to resolve them?"</li>
+            <li>"How would you improve your sampling approach next time? Review the 'Quality assurance' section in Tab 3."</li>
+        </ul>
+    </div>
+
+    <!-- SESSION 10 -->
+    <h3>Session 10: Review and Assessment Submission</h3>
+    <p><strong>Learning Outcomes:</strong></p>
+    <ul>
+        <li>Finalise and submit reports</li>
+        <li>Reflect on learning outcomes</li>
+    </ul>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Time</th><th>Activity</th><th>App Integration</th><th>Resources</th></tr></thead>
+            <tbody>
+                <tr><td>0:00-0:30</td><td>App Activity — Quiz</td><td>Students complete Tab 7: Practice quiz as self-assessment</td><td>App, Quiz</td></tr>
+                <tr><td>0:30-1:30</td><td>Peer Presentations</td><td>Students present water quality reports — use app to show data</td><td>App, Projector</td></tr>
+                <tr><td>1:30-2:30</td><td>Final Report Preparation</td><td>Finalise reports using app templates</td><td>App, Reports</td></tr>
+                <tr><td>2:30-3:15</td><td>Assessment Submission</td><td>Submit final reports</td><td>Completed reports</td></tr>
+                <tr><td>3:15-3:45</td><td>Group Reflection</td><td>Students reflect using Tab 8 → "Ready for assessment!" checklist</td><td>App</td></tr>
+                <tr><td>3:45-4:00</td><td>Unit Wrap-up</td><td>Key takeaways, feedback, celebration</td><td>Open discussion</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="prompt-list">
+        <p><strong>Teacher Prompts:</strong></p>
+        <ul>
+            <li>"How has your understanding of water sampling changed? Reflect on your journey through the app's 9 tabs."</li>
+            <li>"What are some key takeaways from this unit? Use the 'Ready for assessment!' checklist in Tab 8 to guide your final thoughts."</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <!-- App Feature Usage by Session -->
+    <h2>App Feature Usage by Session (UI Tab Numbers)</h2>
+    <div class="table-wrap star-grid">
+        <table>
+            <thead><tr><th>Session</th><th>Tab 1</th><th>Tab 2</th><th>Tab 3</th><th>Tab 4</th><th>Tab 5</th><th>Tab 6</th><th>Tab 7</th><th>Tab 8</th><th>Tab 9</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><span class="star">⭐⭐⭐</span></td><td><span class="star">⭐⭐</span></td><td></td><td></td><td></td><td></td><td></td><td><span class="star">⭐</span></td><td></td></tr>
+                <tr><td>2</td><td></td><td></td><td></td><td><span class="star">⭐⭐⭐</span></td><td></td><td></td><td></td><td><span class="star">⭐⭐</span></td><td></td></tr>
+                <tr><td>3</td><td></td><td></td><td><span class="star">⭐⭐</span></td><td><span class="star">⭐</span></td><td><span class="star">⭐⭐⭐</span></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>4</td><td></td><td><span class="star">⭐</span></td><td><span class="star">⭐⭐⭐</span></td><td></td><td></td><td><span class="star">⭐⭐</span></td><td></td><td></td><td><span class="star">⭐</span></td></tr>
+                <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td><span class="star">⭐⭐</span></td><td></td><td><span class="star">⭐⭐⭐</span></td><td></td></tr>
+                <tr><td>6</td><td><span class="star">⭐</span></td><td></td><td></td><td></td><td></td><td><span class="star">⭐⭐⭐</span></td><td><span class="star">⭐⭐</span></td><td><span class="star">⭐⭐</span></td><td></td></tr>
+                <tr><td>7</td><td><span class="star">⭐</span></td><td></td><td></td><td></td><td></td><td><span class="star">⭐</span></td><td><span class="star">⭐⭐⭐</span></td><td><span class="star">⭐</span></td><td><span class="star">⭐⭐</span></td></tr>
+                <tr><td>8</td><td></td><td><span class="star">⭐</span></td><td><span class="star">⭐⭐⭐</span></td><td></td><td></td><td></td><td><span class="star">⭐</span></td><td><span class="star">⭐</span></td><td><span class="star">⭐⭐⭐</span></td></tr>
+                <tr><td>9</td><td></td><td></td><td><span class="star">⭐⭐</span></td><td><span class="star">⭐⭐</span></td><td><span class="star">⭐⭐⭐</span></td><td></td><td></td><td><span class="star">⭐⭐</span></td><td></td></tr>
+                <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="star">⭐</span></td><td><span class="star">⭐⭐⭐</span></td><td><span class="star">⭐⭐⭐</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p><span class="star">⭐</span> = Used &nbsp;|&nbsp; <span class="star">⭐⭐</span> = Important &nbsp;|&nbsp; <span class="star">⭐⭐⭐</span> = Critical</p>
+
+    <hr>
+
+    <!-- Tab Reference Quick Guide -->
+    <h2>Tab Reference Quick Guide</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:1rem;">
+        <div class="tab-guide"><span class="tab-num">Tab 1</span><span class="tab-title">Why test?</span><span class="tab-desc">Introductions, context, discussion starters</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 2</span><span class="tab-title">Parameters</span><span class="tab-desc">Understanding what to measure and why</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 3</span><span class="tab-title">Equipment</span><span class="tab-desc">Practical skills, calibration, maintenance</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 4</span><span class="tab-title">Planning</span><span class="tab-desc">Site selection, risk assessment, preparation</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 5</span><span class="tab-title">Samples</span><span class="tab-desc">Collection, preservation, Chain of Custody</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 6</span><span class="tab-title">Results</span><span class="tab-desc">Interpretation, case studies, reporting</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 7</span><span class="tab-title">Practice</span><span class="tab-desc">Quiz, scenarios, knowledge checks</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 8</span><span class="tab-title">Resources</span><span class="tab-desc">Templates, videos, glossary, links</span></div>
+        <div class="tab-guide"><span class="tab-num">Tab 9</span><span class="tab-title">Simulator</span><span class="tab-desc">Interactive exploration, what-if scenarios</span></div>
+    </div>
+
+</div>
+</body>
+</html>
