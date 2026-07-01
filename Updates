@@ -1,6 +1,30 @@
-<!-- Additional key terms to add -->
+  <!-- ===== TAB 7: RESOURCES & GLOSSARY ===== -->
+  <div id="tab7" class="tab-content">
+    <h2><i class="fas fa-book"></i> Resources & glossary</h2>
+
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-glossary"></i><div class="card-title">Key terms</div>
+        <p><span class="glossary-term">pH<span class="tooltip">A scale from 0 to 14 measuring acidity (below 7) or alkalinity (above 7). Neutral is 7.</span></span><br>
+        <span class="glossary-term">Electrical Conductivity (EC)<span class="tooltip">A measure of the water's ability to conduct electricity, related to the amount of dissolved salts.</span></span><br>
+        <span class="glossary-term">Turbidity<span class="tooltip">A measure of water clarity, affected by suspended particles like silt and algae. Measured in NTU.</span></span><br>
+        <span class="glossary-term">Dissolved Oxygen (DO)<span class="tooltip">The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.</span></span><br>
+        <span class="glossary-term">Salinity<span class="tooltip">The concentration of dissolved salts in water, measured in parts per thousand (ppt).</span></span><br>
+        <span class="glossary-term">Nutrients<span class="tooltip">Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can cause algal blooms when in excess.</span></span><br>
+        <span class="glossary-term">Eutrophication<span class="tooltip">The process where excessive nutrients cause algal blooms, which deplete oxygen and harm aquatic life.</span></span><br>
+        <span class="glossary-term">Chain of Custody<span class="tooltip">A documented record of who handled a sample from collection to laboratory analysis.</span></span><br>
+        <span class="glossary-term">Multi-parameter sonde<span class="tooltip">A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.</span></span><br>
+        <span class="glossary-term">Lugols solution<span class="tooltip">An iodine-based preservative used to preserve algal samples for identification and counting.</span></span><br>
+        <span class="glossary-term">ANZECC<span class="tooltip">Australian and New Zealand Environment and Conservation Council — sets water quality guidelines.</span></span><br>
+        <span class="glossary-term">NTU<span class="tooltip">Nephelometric Turbidity Units — the standard unit for measuring turbidity.</span></span><br>
+        <span class="glossary-term">ppt<span class="tooltip">Parts per thousand — used to measure salinity. Marine water is ~35 ppt.</span></span><br>
+        <span class="glossary-term">E. coli<span class="tooltip">Escherichia coli — a bacteria used as an indicator of faecal contamination.</span></span><br>
+        <span class="glossary-term">Cyanobacteria<span class="tooltip">Blue-green algae — some species produce toxins harmful to animals and humans.</span></span><br>
+        <span class="glossary-term">Secchi disk<span class="tooltip">A black-and-white disk used to measure water clarity in lakes and marine waters.</span></span>
+          <!-- Additional key terms -->
 <span class="glossary-term">Alkalinity<span class="tooltip">The capacity of water to neutralise acids — provides buffering against pH changes. Important for aquatic life and water treatment.</span></span><br>
 <span class="glossary-term">TDS (Total Dissolved Solids)<span class="tooltip">The total concentration of dissolved minerals in water, measured in mg/L. Related to EC but expressed differently.</span></span><br>
 <span class="glossary-term">Hypoxia<span class="tooltip">Low dissolved oxygen conditions (typically < 2 mg/L) that can cause fish kills and stress aquatic life.</span></span><br>
 <span class="glossary-term">Field blank<span class="tooltip">A sample of distilled water processed in the field exactly like a real sample — used to check for contamination during collection and handling.</span></span><br>
 <span class="glossary-term">Riparian zone<span class="tooltip">The vegetated area alongside waterways. Healthy riparian zones filter runoff, stabilise banks, and provide shade that moderates water temperature.</span></span>
+        </p>
+      </div>
