@@ -127,6 +127,26 @@
     .glossary-term { background: var(--bg); border-bottom: 2px dotted var(--primary); cursor: help; padding: 0 6px; border-radius: 12px; position: relative; display: inline-block; margin: 2px; }
     .glossary-term .tooltip { display: none; position: absolute; bottom: 130%; left: 0; background: var(--primary); color: white; padding: 6px 14px; border-radius: 12px; width: 240px; font-size: 0.75rem; z-index: 200; box-shadow: var(--shadow); }
     .glossary-term:hover .tooltip { display: block; }
+    /* Glossary card hover effect */
+.glossary-header:hover {
+  background: var(--bg) !important;
+}
+
+/* Glossary category badge colours */
+.glossary-item[data-category="parameters"] .glossary-header span:last-child { background: #dbeafe; color: #1a56db; }
+.glossary-item[data-category="equipment"] .glossary-header span:last-child { background: #fef3c7; color: #92400e; }
+.glossary-item[data-category="concepts"] .glossary-header span:last-child { background: #d1fae5; color: #065f46; }
+.glossary-item[data-category="standards"] .glossary-header span:last-child { background: #fce4ec; color: #9a1f3c; }
+
+/* Responsive: stack on mobile */
+@media (max-width: 600px) {
+  #glossaryContainer {
+    grid-template-columns: 1fr !important;
+  }
+  .glossary-header {
+    font-size: 0.9rem;
+  }
+}
     footer { background: #0a3346; color: #d6e5ed; padding: 2rem; margin-top: 2rem; border-top: 8px solid var(--accent); text-align: center; }
     .tip { background: #e1f0fa; border-radius: 12px; padding: 0.8rem 1.2rem; margin: 0.8rem 0; border-left: 6px solid var(--primary-light); }
     .warning { background: #fdf0e0; border-radius: 12px; padding: 0.8rem 1.2rem; margin: 0.8rem 0; border-left: 6px solid #e68a2e; }
@@ -677,35 +697,34 @@
   <h2><i class="fas fa-book"></i> Resources & glossary</h2>
 
   <div class="grid-2">
-    <div class="card"><i class="fas fa-glossary"></i><div class="card-title">Key terms</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.2rem 1.5rem; margin-top:0.5rem;">
-        <div>
-          <span class="glossary-term">pH<span class="tooltip">A scale from 0 to 14 measuring acidity (below 7) or alkalinity (above 7). Neutral is 7.</span></span><br>
-          <span class="glossary-term">Electrical Conductivity (EC)<span class="tooltip">A measure of the water's ability to conduct electricity, related to the amount of dissolved salts.</span></span><br>
-          <span class="glossary-term">Turbidity<span class="tooltip">A measure of water clarity, affected by suspended particles like silt and algae. Measured in NTU.</span></span><br>
-          <span class="glossary-term">Dissolved Oxygen (DO)<span class="tooltip">The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.</span></span><br>
-          <span class="glossary-term">Salinity<span class="tooltip">The concentration of dissolved salts in water, measured in parts per thousand (ppt).</span></span><br>
-          <span class="glossary-term">Nutrients<span class="tooltip">Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can cause algal blooms when in excess.</span></span><br>
-          <span class="glossary-term">Eutrophication<span class="tooltip">The process where excessive nutrients cause algal blooms, which deplete oxygen and harm aquatic life.</span></span><br>
-          <span class="glossary-term">Chain of Custody<span class="tooltip">A documented record of who handled a sample from collection to laboratory analysis.</span></span><br>
-          <span class="glossary-term">Multi-parameter sonde<span class="tooltip">A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.</span></span><br>
-          <span class="glossary-term">Lugols solution<span class="tooltip">An iodine-based preservative used to preserve algal samples for identification and counting.</span></span>
-        </div>
-        <div>
-          <span class="glossary-term">ANZECC<span class="tooltip">Australian and New Zealand Environment and Conservation Council — sets water quality guidelines.</span></span><br>
-          <span class="glossary-term">NTU<span class="tooltip">Nephelometric Turbidity Units — the standard unit for measuring turbidity.</span></span><br>
-          <span class="glossary-term">ppt<span class="tooltip">Parts per thousand — used to measure salinity. Marine water is ~35 ppt.</span></span><br>
-          <span class="glossary-term">E. coli<span class="tooltip">Escherichia coli — a bacteria used as an indicator of faecal contamination.</span></span><br>
-          <span class="glossary-term">Cyanobacteria<span class="tooltip">Blue-green algae — some species produce toxins harmful to animals and humans.</span></span><br>
-          <span class="glossary-term">Secchi disk<span class="tooltip">A black-and-white disk used to measure water clarity in lakes and marine waters.</span></span><br>
-          <span class="glossary-term">Alkalinity<span class="tooltip">The capacity of water to neutralise acids — provides buffering against pH changes. Important for aquatic life and water treatment.</span></span><br>
-          <span class="glossary-term">TDS (Total Dissolved Solids)<span class="tooltip">The total concentration of dissolved minerals in water, measured in mg/L. Related to EC but expressed differently.</span></span><br>
-          <span class="glossary-term">Hypoxia<span class="tooltip">Low dissolved oxygen conditions (typically < 2 mg/L) that can cause fish kills and stress aquatic life.</span></span><br>
-          <span class="glossary-term">Field blank<span class="tooltip">A sample of distilled water processed in the field exactly like a real sample — used to check for contamination during collection and handling.</span></span><br>
-          <span class="glossary-term">Riparian zone<span class="tooltip">The vegetated area alongside waterways. Healthy riparian zones filter runoff, stabilise banks, and provide shade that moderates water temperature.</span></span>
-        </div>
-      </div>
+<div class="card"><i class="fas fa-glossary"></i><div class="card-title">Key terms</div>
+  
+  <!-- Search bar -->
+  <div style="margin-bottom:1rem;">
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+      <input type="text" id="glossarySearch" placeholder="🔍 Search glossary..." 
+             style="flex:1; padding:0.6rem 1rem; border:2px solid var(--border); border-radius:60px; font-size:0.9rem; min-width:150px;">
+      <button class="btn btn-outline" onclick="clearGlossarySearch()" style="font-size:0.8rem; padding:0.3rem 1rem;">
+        <i class="fas fa-times"></i> Clear
+      </button>
     </div>
+    <span id="glossaryCount" style="font-size:0.8rem; color:var(--text-light); margin-top:0.3rem; display:inline-block;"></span>
+  </div>
+
+  <!-- Category filters -->
+  <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem;">
+    <button class="btn btn-primary" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('all')">📋 All</button>
+    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('parameters')">📊 Parameters</button>
+    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('equipment')">🧪 Equipment</button>
+    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('concepts')">📋 Concepts</button>
+    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('standards')">📜 Standards</button>
+  </div>
+
+  <!-- Glossary accordion cards -->
+  <div id="glossaryContainer" style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+    <!-- Terms will be injected here by JavaScript -->
+  </div>
+</div>
       <div class="card"><i class="fas fa-link"></i><div class="card-title">Useful resources</div>
         <ul>
           <li><a href="https://www.waterquality.gov.au/guidelines" target="_blank" class="resource-link">Australian Water Quality Guidelines</a> — national standards and trigger values</li>
@@ -1827,6 +1846,179 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // ===== COMPREHENSIVE GLOSSARY DATA =====
+const glossaryTerms = [
+  // Parameters
+  { term: "pH", category: "parameters", definition: "A scale from 0 to 14 measuring acidity (below 7) or alkalinity (above 7). Neutral is 7.", details: "pH affects chemical reactions and aquatic life. Most aquatic organisms prefer 6.5–8.5. pH below 5 or above 9 can be lethal." },
+  { term: "Electrical Conductivity (EC)", category: "parameters", definition: "A measure of the water's ability to conduct electricity, related to the amount of dissolved salts.", details: "EC indicates mineral content. Freshwater <500 µS/cm, brackish 500–5000, marine ~53,000 µS/cm. High EC can stress freshwater species." },
+  { term: "Turbidity", category: "parameters", definition: "A measure of water clarity, affected by suspended particles like silt and algae. Measured in NTU.", details: "High turbidity reduces light penetration, affecting plants and fish feeding. Can carry pollutants attached to sediment. Healthy water <10 NTU." },
+  { term: "Dissolved Oxygen (DO)", category: "parameters", definition: "The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.", details: "Fish need >4 mg/L (60% saturation). Cold water holds more oxygen. DO below 40% saturation is lethal to most fish." },
+  { term: "Salinity", category: "parameters", definition: "The concentration of dissolved salts in water, measured in parts per thousand (ppt).", details: "Freshwater <0.5 ppt, brackish 0.5–30 ppt, marine ~35 ppt. Salinity affects species distribution and osmoregulation." },
+  { term: "Nutrients", category: "parameters", definition: "Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can cause algal blooms when in excess.", details: "Natural levels: nitrate <1 mg/L, phosphate <0.05 mg/L. Excess nutrients cause eutrophication. Major sources: fertiliser runoff, sewage, animal waste." },
+  { term: "Alkalinity", category: "parameters", definition: "The capacity of water to neutralise acids — provides buffering against pH changes.", details: "Important for aquatic life and water treatment. Low alkalinity makes water susceptible to pH swings. Measured in mg/L as CaCO₃." },
+  { term: "TDS (Total Dissolved Solids)", category: "parameters", definition: "The total concentration of dissolved minerals in water, measured in mg/L. Related to EC but expressed differently.", details: "TDS affects taste and aquatic life. Conversion: 1 µS/cm ≈ 0.65 mg/L TDS. High TDS can indicate pollution or saltwater intrusion." },
+  { term: "Hypoxia", category: "parameters", definition: "Low dissolved oxygen conditions (typically < 2 mg/L) that can cause fish kills and stress aquatic life.", details: "Often caused by eutrophication, thermal pollution, or organic loading. Fish kills are common during hypoxic events." },
+  
+  // Equipment
+  { term: "Multi-parameter sonde", category: "equipment", definition: "A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.", details: "Must be calibrated before use. Rinse with distilled water after use. Store sensors with moist pads. Replace batteries regularly." },
+  { term: "Lugols solution", category: "equipment", definition: "An iodine-based preservative used to preserve algal samples for identification and counting.", details: "Add 1% v/v (5mL per 500mL sample). Preserves cell structure and colour. Samples can be stored for up to 6 months." },
+  { term: "Secchi disk", category: "equipment", definition: "A black-and-white disk used to measure water clarity in lakes and marine waters.", details: "Lowered into water until it disappears. Record the depth. Used for assessing algal blooms and sediment. Simple, low-cost method." },
+  { term: "Refractometer", category: "equipment", definition: "A handheld optical instrument that measures salinity (ppt) or specific gravity.", details: "Calibrate with distilled water (0 ppt). Place 2-3 drops on prism, close cover, look through eyepiece. Temperature affects readings." },
+  { term: "Turbidity tube", category: "equipment", definition: "A clear tube with a black-and-white pattern on the base used to estimate turbidity.", details: "Fill with sample, look down the tube, slowly add water until pattern disappears. Read NTU scale at water level. Less precise than electronic meters." },
+  
+  // Concepts
+  { term: "Eutrophication", category: "concepts", definition: "The process where excessive nutrients cause algal blooms, which deplete oxygen and harm aquatic life.", details: "Triggers algal blooms, reduces water clarity, causes fish kills. Can produce toxins harmful to humans and animals. Reversing eutrophication takes years." },
+  { term: "Chain of Custody", category: "concepts", definition: "A documented record of who handled a sample from collection to laboratory analysis.", details: "Proves sample integrity. Required for legal proceedings. Documents every person who handled the sample. Critical for compliance and court cases." },
+  { term: "Field blank", category: "concepts", definition: "A sample of distilled water processed in the field exactly like a real sample — used to check for contamination.", details: "Identifies contamination during collection and handling. Should be processed at the same time as real samples. Any positive result indicates contamination." },
+  { term: "Riparian zone", category: "concepts", definition: "The vegetated area alongside waterways. Healthy zones filter runoff, stabilise banks, and provide shade.", details: "Filters sediment and nutrients from runoff. Stabilises banks, prevents erosion. Provides shade, moderates water temperature. Critical for aquatic ecosystem health." },
+  { term: "Cyanobacteria", category: "concepts", definition: "Blue-green algae — some species produce toxins harmful to animals and humans.", details: "Often form blooms in warm, nutrient-rich water. Can produce neurotoxins and liver toxins. Dogs and livestock are particularly vulnerable. Not all species are toxic." },
+  { term: "E. coli", category: "concepts", definition: "Escherichia coli — a bacteria used as an indicator of faecal contamination.", details: "Indicates recent faecal contamination. High levels (>100 CFU/100mL) indicate health risk for swimming. Drinking water should have zero E. coli." },
+  
+  // Standards
+  { term: "ANZECC", category: "standards", definition: "Australian and New Zealand Environment and Conservation Council — sets water quality guidelines.", details: "Provides trigger values for ecosystem protection. Used across Australia for assessing water quality. Guidelines updated periodically." },
+  { term: "NTU", category: "standards", definition: "Nephelometric Turbidity Units — the standard unit for measuring turbidity.", details: "Measures light scattered by suspended particles. Lower NTU = clearer water. ANZECC trigger: <10 NTU for most freshwaters." },
+  { term: "ppt", category: "standards", definition: "Parts per thousand — used to measure salinity. Marine water is ~35 ppt.", details: "1 ppt = 1 gram of salt per 1,000 grams of water. Freshwater <0.5 ppt. Brackish 0.5–30 ppt. Marine ~35 ppt." }
+];
+
+// ===== RENDER GLOSSARY =====
+let currentGlossaryFilter = 'all';
+
+function renderGlossary(filter = 'all', search = '') {
+  const container = document.getElementById('glossaryContainer');
+  const countEl = document.getElementById('glossaryCount');
+  if (!container) return;
+
+  let filtered = glossaryTerms;
+  
+  // Apply category filter
+  if (filter !== 'all') {
+    filtered = filtered.filter(t => t.category === filter);
+  }
+  
+  // Apply search filter
+  if (search.trim()) {
+    const s = search.toLowerCase().trim();
+    filtered = filtered.filter(t => 
+      t.term.toLowerCase().includes(s) || 
+      t.definition.toLowerCase().includes(s) || 
+      (t.details && t.details.toLowerCase().includes(s))
+    );
+  }
+
+  // Update count
+  if (countEl) {
+    countEl.textContent = `Showing ${filtered.length} of ${glossaryTerms.length} terms`;
+  }
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--text-light);">
+      <i class="fas fa-search" style="font-size:2rem; display:block; margin-bottom:0.5rem;"></i>
+      No terms found. Try a different search or filter.
+    </div>`;
+    return;
+  }
+
+  // Sort alphabetically
+  filtered.sort((a, b) => a.term.localeCompare(b.term));
+
+  // Generate accordion cards
+  container.innerHTML = filtered.map(term => `
+    <div class="glossary-item" data-category="${term.category}" style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+      <div class="glossary-header" onclick="toggleGlossary(this)" style="padding:0.6rem 1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; background:white; transition:0.2s; user-select:none;">
+        <div>
+          <strong style="color:var(--primary);">${term.term}</strong>
+          <span style="display:inline-block; margin-left:0.4rem; font-size:0.6rem; background:var(--accent-soft); padding:0.1rem 0.5rem; border-radius:20px; color:var(--text);">${term.category}</span>
+        </div>
+        <i class="fas fa-chevron-down" style="transition:transform 0.3s; color:var(--text-light); font-size:0.8rem;"></i>
+      </div>
+      <div class="glossary-body" style="max-height:0; overflow:hidden; transition:max-height 0.3s ease, padding 0.3s ease; padding:0 1rem;">
+        <div style="padding:0.5rem 0 1rem;">
+          <p style="margin:0 0 0.5rem; font-size:0.9rem; color:var(--text);"><strong>Definition:</strong> ${term.definition}</p>
+          ${term.details ? `<p style="margin:0; font-size:0.85rem; color:var(--text-light);"><strong>More:</strong> ${term.details}</p>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== TOGGLE GLOSSARY CARD =====
+function toggleGlossary(header) {
+  const body = header.nextElementSibling;
+  const icon = header.querySelector('.fa-chevron-down, .fa-chevron-up');
+  
+  // Close any other open cards (optional - uncomment for accordion behaviour)
+  // document.querySelectorAll('.glossary-body').forEach(b => {
+  //   if (b !== body && b.style.maxHeight !== '0px') {
+  //     b.style.maxHeight = '0px';
+  //     b.previousElementSibling.querySelector('.fa-chevron-down, .fa-chevron-up').className = 'fas fa-chevron-down';
+  //   }
+  // });
+  
+  if (body.style.maxHeight && body.style.maxHeight !== '0px') {
+    body.style.maxHeight = '0px';
+    if (icon) icon.className = 'fas fa-chevron-down';
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    if (icon) icon.className = 'fas fa-chevron-up';
+  }
+}
+
+// ===== SEARCH GLOSSARY =====
+function searchGlossary() {
+  const input = document.getElementById('glossarySearch');
+  const search = input ? input.value : '';
+  renderGlossary(currentGlossaryFilter, search);
+}
+
+function clearGlossarySearch() {
+  const input = document.getElementById('glossarySearch');
+  if (input) input.value = '';
+  renderGlossary('all', '');
+  // Reset filter buttons
+  document.querySelectorAll('#tab7 .btn-outline').forEach(btn => {
+    btn.className = 'btn btn-outline';
+    btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
+  });
+  document.querySelector('#tab7 .btn-primary')?.classList.remove('btn-primary');
+  document.querySelector('#tab7 .btn-primary')?.classList.add('btn-outline');
+  const allBtn = document.querySelector('#tab7 .btn-primary');
+  if (allBtn) {
+    allBtn.className = 'btn btn-primary';
+    allBtn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
+  }
+  currentGlossaryFilter = 'all';
+}
+
+// ===== FILTER GLOSSARY =====
+function filterGlossary(category) {
+  currentGlossaryFilter = category;
+  
+  // Update button styles
+  document.querySelectorAll('#tab7 .btn').forEach(btn => {
+    if (btn.textContent.trim().toLowerCase().includes(category === 'all' ? 'all' : category)) {
+      btn.className = 'btn btn-primary';
+      btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
+    } else {
+      btn.className = 'btn btn-outline';
+      btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
+    }
+  });
+  
+  const search = document.getElementById('glossarySearch')?.value || '';
+  renderGlossary(category, search);
+}
+
+// ===== INITIALISE GLOSSARY =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Render glossary
+  renderGlossary('all', '');
+  
+  // Set up search
+  const searchInput = document.getElementById('glossarySearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', searchGlossary);
+  }
+});
   // Initialize simulator
   updateSimulator();
 });
