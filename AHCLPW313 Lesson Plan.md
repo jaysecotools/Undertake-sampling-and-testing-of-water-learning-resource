@@ -23,6 +23,7 @@ Your custom-built app serves as the central interactive textbook and field refer
 | **Tab 7** | Test your knowledge |
 | **Tab 8** | Resources & glossary |
 | **Tab 9** | Water quality simulator |
+| **Tab 10** | Additional resources |
 
 ---
 
@@ -36,7 +37,7 @@ Your custom-built app serves as the central interactive textbook and field refer
 
 - **Activities:**
   - **App Activity:** Navigate to **Tab 1** – Why test water? Use the interactive cards and Australian context section to facilitate group discussion.
-  - **Presentation & Video:** Use content from **Tab 1** as a presentation guide. Watch recommended videos from **Tab 8** (Resources & Glossary).
+  - **Presentation & Video:** Use content from **Tab 1** as a presentation guide. Watch recommended videos from **Tab 8** (Resources & Glossary) or **Tab 10** (Additional resources).
   - **Self-Directed Learning:** Explore **Tab 1** and **Tab 2** (Key parameters) to research local water bodies and their uses.
 
 - **Teacher Prompts:**
@@ -98,7 +99,7 @@ Your custom-built app serves as the central interactive textbook and field refer
   - Interpret water quality data
 
 - **Activities:**
-  - **Guest Speaker/Video:** Use resources from **Tab 8** (Resources & glossary) to find lab tours or AST links.
+  - **Guest Speaker/Video:** Use resources from **Tab 8** (Resources & glossary) or **Tab 10** (Additional resources) to find lab tours or AST links.
   - **App Activity:** Data analysis workshop using **Tab 6** (Interpreting results) and the "Trigger Levels" table in **Tab 8**.
   - **Self-Directed Learning:** Write a reflection on lab processes using **Tab 5** (Samples & dispatch) – Chain of Custody section.
 
@@ -182,7 +183,7 @@ Your custom-built app serves as the central interactive textbook and field refer
   - **Group Discussion:** Reflect on learning using the "Your progress" bars and key takeaways from each tab.
 
 - **Teacher Prompts:**
-  - *"How has your understanding of water sampling changed? Reflect on your journey through the app's 9 tabs."*
+  - *"How has your understanding of water sampling changed? Reflect on your journey through the app's 10 tabs."*
   - *"What are some key takeaways from this unit? Use the 'Ready for assessment!' checklist in **Tab 8** to guide your final thoughts."*
 
 ---
@@ -207,10 +208,19 @@ Your custom-built app serves as the central interactive textbook and field refer
 
 ## Additional Resources
 
+### 📚 Reference Material
 - Australian Water Quality Guidelines
 - Waterwatch Australia
 - CSIRO Water Research
 - Analytical Services Tasmania
+
+### 🎥 Recommended Videos (Available in App Tab 10)
+- **Introduction to water quality** – Overview of key water quality parameters and why they matter.
+- **How we measure water quality** – EPA Victoria · Follow an authorised officer as they collect water samples and explain key parameters.
+- **Horiba U-52 Auto Calibration** – Step-by-step automatic calibration for multi-parameter sonde.
+- **Horiba U-50 Water Quality Probe** – Detailed overview of the Horiba U-50 series multi-parameter probe.
+- **pH, EC, TDS & PPM Explained** – Clear explanation of water chemistry relationships.
+- **eDNA Water Sampling Tutorial** – Sterile sampling technique and contamination prevention.
 
 ---
 
