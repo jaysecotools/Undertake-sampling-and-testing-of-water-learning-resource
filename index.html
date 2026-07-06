@@ -78,7 +78,6 @@
     .tab:hover { background: #1d5b7a; color: white; border-radius: 8px 8px 0 0; }
     .tab.active { color: white; border-bottom-color: var(--accent); background: linear-gradient(transparent 70%, rgba(230,138,46,0.2)); }
     .tab-content { display: none; padding: 2rem 2.5rem; background: white; animation: fadeIn 0.25s ease; }
-    #tab8, #tab9 { padding: 1.8rem 2.2re,;} /* This line added to make content windows consistent */
     .tab-content.active { display: block; }
     @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
     h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); color: #0a3b52; margin: 0.5rem 0 1.5rem; border-left: 12px solid var(--accent); padding-left: 1rem; font-weight: 700; }
@@ -729,7 +728,7 @@
 
 <!-- ===== UPDATED VIDEO RESOURCES CARD WITH PREVIEW WINDOWS ===== -->
 <div class="card"><i class="fas fa-video"></i><div class="card-title">Recommended videos & tutorials</div>
-  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem; margin-top:1rem;">
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.2rem; margin-top:1rem;">
     <!-- Video 1 - NEW -->
     <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
       <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
