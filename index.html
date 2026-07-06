@@ -78,6 +78,7 @@
     .tab:hover { background: #1d5b7a; color: white; border-radius: 8px 8px 0 0; }
     .tab.active { color: white; border-bottom-color: var(--accent); background: linear-gradient(transparent 70%, rgba(230,138,46,0.2)); }
     .tab-content { display: none; padding: 2rem 2.5rem; background: white; animation: fadeIn 0.25s ease; }
+    #tab8, #tab9 { padding: 1.8rem 2.2re,;} /* This line added to make content windows consistent */
     .tab-content.active { display: block; }
     @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
     h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); color: #0a3b52; margin: 0.5rem 0 1.5rem; border-left: 12px solid var(--accent); padding-left: 1rem; font-weight: 700; }
@@ -92,15 +93,7 @@
       border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       transition: transform 0.15s;
     }
-
-    /* Added to fix width of last two tabs */
-    #tab8 .card,
-    #tab9 .card {
-      padding: 1.2rem 1.5rem;
-      width: 100%;
-      box -sizing: border-box;
-    }
-      
+     
     .card:hover { transform: translateY(-3px); }
     .card i { font-size: 2rem; color: var(--primary-light); margin-bottom: 0.6rem; }
     .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
