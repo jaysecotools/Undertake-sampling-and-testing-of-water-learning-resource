@@ -506,68 +506,80 @@
     <p style="font-size:0.9rem; color:var(--primary-light);">75% complete — you're nearly there!</p>
   </div>
 
-  <!-- ===== TAB 6: INTERPRETING RESULTS ===== -->
-  <div id="tab5" class="tab-content">
-    <h2><i class="fas fa-chart-bar"></i> Interpreting water quality results</h2>
-    <p>Understanding what your results mean is just as important as taking the measurements. Here's how to make sense of typical readings.</p>
+<!-- ===== TAB 6: INTERPRETING RESULTS ===== -->
 
-    <div class="grid-2">
-      <div class="card"><i class="fas fa-check-circle"></i><div class="card-title">What do "normal" ranges look like?</div>
-        <table style="font-size:0.85rem;">
-          <tr><th>Parameter</th><th>Freshwater (healthy)</th><th>Marine (healthy)</th><th>Indicates concern if...</th></tr>
-          <tr><td>pH</td><td>6.5–8.0</td><td>7.5–8.5</td><td><6 or >9</td></tr>
-          <tr><td>DO (% sat)</td><td>80–110%</td><td>80–110%</td><td><60% (stress)</td></tr>
-          <tr><td>EC (µS/cm)</td><td><500</td><td>~53,000</td><td>>1000 (freshwater)</td></tr>
-          <tr><td>Turbidity (NTU)</td><td><10</td><td><10</td><td>>20 (excessive)</td></tr>
-          <tr><td>Nitrate (mg/L)</td><td><1</td><td><0.5</td><td>>5 (pollution)</td></tr>
-          <tr><td>Phosphate (mg/L)</td><td><0.05</td><td><0.03</td><td>>0.1 (eutrophication risk)</td></tr>
-        </table>
-      </div>
-      <div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Common issues & what they mean</div>
-        <ul><li><strong>Low DO + high nutrients + algal bloom:</strong> Classic eutrophication — likely from fertiliser runoff or sewage. Algae die and decompose, consuming oxygen.</li>
-        <li><strong>High EC + high turbidity:</strong> Possibly sediment from erosion, or saltwater intrusion in coastal areas.</li>
-        <li><strong>pH below 5:</strong> Acidic — could be acid mine drainage, acid sulfate soils, or organic acids from peat.</li>
-        <li><strong>pH above 9:</strong> Alkaline — often from algal blooms (photosynthesis removes CO₂, raising pH) or industrial pollution.</li>
-        <li><strong>High nitrate + high phosphate:</strong> Likely from agricultural runoff, urban stormwater, or sewage treatment plant discharge.</li>
-        <li><strong>High turbidity alone:</strong> Usually sediment erosion from construction, agriculture, or natural runoff.</li>
-        <li><strong>Low DO without high nutrients:</strong> Could be due to thermal pollution (warm water holds less oxygen) or organic loading from sewage.</li></ul>
-      </div>
-    </div>
+<div id="tab5" class="tab-content">
+  <h2><i class="fas fa-chart-bar"></i> Interpreting water quality results</h2>
+  <p>Understanding what your results mean is just as important as taking the measurements. Water quality varies naturally with location, season, weather, flow, depth and time of day. Use the values below as <strong>general field-reference ranges</strong>, not as universal pass/fail standards.</p>
 
-    <div class="card"><i class="fas fa-clock"></i><div class="card-title">Diurnal and seasonal variation</div>
-      <p>Water quality changes throughout the day and across seasons. For example:</p>
-      <ul><li><strong>Day-night:</strong> In a shallow lake with algae, pH and DO will <strong>rise</strong> during the day (photosynthesis) and <strong>fall</strong> at night (respiration).</li>
-      <li><strong>Seasonal:</strong> Temperature is higher in summer, which lowers DO capacity. Summer storms can increase turbidity and nutrient loads.</li>
-      <li><strong>After rainfall:</strong> Turbidity and nutrients often spike due to runoff. EC may drop in freshwater (dilution) or rise in estuaries (saltwater intrusion).</li>
-      <li><strong>Vertical stratification:</strong> Lakes and reservoirs can stratify in summer — warm surface layer, cold bottom layer. Oxygen can be depleted in bottom waters.</li></ul>
-      <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Always note the time and date</strong> — this context is critical for interpreting results. A low DO reading at 6am in summer might be normal; the same reading at 2pm is a concern.</div>
-    </div>
-
-    <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>When to report urgently:</strong><br>
-      • DO < 60% saturation (or < 4 mg/L) — immediate action needed<br>
-      • pH < 5.0 or > 9.0 — investigate source<br>
-      • Turbidity > 100 NTU (suspected sediment pollution)<br>
-      • Visible algal scum or fish kill — toxic bloom possible<br>
-      • Suspected chemical spill (unusual colour, smell, or foam)<br>
-      • E. coli > 100 CFU/100mL — health risk for recreational use
-    </div>
-
-    <h3>Case study: Interpreting a dataset</h3>
-    <div class="card"><i class="fas fa-table"></i><div class="card-title">Example results from a river monitoring program</div>
+  <div class="grid-2">
+    <div class="card"><i class="fas fa-check-circle"></i><div class="card-title">What do typical reference values look like?</div>
       <table style="font-size:0.85rem;">
-        <tr><th>Date</th><th>pH</th><th>DO (%)</th><th>Turbidity (NTU)</th><th>Nitrate (mg/L)</th><th>Phosphate (mg/L)</th></tr>
-        <tr><td>Jan (summer)</td><td>7.8</td><td>72%</td><td>22</td><td>2.5</td><td>0.12</td></tr>
-        <tr><td>Apr (autumn)</td><td>7.2</td><td>95%</td><td>6</td><td>0.8</td><td>0.04</td></tr>
-        <tr><td>Jul (winter)</td><td>7.0</td><td>98%</td><td>4</td><td>0.5</td><td>0.03</td></tr>
+        <tr><th>Parameter</th><th>Freshwater – general reference</th><th>Marine – general reference</th><th>Investigate if...</th></tr>
+        <tr><td>pH</td><td>~6.5–8.0</td><td>~8.0–8.4</td><td>Outside the expected local range</td></tr>
+        <tr><td>DO (% sat)</td><td>~80–110%</td><td>~80–110%</td><td>Persistently low, particularly &lt;60%</td></tr>
+        <tr><td>EC (µS/cm)</td><td>Highly site-dependent</td><td>~50,000–55,000 (seawater)</td><td>Large change from the normal local value</td></tr>
+        <tr><td>Turbidity (NTU)</td><td>Often low in clear waters</td><td>Often low in clear waters</td><td>Large increase above the normal local value</td></tr>
+        <tr><td>Nitrate (mg/L as N)</td><td>Generally low in minimally disturbed waters</td><td>Generally very low in nutrient-poor waters</td><td>Elevated above the local/reference condition</td></tr>
+        <tr><td>FRP (mg/L as P)</td><td>Generally very low</td><td>Generally very low</td><td>Elevated above the local/reference condition</td></tr>
       </table>
-      <p><strong>Interpretation:</strong> The summer results show elevated nutrients, lower DO, and higher turbidity. This suggests agricultural runoff (nutrients) during the growing season, leading to algal growth (high pH, low DO). The autumn and winter results are within healthy ranges.</p>
-      <p><strong>Recommendation:</strong> Increase monitoring frequency in spring/summer. Investigate upstream farming practices. Consider riparian buffer zones to reduce runoff.</p>
+      <p style="font-size:0.8rem;"><strong>Important:</strong> Natural water quality varies between catchments and ecosystems. Where available, use Tasmanian, catchment-specific or site-specific guideline values rather than relying on generic numbers.</p>
     </div>
 
-    <h3>Your progress</h3>
-    <div class="progress-container"><div class="progress-fill" style="width:85%;"></div></div>
-    <p style="font-size:0.9rem; color:var(--primary-light);">85% complete — you're ready for advanced interpretation!</p>
+```
+<div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Common patterns & what they may indicate</div>
+  <ul>
+    <li><strong>Low DO + elevated nutrients + algal growth:</strong> May indicate nutrient enrichment and eutrophication. Algal growth can increase oxygen during daylight but respiration and decomposition can reduce oxygen, particularly overnight.</li>
+    <li><strong>High EC:</strong> May indicate increased dissolved salts. Possible causes include seawater influence, evaporation, groundwater inputs, saline drainage or other catchment sources.</li>
+    <li><strong>High turbidity:</strong> May indicate suspended sediment from erosion, runoff, disturbance or high natural flows. Some waterways are naturally more turbid than others.</li>
+    <li><strong>Low pH:</strong> May occur naturally in some Tasmanian waters, particularly humic or peat-influenced systems. Very low or rapidly changing pH may warrant investigation of sources such as acid sulfate soils, acid mine drainage or other disturbance.</li>
+    <li><strong>High pH:</strong> Can occur during periods of intense photosynthesis because carbon dioxide is removed from the water. Persistent or extreme values may indicate a need for further investigation.</li>
+    <li><strong>Elevated nitrate + elevated phosphorus:</strong> May indicate nutrient enrichment from sources such as agricultural runoff, urban stormwater, wastewater or natural catchment inputs.</li>
+    <li><strong>Low DO without elevated nutrients:</strong> May be associated with warm water, poor mixing, stratification, organic matter decomposition or other processes.</li>
+    <li><strong>Several parameters changing together:</strong> Often provides more useful evidence than one unusual measurement. Look for patterns, trends and possible sources.</li>
+  </ul>
+</div>
+```
+
   </div>
+
+  <div class="card"><i class="fas fa-clock"></i><div class="card-title">Diurnal and seasonal variation</div>
+    <p>Water quality changes throughout the day and across seasons. For example:</p>
+    <ul>
+      <li><strong>Day-night:</strong> In water containing algae or aquatic plants, pH and DO can <strong>rise</strong> during daylight as photosynthesis occurs and <strong>fall</strong> overnight as respiration continues.</li>
+      <li><strong>Seasonal:</strong> Temperature, rainfall, flow, biological activity and catchment conditions can all change water quality. Warmer water also holds less dissolved oxygen than colder water.</li>
+      <li><strong>After rainfall:</strong> Turbidity and nutrient concentrations may increase as runoff enters waterways. EC may decrease because of dilution, although local conditions can produce the opposite response.</li>
+      <li><strong>Vertical stratification:</strong> Lakes and reservoirs can develop layers with different temperatures and oxygen concentrations. Bottom waters can become oxygen depleted when mixing is limited.</li>
+    </ul>
+    <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Always record the date, time, weather, recent rainfall, flow conditions and sampling location.</strong> This context can be critical when interpreting water-quality results. For long-term monitoring, sampling at a consistent time can make comparisons more meaningful.</div>
+  </div>
+
+  <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>When to report or investigate urgently:</strong><br>
+    • Very low dissolved oxygen, particularly persistent readings below 60% saturation<br>
+    • Extreme or rapidly changing pH outside the expected local range<br>
+    • A sudden and substantial increase in turbidity or EC<br>
+    • Visible algal scum, unusual discolouration or a fish kill<br>
+    • Suspected chemical spill or other pollution incident<br>
+    • Strong unusual odour, foam or other unexplained changes<br>
+    • Microbiological results indicating a potential human-health risk — follow the relevant recreational-water or public-health guideline
+  </div>
+
+  <h3>Case study: Interpreting a dataset</h3>
+  <div class="card"><i class="fas fa-table"></i><div class="card-title">Example results from a river monitoring program</div>
+    <table style="font-size:0.85rem;">
+      <tr><th>Date</th><th>pH</th><th>DO (%)</th><th>Turbidity (NTU)</th><th>Nitrate (mg/L as N)</th><th>FRP (mg/L as P)</th></tr>
+      <tr><td>Jan (summer)</td><td>7.8</td><td>72%</td><td>22</td><td>2.5</td><td>0.12</td></tr>
+      <tr><td>Apr (autumn)</td><td>7.2</td><td>95%</td><td>6</td><td>0.8</td><td>0.04</td></tr>
+      <tr><td>Jul (winter)</td><td>7.0</td><td>98%</td><td>4</td><td>0.5</td><td>0.03</td></tr>
+    </table>
+    <p><strong>Interpretation:</strong> The summer results show a combination of higher nutrient concentrations, lower dissolved oxygen and higher turbidity than the autumn and winter results. This pattern may indicate increased nutrient and sediment inputs during summer, although the data alone cannot identify the source. The lower summer DO may also be influenced by temperature, time of sampling, biological activity and other factors.</p>
+    <p><strong>Next steps:</strong> Check the sampling time, recent rainfall and flow conditions. Compare the results with appropriate local or site-specific guideline values and investigate upstream land uses or other potential sources if the pattern is repeated.</p>
+  </div>
+
+  <h3>Your progress</h3>
+  <div class="progress-container"><div class="progress-fill" style="width:85%;"></div></div>
+  <p style="font-size:0.9rem; color:var(--primary-light);">85% complete — you're ready for advanced interpretation!</p>
+</div>
 
   <!-- ===== TAB 7: TEST YOUR KNOWLEDGE ===== -->
   <div id="tab6" class="tab-content">
