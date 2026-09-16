@@ -1,662 +1,525 @@
-Absolutely. I’ve now reviewed the **current `index.html` in the GitHub repository**, rather than just the section you showed me. It is a substantial resource — the file is about 2,000 lines and covers the whole learning journey from concepts through equipment, planning, sampling, interpretation, practice, templates, glossary and the simulator. ([GitHub][1])
+Yes — I’ve gone back through the **current version in the GitHub repository**, including the updated sections and the JavaScript. This time I’m looking specifically for **what remains after the changes**, rather than repeating the previous review.
 
-My overall reaction is:
+The good news: **the resource is substantially improved.** The revised Results tab is much better, the interpretation language is more cautious, and the overall learning sequence is strong.
 
-**The resource is genuinely very good pedagogically, but I would do one more technical/content-cleanup pass before treating it as your finished AHCLPW313 resource.**
+However, I found **a handful of things that still need fixing**, including **two actual code bugs** and several remaining scientific/content inconsistencies.
 
-There are about **10 things I'd fix**, with roughly 5 being high priority. The good news is that most are straightforward text/code changes rather than structural changes.
+## 🔴 1. The old water-quality values are STILL in Tab 2
 
----
+This is the biggest remaining content problem.
 
-# 1. 🚨 Most important: you now have multiple conflicting water-quality tables
+Your Results tab now correctly says:
 
-You fixed the Results tab, but the **old numbers still exist elsewhere in the file**.
+* site-specific EC
+* site-specific turbidity
+* nitrate as N
+* FRP as P
+* local/reference conditions
 
-For example, Tab 2 still says:
+But Tab 2 still contains the old table:
 
-> Freshwater pH 6.5–8.0
-> Marine pH 7.5–8.5
-> EC <500
-> Turbidity <10
-> Nitrate <1
-> Phosphate <0.05
+> "Summary table — healthy ranges"
 
-and labels these **"healthy ranges"**. 
+with:
 
-There is another summary table immediately below it containing essentially the same values. 
+* pH 6.5–8.0 / 7.5–8.5
+* EC <500 / ~53,000
+* turbidity <10
+* nitrate <1 / 0.5
+* phosphate 0.05 / 0.03
 
-And your glossary still says:
+It also says:
 
-> "Healthy water <10 NTU"
+> "Natural waters: nitrate <1 mg/L, phosphate <0.05 mg/L. Elevated levels indicate pollution."
 
-and gives freshwater EC <500 and marine EC ~53,000 as generic values. 
+That's exactly the sort of statement we were trying to eliminate. 
 
-Then your dynamically generated **"Water Quality Trigger Levels & Response Actions"** section still describes the old numbers as **ANZECC 2000 trigger levels**. 
+### Fix
 
-### This is the biggest thing I'd fix.
+I'd replace the entire **"Expected ranges"** material in Tab 2 with contextual wording.
 
-A learner could read Tab 6 and correctly learn:
+For nutrients:
 
-> "There isn't a universal turbidity limit."
+> **Expected concentrations:** Nutrient concentrations vary considerably between catchments and ecosystems. Minimally disturbed waters generally have relatively low nutrient concentrations. Compare results with appropriate local or site-specific guideline values.
 
-…and then go to Resources and be told:
+And replace the summary table with something like:
 
-> ">20 NTU = elevated"
-> ">100 NTU = severe pollution"
+| Parameter   | General interpretation                                                    |
+| ----------- | ------------------------------------------------------------------------- |
+| Temperature | Compare with local seasonal/reference conditions                          |
+| pH          | Compare with the expected range for the waterbody                         |
+| EC          | Highly site-dependent; look for significant changes from local conditions |
+| DO          | Consider saturation, temperature, time of day and local conditions        |
+| Turbidity   | Compare with normal conditions and recent rainfall/flow                   |
+| Nitrate-N   | Generally low in minimally disturbed waters                               |
+| FRP         | Generally very low in minimally disturbed waters                          |
 
-That's contradictory.
-
-And the **2026 ANZG platform has actually revised default guideline values since the 2000 guidelines**, using newer data and an ecoregional approach. ([Water Quality][2])
-
-### My recommendation
-
-Do a global search through `index.html` for:
-
-* `healthy`
-* `trigger`
-* `ANZECC`
-* `nitrate`
-* `phosphate`
-* `turbidity`
-* `500`
-* `53,000`
-* `20 NTU`
-* `100 NTU`
-* `6.0`
-* `8.5`
-* `5.0`
-* `9.0`
-
-and make sure **every instance follows the new contextual approach**.
+That keeps the learner-friendly approach without reintroducing the old "healthy number" problem.
 
 ---
 
-# 2. 🚨 There is an actual bit of Markdown code accidentally sitting in your HTML
+# 🔴 2. The old trigger-level table is STILL there
 
-I spotted this:
+This is the other major one.
 
-```text
-```
+Your JavaScript still generates:
 
-<div class="card">
-```
+> **"Water Quality Trigger Levels & Response Actions"**
 
-and another:
+and explicitly says:
 
-```text
-```
+> "Based on ANZECC 2000 guidelines."
 
-````
+It then gives fixed values such as:
 
-around the new Results section. :contentReference[oaicite:6]{index=6}
+* DO <60%
+* DO <40%
+* pH <6 or >8.5
+* nitrate >1 mg/L
+* nitrate >5 mg/L
+* phosphate >0.05 mg/L
+* turbidity >20 NTU
+* turbidity >100 NTU
+* temperature >2°C above natural
 
-Those triple backticks are **not HTML**.
+and recommends reporting some results directly to EPA/authorities. 
 
-They appear to have been pasted in when you copied my replacement section.
+**I would remove this table completely.**
 
-### Delete both occurrences.
+The current TGA listing confirms AHCLPW313 is still the current Release 1 unit, but that doesn't make these generic thresholds universal AHCLPW313 requirements. ([Training.gov.au][1])
 
-Specifically, around the new Results section you currently have:
+And this is exactly where your revised resource has moved beyond the old ANZECC-2000-style approach.
 
-```html
-    </div>
-  </div>
-````
+### I'd replace the entire function with a contextual reference box
 
-followed by:
+Something along the lines of:
 
-```text
-```
+> **Interpreting results**
+>
+> There are no universal pass/fail values for all water bodies. Appropriate guideline values depend on the ecosystem, location, reference condition and purpose of monitoring.
+>
+> When a result appears unusual:
+>
+> 1. Check the measurement and equipment.
+> 2. Check sampling time, weather, rainfall and flow conditions.
+> 3. Compare the result with appropriate local or site-specific reference values.
+> 4. Look for changes across sites or over time.
+> 5. Follow workplace procedures for reporting unusual or urgent results.
 
-<div class="card">
-```
-
-and later another closing:
-
-```text
-```
-
-````
-
-Remove the backticks entirely.
-
-That's a definite code cleanup rather than a content judgement.
-
----
-
-# 3. 🚨 Your sample-bottle rinsing instruction needs changing
-
-This one is genuinely important.
-
-Your resource currently says:
-
-> "Rinse bottles 2–3 times with the site water before filling the sample."
-
-:contentReference[oaicite:7]{index=7}
-
-That is **not a safe universal instruction**.
-
-Some bottles/containers — particularly bottles supplied with preservatives, microbiological containers and containers prepared for particular laboratory analyses — **must not be rinsed with site water**.
-
-Analytical Services Tasmania specifically says:
-
-> "Some bottles contain preservatives for specific tests. Please don’t rinse or overfill these bottles." :contentReference[oaicite:8]{index=8}
-
-### I'd replace your instruction with:
-
-> **Use the correct sample container for the required analysis. Do not rinse containers unless the sampling method or laboratory instructions specifically require it. Never rinse preserved or sterile containers with site water.**
-
-That's much more professionally defensible.
+That would be **much more consistent with the rest of your resource.**
 
 ---
 
-# 4. Your preservation section is actually pretty good — but I'd make one change
+# 🔴 3. There are still old values in the glossary
 
-Your AST holding-time information is broadly supported by the Tasmanian Government laboratory's current published guidance. In particular, AST currently specifies:
+I found these:
 
-- dissolved nutrients: filter and freeze ASAP, preferably within 24 hours; 28 days frozen
-- total nutrients: freeze; 28 days frozen
-- algae ID/count: Lugol's at 1% v/v; 6 months
-- microbiological samples: refrigerate and 24 hours
-- pH: 6 hours
-- turbidity: 2 days
-- EC: 28 days
+> "Freshwater <500 µS/cm, brackish 500–5000, marine ~53,000 µS/cm."
 
-:contentReference[oaicite:9]{index=9}
+> "Healthy water <10 NTU."
 
-So that part of your resource has a **much stronger Tasmanian evidence base than I initially expected**.
-
-However, you've written:
-
-> "If you can't get samples to the lab on the same day, freeze them (for nutrients) within 24 hours."
-
-I'd change that to:
-
-> **Preservation and holding times depend on the parameter and laboratory method. Follow the laboratory's instructions for each analysis. For example, AST specifies different preservation and holding requirements for total nutrients, dissolved nutrients, microbiological samples and other analyses.**
-
-That's safer because students shouldn't learn:
-
-**"water samples = freeze if delayed."**
-
-They need to learn:
-
-**"preservation is analyte/method specific."**
-
-AST itself recommends contacting the laboratory before sampling because container type, preservation, minimum volume and holding time depend on the analysis. :contentReference[oaicite:10]{index=10}
-
----
-
-# 5. Your field sampling section should distinguish "field measurements" from "laboratory samples"
-
-You've actually got the beginnings of this distinction, but I'd make it much clearer.
-
-For example:
-
-### Measure in the field
-
-- temperature
-- pH
-- EC
-- DO
-- often turbidity
-
-### Collect for laboratory analysis
-
-- nutrients
-- microbiological parameters
-- metals
-- pesticides
-- hydrocarbons
-- chlorophyll-a
-- algal identification/toxins
-
-AST's current testing list supports this sort of distinction, including nutrients, turbidity, metals, pesticides, chlorophyll-a, algae and microbiological testing. :contentReference[oaicite:11]{index=11}
-
-This would help learners understand **why some parameters need immediate field measurement** while others can be sampled and transported.
-
----
-
-# 6. Your turbidity-tube description needs a small correction
-
-You currently say:
-
-> "read the NTU scale at the water level."
-
-:contentReference[oaicite:12]{index=12}
-
-That's potentially misleading because turbidity tubes don't all directly provide an NTU result in the same way an electronic turbidity meter does. Some provide a visual depth/clarity measurement that is converted or calibrated to turbidity.
-
-I'd say:
-
-> **Fill the tube and observe the target at the base while looking down through the water column. Follow the manufacturer's method for recording the result. Some turbidity tubes provide a direct or calibrated NTU scale; others provide a visual depth measurement.**
-
-That is much safer.
-
----
-
-# 7. Your EC → TDS conversion is too definitive
-
-You currently have:
-
-> `1 µS/cm ≈ 0.65 mg/L TDS`
-
-:contentReference[oaicite:13]{index=13}
-
-There **isn't one universal conversion factor** because the relationship depends on the ionic composition of the water.
-
-I'd change it to:
-
-> **Conversion:** TDS can be estimated from EC using a conversion factor, but the factor varies with water chemistry. A commonly used approximate factor is around 0.5–0.7, but use the instrument/manufacturer or project-specific factor where available.
-
-That turns a potentially misleading "fact" into useful environmental numeracy.
-
----
-
-# 8. Your temperature section is too categorical
-
-You've got:
-
-> "Temperature changes of more than 2°C in a short distance can indicate thermal pollution."
-
-:contentReference[oaicite:14]{index=14}
-
-The problem isn't that a 2°C change is impossible as an indicator. It's that **2°C isn't a universal thermal-pollution threshold**.
-
-A tributary, groundwater seep, shade change, spring input, depth difference or natural feature can cause a temperature change.
-
-I'd change it to:
-
-> **A substantial temperature change over a short distance may warrant investigation. Compare upstream and downstream results, sampling conditions and local reference data before attributing the change to thermal pollution.**
-
-That's much better environmental-monitoring thinking.
-
----
-
-# 9. The DO statements need softening
-
-There are several places where the resource gets a little too absolute.
-
-For example:
+> "Fish need >4 mg/L (60% saturation)."
 
 > "DO below 40% saturation is lethal to most fish."
 
-and:
+> "Natural levels: nitrate <1 mg/L, phosphate <0.05 mg/L."
 
-> "Critical DO — fish kills likely."
 
-:contentReference[oaicite:15]{index=15}
 
-Duration, species, temperature, acclimation and other conditions matter enormously.
+So the learner can currently encounter **three different philosophies** depending on where they click.
 
-I'd teach:
+### I'd definitely update those.
 
-> **Very low DO can cause severe physiological stress and, if sufficiently low and prolonged, fish mortality. The effect depends on species, temperature, duration and local conditions.**
+For example:
 
-Likewise your simulator shouldn't say:
+**Turbidity**
 
-> **"fish kills likely"**
+> Turbidity measures the amount of suspended material affecting water clarity. Interpretation depends on the waterbody, local reference condition, rainfall and flow. A sudden increase may indicate increased sediment or biological material.
 
-simply because a mathematical model has generated <40%.
+**DO**
+
+> Dissolved oxygen is important for aquatic life. Low DO can cause stress and, when sufficiently low and prolonged, mortality. Effects depend on species, temperature, duration and local conditions.
+
+**Nutrients**
+
+> Nitrogen and phosphorus are essential nutrients. Excessive concentrations can contribute to eutrophication. Compare results with appropriate local or site-specific guideline values.
 
 ---
 
-# 10. The simulator is the part I'd be most careful about
+# 🔴 4. There's a genuine JavaScript bug in your DO interpretation
 
-This is probably the **single biggest conceptual weakness** in the whole resource.
+This one is important.
 
-The simulator currently calculates pH, DO and turbidity from simplified equations involving:
-
-- temperature
-- nutrients
-- light
-- time
-- salinity
-
-For example, the pH calculation literally constructs:
+Your code currently says:
 
 ```javascript
-let pH = basepH + lightpH + tempPH + nutrientPH;
-````
+if (doPercent < 60) messages.push('⚠️ Low DO — aquatic life stressed');
+else if (doPercent < 40) messages.push('🚨 Critical DO — fish kills likely');
+```
 
-and turbidity is calculated from nutrient load and light. 
+The `<40` condition can **never execute**.
 
-That's fine **if it's explicitly presented as a conceptual teaching model**.
+Why?
 
-But right now the learner could reasonably interpret it as a model of actual water chemistry.
+Because if DO is 35%, it is already `<60`, so the first condition fires and JavaScript never gets to the `else if`.
 
-### I'd put a prominent disclaimer on it:
+### Correct order:
 
-> **Educational simulation — not a predictive water-quality model**
->
-> This simulator uses simplified relationships to demonstrate concepts such as the effects of temperature, light, nutrients and salinity. Real water-quality relationships are much more complex and depend on many additional physical, chemical and biological factors. Simulator results must not be used to predict actual field conditions or replace field measurements.
+```javascript
+if (doPercent < 40) {
+  messages.push('🚨 Very low DO — severe aquatic stress; follow workplace response procedures');
+} else if (doPercent < 60) {
+  messages.push('⚠️ Low DO — may stress aquatic life');
+} else {
+  messages.push('✅ DO not flagged by this teaching model');
+}
+```
 
-That would solve most of the problem.
-
----
-
-# 11. Your salinity categories need some refinement
-
-The simulator currently uses:
-
-* <0.5 ppt = freshwater
-* 0.5–5 = low salinity
-* 5–18 = brackish
-* 18–30 = high brackish
-* > 30 = marine
-
-
-
-These are useful **teaching categories**, but again I'd call them **approximate teaching categories**, rather than universal ecological boundaries.
-
-Also:
-
-> "Freshwater — suitable for most aquatic life"
-
-is too broad.
-
-Freshwater can still have lethal levels of nutrients, metals, acidity, pathogens etc.
-
-I'd change that message to:
-
-> **Freshwater salinity range — salinity alone does not indicate overall water quality.**
-
-That's an important lesson.
+And I'd avoid **"fish kills likely"** because the simulator isn't sophisticated enough to make that determination.
 
 ---
 
-# 12. Your risk/safety content is good
+# 🔴 5. The simulator still calls things "HEALTHY"
 
-This part is one of the strengths.
+Your simulator eventually does:
 
-You've covered:
-
-* working near water
-* slips/falls
-* weather
-* biological hazards
-* chemical hazards
-* PPE
-* manual handling
-* emergency considerations
-* site access
-* tides
-* risk assessment
+```javascript
+if (hasCritical) status = '🚨 CRITICAL — ';
+else if (hasWarning) status = '⚠️ WARNING — ';
+else status = '✅ HEALTHY — ';
+```
 
 
 
-And this maps nicely against the current AHCLPW313 performance criteria, which specifically require identifying hazards, assessing risks and implementing controls. ([Training.gov.au][3])
+That's inconsistent with the excellent contextual approach you've now adopted.
 
-I'd **not overcomplicate this section**.
+The simulator is **not measuring real water** and isn't a predictive ecological model.
 
-One thing I'd add is:
+I'd change this to:
 
-> **Never enter water or sample from an unsafe position simply to obtain a sample. Select a safer sampling point or use appropriate sampling equipment.**
+```javascript
+if (hasCritical) status = '🚨 REVIEW — ';
+else if (hasWarning) status = '⚠️ INVESTIGATE — ';
+else status = 'ℹ️ NO FLAGS IN THIS SIMULATION — ';
+```
 
-That's a very practical field-worker message.
+And underneath the simulator, make sure you have the disclaimer:
 
----
+> **Educational simulation — not a predictive water-quality model.** The relationships used here are simplified for learning and do not represent the full complexity of real aquatic systems. Simulator outputs must not be used to assess actual water quality or replace field measurements.
 
-# 13. The resource actually maps surprisingly well to AHCLPW313
-
-I checked the current Commonwealth unit rather than relying on memory.
-
-AHCLPW313 requires learners to:
-
-* confirm the sampling/testing programme
-* identify parameters
-* identify sample characteristics and number
-* select equipment
-* identify hazards, assess risks and implement controls
-* obtain and check equipment
-* calibrate equipment
-* prepare recording documents
-* carry out sampling/testing
-* prepare/package/store samples
-* record environmental conditions
-* report urgent issues
-* clean/store equipment
-* check data accuracy/integrity
-* record/report results and observations
-* maintain traceability. ([Training.gov.au][3])
-
-Your resource addresses **all of those themes** to some extent.
-
-For example, you've got:
-
-* planning/site selection 
-* equipment/calibration 
-* field sampling/QA 
-* sample preservation/CoC 
-* interpretation 
-* reporting scenarios 
-* data sheets/templates 
-
-So I think your underlying **instructional architecture is excellent**.
+That would make the simulator much more defensible.
 
 ---
 
-# 14. One wording change I'd definitely make
+# 🟠 6. The simulator still uses the old nutrient thresholds
 
-Your hero currently says:
+It currently contains:
+
+```javascript
+if (nitrate > 5 || phosphate > 0.1)
+```
+
+and:
+
+```javascript
+else if (nitrate > 2 || phosphate > 0.05)
+```
+
+
+
+Those numbers are now inconsistent with your Results tab.
+
+Since this is a **teaching simulator**, I'd actually remove the numeric nutrient thresholds altogether.
+
+For example:
+
+```javascript
+if (nitrate > 5 || phosphate > 0.1) {
+    messages.push('⚠️ High nutrient input in this teaching scenario — consider eutrophication processes');
+} else if (nitrate > 2 || phosphate > 0.05) {
+    messages.push('ℹ️ Elevated nutrient input in this teaching scenario');
+} else {
+    messages.push('ℹ️ Lower nutrient input in this teaching scenario');
+}
+```
+
+Notice the important difference:
+
+**"in this teaching scenario"**
+
+rather than pretending these are universal environmental trigger values.
+
+---
+
+# 🟠 7. Your temperature section still has the >2°C problem
+
+Tab 2 still says:
+
+> "Temperature changes of more than 2°C in a short distance can indicate thermal pollution."
+
+
+
+That's still too definitive.
+
+I'd change it to:
+
+> **A substantial temperature difference over a short distance may warrant investigation. Compare upstream and downstream measurements, sampling conditions and local reference data before attributing the difference to thermal pollution.**
+
+---
+
+# 🟠 8. Your DO section still says "lethal to most fish"
+
+You have:
+
+> "DO below 40% saturation (<3 mg/L) is lethal to most fish. Report immediately."
+
+
+
+I'd change this.
+
+A better Cert III-level statement:
+
+> **Very low dissolved oxygen can cause severe stress and, when sufficiently low and prolonged, can result in fish mortality. Effects depend on species, temperature, exposure duration and local conditions. Follow workplace procedures for reporting unusually low DO.**
+
+Much safer scientifically.
+
+---
+
+# 🟠 9. The sample-preservation section still needs the change we discussed
+
+You haven't made this one yet.
+
+It still says:
+
+> "If you can't get samples to the lab on the same day, freeze them (for nutrients) within 24 hours."
+
+
+
+The problem is that learners could generalise:
+
+**delayed sample = freeze it.**
+
+Instead:
+
+> **Preservation and holding times depend on the parameter, container and analytical method. Follow the laboratory's instructions. Some nutrient samples may require filtration and/or freezing, while microbiological samples must be chilled and must not be frozen.**
+
+Your bacterial warning is already good.
+
+---
+
+# 🟠 10. Your dissolved-nutrient instruction is too absolute
+
+You currently say:
+
+> "Filter through a 0.45µm syringe filter immediately..."
+
+
+
+That's a legitimate method in many contexts, but I'd change it to:
+
+> **Where dissolved nutrient analysis is required, filter the sample according to the laboratory or project sampling method — commonly using a 0.45 µm filter — and preserve it as specified.**
+
+That teaches **method compliance**, which is the professional skill you're actually trying to teach.
+
+---
+
+# 🟠 11. The algal-sample instruction is too prescriptive
+
+You currently specify:
+
+> 500 mL
+> Lugol's at 1%
+> 5 mL per 500 mL
+
+
+
+That's fine **if you're explicitly teaching the AST method**.
+
+I'd simply change:
+
+> "Algal samples: Fill a 500mL plastic jar..."
+
+to:
+
+> **Algal samples: Use the container, sample volume and preservative specified by the laboratory or project method. For example, AST's algal sampling requirements may specify Lugol's preservation for identification/counting.**
+
+That stops your learning resource becoming a universal laboratory method.
+
+---
+
+# 🟢 12. The Chain of Custody section is now good
+
+This section is solid.
+
+You've got:
+
+* collector
+* date/time/location
+* handling history
+* sample ID
+* required analyses
+* hazards
+* submission.
+
+
+
+I'd leave it alone apart from perhaps changing:
+
+> "it proves they haven't been tampered with"
+
+to:
+
+> **It provides a documented record of sample custody and handling and helps demonstrate sample traceability and integrity.**
+
+"Proves" is stronger than I'd use.
+
+---
+
+# 🟢 13. Your risk section is good
+
+This has survived the review well.
+
+Working near water, slips, weather, biological hazards, chemicals, manual handling and PPE are all appropriate. 
+
+One tiny addition I'd still make:
+
+> **Never enter the water or move into an unsafe position simply to obtain a sample. Use appropriate sampling equipment or select a safer sampling location.**
+
+Very useful field-worker behaviour.
+
+---
+
+# 🟠 14. Your oily-sheen scenario is improved, but one answer still needs refinement
+
+The correct response is now:
+
+> stop, report to supervisor, photograph, record location, avoid contact.
+
+Good. 
+
+But the feedback says:
+
+> "This is a potential pollution incident."
+
+That's fine.
+
+I'd change the incorrect C feedback to:
+
+> **Do not collect a sample unless you are trained, authorised and the sampling procedure requires it. First make the situation safe and follow workplace incident/reporting procedures.**
+
+That reinforces the actual competency rather than teaching "never sample pollution incidents".
+
+---
+
+# 🟢 15. Your overall structure is excellent
+
+This is worth saying because you've made a lot of changes.
+
+The sequence now works very well:
+
+**Why → Parameters → Equipment → Planning → Sampling → Results → Practice → Resources → Simulation**
+
+And it maps sensibly to the current AHCLPW313 unit. The current TGA listing confirms AHCLPW313 Release 1 remains the current unit. ([Training.gov.au][1])
+
+The combination of:
+
+* explanations
+* field procedures
+* safety
+* templates
+* quiz
+* scenarios
+* glossary
+* simulator
+* downloadable forms
+
+makes this much more than a static learner guide.
+
+---
+
+# One thing I would change in the header
+
+You still have:
 
 > **"Covers AHCLPW313 in full"**
 
-and later:
 
-> **"You've now covered all the knowledge and skills required for AHCLPW313."** 
 
-I'd change those.
-
-Not because the resource is inadequate — quite the opposite — but because **a learning resource is not the same thing as demonstrating competency**.
-
-I'd use:
+I'd change that to:
 
 > **Supports learning for AHCLPW313**
 
-and:
+And your quiz currently says:
 
-> **You've now worked through the major knowledge and practical concepts covered by this learning resource. Your trainer/assessor will determine competency through the required assessment activities.**
+> "They reflect the types of questions you'll face in the assessment."
 
-That's much more VET/ASQA-safe.
 
----
 
-# 15. Your "urgent reporting" language needs to be workplace-specific
+I'd change that to:
 
-This:
+> **They provide practice with key knowledge and concepts covered by the unit.**
 
-> "Report to EPA/authorities immediately"
-
-appears several times. 
-
-I wouldn't teach that as the universal response.
-
-The current AHCLPW313 wording is explicitly:
-
-> report urgent water quality or environmental issues **according to workplace procedures**. ([Training.gov.au][3])
-
-So your learner should first understand:
-
-**Stop/secure → protect people → notify supervisor/workplace → follow incident/emergency procedure → notify regulator/authority where required.**
-
-That is much more transferable.
+That's more defensible because your resource isn't itself the assessment instrument.
 
 ---
 
-# 16. Your scenario about the oily sheen is good — but one answer needs changing
+# One thing I noticed that's actually quite nice
 
-You currently teach:
+Your current progress tracker is technically working towards a meaningful learning progression rather than simply counting page views. You track:
 
-> Stop sampling, report, photograph, record location, avoid contact.
+* quiz
+* scenarios
+* tabs
+* overall progress. 
 
-That's good.
+That's a good feature.
 
-But the alternative:
-
-> "Collect a sample for analysis and then report it."
-
-is marked wrong. 
-
-I'd make the lesson more nuanced:
-
-> **Do not collect a sample unless you are trained, authorised and it is safe to do so under the incident/sampling procedure.**
-
-That's a better environmental-fieldwork lesson than simply **"never sample an incident"**.
+I'd just make sure the UI doesn't imply that **100% completion = competency**.
 
 ---
 
-# 17. Your glossary needs the same scientific cleanup
-
-The glossary currently contains several old statements that contradict your improved Results tab. 
-
-I'd particularly change:
-
-**Current:**
-
-> Healthy water <10 NTU.
-
-**To:**
-
-> Turbidity is site- and ecosystem-dependent. Compare results with local/reference conditions and consider recent rainfall, flow and catchment disturbance.
-
-And:
-
-**Current:**
-
-> Fish need >4 mg/L (60% saturation).
-
-**To:**
-
-> Low dissolved oxygen can stress aquatic organisms. Effects depend on species, temperature, duration and other conditions.
-
-And:
-
-**Current:**
-
-> pH below 5 or above 9 can be lethal.
-
-**To:**
-
-> Very low or very high pH can cause severe stress or mortality in aquatic organisms; sensitivity varies between species and exposure conditions.
-
----
-
-# 18. One thing I really like: your QA/QC content
-
-This is actually better than many basic vocational resources.
-
-You've included:
-
-* duplicates
-* blanks
-* reference standards
-* calibration records
-* field blanks
-* chain of custody
-* equipment records. 
-
-That is excellent because it gets students thinking:
-
-**"Can I trust this measurement?"**
-
-rather than simply:
-
-**"What number did my meter display?"**
-
-I'd perhaps add one sentence:
-
-> **Quality assurance (QA) refers to the planned system used to ensure reliable work; quality control (QC) refers to checks used to detect problems with sampling, equipment or results.**
-
-That would give them useful terminology.
-
----
-
-# 19. The progress system is clever, but don't let it imply competency
-
-The localStorage progress tracker, quiz and scenarios are nicely done. 
-
-But I'd change:
-
-> **100% complete — you're ready for assessment!**
-
-to something like:
-
-> **100% of this learning resource completed — review the assessment requirements with your trainer.**
-
-Again, that's not because the resource isn't good enough. It's because **completion of an online resource isn't evidence of competency**.
-
----
-
-# My priority list
-
-If this were my resource, I'd make the changes in this order:
-
-### 🔴 Must fix
-
-**1. Remove the old water-quality numbers throughout the entire file.**
-
-They're still in Tab 2, summary table, glossary, simulator and trigger-level generator.
-
-**2. Remove the accidental triple-backtick Markdown.**
-
-**3. Fix the universal "rinse bottles 2–3 times" instruction.**
-
-**4. Rework the "ANZECC 2000 trigger levels" section.**
-
-The current ANZG platform has moved beyond simply treating ANZECC 2000 numbers as universal trigger values. ([Water Quality][2])
-
-**5. Make the simulator explicitly conceptual rather than predictive.**
-
----
-
-### 🟠 Should fix
-
-**6. EC → TDS conversion**
-
-**7. Turbidity tube → NTU wording**
-
-**8. DO <40% / fish-kill wording**
-
-**9. Temperature >2°C statement**
-
-**10. "Report to EPA immediately" → workplace procedure**
-
----
-
-### 🟢 Nice refinements
-
-**11. Change "Covers AHCLPW313 in full"**
-
-**12. Change "Ready for assessment" language**
-
-**13. Improve glossary consistency**
-
-**14. Add QA/QC definition**
-
-**15. Clarify field vs laboratory parameters**
-
----
-
-## And my overall assessment
-
-I want to emphasise something after actually going through the whole file:
-
-**I think you've built a much better learning resource than the water-quality table initially suggested.**
-
-The weakness isn't that the resource is fundamentally inaccurate. It's that you've accumulated **several generations of content** as you've built it — the original simplified water-quality model, the later simulator, the ANZECC trigger table, and now the more nuanced interpretation section.
-
-That's why you're getting contradictions.
-
-The current AHCLPW313 itself is explicitly about **planning, selecting equipment, safe sampling, testing, preservation, observations, reporting, data integrity and traceability**, and your resource covers those areas extensively. ([Training.gov.au][3])
-
-The next job isn't to rebuild it.
-
-It's to do a **"scientific consistency and VET defensibility pass"** across the whole `index.html`.
-
-And I think that's very achievable.
-
-**If you want, I can go one step further and give you a precise "find this → replace with this" list for the entire file — including every outdated water-quality number, every scientifically questionable sentence, the simulator wording, the AST sampling instructions, and the few HTML/JavaScript issues I spotted.** That would let you work through the file systematically without having to hunt for them yourself.
-
-[1]: https://github.com/jaysecotools/Undertake-sampling-and-testing-of-water-learning-resource/blob/main/index.html "Undertake-sampling-and-testing-of-water-learning-resource/index.html at main · jaysecotools/Undertake-sampling-and-testing-of-water-learning-resource · GitHub"
-[2]: https://www.waterquality.gov.au/anz-guidelines/about/improvements?utm_source=chatgpt.com "Improvements since 2000"
-[3]: https://training.gov.au/TrainingComponentFiles/AHC/AHCLPW313_R1.pdf "AHCLPW313 Undertake sampling and testing of water"
+# My final verdict after this second review
+
+I'd put it this way:
+
+### 🟢 Keep
+
+* overall structure
+* teaching sequence
+* safety material
+* planning material
+* sampling concepts
+* QA/QC
+* Chain of Custody
+* templates
+* quiz/scenarios
+* revised Results section
+* contextual interpretation approach
+* simulator concept
+
+### 🔴 Fix before calling it finished
+
+1. **Delete the old Tab 2 healthy-range table**
+2. **Delete/rewrite the generated ANZECC 2000 trigger table**
+3. **Clean the old numbers from the glossary**
+4. **Fix the DO `if/else` bug**
+5. **Remove "HEALTHY" from the simulator**
+6. **Remove fixed nutrient thresholds from the simulator**
+
+### 🟠 Then polish
+
+7. Temperature >2°C wording
+8. DO <40% wording
+9. Preservation wording
+10. Dissolved-nutrient filtering wording
+11. Algal sample method wording
+12. CoC "proves they haven't been tampered with"
+13. Header "Covers AHCLPW313 in full"
+14. Quiz wording
+15. Oily-sheen scenario feedback
+
+**Importantly, I don't think you need another major rewrite.** You've got the architecture right. At this point we're removing the last remnants of the original "simple water-quality thresholds" model and making the whole resource internally consistent.
+
+The **three most important remaining pieces are the old Tab 2 table, the generated ANZECC trigger table, and the glossary**. Once those are cleaned up, the scientific philosophy of the resource will be consistent from beginning to end. 
+
+[1]: https://training.gov.au/Training/Details/AHCLPW313?utm_source=chatgpt.com "National Training Register - AHCLPW313 Undertake sampling and testing of water"
