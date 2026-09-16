@@ -183,7 +183,7 @@
     <button class="tab" onclick="switchTab(event,'tab8')"><i class="fas fa-chart-simple"></i> 9. Simulator</button>
   </div>
 
-  <!-- 🌟 NEW: Search Bar -->
+  <!-- Search Bar -->
   <div style="padding: 0.5rem 1rem; background: var(--bg); border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
     <i class="fas fa-search" style="color: var(--primary-light);"></i>
     <input type="text" id="globalSearch" placeholder="Search across all tabs..." style="flex:1; padding: 0.5rem 1rem; border: 2px solid var(--border); border-radius: 60px; font-size: 0.9rem; min-width: 200px;">
@@ -248,48 +248,47 @@
   <!-- ===== TAB 2: KEY PARAMETERS ===== -->
   <div id="tab1" class="tab-content">
     <h2><i class="fas fa-flask"></i> What we measure: key water quality parameters</h2>
-    <p>These are the core parameters you'll test in the field. Each one tells us something different about the water's condition. <strong>Remember:</strong> natural water quality varies between catchments, ecosystems and seasons — the values below are general field-reference ranges, not universal pass/fail limits.</p>
+    <p>These are the core parameters you'll test in the field. Each one tells us something different about the water's condition. <strong>Important:</strong> Natural water quality varies between catchments, ecosystems and seasons — the values below are general field-reference guidance, not universal pass/fail limits. Where available, always use Tasmanian, catchment-specific or site-specific guideline values.</p>
 
     <div class="grid-2">
       <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">Temperature (°C)</div>
         <p><strong>What it is:</strong> A measure of how hot or cold the water is.</p>
         <p><strong>Why it matters:</strong> Temperature affects every other parameter. It influences oxygen levels, the toxicity of pollutants, and the survival of fish and invertebrates. Many species have a preferred temperature range.</p>
         <p><strong>How to measure:</strong> Using a thermometer or a multi-parameter probe. Submerge the sensor and wait for the reading to stabilise.</p>
-        <p><strong>Typical ranges:</strong> Freshwater streams roughly 5–25°C (seasonal), marine roughly 12–24°C, lakes vary with depth. Local reference data is more reliable than generic values.</p>
-        <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> A substantial temperature change over a short distance may warrant investigation. Compare upstream and downstream results, sampling conditions and local reference data before attributing the change to thermal pollution.</div>
+        <p><strong>Interpreting:</strong> Compare with local seasonal conditions and reference data. Temperature varies naturally with depth, shade, tributary inputs and groundwater. A substantial temperature difference over a short distance may warrant investigation. Compare upstream and downstream measurements, sampling conditions and local reference data before attributing the difference to thermal pollution.</p>
       </div>
       <div class="card"><i class="fas fa-vial"></i><div class="card-title">pH (acidity/alkalinity)</div>
         <p><strong>What it is:</strong> The scale from 0 to 14 — 7 is neutral, below 7 is acidic, above 7 is alkaline.</p>
         <p><strong>Why it matters:</strong> pH influences chemical reactions in water. Many aquatic organisms are sensitive to pH changes. pH also affects the toxicity of metals and ammonia. Very low or very high pH can cause severe stress or mortality; sensitivity varies between species and exposure conditions.</p>
         <p><strong>How to measure:</strong> Using a pH meter (electrode) or colour-change test strips. Calibrate the meter before use with buffer solutions.</p>
-        <p><strong>Typical ranges:</strong> Freshwater roughly 6.5–8.0, marine roughly 8.0–8.4, estuaries variable. Some Tasmanian waters are naturally lower or higher.</p>
+        <p><strong>Interpreting:</strong> Compare with the expected range for that waterbody. Some Tasmanian waters — particularly humic or peat-influenced systems — are naturally lower than typical. Rapid or extreme changes may indicate a source of concern.</p>
         <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> pH can change rapidly during algal blooms — measure at the same time each day for consistent comparisons.</div>
       </div>
       <div class="card"><i class="fas fa-bolt"></i><div class="card-title">Electrical Conductivity (EC) & Salinity</div>
         <p><strong>What it is:</strong> A measure of how well water conducts electricity, which relates to the amount of dissolved salts (ions). Often reported as <strong>salinity</strong> in parts per thousand (ppt).</p>
         <p><strong>Why it matters:</strong> EC tells us about the mineral content. High salinity can stress freshwater species; low salinity is important for estuaries. It helps identify saltwater intrusion or agricultural runoff.</p>
         <p><strong>How to measure:</strong> Using a conductivity sensor (often part of a multi-parameter sonde).</p>
-        <p><strong>Typical ranges:</strong> Freshwater varies by catchment (often &lt;500 µS/cm but higher in some regions), brackish 500–5,000, marine roughly 50,000–55,000 µS/cm (≈35 ppt). Site-specific reference data is more reliable.</p>
+        <p><strong>Interpreting:</strong> EC is highly site-dependent. What is "normal" in one catchment may be unusual in another. Compare with local reference data and look for significant changes from the normal local value. Marine water is roughly 50,000–55,000 µS/cm (≈35 ppt).</p>
         <p><strong>Conversion:</strong> TDS can be estimated from EC using a conversion factor, but the factor varies with water chemistry. A commonly used approximate range is 0.5–0.7, but use the instrument/manufacturer or project-specific factor where available.</p>
       </div>
       <div class="card"><i class="fas fa-wind"></i><div class="card-title">Dissolved Oxygen (DO)</div>
         <p><strong>What it is:</strong> The amount of oxygen gas dissolved in the water, measured in mg/L or % saturation.</p>
-        <p><strong>Why it matters:</strong> Fish and other aquatic life need oxygen to survive. Very low DO can cause severe physiological stress and, if sufficiently low and prolonged, mortality. The effect depends on species, temperature, duration and local conditions. Cold water holds more oxygen than warm water.</p>
+        <p><strong>Why it matters:</strong> Fish and other aquatic life need oxygen to survive. Very low dissolved oxygen can cause severe stress and, when sufficiently low and prolonged, can result in fish mortality. Effects depend on species, temperature, exposure duration and local conditions. Cold water holds more oxygen than warm water.</p>
         <p><strong>How to measure:</strong> Using a DO probe (optical or electrochemical). Ensure the probe is calibrated and free of bubbles.</p>
-        <p><strong>Typical ranges:</strong> Healthy water roughly 80–110% saturation (≈6–9 mg/L). Persistently low readings warrant investigation.</p>
+        <p><strong>Interpreting:</strong> Consider saturation, temperature, time of day and local conditions. DO fluctuates naturally through the diurnal cycle. Persistently low readings warrant investigation. Follow workplace procedures for reporting unusually low DO.</p>
         <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Investigate:</strong> DO readings persistently below 60% saturation are a concern and should be reported according to workplace procedures.</div>
       </div>
       <div class="card"><i class="fas fa-cloud-sun"></i><div class="card-title">Turbidity (clarity)</div>
         <p><strong>What it is:</strong> A measure of water clarity, affected by suspended particles like silt, clay, or algae. Reported in Nephelometric Turbidity Units (NTU).</p>
-        <p><strong>Why it matters:</strong> High turbidity reduces light penetration, which can affect plant growth and fish feeding. It can also carry pollutants attached to sediment particles. Turbidity is site- and ecosystem-dependent — some waterways are naturally more turbid than others.</p>
+        <p><strong>Why it matters:</strong> High turbidity reduces light penetration, which can affect plant growth and fish feeding. It can also carry pollutants attached to sediment particles.</p>
         <p><strong>How to measure:</strong> Using a turbidity tube (visual), Secchi disk (in lakes), or a turbidity sensor. Always collect sample without disturbing sediment.</p>
-        <p><strong>Typical ranges:</strong> Clear streams often low NTU; turbid rivers can be 10–100+ NTU depending on flow; lakes vary widely. Compare with local reference conditions.</p>
+        <p><strong>Interpreting:</strong> Turbidity is site- and ecosystem-dependent. Some waterways are naturally more turbid than others. Compare with normal conditions for that site and consider recent rainfall, flow and catchment disturbance. A sudden increase above the local reference may indicate increased sediment or biological material.</p>
       </div>
       <div class="card"><i class="fas fa-leaf"></i><div class="card-title">Nutrients – Nitrate & Phosphate</div>
         <p><strong>What they are:</strong> Nitrate (NO₃⁻) and phosphate (PO₄³⁻) are essential plant nutrients, but in excess they cause problems.</p>
-        <p><strong>Why they matter:</strong> High nutrient levels cause <strong>eutrophication</strong> — excessive algal growth (blooms) that can deplete oxygen and produce toxins. Measuring nutrients helps identify sources like fertiliser runoff, sewage, or animal waste.</p>
+        <p><strong>Why they matter:</strong> High nutrient levels can cause <strong>eutrophication</strong> — excessive algal growth (blooms) that can deplete oxygen and produce toxins. Measuring nutrients helps identify potential sources like fertiliser runoff, sewage, or animal waste.</p>
         <p><strong>How to measure:</strong> Using colourimetric test kits (drop tests or strips) or collecting samples for laboratory analysis.</p>
-        <p><strong>Typical ranges:</strong> Generally low in minimally disturbed waters. Elevated levels above local reference conditions may indicate nutrient enrichment.</p>
+        <p><strong>Interpreting:</strong> Nutrient concentrations vary considerably between catchments and ecosystems. Minimally disturbed waters generally have relatively low nutrient concentrations. Compare results with appropriate local or site-specific guideline values rather than relying on generic numbers.</p>
         <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Remember:</strong> Nitrogen and phosphorus are often the limiting nutrients in aquatic systems. An increase in either can trigger an algal bloom.</div>
       </div>
     </div>
@@ -304,17 +303,18 @@
       <div class="card"><i class="fas fa-gas"></i><div class="card-title">Ammonia / Ammonium</div><p>Nitrogen forms — ammonia (NH₃) is toxic to fish; ammonium (NH₄⁺) is less toxic but can convert to ammonia at high pH.</p></div>
     </div>
 
-    <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Summary table — general field-reference ranges:</strong>
+    <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Summary — general interpretation guide:</strong>
       <table style="font-size:0.85rem;">
-        <tr><th>Parameter</th><th>Freshwater – general reference</th><th>Marine – general reference</th><th>Investigate if...</th></tr>
-        <tr><td>pH</td><td>~6.5–8.0</td><td>~8.0–8.4</td><td>Outside the expected local range</td></tr>
-        <tr><td>DO (% sat)</td><td>~80–110%</td><td>~80–110%</td><td>Persistently low, particularly &lt;60%</td></tr>
-        <tr><td>EC (µS/cm)</td><td>Highly site-dependent</td><td>~50,000–55,000 (seawater)</td><td>Large change from the normal local value</td></tr>
-        <tr><td>Turbidity (NTU)</td><td>Highly site-dependent</td><td>Highly site-dependent</td><td>Large increase above the normal local value</td></tr>
-        <tr><td>Nitrate (mg/L as N)</td><td>Generally low in minimally disturbed waters</td><td>Generally very low in nutrient-poor waters</td><td>Elevated above local/reference condition</td></tr>
-        <tr><td>FRP (mg/L as P)</td><td>Generally very low</td><td>Generally very low</td><td>Elevated above local/reference condition</td></tr>
+        <tr><th>Parameter</th><th>General interpretation</th></tr>
+        <tr><td>Temperature</td><td>Compare with local seasonal/reference conditions</td></tr>
+        <tr><td>pH</td><td>Compare with the expected range for the waterbody</td></tr>
+        <tr><td>EC</td><td>Highly site-dependent; look for significant changes from local conditions</td></tr>
+        <tr><td>DO</td><td>Consider saturation, temperature, time of day and local conditions</td></tr>
+        <tr><td>Turbidity</td><td>Compare with normal conditions and recent rainfall/flow</td></tr>
+        <tr><td>Nitrate-N</td><td>Generally low in minimally disturbed waters</td></tr>
+        <tr><td>FRP</td><td>Generally very low in minimally disturbed waters</td></tr>
       </table>
-      <p style="font-size:0.8rem;"><strong>Important:</strong> Natural water quality varies between catchments and ecosystems. Where available, use Tasmanian, catchment-specific or site-specific guideline values rather than relying on generic numbers.</p>
+      <p style="font-size:0.8rem; margin-top:0.5rem;"><strong>Important:</strong> There are no universal pass/fail values for all water bodies. Appropriate guideline values depend on the ecosystem, location, reference condition and purpose of monitoring. Where available, use Tasmanian, catchment-specific or site-specific values rather than generic numbers.</p>
     </div>
 
     <h3>Your progress</h3>
@@ -426,7 +426,7 @@
       </div>
       <div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Risk assessment essentials</div>
         <p>Every field trip needs a risk assessment. Consider these common hazards:</p>
-        <ul><li><strong>Working near water</strong> — wear a life jacket, use a buddy system, avoid slippery banks. Never enter water or sample from an unsafe position simply to obtain a sample.</li>
+        <ul><li><strong>Working near water</strong> — wear a life jacket, use a buddy system, avoid slippery banks. Never enter the water or move into an unsafe position simply to obtain a sample. Use appropriate sampling equipment or select a safer sampling location.</li>
         <li><strong>Slips, trips & falls</strong> — wear sturdy footwear, keep work areas tidy.</li>
         <li><strong>Exposure to elements</strong> — sun protection (hat, sunscreen, long sleeves), hydration, and weather-appropriate clothing.</li>
         <li><strong>Bites & stings</strong> — be aware of snakes, spiders, and insects. Wear protective clothing and use repellent.</li>
@@ -480,15 +480,15 @@
       <div class="card"><i class="fas fa-syringe"></i><div class="card-title">Sample collection techniques</div>
         <p><strong>Surface samples:</strong> Use a clean container or a sampling pole. Submerge just below the surface, away from the bank.</p>
         <p><strong>Subsurface samples:</strong> Use a Niskin bottle or pump sampler. Record the depth.</p>
-        <p><strong>Dissolved nutrients:</strong> Filter through a 0.45µm syringe filter <em>immediately</em> into a 50mL tube. This removes particles that can change nutrient levels during storage.</p>
-        <p><strong>Algal samples:</strong> Fill a 500mL plastic jar to the shoulder. Add Lugols preservative (1% v/v — that's 5mL per 500mL) to preserve the sample for identification and counting.</p>
+        <p><strong>Dissolved nutrients:</strong> Where dissolved nutrient analysis is required, filter the sample according to the laboratory or project sampling method — commonly using a 0.45 µm filter — and preserve it as specified by the laboratory.</p>
+        <p><strong>Algal samples:</strong> Use the container, sample volume and preservative specified by the laboratory or project method. For example, AST's algal sampling requirements may specify Lugol's preservation for identification and counting. Follow the laboratory's instructions.</p>
         <p><strong>Bacterial samples:</strong> Use sterile containers, collect aseptically, and keep cold. Deliver to lab within 24 hours.</p>
         <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)">🧪 Dissolved vs. total nutrients — what's the difference? <i class="fas fa-chevron-down"></i></div>
           <div class="accordion-content"><p><strong>Total nutrients:</strong> Measure all forms of nitrogen and phosphorus in the sample, including particulate and dissolved. Acid digestion breaks down particles.</p><p><strong>Dissolved nutrients:</strong> Measure only the soluble forms (nitrate, phosphate). Samples are filtered to remove particles. This is useful for assessing immediate biological availability.</p></div></div>
       </div>
       <div class="card"><i class="fas fa-snowflake"></i><div class="card-title">Preservation & storage</div>
         <p><strong>Keep it cool:</strong> Place samples in an insulated esky with ice packs as soon as they're collected. This slows biological and chemical change.</p>
-        <p><strong>Preservation is analyte/method specific:</strong> Preservation and holding times depend on the parameter and laboratory method. Follow the laboratory's instructions for each analysis. For example, Analytical Services Tasmania specifies different preservation and holding requirements for total nutrients, dissolved nutrients, microbiological samples and other analyses. Contact the laboratory before sampling if you are unsure.</p>
+        <p><strong>Preservation is parameter, container and method specific:</strong> Preservation and holding times depend on the parameter, container and analytical method. Follow the laboratory's instructions for each analysis. Some nutrient samples may require filtration and/or freezing, while microbiological samples must be chilled and must not be frozen. Contact the laboratory before sampling if you are unsure.</p>
         <p><strong>Typical holding times (Analytical Services Tasmania):</strong></p>
         <ul><li>Total nutrients: freeze; 28 days</li>
         <li>Dissolved nutrients: filter and freeze ASAP (preferably within 24 hours); 28 days frozen</li>
@@ -507,7 +507,7 @@
       <ul><li>Who collected the samples</li>
       <li>When and where they were collected</li>
       <li>Every person who handled the samples before they reached the lab</li></ul>
-      <p>The CoC ensures the integrity of the samples — it proves they haven't been tampered with. It's legally important if results are used for compliance or legal proceedings.</p>
+      <p>The CoC provides a documented record of sample custody and handling and helps demonstrate sample traceability and integrity. It is important if results are used for compliance or legal proceedings.</p>
       <div class="tip"><i class="fas fa-pen"></i> <strong>Label each sample with:</strong> Site name, date, time of collection, and the tests required. Group samples from each site together in a labelled bag.</div>
       <p><strong>Submitting to AST:</strong> Complete the submission form (available from <a href="#" onclick="window.open('https://analyticalservices.tas.gov.au/our-services/containers-samples-and-submissions','_blank')" class="resource-link">AST website</a>). Include hazard information if samples contain toxins, hydrocarbons, or pathogens.</p>
       <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)">📋 Completing the AST submission form <i class="fas fa-chevron-down"></i></div>
@@ -572,6 +572,18 @@
       <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Always record the date, time, weather, recent rainfall, flow conditions and sampling location.</strong> This context can be critical when interpreting water-quality results. For long-term monitoring, sampling at a consistent time can make comparisons more meaningful.</div>
     </div>
 
+    <div class="card"><i class="fas fa-search"></i><div class="card-title">Interpreting an unusual result</div>
+      <p>There are no universal pass/fail values for all water bodies. Appropriate guideline values depend on the ecosystem, location, reference condition and purpose of monitoring.</p>
+      <p>When a result appears unusual:</p>
+      <ol>
+        <li>Check the measurement and equipment.</li>
+        <li>Check sampling time, weather, rainfall and flow conditions.</li>
+        <li>Compare the result with appropriate local or site-specific reference values.</li>
+        <li>Look for changes across sites or over time.</li>
+        <li>Follow workplace procedures for reporting unusual or urgent results.</li>
+      </ol>
+    </div>
+
     <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>When to report or investigate urgently:</strong><br>
       • Very low dissolved oxygen, particularly persistent readings below 60% saturation<br>
       • Extreme or rapidly changing pH outside the expected local range<br>
@@ -604,7 +616,7 @@
   <!-- ===== TAB 7: TEST YOUR KNOWLEDGE ===== -->
   <div id="tab6" class="tab-content">
     <h2><i class="fas fa-puzzle-piece"></i> Test your knowledge</h2>
-    <p>Try these questions to see how well you've grasped the key concepts. They reflect the types of questions you'll face in the assessment.</p>
+    <p>Try these questions to see how well you've grasped the key concepts. They provide practice with key knowledge and concepts covered by the unit.</p>
 
     <div class="quiz-card">
       <h3>📝 Knowledge check (12 questions)</h3>
@@ -718,10 +730,6 @@
       </div>
       <div id="progressMessage" style="margin-top:0.5rem; font-size:0.9rem;"></div>
     </div>
-
-    <h3>Your progress</h3>
-    <div class="progress-container"><div class="progress-fill" style="width:95%;"></div></div>
-    <p style="font-size:0.9rem; color:var(--primary-light);">95% complete — almost finished! Review the resources tab for final consolidation.</p>
   </div>
 
   <!-- ===== TAB 8: RESOURCES & GLOSSARY ===== -->
@@ -899,7 +907,7 @@
         <i class="fas fa-info-circle" style="font-size: 1.8rem; color: var(--accent); margin-top: 0.1rem;"></i>
         <div>
           <h4 style="margin: 0 0 0.3rem; color: var(--primary);">⚠️ Educational simulation — not a predictive water-quality model</h4>
-          <p style="font-size: 0.9rem; margin: 0;">This simulator uses simplified relationships to demonstrate concepts such as the effects of temperature, light, nutrients and salinity. Real water-quality relationships are much more complex and depend on many additional physical, chemical and biological factors. Simulator results must not be used to predict actual field conditions or replace field measurements.</p>
+          <p style="font-size: 0.9rem; margin: 0;">The relationships used here are simplified for learning and do not represent the full complexity of real aquatic systems. Simulator outputs must not be used to assess actual water quality or replace field measurements. Real water-quality interpretation requires appropriate local or site-specific guideline values and consideration of the full context.</p>
         </div>
       </div>
     </div>
@@ -969,9 +977,9 @@
           </div>
 
           <div style="background:var(--accent-soft); border-radius:12px; padding:1rem; margin-top:0.5rem;">
-            <strong>🔍 Interpretation:</strong>
+            <strong>🔍 Interpretation (teaching feedback only):</strong>
             <div id="simInterpretation" style="font-size:0.9rem; margin-top:0.3rem;">
-              ✅ Healthy water quality. All parameters within expected ranges.
+              ℹ️ No flags raised by this simulation. Interpretation of real water quality requires local reference values and consideration of the full context.
             </div>
           </div>
 
@@ -1073,7 +1081,7 @@ function selectScen(num, choice) {
         C: '❌ Adding fertiliser would make the problem worse by adding more nutrients.' },
     4: { A: '❌ An oily sheen is abnormal and likely indicates pollution. Continuing could be dangerous.',
         B: '✅ Correct: stop, report, document, and avoid contact. This is a potential pollution incident.',
-        C: '❌ Do not collect a sample unless you are trained, authorised and it is safe to do so under the incident/sampling procedure. Safety first — follow workplace procedures and report.' }
+        C: '❌ Do not collect a sample unless you are trained, authorised and the sampling procedure requires it. First make the situation safe and follow workplace incident/reporting procedures.' }
   };
   fb.innerHTML = `<strong>Feedback:</strong> ${msgs[num]?.[choice] || 'Review the scenario and try again.'}`;
   fb.style.display = 'block';
@@ -1308,10 +1316,9 @@ function updateSimulator() {
   document.getElementById('simSalinityVal').textContent = salinity.toFixed(1) + ' ppt';
   document.getElementById('simSalinity').textContent = salinity.toFixed(1);
 
-  // Interpretation — softened language, no predictive claims
+  // ===== INTERPRETATION — teaching feedback only, no universal thresholds =====
   const interpret = document.getElementById('simInterpretation');
   let messages = [];
-  let status = '✅ ';
 
   // Salinity teaching categories
   if (salinity < 0.5) {
@@ -1326,35 +1333,54 @@ function updateSimulator() {
     messages.push('🌊 Marine salinity range (>30 ppt) — typical of ocean sites');
   }
 
-  // DO
-  if (doPercent < 40) messages.push('🚨 Very low DO — this may cause severe physiological stress and, if prolonged, mortality');
-  else if (doPercent < 60) messages.push('⚠️ Low DO — potential stress for aquatic life');
-  else messages.push('✅ DO levels generally adequate');
+  // DO — teaching categories, avoiding "fish kills likely"
+  if (doPercent < 40) {
+    messages.push('🚨 Very low DO in this teaching scenario — severe aquatic stress; follow workplace response procedures');
+  } else if (doPercent < 60) {
+    messages.push('⚠️ Low DO in this teaching scenario — may stress aquatic life');
+  } else {
+    messages.push('ℹ️ DO not flagged by this teaching model');
+  }
 
-  // pH
-  if (pH < 6.0) messages.push('⚠️ pH below typical freshwater range — investigate if outside local reference');
-  else if (pH > 8.5) messages.push('⚠️ pH above typical freshwater range — possible algal influence');
-  else messages.push('✅ pH within typical freshwater range');
+  // pH — teaching categories
+  if (pH < 6.0) {
+    messages.push('ℹ️ pH below typical freshwater range in this teaching scenario — investigate if outside local reference');
+  } else if (pH > 8.5) {
+    messages.push('ℹ️ pH above typical freshwater range in this teaching scenario — possible algal influence');
+  } else {
+    messages.push('ℹ️ pH within typical freshwater range for this teaching scenario');
+  }
 
-  // Nutrients
-  if (nitrate > 5 || phosphate > 0.1) messages.push('🚨 High nutrients — eutrophication risk');
-  else if (nitrate > 2 || phosphate > 0.05) messages.push('⚠️ Elevated nutrients — monitor regularly');
-  else messages.push('✅ Nutrients at low levels');
+  // Nutrients — teaching categories, no universal thresholds
+  if (nitrate > 5 || phosphate > 0.1) {
+    messages.push('⚠️ High nutrient input in this teaching scenario — consider eutrophication processes');
+  } else if (nitrate > 2 || phosphate > 0.05) {
+    messages.push('ℹ️ Elevated nutrient input in this teaching scenario');
+  } else {
+    messages.push('ℹ️ Lower nutrient input in this teaching scenario');
+  }
 
-  // Turbidity
-  if (turbidity > 50) messages.push('⚠️ High turbidity — investigate local reference conditions');
-  else if (turbidity > 20) messages.push('⚠️ Elevated turbidity — possible sediment or algae');
-  else messages.push('✅ Water clarity generally good');
+  // Turbidity — teaching categories
+  if (turbidity > 50) {
+    messages.push('ℹ️ High turbidity in this teaching scenario — investigate local reference conditions');
+  } else if (turbidity > 20) {
+    messages.push('ℹ️ Elevated turbidity in this teaching scenario — possible sediment or algae');
+  } else {
+    messages.push('ℹ️ Water clarity generally good for this teaching scenario');
+  }
 
-  // Bloom conditions
-  if (nitrate > 3 && phosphate > 0.08 && light > 50) messages.push('🚨 Conditions may favour algal bloom — investigate');
-  else if (nitrate > 2 && phosphate > 0.05) messages.push('⚠️ Conditions could potentially trigger algal bloom');
+  // Bloom conditions — teaching only
+  if (nitrate > 3 && phosphate > 0.08 && light > 50) {
+    messages.push('⚠️ Conditions may favour algal bloom in this teaching scenario');
+  }
 
+  // Determine overall status — no "HEALTHY" claim
   const hasCritical = messages.some(m => m.includes('🚨'));
   const hasWarning = messages.some(m => m.includes('⚠️'));
-  if (hasCritical) status = '🚨 CRITICAL — ';
-  else if (hasWarning) status = '⚠️ WARNING — ';
-  else status = '✅ HEALTHY — ';
+  let status;
+  if (hasCritical) status = '🚨 REVIEW THIS SCENARIO — ';
+  else if (hasWarning) status = '⚠️ INVESTIGATE THIS SCENARIO — ';
+  else status = 'ℹ️ NO FLAGS IN THIS SIMULATION — ';
 
   interpret.innerHTML = status + messages.join(' · ');
 }
@@ -1705,11 +1731,11 @@ function downloadAllTemplates() {
 // ===== COMPREHENSIVE GLOSSARY DATA =====
 const glossaryTerms = [
   { term: "pH", category: "parameters", definition: "A scale from 0 to 14 measuring acidity (below 7) or alkalinity (above 7). Neutral is 7.", details: "pH affects chemical reactions and aquatic life. Sensitivity varies between species and exposure conditions. Very low or very high pH can cause severe stress or mortality." },
-  { term: "Electrical Conductivity (EC)", category: "parameters", definition: "A measure of the water's ability to conduct electricity, related to the amount of dissolved salts.", details: "EC indicates mineral content. Freshwater varies by catchment, brackish 500–5,000, marine roughly 50,000–55,000 µS/cm. High EC can stress freshwater species." },
-  { term: "Turbidity", category: "parameters", definition: "A measure of water clarity, affected by suspended particles like silt and algae. Measured in NTU.", details: "Turbidity is site- and ecosystem-dependent. High turbidity reduces light penetration and can carry pollutants attached to sediment. Compare results with local/reference conditions and consider recent rainfall, flow and catchment disturbance." },
-  { term: "Dissolved Oxygen (DO)", category: "parameters", definition: "The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.", details: "Low dissolved oxygen can stress aquatic organisms. Effects depend on species, temperature, duration and other conditions. Cold water holds more oxygen." },
+  { term: "Electrical Conductivity (EC)", category: "parameters", definition: "A measure of the water's ability to conduct electricity, related to the amount of dissolved salts.", details: "EC is highly site-dependent. What is 'normal' in one catchment may be unusual in another. Marine water is roughly 50,000–55,000 µS/cm (≈35 ppt). Compare with local reference data." },
+  { term: "Turbidity", category: "parameters", definition: "A measure of water clarity, affected by suspended particles like silt and algae. Measured in NTU.", details: "Turbidity is site- and ecosystem-dependent. Interpretation depends on the waterbody, local reference condition, rainfall and flow. A sudden increase may indicate increased sediment or biological material." },
+  { term: "Dissolved Oxygen (DO)", category: "parameters", definition: "The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.", details: "Low DO can cause stress and, when sufficiently low and prolonged, mortality. Effects depend on species, temperature, duration and local conditions. Cold water holds more oxygen." },
   { term: "Salinity", category: "parameters", definition: "The concentration of dissolved salts in water, measured in parts per thousand (ppt).", details: "Freshwater <0.5 ppt, brackish 0.5–30 ppt, marine ~35 ppt (approximate teaching categories). Salinity affects species distribution and osmoregulation." },
-  { term: "Nutrients", category: "parameters", definition: "Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can cause algal blooms when in excess.", details: "Generally low in minimally disturbed waters. Excess nutrients cause eutrophication. Major sources: fertiliser runoff, sewage, animal waste." },
+  { term: "Nutrients", category: "parameters", definition: "Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can contribute to algal blooms when in excess.", details: "Nitrogen and phosphorus are essential nutrients. Excessive concentrations can contribute to eutrophication. Compare results with appropriate local or site-specific guideline values." },
   { term: "Alkalinity", category: "parameters", definition: "The capacity of water to neutralise acids — provides buffering against pH changes.", details: "Important for aquatic life and water treatment. Low alkalinity makes water susceptible to pH swings. Measured in mg/L as CaCO₃." },
   { term: "TDS (Total Dissolved Solids)", category: "parameters", definition: "The total concentration of dissolved minerals in water, measured in mg/L.", details: "TDS affects taste and aquatic life. Conversion from EC varies with water chemistry — a commonly used approximate range is 0.5–0.7, but use the instrument/manufacturer or project-specific factor where available." },
   { term: "Hypoxia", category: "parameters", definition: "Low dissolved oxygen conditions that can cause stress and mortality in aquatic life.", details: "Often caused by eutrophication, thermal pollution, or organic loading. Effects depend on species, temperature, duration and local conditions." },
@@ -1717,7 +1743,7 @@ const glossaryTerms = [
   { term: "Enterococci", category: "parameters", definition: "Bacteria used as an indicator of faecal contamination in recreational waters.", details: "More persistent than E. coli in marine and estuarine waters. Used for swimming beach monitoring." },
   
   { term: "Multi-parameter sonde", category: "equipment", definition: "A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.", details: "Must be calibrated before use. Rinse with distilled water after use. Store sensors with moist pads." },
-  { term: "Lugols solution", category: "equipment", definition: "An iodine-based preservative used to preserve algal samples for identification and counting.", details: "Add 1% v/v (5mL per 500mL sample). Preserves cell structure and colour. Samples can be stored for up to 6 months." },
+  { term: "Lugols solution", category: "equipment", definition: "An iodine-based preservative used to preserve algal samples for identification and counting.", details: "Typically added at 1% v/v (5mL per 500mL sample) but always follow the laboratory's specified method. Preserves cell structure and colour." },
   { term: "Secchi disk", category: "equipment", definition: "A black-and-white disk used to measure water clarity in lakes and marine waters.", details: "Lowered into water until it disappears. Record the depth. Simple, low-cost method." },
   { term: "Refractometer", category: "equipment", definition: "A handheld optical instrument that measures salinity (ppt) or specific gravity.", details: "Calibrate with distilled water (0 ppt). Temperature affects readings." },
   { term: "Turbidity tube", category: "equipment", definition: "A clear tube with a black-and-white pattern on the base used to estimate turbidity.", details: "Fill the tube and observe the target at the base. Follow the manufacturer's method — some provide a direct/calibrated NTU scale, others provide a visual depth measurement." },
@@ -1726,7 +1752,7 @@ const glossaryTerms = [
   { term: "Esky / Cooler", category: "equipment", definition: "An insulated container used to keep samples cool during transport from the field to the lab.", details: "Use with ice packs — never directly on samples. Maintains 2–8°C for bacterial samples." },
   
   { term: "Eutrophication", category: "concepts", definition: "The process where excessive nutrients cause algal blooms, which can deplete oxygen and harm aquatic life.", details: "Triggers algal blooms, reduces water clarity. Can produce toxins. Reversing eutrophication takes years." },
-  { term: "Chain of Custody", category: "concepts", definition: "A documented record of who handled a sample from collection to laboratory analysis.", details: "Proves sample integrity. Required for legal proceedings." },
+  { term: "Chain of Custody", category: "concepts", definition: "A documented record of who handled a sample from collection to laboratory analysis.", details: "Provides a record of sample custody and handling. Helps demonstrate traceability and integrity." },
   { term: "Field blank", category: "concepts", definition: "A sample of distilled water processed in the field exactly like a real sample — used to check for contamination.", details: "Identifies contamination during collection and handling." },
   { term: "QA / QC", category: "concepts", definition: "Quality assurance (QA) is the planned system used to ensure reliable work; quality control (QC) refers to the checks used to detect problems with sampling, equipment or results.", details: "QA is proactive (systems and procedures); QC is reactive (checking outputs). Both are essential for trustworthy data." },
   { term: "Riparian zone", category: "concepts", definition: "The vegetated area alongside waterways. Healthy zones filter runoff, stabilise banks, and provide shade.", details: "Filters sediment and nutrients, stabilises banks, moderates water temperature." },
