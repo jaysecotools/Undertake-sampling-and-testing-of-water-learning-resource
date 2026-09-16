@@ -92,7 +92,6 @@
       border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       transition: transform 0.15s;
     }
-     
     .card:hover { transform: translateY(-3px); }
     .card i { font-size: 2rem; color: var(--primary-light); margin-bottom: 0.6rem; }
     .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
@@ -100,26 +99,15 @@
     th { background: var(--primary); color: white; padding: 10px 14px; font-weight: 600; text-align: left; }
     td { border: 1px solid var(--border); padding: 10px 14px; background: white; vertical-align: top; }
     .checklist-card { background: var(--accent-soft); border: 3px solid var(--accent); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0; }
-/* Glossary card hover effect */
-.glossary-header:hover {
-  background: var(--bg) !important;
-}
-
-/* Glossary category badge colours */
-.glossary-item[data-category="parameters"] .glossary-header span:last-child { background: #dbeafe; color: #1a56db; }
-.glossary-item[data-category="equipment"] .glossary-header span:last-child { background: #fef3c7; color: #92400e; }
-.glossary-item[data-category="concepts"] .glossary-header span:last-child { background: #d1fae5; color: #065f46; }
-.glossary-item[data-category="standards"] .glossary-header span:last-child { background: #fce4ec; color: #9a1f3c; }
-
-/* Responsive: stack on mobile */
-@media (max-width: 600px) {
-  #glossaryContainer {
-    grid-template-columns: 1fr !important;
-  }
-  .glossary-header {
-    font-size: 0.9rem;
-  }
-}
+    .glossary-header:hover { background: var(--bg) !important; }
+    .glossary-item[data-category="parameters"] .glossary-header span:last-child { background: #dbeafe; color: #1a56db; }
+    .glossary-item[data-category="equipment"] .glossary-header span:last-child { background: #fef3c7; color: #92400e; }
+    .glossary-item[data-category="concepts"] .glossary-header span:last-child { background: #d1fae5; color: #065f46; }
+    .glossary-item[data-category="standards"] .glossary-header span:last-child { background: #fce4ec; color: #9a1f3c; }
+    @media (max-width: 600px) {
+      #glossaryContainer { grid-template-columns: 1fr !important; }
+      .glossary-header { font-size: 0.9rem; }
+    }
     .btn {
       background: var(--accent); color: #1a2e3b; font-weight: 700; border: none;
       padding: 0.5rem 1.2rem; border-radius: 60px; cursor: pointer; transition: 0.2s;
@@ -177,7 +165,7 @@
     <div class="hero-badges">
       <span><i class="fas fa-graduation-cap"></i> Beginner to advanced</span>
       <span><i class="fas fa-ruler-combined"></i> What, why & how</span>
-      <span><i class="fas fa-clipboard-check"></i> Covers AHCLPW313 in full</span>
+      <span><i class="fas fa-clipboard-check"></i> Supports learning for AHCLPW313</span>
       <span><i class="fas fa-globe"></i> Australian context & standards</span>
       <span><i class="fas fa-infinity"></i> Lifelong learning</span>
     </div>
@@ -192,7 +180,7 @@
     <button class="tab" onclick="switchTab(event,'tab5')"><i class="fas fa-chart-bar"></i> 6. Results</button>
     <button class="tab" onclick="switchTab(event,'tab6')"><i class="fas fa-puzzle-piece"></i> 7. Practice</button>
     <button class="tab" onclick="switchTab(event,'tab7')"><i class="fas fa-book"></i> 8. Resources</button>
-<button class="tab" onclick="switchTab(event,'tab8')"><i class="fas fa-chart-simple"></i> 9. Simulator</button>
+    <button class="tab" onclick="switchTab(event,'tab8')"><i class="fas fa-chart-simple"></i> 9. Simulator</button>
   </div>
 
   <!-- 🌟 NEW: Search Bar -->
@@ -242,11 +230,11 @@
       </div>
       <div class="card"><i class="fas fa-balance-scale"></i><div class="card-title">National standards & guidelines</div>
         <p>Australia has robust water quality guidelines to protect our waterways:</p>
-        <ul><li><strong>ANZECC 2000</strong> — Australian and New Zealand Guidelines for Fresh and Marine Water Quality. Provides trigger values for ecosystem protection.</li>
+        <ul><li><strong>ANZG (formerly ANZECC)</strong> — Australian and New Zealand Guidelines for Fresh and Marine Water Quality. Provides default guideline values for ecosystem protection. These are periodically revised — the current ANZG platform uses updated data and an ecoregional approach.</li>
         <li><strong>Australian Drinking Water Guidelines</strong> — health-based limits for drinking water.</li>
-        <li><strong>State-based regulations</strong> — each state has specific water quality policies (e.g., Tasmanian Water Quality Guidelines).</li>
+        <li><strong>State-based regulations</strong> — each state has specific water quality policies and guidelines.</li>
         <li><strong>National Water Quality Management Strategy</strong> — overarching framework for water quality management in Australia.</li></ul>
-        <div class="tip"><i class="fas fa-info-circle"></i> <strong>Note:</strong> Guidelines are not legally binding standards — they provide trigger values. If exceeded, further investigation is recommended.</div>
+        <div class="tip"><i class="fas fa-info-circle"></i> <strong>Note:</strong> Guideline values are not legally binding standards — they provide trigger values for investigation. They are not universal pass/fail thresholds and should be applied with local knowledge.</div>
       </div>
     </div>
 
@@ -260,48 +248,48 @@
   <!-- ===== TAB 2: KEY PARAMETERS ===== -->
   <div id="tab1" class="tab-content">
     <h2><i class="fas fa-flask"></i> What we measure: key water quality parameters</h2>
-    <p>These are the core parameters you'll test in the field. Each one tells us something different about the water's condition.</p>
+    <p>These are the core parameters you'll test in the field. Each one tells us something different about the water's condition. <strong>Remember:</strong> natural water quality varies between catchments, ecosystems and seasons — the values below are general field-reference ranges, not universal pass/fail limits.</p>
 
     <div class="grid-2">
       <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">Temperature (°C)</div>
         <p><strong>What it is:</strong> A measure of how hot or cold the water is.</p>
         <p><strong>Why it matters:</strong> Temperature affects every other parameter. It influences oxygen levels, the toxicity of pollutants, and the survival of fish and invertebrates. Many species have a preferred temperature range.</p>
         <p><strong>How to measure:</strong> Using a thermometer or a multi-parameter probe. Submerge the sensor and wait for the reading to stabilise.</p>
-        <p><strong>Expected ranges:</strong> Freshwater streams 5–25°C (seasonal), marine 12–24°C, lakes vary with depth.</p>
-        <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> Temperature changes of more than 2°C in a short distance can indicate thermal pollution (e.g., from industrial cooling water).</div>
+        <p><strong>Typical ranges:</strong> Freshwater streams roughly 5–25°C (seasonal), marine roughly 12–24°C, lakes vary with depth. Local reference data is more reliable than generic values.</p>
+        <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> A substantial temperature change over a short distance may warrant investigation. Compare upstream and downstream results, sampling conditions and local reference data before attributing the change to thermal pollution.</div>
       </div>
       <div class="card"><i class="fas fa-vial"></i><div class="card-title">pH (acidity/alkalinity)</div>
         <p><strong>What it is:</strong> The scale from 0 to 14 — 7 is neutral, below 7 is acidic, above 7 is alkaline.</p>
-        <p><strong>Why it matters:</strong> pH influences chemical reactions in water. Many aquatic organisms are sensitive to pH changes. Extremes (below 5 or above 9) can be harmful. pH also affects the toxicity of metals and ammonia.</p>
+        <p><strong>Why it matters:</strong> pH influences chemical reactions in water. Many aquatic organisms are sensitive to pH changes. pH also affects the toxicity of metals and ammonia. Very low or very high pH can cause severe stress or mortality; sensitivity varies between species and exposure conditions.</p>
         <p><strong>How to measure:</strong> Using a pH meter (electrode) or colour-change test strips. Calibrate the meter before use with buffer solutions.</p>
-        <p><strong>Expected ranges:</strong> Freshwater 6.5–8.0, marine 7.5–8.5, estuaries variable.</p>
+        <p><strong>Typical ranges:</strong> Freshwater roughly 6.5–8.0, marine roughly 8.0–8.4, estuaries variable. Some Tasmanian waters are naturally lower or higher.</p>
         <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> pH can change rapidly during algal blooms — measure at the same time each day for consistent comparisons.</div>
       </div>
       <div class="card"><i class="fas fa-bolt"></i><div class="card-title">Electrical Conductivity (EC) & Salinity</div>
         <p><strong>What it is:</strong> A measure of how well water conducts electricity, which relates to the amount of dissolved salts (ions). Often reported as <strong>salinity</strong> in parts per thousand (ppt).</p>
         <p><strong>Why it matters:</strong> EC tells us about the mineral content. High salinity can stress freshwater species; low salinity is important for estuaries. It helps identify saltwater intrusion or agricultural runoff.</p>
         <p><strong>How to measure:</strong> Using a conductivity sensor (often part of a multi-parameter sonde).</p>
-        <p><strong>Expected ranges:</strong> Freshwater 0–500 µS/cm, brackish 500–5000, marine ~53,000 µS/cm (≈35 ppt).</p>
-        <p><strong>Conversion:</strong> 1 µS/cm ≈ 0.65 mg/L TDS (Total Dissolved Solids).</p>
+        <p><strong>Typical ranges:</strong> Freshwater varies by catchment (often &lt;500 µS/cm but higher in some regions), brackish 500–5,000, marine roughly 50,000–55,000 µS/cm (≈35 ppt). Site-specific reference data is more reliable.</p>
+        <p><strong>Conversion:</strong> TDS can be estimated from EC using a conversion factor, but the factor varies with water chemistry. A commonly used approximate range is 0.5–0.7, but use the instrument/manufacturer or project-specific factor where available.</p>
       </div>
       <div class="card"><i class="fas fa-wind"></i><div class="card-title">Dissolved Oxygen (DO)</div>
         <p><strong>What it is:</strong> The amount of oxygen gas dissolved in the water, measured in mg/L or % saturation.</p>
-        <p><strong>Why it matters:</strong> Fish and other aquatic life need oxygen to survive. Low DO can cause fish kills. DO levels fluctuate with temperature, plant activity, and pollution. Cold water holds more oxygen than warm water.</p>
+        <p><strong>Why it matters:</strong> Fish and other aquatic life need oxygen to survive. Very low DO can cause severe physiological stress and, if sufficiently low and prolonged, mortality. The effect depends on species, temperature, duration and local conditions. Cold water holds more oxygen than warm water.</p>
         <p><strong>How to measure:</strong> Using a DO probe (optical or electrochemical). Ensure the probe is calibrated and free of bubbles.</p>
-        <p><strong>Expected ranges:</strong> Healthy water 80–110% saturation (≈6–9 mg/L). Below 60% (≈4 mg/L) is stressful for many species.</p>
-        <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Urgent:</strong> DO below 40% saturation (<3 mg/L) is lethal to most fish. Report immediately.</div>
+        <p><strong>Typical ranges:</strong> Healthy water roughly 80–110% saturation (≈6–9 mg/L). Persistently low readings warrant investigation.</p>
+        <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Investigate:</strong> DO readings persistently below 60% saturation are a concern and should be reported according to workplace procedures.</div>
       </div>
       <div class="card"><i class="fas fa-cloud-sun"></i><div class="card-title">Turbidity (clarity)</div>
         <p><strong>What it is:</strong> A measure of water clarity, affected by suspended particles like silt, clay, or algae. Reported in Nephelometric Turbidity Units (NTU).</p>
-        <p><strong>Why it matters:</strong> High turbidity reduces light penetration, which can affect plant growth and fish feeding. It can also carry pollutants attached to sediment particles.</p>
+        <p><strong>Why it matters:</strong> High turbidity reduces light penetration, which can affect plant growth and fish feeding. It can also carry pollutants attached to sediment particles. Turbidity is site- and ecosystem-dependent — some waterways are naturally more turbid than others.</p>
         <p><strong>How to measure:</strong> Using a turbidity tube (visual), Secchi disk (in lakes), or a turbidity sensor. Always collect sample without disturbing sediment.</p>
-        <p><strong>Expected ranges:</strong> Clear streams <5 NTU, turbid rivers 10–50 NTU, estuaries variable, lakes <10 NTU (clear) to >100 NTU (algal blooms).</p>
+        <p><strong>Typical ranges:</strong> Clear streams often low NTU; turbid rivers can be 10–100+ NTU depending on flow; lakes vary widely. Compare with local reference conditions.</p>
       </div>
       <div class="card"><i class="fas fa-leaf"></i><div class="card-title">Nutrients – Nitrate & Phosphate</div>
         <p><strong>What they are:</strong> Nitrate (NO₃⁻) and phosphate (PO₄³⁻) are essential plant nutrients, but in excess they cause problems.</p>
         <p><strong>Why they matter:</strong> High nutrient levels cause <strong>eutrophication</strong> — excessive algal growth (blooms) that can deplete oxygen and produce toxins. Measuring nutrients helps identify sources like fertiliser runoff, sewage, or animal waste.</p>
         <p><strong>How to measure:</strong> Using colourimetric test kits (drop tests or strips) or collecting samples for laboratory analysis.</p>
-        <p><strong>Expected ranges:</strong> Natural waters: nitrate <1 mg/L, phosphate <0.05 mg/L. Elevated levels indicate pollution.</p>
+        <p><strong>Typical ranges:</strong> Generally low in minimally disturbed waters. Elevated levels above local reference conditions may indicate nutrient enrichment.</p>
         <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Remember:</strong> Nitrogen and phosphorus are often the limiting nutrients in aquatic systems. An increase in either can trigger an algal bloom.</div>
       </div>
     </div>
@@ -316,17 +304,17 @@
       <div class="card"><i class="fas fa-gas"></i><div class="card-title">Ammonia / Ammonium</div><p>Nitrogen forms — ammonia (NH₃) is toxic to fish; ammonium (NH₄⁺) is less toxic but can convert to ammonia at high pH.</p></div>
     </div>
 
-    <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Summary table — healthy ranges:</strong>
+    <div class="checklist-card"><i class="fas fa-check-circle"></i> <strong>Summary table — general field-reference ranges:</strong>
       <table style="font-size:0.85rem;">
-        <tr><th>Parameter</th><th>Freshwater</th><th>Marine</th></tr>
-        <tr><td>Temperature</td><td>5–25°C (seasonal)</td><td>12–24°C</td></tr>
-        <tr><td>pH</td><td>6.5–8.0</td><td>7.5–8.5</td></tr>
-        <tr><td>EC (µS/cm)</td><td><500</td><td>~53,000</td></tr>
-        <tr><td>DO (% sat)</td><td>80–110%</td><td>80–110%</td></tr>
-        <tr><td>Turbidity (NTU)</td><td><10</td><td><10</td></tr>
-        <tr><td>Nitrate (mg/L)</td><td><1</td><td><0.5</td></tr>
-        <tr><td>Phosphate (mg/L)</td><td><0.05</td><td><0.03</td></tr>
+        <tr><th>Parameter</th><th>Freshwater – general reference</th><th>Marine – general reference</th><th>Investigate if...</th></tr>
+        <tr><td>pH</td><td>~6.5–8.0</td><td>~8.0–8.4</td><td>Outside the expected local range</td></tr>
+        <tr><td>DO (% sat)</td><td>~80–110%</td><td>~80–110%</td><td>Persistently low, particularly &lt;60%</td></tr>
+        <tr><td>EC (µS/cm)</td><td>Highly site-dependent</td><td>~50,000–55,000 (seawater)</td><td>Large change from the normal local value</td></tr>
+        <tr><td>Turbidity (NTU)</td><td>Highly site-dependent</td><td>Highly site-dependent</td><td>Large increase above the normal local value</td></tr>
+        <tr><td>Nitrate (mg/L as N)</td><td>Generally low in minimally disturbed waters</td><td>Generally very low in nutrient-poor waters</td><td>Elevated above local/reference condition</td></tr>
+        <tr><td>FRP (mg/L as P)</td><td>Generally very low</td><td>Generally very low</td><td>Elevated above local/reference condition</td></tr>
       </table>
+      <p style="font-size:0.8rem;"><strong>Important:</strong> Natural water quality varies between catchments and ecosystems. Where available, use Tasmanian, catchment-specific or site-specific guideline values rather than relying on generic numbers.</p>
     </div>
 
     <h3>Your progress</h3>
@@ -348,7 +336,7 @@
           <div class="accordion-content"><ol><li>Rinse sensors with distilled water.</li><li>pH: immerse in pH 7 buffer, adjust to 7.00. Rinse, then pH 4 and/or 10 buffer.</li><li>EC: immerse in standard solution (e.g., 1413 µS/cm), adjust to match.</li><li>DO: calibrate in water-saturated air (100% saturation) or use zero-oxygen solution (0%).</li><li>Turbidity: use standard solution (e.g., 100 NTU) to calibrate.</li></ol></div></div>
       </div>
       <div class="card"><i class="fas fa-eye"></i><div class="card-title">Turbidity tube & Secchi disk</div>
-        <p><strong>Turbidity tube:</strong> A clear tube with a black-and-white pattern on the base. Fill with sample water. Look down the tube and slowly add water until the pattern disappears — read the NTU scale at the water level.</p>
+        <p><strong>Turbidity tube:</strong> A clear tube with a black-and-white pattern on the base. Fill the tube and observe the target at the base while looking down through the water column. Follow the manufacturer's method for recording the result. Some turbidity tubes provide a direct or calibrated NTU scale; others provide a visual depth measurement.</p>
         <p><strong>Secchi disk:</strong> A black-and-white disk lowered into the water until it vanishes. Record the depth. Used in lakes and clear water.</p>
         <p><strong>Care:</strong> Clean and dry the tube after each use. Keep the disk clean and the rope tangle-free.</p>
         <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Turbidity tubes are great for rapid field assessment, but they're less precise than electronic meters. Use for screening or when power isn't available.</div>
@@ -372,11 +360,12 @@
     <div class="grid-2">
       <div class="card"><i class="fas fa-hand-sparkles"></i><div class="card-title">Best practice</div>
         <ul><li><strong>Label everything</strong> — write site, date, time, and test on each container <em>before</em> you collect the sample.</li>
-        <li><strong>Rinse containers</strong> — rinse bottles 2–3 times with the site water before filling.</li>
+        <li><strong>Use the correct container</strong> — use the correct sample container for the required analysis. Do not rinse containers unless the sampling method or laboratory instructions specifically require it. Never rinse preserved or sterile containers with site water.</li>
         <li><strong>Avoid contamination</strong> — don't touch the inside of lids or the sample water with dirty hands.</li>
         <li><strong>Keep samples cool & dark</strong> — store in an insulated esky with ice packs to slow biological change.</li>
         <li><strong>Record observations</strong> — note weather, water colour, smell, and any visible algae or animals. This context is valuable.</li>
         <li><strong>Use appropriate personal protective equipment (PPE)</strong> — gloves, safety glasses, and appropriate footwear.</li>
+        <li><strong>Never enter water or sample from an unsafe position</strong> simply to obtain a sample. Select a safer sampling point or use appropriate sampling equipment.</li>
       </ul></div>
       <div class="card"><i class="fas fa-sync"></i><div class="card-title">Quality assurance</div>
         <ul><li><strong>Duplicate samples:</strong> Collect two samples at the same site to check precision.</li>
@@ -385,7 +374,37 @@
         <li><strong>Record everything:</strong> Document calibration, equipment, and any issues.</li>
         <li><strong>Chain of Custody:</strong> Complete forms carefully — errors can invalidate results.</li>
         <li><strong>Field blanks:</strong> Take a bottle of distilled water to the field and process it as a sample — checks for field contamination.</li>
+        <li><strong>QA vs QC:</strong> Quality assurance (QA) is the planned system used to ensure reliable work; quality control (QC) refers to the checks used to detect problems with sampling, equipment or results.</li>
       </ul></div>
+    </div>
+
+    <h3>Field measurements vs laboratory samples</h3>
+    <div class="card">
+      <p>Some parameters are best measured in the field, because they change quickly once a sample is collected or exposed to air:</p>
+      <div class="grid-2">
+        <div style="background:white; border-radius:12px; padding:1rem; border:1px solid var(--border);">
+          <h4 style="margin-top:0;">🔬 Measure in the field</h4>
+          <ul style="font-size:0.9rem; margin-bottom:0;">
+            <li>Temperature</li>
+            <li>pH</li>
+            <li>Electrical conductivity (EC)</li>
+            <li>Dissolved oxygen (DO)</li>
+            <li>Turbidity (often)</li>
+          </ul>
+        </div>
+        <div style="background:white; border-radius:12px; padding:1rem; border:1px solid var(--border);">
+          <h4 style="margin-top:0;">🧪 Collect for laboratory analysis</h4>
+          <ul style="font-size:0.9rem; margin-bottom:0;">
+            <li>Nutrients (total & dissolved)</li>
+            <li>Microbiological parameters</li>
+            <li>Metals</li>
+            <li>Pesticides and hydrocarbons</li>
+            <li>Chlorophyll-a</li>
+            <li>Algal identification and toxins</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:0.8rem;"><i class="fas fa-info-circle"></i> <strong>Why the difference?</strong> Field parameters can change between collection and laboratory analysis. Other parameters are stable enough to be collected, preserved and transported — provided the correct container, preservation and holding time are used.</div>
     </div>
 
     <h3>Your progress</h3>
@@ -407,7 +426,7 @@
       </div>
       <div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Risk assessment essentials</div>
         <p>Every field trip needs a risk assessment. Consider these common hazards:</p>
-        <ul><li><strong>Working near water</strong> — wear a life jacket, use a buddy system, avoid slippery banks.</li>
+        <ul><li><strong>Working near water</strong> — wear a life jacket, use a buddy system, avoid slippery banks. Never enter water or sample from an unsafe position simply to obtain a sample.</li>
         <li><strong>Slips, trips & falls</strong> — wear sturdy footwear, keep work areas tidy.</li>
         <li><strong>Exposure to elements</strong> — sun protection (hat, sunscreen, long sleeves), hydration, and weather-appropriate clothing.</li>
         <li><strong>Bites & stings</strong> — be aware of snakes, spiders, and insects. Wear protective clothing and use repellent.</li>
@@ -469,12 +488,15 @@
       </div>
       <div class="card"><i class="fas fa-snowflake"></i><div class="card-title">Preservation & storage</div>
         <p><strong>Keep it cool:</strong> Place samples in an insulated esky with ice packs as soon as they're collected. This slows biological and chemical change.</p>
-        <p><strong>Freeze for later:</strong> If you can't get samples to the lab on the same day, freeze them (for nutrients) within 24 hours. <em>Don't overfill containers</em> — allow room for expansion.</p>
-        <p><strong>Holding times (Analytical Services Tasmania):</strong></p>
-        <ul><li>Total nutrients: 28 days (frozen)</li>
-        <li>Dissolved nutrients (with nitrite): 2 days (or freeze, 28 days)</li>
+        <p><strong>Preservation is analyte/method specific:</strong> Preservation and holding times depend on the parameter and laboratory method. Follow the laboratory's instructions for each analysis. For example, Analytical Services Tasmania specifies different preservation and holding requirements for total nutrients, dissolved nutrients, microbiological samples and other analyses. Contact the laboratory before sampling if you are unsure.</p>
+        <p><strong>Typical holding times (Analytical Services Tasmania):</strong></p>
+        <ul><li>Total nutrients: freeze; 28 days</li>
+        <li>Dissolved nutrients: filter and freeze ASAP (preferably within 24 hours); 28 days frozen</li>
         <li>Algal samples (Lugols): 6 months</li>
-        <li>Bacterial: 24 hours (must be processed promptly)</li>
+        <li>Bacterial: refrigerate, 24 hours (must be processed promptly)</li>
+        <li>pH: 6 hours</li>
+        <li>Turbidity: 2 days</li>
+        <li>EC: 28 days</li>
         <li>Metals: up to 6 months (if acidified)</li></ul>
         <div class="warning"><i class="fas fa-exclamation-triangle"></i> <strong>Critical:</strong> Bacteria samples must be kept cold (2–8°C) and delivered to the lab within 24 hours. DO NOT freeze.</div>
       </div>
@@ -496,7 +518,7 @@
       ✓ All results recorded on data sheets<br>
       ✓ Samples correctly labelled and stored (cool/dark)<br>
       ✓ Rubbish collected and disposed of properly<br>
-      ✓ Any urgent results (e.g., very low DO, extreme pH) reported to supervisor<br>
+      ✓ Any urgent results (e.g., very low DO, extreme pH) reported according to workplace procedures<br>
       ✓ Equipment cleaned and packed<br>
       ✓ CoC form partially completed (ready for lab)
     </div>
@@ -506,80 +528,78 @@
     <p style="font-size:0.9rem; color:var(--primary-light);">75% complete — you're nearly there!</p>
   </div>
 
-<!-- ===== TAB 6: INTERPRETING RESULTS ===== -->
+  <!-- ===== TAB 6: INTERPRETING RESULTS ===== -->
+  <div id="tab5" class="tab-content">
+    <h2><i class="fas fa-chart-bar"></i> Interpreting water quality results</h2>
+    <p>Understanding what your results mean is just as important as taking the measurements. Water quality varies naturally with location, season, weather, flow, depth and time of day. Use the values below as <strong>general field-reference ranges</strong>, not as universal pass/fail standards.</p>
 
-<div id="tab5" class="tab-content">
-  <h2><i class="fas fa-chart-bar"></i> Interpreting water quality results</h2>
-  <p>Understanding what your results mean is just as important as taking the measurements. Water quality varies naturally with location, season, weather, flow, depth and time of day. Use the values below as <strong>general field-reference ranges</strong>, not as universal pass/fail standards.</p>
+    <div class="grid-2">
+      <div class="card"><i class="fas fa-check-circle"></i><div class="card-title">What do typical reference values look like?</div>
+        <table style="font-size:0.85rem;">
+          <tr><th>Parameter</th><th>Freshwater – general reference</th><th>Marine – general reference</th><th>Investigate if...</th></tr>
+          <tr><td>pH</td><td>~6.5–8.0</td><td>~8.0–8.4</td><td>Outside the expected local range</td></tr>
+          <tr><td>DO (% sat)</td><td>~80–110%</td><td>~80–110%</td><td>Persistently low, particularly &lt;60%</td></tr>
+          <tr><td>EC (µS/cm)</td><td>Highly site-dependent</td><td>~50,000–55,000 (seawater)</td><td>Large change from the normal local value</td></tr>
+          <tr><td>Turbidity (NTU)</td><td>Often low in clear waters</td><td>Often low in clear waters</td><td>Large increase above the normal local value</td></tr>
+          <tr><td>Nitrate (mg/L as N)</td><td>Generally low in minimally disturbed waters</td><td>Generally very low in nutrient-poor waters</td><td>Elevated above the local/reference condition</td></tr>
+          <tr><td>FRP (mg/L as P)</td><td>Generally very low</td><td>Generally very low</td><td>Elevated above the local/reference condition</td></tr>
+        </table>
+        <p style="font-size:0.8rem;"><strong>Important:</strong> Natural water quality varies between catchments and ecosystems. Where available, use Tasmanian, catchment-specific or site-specific guideline values rather than relying on generic numbers.</p>
+      </div>
 
-  <div class="grid-2">
-    <div class="card"><i class="fas fa-check-circle"></i><div class="card-title">What do typical reference values look like?</div>
-      <table style="font-size:0.85rem;">
-        <tr><th>Parameter</th><th>Freshwater – general reference</th><th>Marine – general reference</th><th>Investigate if...</th></tr>
-        <tr><td>pH</td><td>~6.5–8.0</td><td>~8.0–8.4</td><td>Outside the expected local range</td></tr>
-        <tr><td>DO (% sat)</td><td>~80–110%</td><td>~80–110%</td><td>Persistently low, particularly &lt;60%</td></tr>
-        <tr><td>EC (µS/cm)</td><td>Highly site-dependent</td><td>~50,000–55,000 (seawater)</td><td>Large change from the normal local value</td></tr>
-        <tr><td>Turbidity (NTU)</td><td>Often low in clear waters</td><td>Often low in clear waters</td><td>Large increase above the normal local value</td></tr>
-        <tr><td>Nitrate (mg/L as N)</td><td>Generally low in minimally disturbed waters</td><td>Generally very low in nutrient-poor waters</td><td>Elevated above the local/reference condition</td></tr>
-        <tr><td>FRP (mg/L as P)</td><td>Generally very low</td><td>Generally very low</td><td>Elevated above the local/reference condition</td></tr>
-      </table>
-      <p style="font-size:0.8rem;"><strong>Important:</strong> Natural water quality varies between catchments and ecosystems. Where available, use Tasmanian, catchment-specific or site-specific guideline values rather than relying on generic numbers.</p>
+      <div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Common patterns & what they may indicate</div>
+        <ul>
+          <li><strong>Low DO + elevated nutrients + algal growth:</strong> May indicate nutrient enrichment and eutrophication. Algal growth can increase oxygen during daylight but respiration and decomposition can reduce oxygen, particularly overnight.</li>
+          <li><strong>High EC:</strong> May indicate increased dissolved salts. Possible causes include seawater influence, evaporation, groundwater inputs, saline drainage or other catchment sources.</li>
+          <li><strong>High turbidity:</strong> May indicate suspended sediment from erosion, runoff, disturbance or high natural flows. Some waterways are naturally more turbid than others.</li>
+          <li><strong>Low pH:</strong> May occur naturally in some Tasmanian waters, particularly humic or peat-influenced systems. Very low or rapidly changing pH may warrant investigation of sources such as acid sulfate soils, acid mine drainage or other disturbance.</li>
+          <li><strong>High pH:</strong> Can occur during periods of intense photosynthesis because carbon dioxide is removed from the water. Persistent or extreme values may indicate a need for further investigation.</li>
+          <li><strong>Elevated nitrate + elevated phosphorus:</strong> May indicate nutrient enrichment from sources such as agricultural runoff, urban stormwater, wastewater or natural catchment inputs.</li>
+          <li><strong>Low DO without elevated nutrients:</strong> May be associated with warm water, poor mixing, stratification, organic matter decomposition or other processes.</li>
+          <li><strong>Several parameters changing together:</strong> Often provides more useful evidence than one unusual measurement. Look for patterns, trends and possible sources.</li>
+        </ul>
+      </div>
     </div>
 
-```
-<div class="card"><i class="fas fa-exclamation-triangle"></i><div class="card-title">Common patterns & what they may indicate</div>
-  <ul>
-    <li><strong>Low DO + elevated nutrients + algal growth:</strong> May indicate nutrient enrichment and eutrophication. Algal growth can increase oxygen during daylight but respiration and decomposition can reduce oxygen, particularly overnight.</li>
-    <li><strong>High EC:</strong> May indicate increased dissolved salts. Possible causes include seawater influence, evaporation, groundwater inputs, saline drainage or other catchment sources.</li>
-    <li><strong>High turbidity:</strong> May indicate suspended sediment from erosion, runoff, disturbance or high natural flows. Some waterways are naturally more turbid than others.</li>
-    <li><strong>Low pH:</strong> May occur naturally in some Tasmanian waters, particularly humic or peat-influenced systems. Very low or rapidly changing pH may warrant investigation of sources such as acid sulfate soils, acid mine drainage or other disturbance.</li>
-    <li><strong>High pH:</strong> Can occur during periods of intense photosynthesis because carbon dioxide is removed from the water. Persistent or extreme values may indicate a need for further investigation.</li>
-    <li><strong>Elevated nitrate + elevated phosphorus:</strong> May indicate nutrient enrichment from sources such as agricultural runoff, urban stormwater, wastewater or natural catchment inputs.</li>
-    <li><strong>Low DO without elevated nutrients:</strong> May be associated with warm water, poor mixing, stratification, organic matter decomposition or other processes.</li>
-    <li><strong>Several parameters changing together:</strong> Often provides more useful evidence than one unusual measurement. Look for patterns, trends and possible sources.</li>
-  </ul>
-</div>
-```
+    <div class="card"><i class="fas fa-clock"></i><div class="card-title">Diurnal and seasonal variation</div>
+      <p>Water quality changes throughout the day and across seasons. For example:</p>
+      <ul>
+        <li><strong>Day-night:</strong> In water containing algae or aquatic plants, pH and DO can <strong>rise</strong> during daylight as photosynthesis occurs and <strong>fall</strong> overnight as respiration continues.</li>
+        <li><strong>Seasonal:</strong> Temperature, rainfall, flow, biological activity and catchment conditions can all change water quality. Warmer water also holds less dissolved oxygen than colder water.</li>
+        <li><strong>After rainfall:</strong> Turbidity and nutrient concentrations may increase as runoff enters waterways. EC may decrease because of dilution, although local conditions can produce the opposite response.</li>
+        <li><strong>Vertical stratification:</strong> Lakes and reservoirs can develop layers with different temperatures and oxygen concentrations. Bottom waters can become oxygen depleted when mixing is limited.</li>
+      </ul>
+      <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Always record the date, time, weather, recent rainfall, flow conditions and sampling location.</strong> This context can be critical when interpreting water-quality results. For long-term monitoring, sampling at a consistent time can make comparisons more meaningful.</div>
+    </div>
 
+    <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>When to report or investigate urgently:</strong><br>
+      • Very low dissolved oxygen, particularly persistent readings below 60% saturation<br>
+      • Extreme or rapidly changing pH outside the expected local range<br>
+      • A sudden and substantial increase in turbidity or EC<br>
+      • Visible algal scum, unusual discolouration or a fish kill<br>
+      • Suspected chemical spill or other pollution incident<br>
+      • Strong unusual odour, foam or other unexplained changes<br>
+      • Microbiological results indicating a potential human-health risk — follow the relevant recreational-water or public-health guideline<br>
+      <br>
+      <strong>Follow workplace procedures:</strong> Stop or secure the area, protect people, notify your supervisor, follow the incident/emergency procedure, and notify the regulator or authority where required.
+    </div>
+
+    <h3>Case study: Interpreting a dataset</h3>
+    <div class="card"><i class="fas fa-table"></i><div class="card-title">Example results from a river monitoring program</div>
+      <table style="font-size:0.85rem;">
+        <tr><th>Date</th><th>pH</th><th>DO (%)</th><th>Turbidity (NTU)</th><th>Nitrate (mg/L as N)</th><th>FRP (mg/L as P)</th></tr>
+        <tr><td>Jan (summer)</td><td>7.8</td><td>72%</td><td>22</td><td>2.5</td><td>0.12</td></tr>
+        <tr><td>Apr (autumn)</td><td>7.2</td><td>95%</td><td>6</td><td>0.8</td><td>0.04</td></tr>
+        <tr><td>Jul (winter)</td><td>7.0</td><td>98%</td><td>4</td><td>0.5</td><td>0.03</td></tr>
+      </table>
+      <p><strong>Interpretation:</strong> The summer results show a combination of higher nutrient concentrations, lower dissolved oxygen and higher turbidity than the autumn and winter results. This pattern may indicate increased nutrient and sediment inputs during summer, although the data alone cannot identify the source. The lower summer DO may also be influenced by temperature, time of sampling, biological activity and other factors.</p>
+      <p><strong>Next steps:</strong> Check the sampling time, recent rainfall and flow conditions. Compare the results with appropriate local or site-specific guideline values and investigate upstream land uses or other potential sources if the pattern is repeated.</p>
+    </div>
+
+    <h3>Your progress</h3>
+    <div class="progress-container"><div class="progress-fill" style="width:85%;"></div></div>
+    <p style="font-size:0.9rem; color:var(--primary-light);">85% complete — you're ready for advanced interpretation!</p>
   </div>
-
-  <div class="card"><i class="fas fa-clock"></i><div class="card-title">Diurnal and seasonal variation</div>
-    <p>Water quality changes throughout the day and across seasons. For example:</p>
-    <ul>
-      <li><strong>Day-night:</strong> In water containing algae or aquatic plants, pH and DO can <strong>rise</strong> during daylight as photosynthesis occurs and <strong>fall</strong> overnight as respiration continues.</li>
-      <li><strong>Seasonal:</strong> Temperature, rainfall, flow, biological activity and catchment conditions can all change water quality. Warmer water also holds less dissolved oxygen than colder water.</li>
-      <li><strong>After rainfall:</strong> Turbidity and nutrient concentrations may increase as runoff enters waterways. EC may decrease because of dilution, although local conditions can produce the opposite response.</li>
-      <li><strong>Vertical stratification:</strong> Lakes and reservoirs can develop layers with different temperatures and oxygen concentrations. Bottom waters can become oxygen depleted when mixing is limited.</li>
-    </ul>
-    <div class="tip"><i class="fas fa-lightbulb"></i> <strong>Always record the date, time, weather, recent rainfall, flow conditions and sampling location.</strong> This context can be critical when interpreting water-quality results. For long-term monitoring, sampling at a consistent time can make comparisons more meaningful.</div>
-  </div>
-
-  <div class="checklist-card"><i class="fas fa-clipboard-check"></i> <strong>When to report or investigate urgently:</strong><br>
-    • Very low dissolved oxygen, particularly persistent readings below 60% saturation<br>
-    • Extreme or rapidly changing pH outside the expected local range<br>
-    • A sudden and substantial increase in turbidity or EC<br>
-    • Visible algal scum, unusual discolouration or a fish kill<br>
-    • Suspected chemical spill or other pollution incident<br>
-    • Strong unusual odour, foam or other unexplained changes<br>
-    • Microbiological results indicating a potential human-health risk — follow the relevant recreational-water or public-health guideline
-  </div>
-
-  <h3>Case study: Interpreting a dataset</h3>
-  <div class="card"><i class="fas fa-table"></i><div class="card-title">Example results from a river monitoring program</div>
-    <table style="font-size:0.85rem;">
-      <tr><th>Date</th><th>pH</th><th>DO (%)</th><th>Turbidity (NTU)</th><th>Nitrate (mg/L as N)</th><th>FRP (mg/L as P)</th></tr>
-      <tr><td>Jan (summer)</td><td>7.8</td><td>72%</td><td>22</td><td>2.5</td><td>0.12</td></tr>
-      <tr><td>Apr (autumn)</td><td>7.2</td><td>95%</td><td>6</td><td>0.8</td><td>0.04</td></tr>
-      <tr><td>Jul (winter)</td><td>7.0</td><td>98%</td><td>4</td><td>0.5</td><td>0.03</td></tr>
-    </table>
-    <p><strong>Interpretation:</strong> The summer results show a combination of higher nutrient concentrations, lower dissolved oxygen and higher turbidity than the autumn and winter results. This pattern may indicate increased nutrient and sediment inputs during summer, although the data alone cannot identify the source. The lower summer DO may also be influenced by temperature, time of sampling, biological activity and other factors.</p>
-    <p><strong>Next steps:</strong> Check the sampling time, recent rainfall and flow conditions. Compare the results with appropriate local or site-specific guideline values and investigate upstream land uses or other potential sources if the pattern is repeated.</p>
-  </div>
-
-  <h3>Your progress</h3>
-  <div class="progress-container"><div class="progress-fill" style="width:85%;"></div></div>
-  <p style="font-size:0.9rem; color:var(--primary-light);">85% complete — you're ready for advanced interpretation!</p>
-</div>
 
   <!-- ===== TAB 7: TEST YOUR KNOWLEDGE ===== -->
   <div id="tab6" class="tab-content">
@@ -600,7 +620,7 @@
         <div class="quiz-option"><input type="radio" name="q3" value="A"> Wear a life jacket</div>
         <div class="quiz-option"><input type="radio" name="q3" value="B"> Wear sunscreen</div>
         <div class="quiz-option"><input type="radio" name="q3" value="C"> Carry a turbidity tube</div><div class="quiz-feedback"></div></div>
-      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">4. How long can total nutrient samples be frozen before analysis?</div>
+      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">4. How long can total nutrient samples be frozen before analysis (AST typical holding time)?</div>
         <div class="quiz-option"><input type="radio" name="q4" value="A"> 7 days</div>
         <div class="quiz-option"><input type="radio" name="q4" value="B"> 28 days</div>
         <div class="quiz-option"><input type="radio" name="q4" value="C"> 6 months</div><div class="quiz-feedback"></div></div>
@@ -620,11 +640,11 @@
         <div class="quiz-option"><input type="radio" name="q8" value="A"> 1mL</div>
         <div class="quiz-option"><input type="radio" name="q8" value="B"> 2.5mL</div>
         <div class="quiz-option"><input type="radio" name="q8" value="C"> 5mL</div><div class="quiz-feedback"></div></div>
-      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">9. Which nutrient in excess causes eutrophication?</div>
+      <div class="quiz-question" data-correct="B"><div class="quiz-question-text">9. Which nutrient in excess can cause eutrophication?</div>
         <div class="quiz-option"><input type="radio" name="q9" value="A"> Sodium</div>
         <div class="quiz-option"><input type="radio" name="q9" value="B"> Nitrate & Phosphate</div>
         <div class="quiz-option"><input type="radio" name="q9" value="C"> Chloride</div><div class="quiz-feedback"></div></div>
-      <div class="quiz-question" data-correct="A"><div class="quiz-question-text">10. What is the recommended DO level for healthy aquatic life?</div>
+      <div class="quiz-question" data-correct="A"><div class="quiz-question-text">10. What is a typical DO level for healthy aquatic life?</div>
         <div class="quiz-option"><input type="radio" name="q10" value="A"> 80–110% saturation</div>
         <div class="quiz-option"><input type="radio" name="q10" value="B"> 50–60% saturation</div>
         <div class="quiz-option"><input type="radio" name="q10" value="C"> 30–40% saturation</div><div class="quiz-feedback"></div></div>
@@ -668,9 +688,9 @@
 
     <h3>Your progress</h3>
     <div class="progress-container"><div class="progress-fill" style="width:95%;"></div></div>
-    <p style="font-size:0.9rem; color:var(--primary-light);">95% complete — almost finished! Review the resources tab for final consolidation.</p>
+    <p style="font-size:0.9rem; color:var(--primary-light);">95% of this learning resource complete — review the assessment requirements with your trainer.</p>
 
-    <!-- 🌟 NEW: Progress Tracker -->
+    <!-- Progress Tracker -->
     <div class="card" style="margin-top:2rem;">
       <h3 style="border-bottom: none;"><i class="fas fa-chart-line"></i> Your Learning Progress</h3>
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:1rem; margin:1rem 0;">
@@ -703,164 +723,703 @@
     <div class="progress-container"><div class="progress-fill" style="width:95%;"></div></div>
     <p style="font-size:0.9rem; color:var(--primary-light);">95% complete — almost finished! Review the resources tab for final consolidation.</p>
   </div>
+
+  <!-- ===== TAB 8: RESOURCES & GLOSSARY ===== -->
+  <div id="tab7" class="tab-content">
+    <h2><i class="fas fa-book"></i> Resources & glossary</h2>
+
+    <div class="card"><i class="fas fa-glossary"></i><div class="card-title">Key terms</div>
+      
+      <!-- Search bar -->
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <input type="text" id="glossarySearch" placeholder="🔍 Search glossary..." 
+                 style="flex:1; padding:0.6rem 1rem; border:2px solid var(--border); border-radius:60px; font-size:0.9rem; min-width:150px;">
+          <button class="btn btn-outline" onclick="clearGlossarySearch()" style="font-size:0.8rem; padding:0.3rem 1rem;">
+            <i class="fas fa-times"></i> Clear
+          </button>
+        </div>
+        <span id="glossaryCount" style="font-size:0.8rem; color:var(--text-light); margin-top:0.3rem; display:inline-block;"></span>
+      </div>
+
+      <!-- Category filters -->
+      <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem;">
+        <button class="btn btn-primary" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('all')">📋 All</button>
+        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('parameters')">📊 Parameters</button>
+        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('equipment')">🧪 Equipment</button>
+        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('concepts')">📋 Concepts</button>
+        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('standards')">📜 Standards</button>
+      </div>
+
+      <!-- Glossary accordion cards -->
+      <div id="glossaryContainer" style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+        <!-- Terms will be injected here by JavaScript -->
+      </div>
+    </div>
+
+    <!-- VIDEO RESOURCES CARD -->
+    <div class="card"><i class="fas fa-video"></i><div class="card-title">Recommended videos & tutorials</div>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem; margin-top:1rem;">
+        <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+          <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
+            <iframe src="https://www.youtube.com/embed/OTerH6SgwO8" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:0.8rem 1rem;">
+            <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">Introduction to water quality</h4>
+            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Overview of key water quality parameters and why they matter.</p>
+            <span class="badge badge-primary" style="font-size:0.6rem;">4:38</span>
+            <a href="https://www.youtube.com/watch?v=OTerH6SgwO8&t=46s" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
+          </div>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+          <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
+            <iframe src="https://www.youtube.com/embed/94YcjbYBchc" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:0.8rem 1rem;">
+            <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">How we measure water quality</h4>
+            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">EPA Victoria · Follow an authorised officer as they collect water samples and explain key parameters.</p>
+            <span class="badge badge-primary" style="font-size:0.6rem;">4:38</span>
+            <a href="https://www.youtube.com/watch?v=94YcjbYBchc" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
+          </div>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+          <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
+            <iframe src="https://www.youtube.com/embed/Ko7TbScFQk4" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:0.8rem 1rem;">
+            <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">Horiba U-52 Auto Calibration</h4>
+            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Step-by-step automatic calibration for multi-parameter sonde.</p>
+            <span class="badge badge-primary" style="font-size:0.6rem;">2:14</span>
+            <a href="https://www.youtube.com/watch?v=Ko7TbScFQk4" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
+          </div>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+          <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
+            <iframe src="https://www.youtube.com/embed/5w6s9K97G9g" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:0.8rem 1rem;">
+            <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">Horiba U-50 Water Quality Probe</h4>
+            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Detailed overview of the Horiba U-50 series multi-parameter probe.</p>
+            <span class="badge badge-primary" style="font-size:0.6rem;">6:12</span>
+            <a href="https://www.youtube.com/watch?v=5w6s9K97G9g" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
+          </div>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+          <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
+            <iframe src="https://www.youtube.com/embed/SvksjH9gedQ" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:0.8rem 1rem;">
+            <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">pH, EC, TDS & PPM Explained</h4>
+            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Clear explanation of water chemistry relationships.</p>
+            <span class="badge badge-primary" style="font-size:0.6rem;">6:28</span>
+            <a href="https://www.youtube.com/watch?v=SvksjH9gedQ" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
+          </div>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+          <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
+            <iframe src="https://www.youtube.com/embed/3Vylu9R9WtY" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:0.8rem 1rem;">
+            <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">eDNA Water Sampling Tutorial</h4>
+            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Sterile sampling technique and contamination prevention.</p>
+            <span class="badge badge-primary" style="font-size:0.6rem;">3:34</span>
+            <a href="https://www.youtube.com/watch?v=3Vylu9R9WtY" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
+          </div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Watch these videos before your fieldwork to see the techniques in action. Click any thumbnail to play the video directly on this page.</div>
+    </div>
+
+    <!-- DOWNLOADABLE RESOURCES SECTION -->
+    <div class="card"><i class="fas fa-file-pdf"></i><div class="card-title">Downloadable resources & templates</div>
+      <p>These professionally designed templates are ready to use in the field. Click each link to download the PDF or editable version.</p>
+      <div class="grid-2" style="margin-top:1rem;">
+        <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+          <i class="fas fa-clipboard-list" style="font-size:1.5rem; color:var(--primary-light);"></i>
+          <h4 style="margin:0.5rem 0 0.2rem;">Field Data Sheet</h4>
+          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Record all parameters, weather observations, and sample details in one place.</p>
+          <a href="#" onclick="generateAndDownload('data-sheet')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+          <i class="fas fa-exclamation-triangle" style="font-size:1.5rem; color:var(--primary-light);"></i>
+          <h4 style="margin:0.5rem 0 0.2rem;">Risk Assessment</h4>
+          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Identify hazards, implement controls, and calculate residual risk scores.</p>
+          <a href="#" onclick="generateAndDownload('risk-assessment')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+          <i class="fas fa-link" style="font-size:1.5rem; color:var(--primary-light);"></i>
+          <h4 style="margin:0.5rem 0 0.2rem;">Chain of Custody</h4>
+          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Track sample possession from collection to laboratory receipt.</p>
+          <a href="#" onclick="generateAndDownload('chain-of-custody')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+          <i class="fas fa-map-pin" style="font-size:1.5rem; color:var(--primary-light);"></i>
+          <h4 style="margin:0.5rem 0 0.2rem;">Sampling Plan</h4>
+          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Plan your sites, parameters, equipment, and timeline.</p>
+          <a href="#" onclick="generateAndDownload('sampling-plan')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+          <i class="fas fa-check-circle" style="font-size:1.5rem; color:var(--primary-light);"></i>
+          <h4 style="margin:0.5rem 0 0.2rem;">Equipment Checklist</h4>
+          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Ensure you have everything needed before heading to the field.</p>
+          <a href="#" onclick="generateAndDownload('equipment-checklist')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
+        </div>
+        <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
+          <i class="fas fa-clipboard-check" style="font-size:1.5rem; color:var(--primary-light);"></i>
+          <h4 style="margin:0.5rem 0 0.2rem;">All Templates</h4>
+          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Download all five templates together.</p>
+          <a href="#" onclick="downloadAllTemplates()" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download All</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="checklist-card"><i class="fas fa-graduation-cap"></i> <strong>Resource completion!</strong><br>
+      You've now worked through the major knowledge and practical concepts covered by this learning resource. You understand:<br>
+      ✓ Why we test water and what parameters to measure<br>
+      ✓ How to use equipment and collect samples<br>
+      ✓ How to plan a sampling program and stay safe<br>
+      ✓ How to preserve, transport, and submit samples<br>
+      ✓ How to interpret results and identify issues<br>
+      <br>
+      <strong>Your trainer/assessor will determine competency through the required assessment activities. This resource supports your learning — it is not a substitute for assessment.</strong>
+    </div>
+
+    <h3>Your progress</h3>
+    <div class="progress-container"><div class="progress-fill" style="width:100%;"></div></div>
+    <p style="font-size:0.9rem; color:var(--primary-light);">🎉 100% of this learning resource completed — review the assessment requirements with your trainer.</p>
   </div>
 
-<!-- ===== TAB 8: RESOURCES & GLOSSARY ===== -->
-<div id="tab7" class="tab-content">
-  <h2><i class="fas fa-book"></i> Resources & glossary</h2>
+  <!-- ===== TAB 9: WATER QUALITY SIMULATOR ===== -->
+  <div id="tab8" class="tab-content">
+    <h2><i class="fas fa-chart-simple"></i> Water Quality Simulator</h2>
+    <p style="font-size:1.1rem; margin-bottom:1.5rem;">Adjust the sliders below to see how different water quality parameters are connected. This interactive tool helps you understand the relationships between temperature, dissolved oxygen, pH, and nutrients.</p>
 
-<div class="card"><i class="fas fa-glossary"></i><div class="card-title">Key terms</div>
-  
-  <!-- Search bar -->
-  <div style="margin-bottom:1rem;">
-    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-      <input type="text" id="glossarySearch" placeholder="🔍 Search glossary..." 
-             style="flex:1; padding:0.6rem 1rem; border:2px solid var(--border); border-radius:60px; font-size:0.9rem; min-width:150px;">
-      <button class="btn btn-outline" onclick="clearGlossarySearch()" style="font-size:0.8rem; padding:0.3rem 1rem;">
-        <i class="fas fa-times"></i> Clear
-      </button>
+    <div class="card" style="border: 3px solid var(--accent); background: var(--accent-soft);">
+      <div style="display: flex; gap: 0.8rem; align-items: flex-start;">
+        <i class="fas fa-info-circle" style="font-size: 1.8rem; color: var(--accent); margin-top: 0.1rem;"></i>
+        <div>
+          <h4 style="margin: 0 0 0.3rem; color: var(--primary);">⚠️ Educational simulation — not a predictive water-quality model</h4>
+          <p style="font-size: 0.9rem; margin: 0;">This simulator uses simplified relationships to demonstrate concepts such as the effects of temperature, light, nutrients and salinity. Real water-quality relationships are much more complex and depend on many additional physical, chemical and biological factors. Simulator results must not be used to predict actual field conditions or replace field measurements.</p>
+        </div>
+      </div>
     </div>
-    <span id="glossaryCount" style="font-size:0.8rem; color:var(--text-light); margin-top:0.3rem; display:inline-block;"></span>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-top:0; border-bottom: none;">🎛️ Control Panel</h3>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🌡️ Temperature (°C)</label>
+          <input type="range" id="simTemp" min="0" max="35" value="15" step="0.5" style="width:100%;">
+          <span id="simTempVal" style="font-weight:700; color:var(--primary);">15.0°C</span>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧪 Nitrate (mg/L)</label>
+          <input type="range" id="simNitrate" min="0" max="15" value="0.8" step="0.1" style="width:100%;">
+          <span id="simNitrateVal" style="font-weight:700; color:var(--primary);">0.8 mg/L</span>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧪 Phosphate (mg/L)</label>
+          <input type="range" id="simPhosphate" min="0" max="2.0" value="0.04" step="0.01" style="width:100%;">
+          <span id="simPhosphateVal" style="font-weight:700; color:var(--primary);">0.04 mg/L</span>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">☀️ Light / Photosynthesis</label>
+          <input type="range" id="simLight" min="0" max="100" value="60" step="5" style="width:100%;">
+          <span id="simLightVal" style="font-weight:700; color:var(--primary);">60%</span>
+          <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Affects pH and DO during the day</p>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🔄 Diurnal Cycle (Time of Day)</label>
+          <input type="range" id="simTime" min="0" max="24" value="12" step="0.5" style="width:100%;">
+          <span id="simTimeVal" style="font-weight:700; color:var(--primary);">12:00 (noon)</span>
+          <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Shows how parameters change from sunrise to sunset</p>
+        </div>
+        <div style="margin: 1rem 0;">
+          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧂 Salinity (ppt) — approximate teaching categories</label>
+          <input type="range" id="simSalinitySlider" min="0" max="40" value="0.5" step="0.5" style="width:100%;">
+          <span id="simSalinityVal" style="font-weight:700; color:var(--primary);">0.5 ppt</span>
+          <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Freshwater 0-0.5 · Brackish 0.5-30 · Marine 30-40 (approximate)</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <h3 style="margin-top:0; border-bottom: none;">📊 Simulated Readings</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0;">
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Dissolved Oxygen</div>
+              <div id="simDO" style="font-size:2rem; font-weight:800; color:#2c7840;">94%</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Saturation</div>
+            </div>
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">pH</div>
+              <div id="simpH" style="font-size:2rem; font-weight:800; color:var(--primary);">7.2</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Scale 0-14</div>
+            </div>
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Turbidity (NTU)</div>
+              <div id="simTurbidity" style="font-size:2rem; font-weight:800; color:#b07d44;">12</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Estimated from nutrients</div>
+            </div>
+            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
+              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Salinity (ppt)</div>
+              <div id="simSalinity" style="font-size:2rem; font-weight:800; color:#2a7a9e;">0.2</div>
+              <div style="font-size:0.7rem; color:var(--text-light);">Freshwater baseline</div>
+            </div>
+          </div>
+
+          <div style="background:var(--accent-soft); border-radius:12px; padding:1rem; margin-top:0.5rem;">
+            <strong>🔍 Interpretation:</strong>
+            <div id="simInterpretation" style="font-size:0.9rem; margin-top:0.3rem;">
+              ✅ Healthy water quality. All parameters within expected ranges.
+            </div>
+          </div>
+
+          <div style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
+            <button class="btn btn-outline" onclick="setEutrophic()"><i class="fas fa-leaf"></i> Eutrophic</button>
+            <button class="btn btn-outline" onclick="setHealthy()"><i class="fas fa-check-circle"></i> Healthy</button>
+            <button class="btn btn-outline" onclick="setThermal()"><i class="fas fa-thermometer-half"></i> Thermal</button>
+            <button class="btn btn-outline" onclick="setAlgal()"><i class="fas fa-water"></i> Algal Bloom</button>
+            <button class="btn btn-outline" onclick="setMarine()"><i class="fas fa-ship"></i> Marine</button>
+            <button class="btn btn-outline" onclick="setBrackish()"><i class="fas fa-water"></i> Brackish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:2rem;">Understanding the Relationships</h3>
+    <div class="grid-3">
+      <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">Temperature & DO</div><p>Warmer water holds <strong>less oxygen</strong>. As temperature increases, DO tends to decrease. This is why fish kills are more common in summer.</p></div>
+      <div class="card"><i class="fas fa-leaf"></i><div class="card-title">Nutrients & Turbidity</div><p>Higher nutrients can stimulate <strong>algal growth</strong>, which may increase turbidity (reduce clarity). This is part of the eutrophication process.</p></div>
+      <div class="card"><i class="fas fa-sun"></i><div class="card-title">Light & pH/DO</div><p>During the day, photosynthesis removes CO₂, <strong>raising pH</strong> and increasing DO. At night, respiration reverses these effects. This is the diurnal cycle.</p></div>
+    </div>
   </div>
 
-  <!-- Category filters -->
-  <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem;">
-    <button class="btn btn-primary" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('all')">📋 All</button>
-    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('parameters')">📊 Parameters</button>
-    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('equipment')">🧪 Equipment</button>
-    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('concepts')">📋 Concepts</button>
-    <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('standards')">📜 Standards</button>
-  </div>
-
-  <!-- Glossary accordion cards -->
-  <div id="glossaryContainer" style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
-    <!-- Terms will be injected here by JavaScript -->
-  </div>
-</div>
-
-<!-- ===== UPDATED VIDEO RESOURCES CARD WITH PREVIEW WINDOWS ===== -->
-<div class="card"><i class="fas fa-video"></i><div class="card-title">Recommended videos & tutorials</div>
-  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem; margin-top:1rem;">
-    <!-- Video 1 - NEW -->
-    <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
-      <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
-        <iframe src="https://www.youtube.com/embed/OTerH6SgwO8" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div style="padding:0.8rem 1rem;">
-        <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">Introduction to water quality</h4>
-        <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Overview of key water quality parameters and why they matter.</p>
-        <span class="badge badge-primary" style="font-size:0.6rem;">4:38</span>
-        <a href="https://www.youtube.com/watch?v=OTerH6SgwO8&t=46s" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
-      </div>
-    </div>
-    <!-- Video 2 -->
-    <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
-      <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
-        <iframe src="https://www.youtube.com/embed/94YcjbYBchc" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div style="padding:0.8rem 1rem;">
-        <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">How we measure water quality</h4>
-        <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">EPA Victoria · Follow an authorised officer as they collect water samples and explain key parameters.</p>
-        <span class="badge badge-primary" style="font-size:0.6rem;">4:38</span>
-        <a href="https://www.youtube.com/watch?v=94YcjbYBchc" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
-      </div>
-    </div>
-    <!-- Video 3 -->
-    <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
-      <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
-        <iframe src="https://www.youtube.com/embed/Ko7TbScFQk4" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div style="padding:0.8rem 1rem;">
-        <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">Horiba U-52 Auto Calibration</h4>
-        <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Step-by-step automatic calibration for multi-parameter sonde.</p>
-        <span class="badge badge-primary" style="font-size:0.6rem;">2:14</span>
-        <a href="https://www.youtube.com/watch?v=Ko7TbScFQk4" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
-      </div>
-    </div>
-    <!-- Video 4 -->
-    <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
-      <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
-        <iframe src="https://www.youtube.com/embed/5w6s9K97G9g" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div style="padding:0.8rem 1rem;">
-        <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">Horiba U-50 Water Quality Probe</h4>
-        <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Detailed overview of the Horiba U-50 series multi-parameter probe.</p>
-        <span class="badge badge-primary" style="font-size:0.6rem;">6:12</span>
-        <a href="https://www.youtube.com/watch?v=5w6s9K97G9g" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
-      </div>
-    </div>
-    <!-- Video 5 -->
-    <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
-      <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
-        <iframe src="https://www.youtube.com/embed/SvksjH9gedQ" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div style="padding:0.8rem 1rem;">
-        <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">pH, EC, TDS & PPM Explained</h4>
-        <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Clear explanation of water chemistry relationships.</p>
-        <span class="badge badge-primary" style="font-size:0.6rem;">6:28</span>
-        <a href="https://www.youtube.com/watch?v=SvksjH9gedQ" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
-      </div>
-    </div>
-    <!-- Video 6 -->
-    <div style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
-      <div style="position:relative; padding-bottom:56.25%; height:0; background:#000;">
-        <iframe src="https://www.youtube.com/embed/3Vylu9R9WtY" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div style="padding:0.8rem 1rem;">
-        <h4 style="margin:0 0 0.3rem; font-size:0.95rem;">eDNA Water Sampling Tutorial</h4>
-        <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.3rem;">Sterile sampling technique and contamination prevention.</p>
-        <span class="badge badge-primary" style="font-size:0.6rem;">3:34</span>
-        <a href="https://www.youtube.com/watch?v=3Vylu9R9WtY" target="_blank" style="float:right; font-size:0.8rem; color:var(--primary); text-decoration:none; border-bottom:1px solid var(--accent);">Watch →</a>
-      </div>
-    </div>
-  </div>
-  <div class="tip" style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> <strong>Pro tip:</strong> Watch these videos before your fieldwork to see the techniques in action. Click any thumbnail to play the video directly on this page.</div>
-</div>
-
-<!-- ===== UPDATED DOWNLOADABLE RESOURCES SECTION ===== -->
-<div class="card"><i class="fas fa-file-pdf"></i><div class="card-title">Downloadable resources & templates</div>
-  <p>These professionally designed templates are ready to use in the field. Click each link to download the PDF or editable version.</p>
-  <div class="grid-2" style="margin-top:1rem;">
-    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
-      <i class="fas fa-clipboard-list" style="font-size:1.5rem; color:var(--primary-light);"></i>
-      <h4 style="margin:0.5rem 0 0.2rem;">Field Data Sheet</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Record all parameters, weather observations, and sample details in one place.</p>
-      <a href="#" onclick="generateAndDownload('data-sheet')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
-    </div>
-    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
-      <i class="fas fa-exclamation-triangle" style="font-size:1.5rem; color:var(--primary-light);"></i>
-      <h4 style="margin:0.5rem 0 0.2rem;">Risk Assessment</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Identify hazards, implement controls, and calculate residual risk scores.</p>
-      <a href="#" onclick="generateAndDownload('risk-assessment')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
-    </div>
-    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
-      <i class="fas fa-link" style="font-size:1.5rem; color:var(--primary-light);"></i>
-      <h4 style="margin:0.5rem 0 0.2rem;">Chain of Custody</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Track sample possession from collection to laboratory receipt.</p>
-      <a href="#" onclick="generateAndDownload('chain-of-custody')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
-    </div>
-    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
-      <i class="fas fa-map-pin" style="font-size:1.5rem; color:var(--primary-light);"></i>
-      <h4 style="margin:0.5rem 0 0.2rem;">Sampling Plan</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Plan your sites, parameters, equipment, and timeline.</p>
-      <a href="#" onclick="generateAndDownload('sampling-plan')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
-    </div>
-    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
-      <i class="fas fa-check-circle" style="font-size:1.5rem; color:var(--primary-light);"></i>
-      <h4 style="margin:0.5rem 0 0.2rem;">Equipment Checklist</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Ensure you have everything needed before heading to the field.</p>
-      <a href="#" onclick="generateAndDownload('equipment-checklist')" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download PDF</a>
-    </div>
-    <div style="background:var(--bg); border-radius:var(--radius); padding:1rem; border:1px solid var(--border);">
-      <i class="fas fa-clipboard-check" style="font-size:1.5rem; color:var(--primary-light);"></i>
-      <h4 style="margin:0.5rem 0 0.2rem;">All Templates</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.5rem;">Download all five templates together.</p>
-      <a href="#" onclick="downloadAllTemplates()" class="btn btn-primary" style="font-size:0.8rem; padding:0.3rem 1rem;"><i class="fas fa-download"></i> Download All</a>
-    </div>
-  </div>
+  <footer>
+    <p><i class="fas fa-droplet"></i> AHCLPW313 Undertake sampling and testing of water · Learning Guide</p>
+    <p>Developed by Jay Rowley © 2026</p>
+  </footer>
 </div>
 
 <script>
+// ===== TAB SWITCHING =====
+function switchTab(e, tabId) {
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  e.currentTarget.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ===== ACCORDION =====
+function toggleAccordion(header) {
+  const content = header.nextElementSibling;
+  const icon = header.querySelector('.fa-chevron-down, .fa-chevron-up');
+  if (content.classList.contains('open')) {
+    content.classList.remove('open');
+    if (icon) icon.className = 'fas fa-chevron-down';
+  } else {
+    content.classList.add('open');
+    if (icon) icon.className = 'fas fa-chevron-up';
+  }
+}
+
+// ===== QUIZ =====
+function checkQuiz() {
+  let score = 0, total = 12;
+  const questions = document.querySelectorAll('.quiz-question');
+  questions.forEach((q) => {
+    const radios = q.querySelectorAll('input[type="radio"]');
+    const selected = Array.from(radios).find(r => r.checked);
+    const fb = q.querySelector('.quiz-feedback');
+    const correct = q.dataset.correct;
+    if(selected && selected.value === correct) {
+      fb.innerHTML = '✓ Correct';
+      fb.className = 'feedback-correct';
+      score++;
+    } else if(selected) {
+      fb.innerHTML = '✗ Incorrect. Review the material.';
+      fb.className = 'feedback-incorrect';
+    } else {
+      fb.innerHTML = '⚠ Please select an answer.';
+      fb.className = 'feedback-incorrect';
+    }
+    fb.style.display = 'inline-block';
+  });
+  document.getElementById('quizScore').innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? '🏆 Perfect score!' : score>=10 ? '🌟 Excellent!' : 'Review the tabs and try again.'}`;
+}
+
+function resetQuiz() {
+  document.querySelectorAll('.quiz-question input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.quiz-feedback').forEach(f => { f.innerHTML = ''; f.style.display = 'none'; f.className = 'quiz-feedback'; });
+  document.getElementById('quizScore').innerHTML = '';
+}
+
+// ===== SCENARIOS =====
+function selectScen(num, choice) {
+  const opts = document.querySelectorAll(`#scen${num}opts .scenario-option`);
+  opts.forEach(o => o.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  const fb = document.getElementById(`scen${num}fb`);
+  const msgs = {
+    1: { A: '✅ Correct: record the reading and note recent rainfall. This is valuable data — it shows how rainfall affects turbidity.',
+        B: '❌ Not necessary. The high turbidity is a real observation that should be recorded.',
+        C: '❌ Preservative doesn\'t affect turbidity. It\'s for biological preservation.' },
+    2: { A: '❌ Replace only after troubleshooting — check calibration and bubbles first.',
+        B: '✅ Correct: calibrate, check for bubbles, and wait for stabilisation. This solves most fluctuations.',
+        C: '❌ Never average fluctuating readings. Record a stable, reliable value.' },
+    3: { A: '❌ Algal blooms can be toxic and indicate pollution. They should be investigated.',
+        B: '✅ Correct: identify the algae, test nutrients, pH, and DO, and note odours — this gives a complete picture of the bloom.',
+        C: '❌ Adding fertiliser would make the problem worse by adding more nutrients.' },
+    4: { A: '❌ An oily sheen is abnormal and likely indicates pollution. Continuing could be dangerous.',
+        B: '✅ Correct: stop, report, document, and avoid contact. This is a potential pollution incident.',
+        C: '❌ Do not collect a sample unless you are trained, authorised and it is safe to do so under the incident/sampling procedure. Safety first — follow workplace procedures and report.' }
+  };
+  fb.innerHTML = `<strong>Feedback:</strong> ${msgs[num]?.[choice] || 'Review the scenario and try again.'}`;
+  fb.style.display = 'block';
+
+  if (choice === 'B') {
+    const scenKey = `scenario_${num}`;
+    if (!localStorage.getItem(scenKey)) {
+      localStorage.setItem(scenKey, 'completed');
+      let completed = 0;
+      for (let i = 1; i <= 4; i++) {
+        if (localStorage.getItem(`scenario_${i}`)) completed++;
+      }
+      progressData.scenariosCompleted = completed;
+      saveProgress();
+    }
+  }
+}
+
+function resetScen(num) {
+  document.getElementById(`scen${num}fb`).style.display = 'none';
+  document.querySelectorAll(`#scen${num}opts .scenario-option`).forEach(o => o.classList.remove('selected'));
+}
+
+// ===== PROGRESS TRACKER =====
+let progressData = {
+  quizScore: 0,
+  quizTotal: 12,
+  scenariosCompleted: 0,
+  tabsViewed: new Set(),
+  overallProgress: 0
+};
+
+function updateProgressDisplay() {
+  const saved = localStorage.getItem('waterQualityProgress');
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      progressData.quizScore = data.quizScore || 0;
+      progressData.scenariosCompleted = data.scenariosCompleted || 0;
+      if (data.tabsViewed) progressData.tabsViewed = new Set(data.tabsViewed);
+      progressData.overallProgress = data.overallProgress || 0;
+    } catch(e) {}
+  }
+  
+  const quizEl = document.getElementById('progressQuiz');
+  const scenariosEl = document.getElementById('progressScenarios');
+  const tabsEl = document.getElementById('progressTabs');
+  const overallEl = document.getElementById('progressOverall');
+  
+  if (quizEl) quizEl.textContent = `${progressData.quizScore}/${progressData.quizTotal}`;
+  if (scenariosEl) scenariosEl.textContent = `${progressData.scenariosCompleted}/4`;
+  if (tabsEl) tabsEl.textContent = `${progressData.tabsViewed.size}/9`;
+  if (overallEl) overallEl.textContent = `${progressData.overallProgress}%`;
+}
+
+function saveProgress() {
+  const quizScoreElement = document.getElementById('quizScore');
+  if (quizScoreElement) {
+    const match = quizScoreElement.textContent.match(/(\d+)\/(\d+)/);
+    if (match) {
+      progressData.quizScore = parseInt(match[1]);
+      progressData.quizTotal = parseInt(match[2]);
+    }
+  }
+  
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    if (tab.style.display !== 'none' || tab.classList.contains('active')) {
+      progressData.tabsViewed.add(tab.id);
+    }
+  });
+  
+  const quizPercent = (progressData.quizScore / progressData.quizTotal) * 40;
+  const scenarioPercent = (progressData.scenariosCompleted / 4) * 30;
+  const tabPercent = (progressData.tabsViewed.size / 9) * 30;
+  progressData.overallProgress = Math.round(quizPercent + scenarioPercent + tabPercent);
+  
+  localStorage.setItem('waterQualityProgress', JSON.stringify(progressData));
+  const msgEl = document.getElementById('progressMessage');
+  if (msgEl) {
+    msgEl.innerHTML = '✅ Progress saved successfully!';
+    msgEl.style.color = '#2c7840';
+  }
+  updateProgressDisplay();
+}
+
+function loadProgress() {
+  const saved = localStorage.getItem('waterQualityProgress');
+  const msgEl = document.getElementById('progressMessage');
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      progressData = {
+        quizScore: data.quizScore || 0,
+        quizTotal: data.quizTotal || 12,
+        scenariosCompleted: data.scenariosCompleted || 0,
+        tabsViewed: new Set(data.tabsViewed || []),
+        overallProgress: data.overallProgress || 0
+      };
+      if (msgEl) {
+        msgEl.innerHTML = '✅ Progress loaded successfully!';
+        msgEl.style.color = '#2c7840';
+      }
+      updateProgressDisplay();
+    } catch(e) {
+      if (msgEl) {
+        msgEl.innerHTML = '❌ Error loading progress.';
+        msgEl.style.color = '#b34343';
+      }
+    }
+  } else {
+    if (msgEl) {
+      msgEl.innerHTML = 'ℹ️ No saved progress found.';
+      msgEl.style.color = '#e68a2e';
+    }
+  }
+}
+
+function clearProgress() {
+  if (confirm('Are you sure you want to clear all saved progress?')) {
+    localStorage.removeItem('waterQualityProgress');
+    progressData = {
+      quizScore: 0,
+      quizTotal: 12,
+      scenariosCompleted: 0,
+      tabsViewed: new Set(),
+      overallProgress: 0
+    };
+    const msgEl = document.getElementById('progressMessage');
+    if (msgEl) {
+      msgEl.innerHTML = '🗑️ Progress cleared.';
+      msgEl.style.color = '#b34343';
+    }
+    updateProgressDisplay();
+  }
+}
+
+// ===== SEARCH FUNCTIONS =====
+function performSearch() {
+  const query = document.getElementById('globalSearch').value.toLowerCase().trim();
+  if (!query) {
+    clearSearch();
+    return;
+  }
+
+  let totalMatches = 0;
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabContents.forEach(tab => {
+    const text = tab.textContent.toLowerCase();
+    if (text.includes(query)) {
+      tab.style.display = 'block';
+      
+      const elements = tab.querySelectorAll('p, li, td, .card-title, h2, h3, h4');
+      elements.forEach(el => {
+        const originalHtml = el.innerHTML;
+        if (el.textContent.toLowerCase().includes(query)) {
+          const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+          el.innerHTML = originalHtml.replace(regex, '<span style="background:#fdf0a0; padding:0 2px; border-radius:2px;">$1</span>');
+          totalMatches++;
+        }
+      });
+    } else {
+      tab.style.display = 'none';
+    }
+  });
+
+  const firstVisible = document.querySelector('.tab-content[style*="display: block"]');
+  if (firstVisible) {
+    const tabId = firstVisible.id;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelector(`.tab[onclick*="${tabId}"]`)?.classList.add('active');
+  }
+
+  document.getElementById('searchResultsCount').textContent = `Found ${totalMatches} matches`;
+}
+
+function clearSearch() {
+  document.getElementById('globalSearch').value = '';
+  document.getElementById('searchResultsCount').textContent = '';
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.style.display = '';
+    tab.querySelectorAll('p, li, td, .card-title, h2, h3, h4').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/<span style="background:#fdf0a0; padding:0 2px; border-radius:2px;">(.*?)<\/span>/g, '$1');
+    });
+  });
+}
+
+// ===== WATER QUALITY SIMULATOR =====
+function updateSimulator() {
+  const temp = parseFloat(document.getElementById('simTemp').value);
+  const nitrate = parseFloat(document.getElementById('simNitrate').value);
+  const phosphate = parseFloat(document.getElementById('simPhosphate').value);
+  const light = parseFloat(document.getElementById('simLight').value);
+  const time = parseFloat(document.getElementById('simTime').value);
+  const salinity = parseFloat(document.getElementById('simSalinitySlider').value);
+
+  document.getElementById('simTempVal').textContent = temp.toFixed(1) + '°C';
+  document.getElementById('simNitrateVal').textContent = nitrate.toFixed(1) + ' mg/L';
+  document.getElementById('simPhosphateVal').textContent = phosphate.toFixed(2) + ' mg/L';
+  document.getElementById('simLightVal').textContent = light.toFixed(0) + '%';
+  
+  const hours = Math.floor(time);
+  const minutes = Math.round((time - hours) * 60);
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  const displayHour = hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
+  document.getElementById('simTimeVal').textContent = `${displayHour}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+
+  const maxDO = 14.6 - (temp * 0.3);
+  const lightFactor = 0.7 + (light / 100) * 0.3;
+  const timeFactor = 0.8 + (Math.sin((time / 24) * 2 * Math.PI - Math.PI/2) * 0.2);
+  let doValue = maxDO * lightFactor * timeFactor;
+  const salinityFactor = 1 - (salinity / 40) * 0.15;
+  doValue = doValue * salinityFactor;
+  const nutrientStress = Math.min(1, (nitrate / 5 + phosphate / 0.5) * 0.15);
+  doValue = doValue * (1 - nutrientStress);
+  doValue = Math.max(0.5, Math.min(12, doValue));
+  const doPercent = Math.round((doValue / maxDO) * 100);
+  document.getElementById('simDO').textContent = Math.min(100, Math.round(doPercent)) + '%';
+
+  const basepH = 7.0;
+  const lightpH = (light / 100) * 0.8;
+  const tempPH = (temp - 15) * 0.02;
+  const nutrientPH = (nitrate / 10) * 0.1 + (phosphate / 0.5) * 0.1;
+  let pH = basepH + lightpH + tempPH + nutrientPH;
+  pH = Math.max(5.5, Math.min(9.5, pH));
+  document.getElementById('simpH').textContent = pH.toFixed(1);
+
+  const nutrientLoad = nitrate * 2 + phosphate * 50;
+  const turbidity = Math.min(200, 5 + nutrientLoad * 1.5 + light * 0.1);
+  document.getElementById('simTurbidity').textContent = Math.round(turbidity);
+
+  document.getElementById('simSalinityVal').textContent = salinity.toFixed(1) + ' ppt';
+  document.getElementById('simSalinity').textContent = salinity.toFixed(1);
+
+  // Interpretation — softened language, no predictive claims
+  const interpret = document.getElementById('simInterpretation');
+  let messages = [];
+  let status = '✅ ';
+
+  // Salinity teaching categories
+  if (salinity < 0.5) {
+    messages.push('💧 Freshwater salinity range (<0.5 ppt) — salinity alone does not indicate overall water quality');
+  } else if (salinity < 5) {
+    messages.push('💧 Low salinity (0.5–5 ppt) — may affect some freshwater species');
+  } else if (salinity < 18) {
+    messages.push('💧 Brackish (~5–18 ppt) — estuarine conditions');
+  } else if (salinity < 30) {
+    messages.push('💧 High brackish (~18–30 ppt) — salt-tolerant species');
+  } else {
+    messages.push('🌊 Marine salinity range (>30 ppt) — typical of ocean sites');
+  }
+
+  // DO
+  if (doPercent < 40) messages.push('🚨 Very low DO — this may cause severe physiological stress and, if prolonged, mortality');
+  else if (doPercent < 60) messages.push('⚠️ Low DO — potential stress for aquatic life');
+  else messages.push('✅ DO levels generally adequate');
+
+  // pH
+  if (pH < 6.0) messages.push('⚠️ pH below typical freshwater range — investigate if outside local reference');
+  else if (pH > 8.5) messages.push('⚠️ pH above typical freshwater range — possible algal influence');
+  else messages.push('✅ pH within typical freshwater range');
+
+  // Nutrients
+  if (nitrate > 5 || phosphate > 0.1) messages.push('🚨 High nutrients — eutrophication risk');
+  else if (nitrate > 2 || phosphate > 0.05) messages.push('⚠️ Elevated nutrients — monitor regularly');
+  else messages.push('✅ Nutrients at low levels');
+
+  // Turbidity
+  if (turbidity > 50) messages.push('⚠️ High turbidity — investigate local reference conditions');
+  else if (turbidity > 20) messages.push('⚠️ Elevated turbidity — possible sediment or algae');
+  else messages.push('✅ Water clarity generally good');
+
+  // Bloom conditions
+  if (nitrate > 3 && phosphate > 0.08 && light > 50) messages.push('🚨 Conditions may favour algal bloom — investigate');
+  else if (nitrate > 2 && phosphate > 0.05) messages.push('⚠️ Conditions could potentially trigger algal bloom');
+
+  const hasCritical = messages.some(m => m.includes('🚨'));
+  const hasWarning = messages.some(m => m.includes('⚠️'));
+  if (hasCritical) status = '🚨 CRITICAL — ';
+  else if (hasWarning) status = '⚠️ WARNING — ';
+  else status = '✅ HEALTHY — ';
+
+  interpret.innerHTML = status + messages.join(' · ');
+}
+
+// ===== PRESET SCENARIOS =====
+function setEutrophic() {
+  document.getElementById('simTemp').value = 22;
+  document.getElementById('simNitrate').value = 8.0;
+  document.getElementById('simPhosphate').value = 0.5;
+  document.getElementById('simLight').value = 70;
+  document.getElementById('simTime').value = 14;
+  document.getElementById('simSalinitySlider').value = 0.5;
+  updateSimulator();
+}
+
+function setHealthy() {
+  document.getElementById('simTemp').value = 15;
+  document.getElementById('simNitrate').value = 0.8;
+  document.getElementById('simPhosphate').value = 0.04;
+  document.getElementById('simLight').value = 60;
+  document.getElementById('simTime').value = 12;
+  document.getElementById('simSalinitySlider').value = 0.5;
+  updateSimulator();
+}
+
+function setThermal() {
+  document.getElementById('simTemp').value = 30;
+  document.getElementById('simNitrate').value = 1.2;
+  document.getElementById('simPhosphate').value = 0.06;
+  document.getElementById('simLight').value = 80;
+  document.getElementById('simTime').value = 14;
+  document.getElementById('simSalinitySlider').value = 0.5;
+  updateSimulator();
+}
+
+function setAlgal() {
+  document.getElementById('simTemp').value = 25;
+  document.getElementById('simNitrate').value = 6.0;
+  document.getElementById('simPhosphate').value = 0.3;
+  document.getElementById('simLight').value = 90;
+  document.getElementById('simTime').value = 14;
+  document.getElementById('simSalinitySlider').value = 0.5;
+  updateSimulator();
+}
+
+function setMarine() {
+  document.getElementById('simTemp').value = 18;
+  document.getElementById('simNitrate').value = 0.3;
+  document.getElementById('simPhosphate').value = 0.02;
+  document.getElementById('simLight').value = 70;
+  document.getElementById('simTime').value = 12;
+  document.getElementById('simSalinitySlider').value = 35;
+  updateSimulator();
+}
+
+function setBrackish() {
+  document.getElementById('simTemp').value = 20;
+  document.getElementById('simNitrate').value = 1.5;
+  document.getElementById('simPhosphate').value = 0.08;
+  document.getElementById('simLight').value = 65;
+  document.getElementById('simTime').value = 14;
+  document.getElementById('simSalinitySlider').value = 15;
+  updateSimulator();
+}
+
 // ===== TEMPLATE GENERATION FUNCTIONS =====
 function generateAndDownload(type) {
   const templates = {
@@ -1130,782 +1689,61 @@ function generateAndDownload(type) {
 
 function downloadAllTemplates() {
   const types = ['data-sheet', 'risk-assessment', 'chain-of-custody', 'sampling-plan', 'equipment-checklist'];
-  const names = {
-    'data-sheet': 'Field_Data_Sheet',
-    'risk-assessment': 'Risk_Assessment',
-    'chain-of-custody': 'Chain_of_Custody',
-    'sampling-plan': 'Sampling_Plan',
-    'equipment-checklist': 'Equipment_Checklist'
-  };
-
-  // Download each template sequentially with a short delay
   types.forEach((type, index) => {
     setTimeout(() => {
       generateAndDownload(type);
     }, index * 300);
   });
 
-  // Show a message
   const msg = document.createElement('div');
   msg.style.cssText = 'position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#2c7840; color:white; padding:1rem 2rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:999; font-weight:600;';
   msg.innerHTML = '📦 Downloading all 5 templates... Check your downloads folder.';
   document.body.appendChild(msg);
   setTimeout(() => msg.remove(), 5000);
 }
-</script>
-
-    <div class="checklist-card"><i class="fas fa-graduation-cap"></i> <strong>Ready for assessment!</strong><br>
-      You've now covered all the knowledge and skills required for AHCLPW313. You understand:<br>
-      ✓ Why we test water and what parameters to measure<br>
-      ✓ How to use equipment and collect samples<br>
-      ✓ How to plan a sampling program and stay safe<br>
-      ✓ How to preserve, transport, and submit samples<br>
-      ✓ How to interpret results and identify issues<br>
-      <br>
-      <strong>You're well prepared for both the knowledge questions and the practical fieldwork. Good luck!</strong>
-    </div>
-
-    <h3>Your progress</h3>
-    <div class="progress-container"><div class="progress-fill" style="width:100%;"></div></div>
-    <p style="font-size:0.9rem; color:var(--primary-light);">🎉 100% complete — you're ready for assessment!</p>
-  </div>
-
-  <!-- ===== TAB 9: WATER QUALITY SIMULATOR ===== -->
-  <div id="tab8" class="tab-content">
-    <h2><i class="fas fa-chart-simple"></i> Water Quality Simulator</h2>
-    <p style="font-size:1.1rem; margin-bottom:1.5rem;">Adjust the sliders below to see how different water quality parameters are connected. This interactive tool helps you understand the relationships between temperature, dissolved oxygen, pH, and nutrients.</p>
-
-    <div class="grid-2">
-      <div class="card">
-        <h3 style="margin-top:0; border-bottom: none;">🎛️ Control Panel</h3>
-        <div style="margin: 1rem 0;">
-          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🌡️ Temperature (°C)</label>
-          <input type="range" id="simTemp" min="0" max="35" value="15" step="0.5" style="width:100%;">
-          <span id="simTempVal" style="font-weight:700; color:var(--primary);">15.0°C</span>
-        </div>
-        <div style="margin: 1rem 0;">
-          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧪 Nitrate (mg/L)</label>
-          <input type="range" id="simNitrate" min="0" max="15" value="0.8" step="0.1" style="width:100%;">
-          <span id="simNitrateVal" style="font-weight:700; color:var(--primary);">0.8 mg/L</span>
-        </div>
-        <div style="margin: 1rem 0;">
-          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧪 Phosphate (mg/L)</label>
-          <input type="range" id="simPhosphate" min="0" max="2.0" value="0.04" step="0.01" style="width:100%;">
-          <span id="simPhosphateVal" style="font-weight:700; color:var(--primary);">0.04 mg/L</span>
-        </div>
-        <div style="margin: 1rem 0;">
-          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">☀️ Light / Photosynthesis</label>
-          <input type="range" id="simLight" min="0" max="100" value="60" step="5" style="width:100%;">
-          <span id="simLightVal" style="font-weight:700; color:var(--primary);">60%</span>
-          <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Affects pH and DO during the day</p>
-        </div>
-        <div style="margin: 1rem 0;">
-          <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🔄 Diurnal Cycle (Time of Day)</label>
-          <input type="range" id="simTime" min="0" max="24" value="12" step="0.5" style="width:100%;">
-          <span id="simTimeVal" style="font-weight:700; color:var(--primary);">12:00 (noon)</span>
-          <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Shows how parameters change from sunrise to sunset</p>
-        </div>
-      <div style="margin: 1rem 0;">
-        <label style="display:block; font-weight:600; margin-bottom:0.3rem;">🧂 Salinity (ppt)</label>
-        <input type="range" id="simSalinitySlider" min="0" max="40" value="0.5" step="0.5" style="width:100%;">
-        <span id="simSalinityVal" style="font-weight:700; color:var(--primary);">0.5 ppt</span>
-        <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.2rem;">Freshwater 0-0.5 · Brackish 0.5-30 · Marine 30-40</p>
-      </div>
-      </div>
-
-      <div>
-        <div class="card">
-          <h3 style="margin-top:0; border-bottom: none;">📊 Simulated Readings</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0;">
-            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
-              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Dissolved Oxygen</div>
-              <div id="simDO" style="font-size:2rem; font-weight:800; color:#2c7840;">94%</div>
-              <div style="font-size:0.7rem; color:var(--text-light);">Saturation</div>
-            </div>
-            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
-              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">pH</div>
-              <div id="simpH" style="font-size:2rem; font-weight:800; color:var(--primary);">7.2</div>
-              <div style="font-size:0.7rem; color:var(--text-light);">Scale 0-14</div>
-            </div>
-            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
-              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Turbidity (NTU)</div>
-              <div id="simTurbidity" style="font-size:2rem; font-weight:800; color:#b07d44;">12</div>
-              <div style="font-size:0.7rem; color:var(--text-light);">Estimated from nutrients</div>
-            </div>
-            <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
-              <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Salinity (ppt)</div>
-              <div id="simSalinity" style="font-size:2rem; font-weight:800; color:#2a7a9e;">0.2</div>
-              <div style="font-size:0.7rem; color:var(--text-light);">Freshwater baseline</div>
-            </div>
-          </div>
-
-          <div style="background:var(--accent-soft); border-radius:12px; padding:1rem; margin-top:0.5rem;">
-            <strong>🔍 Interpretation:</strong>
-            <div id="simInterpretation" style="font-size:0.9rem; margin-top:0.3rem;">
-              ✅ Healthy water quality. All parameters within expected ranges.
-            </div>
-          </div>
-
-          <div style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
-            <button class="btn btn-outline" onclick="setEutrophic()"><i class="fas fa-leaf"></i> Eutrophic</button>
-            <button class="btn btn-outline" onclick="setHealthy()"><i class="fas fa-check-circle"></i> Healthy</button>
-            <button class="btn btn-outline" onclick="setThermal()"><i class="fas fa-thermometer-half"></i> Thermal</button>
-            <button class="btn btn-outline" onclick="setAlgal()"><i class="fas fa-water"></i> Algal Bloom</button>
-            <button class="btn btn-outline" onclick="setMarine()"><i class="fas fa-ship"></i> Marine</button>
-            <button class="btn btn-outline" onclick="setBrackish()"><i class="fas fa-water"></i> Brackish</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="margin-top:2rem;">Understanding the Relationships</h3>
-    <div class="grid-3">
-      <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">Temperature & DO</div><p>Warmer water holds <strong>less oxygen</strong>. As temperature increases, DO decreases. This is why fish kills are more common in summer.</p></div>
-      <div class="card"><i class="fas fa-leaf"></i><div class="card-title">Nutrients & Turbidity</div><p>Higher nutrients stimulate <strong>algal growth</strong>, which increases turbidity (reduces clarity). This is the start of eutrophication.</p></div>
-      <div class="card"><i class="fas fa-sun"></i><div class="card-title">Light & pH/DO</div><p>During the day, photosynthesis removes CO₂, <strong>raising pH</strong> and increasing DO. At night, respiration reverses these effects. This is the diurnal cycle.</p></div>
-    </div>
-  </div>
-
-  <footer>
-    <p><i class="fas fa-droplet"></i> AHCLPW313 Undertake sampling and testing of water  · Learning Guide</p>
-    <p>Developed by Jay Rowley © 2026</p>
-    <!-- <p><span class="badge badge-primary">Beginner</span> <span class="badge badge-accent">Intermediate</span> <span class="badge badge-success">Advanced</span></p> -->
-  </footer>
-</div>
-
-<script>
-// ===== TAB SWITCHING =====
-function switchTab(e, tabId) {
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  e.currentTarget.classList.add('active');
-  window.scrollTo(0,0);
-}
-
-// ===== ACCORDION =====
-function toggleAccordion(header) {
-  const content = header.nextElementSibling;
-  const icon = header.querySelector('.fa-chevron-down, .fa-chevron-up');
-  if (content.classList.contains('open')) {
-    content.classList.remove('open');
-    if (icon) icon.className = 'fas fa-chevron-down';
-  } else {
-    content.classList.add('open');
-    if (icon) icon.className = 'fas fa-chevron-up';
-  }
-}
-
-// ===== QUIZ =====
-function checkQuiz() {
-  let score = 0, total = 12;
-  const questions = document.querySelectorAll('.quiz-question');
-  questions.forEach((q) => {
-    const radios = q.querySelectorAll('input[type="radio"]');
-    const selected = Array.from(radios).find(r => r.checked);
-    const fb = q.querySelector('.quiz-feedback');
-    const correct = q.dataset.correct;
-    if(selected && selected.value === correct) {
-      fb.innerHTML = '✓ Correct';
-      fb.className = 'feedback-correct';
-      score++;
-    } else if(selected) {
-      fb.innerHTML = '✗ Incorrect. Review the material.';
-      fb.className = 'feedback-incorrect';
-    } else {
-      fb.innerHTML = '⚠ Please select an answer.';
-      fb.className = 'feedback-incorrect';
-    }
-    fb.style.display = 'inline-block';
-  });
-  document.getElementById('quizScore').innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? '🏆 Perfect score — you\'re an expert!' : score>=10 ? '🌟 Excellent — you\'re well prepared!' : 'Review the tabs and try again.'}`;
-}
-
-function resetQuiz() {
-  document.querySelectorAll('.quiz-question input[type="radio"]').forEach(r => r.checked = false);
-  document.querySelectorAll('.quiz-feedback').forEach(f => { f.innerHTML = ''; f.style.display = 'none'; f.className = 'quiz-feedback'; });
-  document.getElementById('quizScore').innerHTML = '';
-}
-
-// ===== SCENARIOS =====
-function selectScen(num, choice) {
-  const opts = document.querySelectorAll(`#scen${num}opts .scenario-option`);
-  opts.forEach(o => o.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
-  const fb = document.getElementById(`scen${num}fb`);
-  const msgs = {
-    1: { A: '✅ Correct: record the reading and note recent rainfall. This is valuable data — it shows how rainfall affects turbidity.',
-        B: '❌ Not necessary. The high turbidity is a real observation that should be recorded.',
-        C: '❌ Preservative doesn\'t affect turbidity. It\'s for biological preservation.' },
-    2: { A: '❌ Replace only after troubleshooting — check calibration and bubbles first.',
-        B: '✅ Correct: calibrate, check for bubbles, and wait for stabilisation. This solves most fluctuations.',
-        C: '❌ Never average fluctuating readings. Record a stable, reliable value.' },
-    3: { A: '❌ Algal blooms can be toxic and indicate pollution. They should be investigated.',
-        B: '✅ Correct: identify the algae, test nutrients, pH, and DO, and note odours — this gives a complete picture of the bloom.',
-        C: '❌ Adding fertiliser would make the problem worse by adding more nutrients.' },
-    4: { A: '❌ An oily sheen is abnormal and likely indicates pollution. Continuing could be dangerous.',
-        B: '✅ Correct: stop, report, document, and avoid contact. This is a potential pollution incident.',
-        C: '❌ Safety first — don\'t collect a sample until you\'ve reported and assessed the risk.' }
-  };
-  fb.innerHTML = `<strong>Feedback:</strong> ${msgs[num]?.[choice] || 'Review the scenario and try again.'}`;
-  fb.style.display = 'block';
-
-  // Track scenario completion (only if correct answer B)
-  if (choice === 'B') {
-    const scenKey = `scenario_${num}`;
-    if (!localStorage.getItem(scenKey)) {
-      localStorage.setItem(scenKey, 'completed');
-      let completed = 0;
-      for (let i = 1; i <= 4; i++) {
-        if (localStorage.getItem(`scenario_${i}`)) completed++;
-      }
-      progressData.scenariosCompleted = completed;
-      saveProgress();
-    }
-  }
-}
-
-function resetScen(num) {
-  document.getElementById(`scen${num}fb`).style.display = 'none';
-  document.querySelectorAll(`#scen${num}opts .scenario-option`).forEach(o => o.classList.remove('selected'));
-}
-
-// ===== PROGRESS TRACKER =====
-let progressData = {
-  quizScore: 0,
-  quizTotal: 12,
-  scenariosCompleted: 0,
-  tabsViewed: new Set(),
-  overallProgress: 0
-};
-
-function updateProgressDisplay() {
-  const saved = localStorage.getItem('waterQualityProgress');
-  if (saved) {
-    try {
-      const data = JSON.parse(saved);
-      progressData.quizScore = data.quizScore || 0;
-      progressData.scenariosCompleted = data.scenariosCompleted || 0;
-      if (data.tabsViewed) progressData.tabsViewed = new Set(data.tabsViewed);
-      progressData.overallProgress = data.overallProgress || 0;
-    } catch(e) {}
-  }
-  
-  const quizEl = document.getElementById('progressQuiz');
-  const scenariosEl = document.getElementById('progressScenarios');
-  const tabsEl = document.getElementById('progressTabs');
-  const overallEl = document.getElementById('progressOverall');
-  
-  if (quizEl) quizEl.textContent = `${progressData.quizScore}/${progressData.quizTotal}`;
-  if (scenariosEl) scenariosEl.textContent = `${progressData.scenariosCompleted}/4`;
-  if (tabsEl) tabsEl.textContent = `${progressData.tabsViewed.size}/9`;
-  if (overallEl) overallEl.textContent = `${progressData.overallProgress}%`;
-}
-
-function saveProgress() {
-  // Update quiz score from the quiz
-  const quizScoreElement = document.getElementById('quizScore');
-  if (quizScoreElement) {
-    const match = quizScoreElement.textContent.match(/(\d+)\/(\d+)/);
-    if (match) {
-      progressData.quizScore = parseInt(match[1]);
-      progressData.quizTotal = parseInt(match[2]);
-    }
-  }
-  
-  // Count viewed tabs
-  document.querySelectorAll('.tab-content').forEach(tab => {
-    if (tab.style.display !== 'none' || tab.classList.contains('active')) {
-      progressData.tabsViewed.add(tab.id);
-    }
-  });
-  
-  // Calculate overall progress (quiz 40%, scenarios 30%, tabs 30%)
-  const quizPercent = (progressData.quizScore / progressData.quizTotal) * 40;
-  const scenarioPercent = (progressData.scenariosCompleted / 4) * 30;
-  const tabPercent = (progressData.tabsViewed.size / 9) * 30;
-  progressData.overallProgress = Math.round(quizPercent + scenarioPercent + tabPercent);
-  
-  localStorage.setItem('waterQualityProgress', JSON.stringify(progressData));
-  const msgEl = document.getElementById('progressMessage');
-  if (msgEl) {
-    msgEl.innerHTML = '✅ Progress saved successfully!';
-    msgEl.style.color = '#2c7840';
-  }
-  updateProgressDisplay();
-}
-
-function loadProgress() {
-  const saved = localStorage.getItem('waterQualityProgress');
-  const msgEl = document.getElementById('progressMessage');
-  if (saved) {
-    try {
-      const data = JSON.parse(saved);
-      progressData = {
-        quizScore: data.quizScore || 0,
-        quizTotal: data.quizTotal || 12,
-        scenariosCompleted: data.scenariosCompleted || 0,
-        tabsViewed: new Set(data.tabsViewed || []),
-        overallProgress: data.overallProgress || 0
-      };
-      if (msgEl) {
-        msgEl.innerHTML = '✅ Progress loaded successfully!';
-        msgEl.style.color = '#2c7840';
-      }
-      updateProgressDisplay();
-    } catch(e) {
-      if (msgEl) {
-        msgEl.innerHTML = '❌ Error loading progress.';
-        msgEl.style.color = '#b34343';
-      }
-    }
-  } else {
-    if (msgEl) {
-      msgEl.innerHTML = 'ℹ️ No saved progress found.';
-      msgEl.style.color = '#e68a2e';
-    }
-  }
-}
-
-function clearProgress() {
-  if (confirm('Are you sure you want to clear all saved progress?')) {
-    localStorage.removeItem('waterQualityProgress');
-    progressData = {
-      quizScore: 0,
-      quizTotal: 12,
-      scenariosCompleted: 0,
-      tabsViewed: new Set(),
-      overallProgress: 0
-    };
-    const msgEl = document.getElementById('progressMessage');
-    if (msgEl) {
-      msgEl.innerHTML = '🗑️ Progress cleared.';
-      msgEl.style.color = '#b34343';
-    }
-    updateProgressDisplay();
-  }
-}
-
-// ===== SEARCH FUNCTIONS =====
-function performSearch() {
-  const query = document.getElementById('globalSearch').value.toLowerCase().trim();
-  if (!query) {
-    clearSearch();
-    return;
-  }
-
-  let totalMatches = 0;
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  tabContents.forEach(tab => {
-    const text = tab.textContent.toLowerCase();
-    if (text.includes(query)) {
-      tab.style.display = 'block';
-      
-      const elements = tab.querySelectorAll('p, li, td, .card-title, h2, h3, h4');
-      elements.forEach(el => {
-        const originalHtml = el.innerHTML;
-        if (el.textContent.toLowerCase().includes(query)) {
-          const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-          el.innerHTML = originalHtml.replace(regex, '<span style="background:#fdf0a0; padding:0 2px; border-radius:2px;">$1</span>');
-          totalMatches++;
-        }
-      });
-    } else {
-      tab.style.display = 'none';
-    }
-  });
-
-  const firstVisible = document.querySelector('.tab-content[style*="display: block"]');
-  if (firstVisible) {
-    const tabId = firstVisible.id;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelector(`.tab[onclick*="${tabId}"]`)?.classList.add('active');
-  }
-
-  document.getElementById('searchResultsCount').textContent = `Found ${totalMatches} matches`;
-}
-
-function clearSearch() {
-  document.getElementById('globalSearch').value = '';
-  document.getElementById('searchResultsCount').textContent = '';
-  document.querySelectorAll('.tab-content').forEach(tab => {
-    tab.style.display = '';
-    tab.querySelectorAll('p, li, td, .card-title, h2, h3, h4').forEach(el => {
-      el.innerHTML = el.innerHTML.replace(/<span style="background:#fdf0a0; padding:0 2px; border-radius:2px;">(.*?)<\/span>/g, '$1');
-    });
-  });
-}
-
-// ===== WATER QUALITY SIMULATOR =====
-function updateSimulator() {
-  const temp = parseFloat(document.getElementById('simTemp').value);
-  const nitrate = parseFloat(document.getElementById('simNitrate').value);
-  const phosphate = parseFloat(document.getElementById('simPhosphate').value);
-  const light = parseFloat(document.getElementById('simLight').value);
-  const time = parseFloat(document.getElementById('simTime').value);
-  const salinity = parseFloat(document.getElementById('simSalinitySlider').value);
-
-  document.getElementById('simTempVal').textContent = temp.toFixed(1) + '°C';
-  document.getElementById('simNitrateVal').textContent = nitrate.toFixed(1) + ' mg/L';
-  document.getElementById('simPhosphateVal').textContent = phosphate.toFixed(2) + ' mg/L';
-  document.getElementById('simLightVal').textContent = light.toFixed(0) + '%';
-  
-  // Time display
-  const hours = Math.floor(time);
-  const minutes = Math.round((time - hours) * 60);
-  const ampm = hours >= 12 ? 'pm' : 'am';
-  const displayHour = hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
-  document.getElementById('simTimeVal').textContent = `${displayHour}:${minutes.toString().padStart(2, '0')} ${ampm}`;
-
-  // Calculate DO - max at 10°C (~11 mg/L), decreases with temp, affected by light (photosynthesis)
-  const maxDO = 14.6 - (temp * 0.3);
-  const lightFactor = 0.7 + (light / 100) * 0.3;
-  const timeFactor = 0.8 + (Math.sin((time / 24) * 2 * Math.PI - Math.PI/2) * 0.2);
-  let doValue = maxDO * lightFactor * timeFactor;
-  // Salt water holds less oxygen
-  const salinityFactor = 1 - (salinity / 40) * 0.15;
-  doValue = doValue * salinityFactor;
-  const nutrientStress = Math.min(1, (nitrate / 5 + phosphate / 0.5) * 0.15);
-  doValue = doValue * (1 - nutrientStress);
-  doValue = Math.max(0.5, Math.min(12, doValue));
-  const doPercent = Math.round((doValue / maxDO) * 100);
-  document.getElementById('simDO').textContent = Math.min(100, Math.round(doPercent)) + '%';
-
-  // Calculate pH
-  const basepH = 7.0;
-  const lightpH = (light / 100) * 0.8;
-  const tempPH = (temp - 15) * 0.02;
-  const nutrientPH = (nitrate / 10) * 0.1 + (phosphate / 0.5) * 0.1;
-  let pH = basepH + lightpH + tempPH + nutrientPH;
-  pH = Math.max(5.5, Math.min(9.5, pH));
-  document.getElementById('simpH').textContent = pH.toFixed(1);
-
-  // Calculate turbidity
-  const nutrientLoad = nitrate * 2 + phosphate * 50;
-  const turbidity = Math.min(200, 5 + nutrientLoad * 1.5 + light * 0.1);
-  document.getElementById('simTurbidity').textContent = Math.round(turbidity);
-
-  // Update salinity display
-  document.getElementById('simSalinityVal').textContent = salinity.toFixed(1) + ' ppt';
-  document.getElementById('simSalinity').textContent = salinity.toFixed(1);
-
-  // ===== INTERPRETATION WITH SALINITY =====
-  const interpret = document.getElementById('simInterpretation');
-  let messages = [];
-  let status = '✅ ';
-
-  // ---- SALINITY CHECKS (NEW!) ----
-  if (salinity < 0.5) {
-    messages.push('💧 Freshwater (<0.5 ppt)');
-  } else if (salinity < 5) {
-    messages.push('💧 Low salinity (0.5-5 ppt) — marginal aquatic plants');
-  } else if (salinity < 18) {
-    messages.push('💧 Brackish (5-18 ppt) — estuarine conditions');
-  } else if (salinity < 30) {
-    messages.push('💧 High brackish (18-30 ppt) — salt-tolerant species');
-  } else {
-    messages.push('💧 Marine (>30 ppt) — full seawater');
-  }
-
-  // Salinity stress for freshwater species
-  if (salinity > 5 && salinity < 18) {
-    messages.push('⚠️ Brackish — freshwater species may be stressed');
-  } else if (salinity > 18 && salinity < 30) {
-    messages.push('⚠️ High salinity — only salt-tolerant species survive');
-  } else if (salinity > 30) {
-    messages.push('🌊 Marine conditions — typical for ocean sites');
-  } else {
-    messages.push('✅ Freshwater — suitable for most aquatic life');
-  }
-
-  // ---- DO CHECKS ----
-  if (doPercent < 60) messages.push('⚠️ Low DO — aquatic life stressed');
-  else if (doPercent < 40) messages.push('🚨 Critical DO — fish kills likely');
-  else messages.push('✅ DO levels adequate');
-
-  // ---- pH CHECKS ----
-  if (pH < 6.0) messages.push('⚠️ Acidic pH — may stress aquatic life');
-  else if (pH > 8.5) messages.push('⚠️ Alkaline pH — possible algal bloom');
-  else messages.push('✅ pH within healthy range');
-
-  // ---- NUTRIENT CHECKS ----
-  if (nitrate > 5 || phosphate > 0.1) messages.push('🚨 High nutrients — eutrophication risk');
-  else if (nitrate > 2 || phosphate > 0.05) messages.push('⚠️ Elevated nutrients — monitor regularly');
-  else messages.push('✅ Nutrients at natural levels');
-
-  // ---- TURBIDITY CHECKS ----
-  if (turbidity > 50) messages.push('⚠️ High turbidity — reduced light penetration');
-  else if (turbidity > 20) messages.push('⚠️ Elevated turbidity — possible sediment or algae');
-  else messages.push('✅ Water clarity good');
-
-  // ---- ALGAL BLOOM CHECKS ----
-  if (nitrate > 3 && phosphate > 0.08 && light > 50) messages.push('🚨 Conditions favour algal bloom');
-  else if (nitrate > 2 && phosphate > 0.05) messages.push('⚠️ Conditions could trigger algal bloom');
-
-  // Determine overall status
-  const hasCritical = messages.some(m => m.includes('🚨'));
-  const hasWarning = messages.some(m => m.includes('⚠️'));
-  if (hasCritical) status = '🚨 CRITICAL — ';
-  else if (hasWarning) status = '⚠️ WARNING — ';
-  else status = '✅ HEALTHY — ';
-
-  interpret.innerHTML = status + messages.join(' · ');
-}
-
-// ===== PRESET SCENARIOS =====
-function setEutrophic() {
-  document.getElementById('simTemp').value = 22;
-  document.getElementById('simNitrate').value = 8.0;
-  document.getElementById('simPhosphate').value = 0.5;
-  document.getElementById('simLight').value = 70;
-  document.getElementById('simTime').value = 14;
-  document.getElementById('simSalinitySlider').value = 0.5;
-  updateSimulator();
-}
-
-function setHealthy() {
-  document.getElementById('simTemp').value = 15;
-  document.getElementById('simNitrate').value = 0.8;
-  document.getElementById('simPhosphate').value = 0.04;
-  document.getElementById('simLight').value = 60;
-  document.getElementById('simTime').value = 12;
-  document.getElementById('simSalinitySlider').value = 0.5;
-  updateSimulator();
-}
-
-function setThermal() {
-  document.getElementById('simTemp').value = 30;
-  document.getElementById('simNitrate').value = 1.2;
-  document.getElementById('simPhosphate').value = 0.06;
-  document.getElementById('simLight').value = 80;
-  document.getElementById('simTime').value = 14;
-  document.getElementById('simSalinitySlider').value = 0.5;
-  updateSimulator();
-}
-
-function setAlgal() {
-  document.getElementById('simTemp').value = 25;
-  document.getElementById('simNitrate').value = 6.0;
-  document.getElementById('simPhosphate').value = 0.3;
-  document.getElementById('simLight').value = 90;
-  document.getElementById('simTime').value = 14;
-  document.getElementById('simSalinitySlider').value = 0.5;
-  updateSimulator();
-}
-
-function setMarine() {
-  document.getElementById('simTemp').value = 18;
-  document.getElementById('simNitrate').value = 0.3;
-  document.getElementById('simPhosphate').value = 0.02;
-  document.getElementById('simLight').value = 70;
-  document.getElementById('simTime').value = 12;
-  document.getElementById('simSalinitySlider').value = 35;
-  updateSimulator();
-}
-
-function setBrackish() {
-  document.getElementById('simTemp').value = 20;
-  document.getElementById('simNitrate').value = 1.5;
-  document.getElementById('simPhosphate').value = 0.08;
-  document.getElementById('simLight').value = 65;
-  document.getElementById('simTime').value = 14;
-  document.getElementById('simSalinitySlider').value = 15;
-  updateSimulator();
-}
-
-// ===== STATIC TRIGGER LEVELS REFERENCE =====
-function createTriggerLevelsReference() {
-  const triggerHtml = `
-    <h3 style="margin-top:2rem;">📋 Water Quality Trigger Levels & Response Actions</h3>
-    <p>Based on ANZECC 2000 guidelines. When results exceed these values, investigate and take appropriate action.</p>
-    <table>
-      <tr style="background:#0d4b6b; color:white;">
-        <th>Parameter</th>
-        <th>Trigger Level</th>
-        <th>Potential Cause</th>
-        <th>Recommended Action</th>
-      </tr>
-      <tr style="border-left: 6px solid #2c7840;">
-        <td><strong>DO</strong></td>
-        <td>< 60% saturation</td>
-        <td>Organic pollution, eutrophication, thermal pollution</td>
-        <td>Investigate upstream sources; check for algal blooms</td>
-      </tr>
-      <tr style="border-left: 6px solid #b34343;">
-        <td><strong>DO</strong></td>
-        <td>< 40% saturation</td>
-        <td>Severe organic loading, sewage, or industrial discharge</td>
-        <td>🚨 URGENT: Report to EPA/authorities immediately</td>
-      </tr>
-      <tr style="border-left: 6px solid #e68a2e;">
-        <td><strong>pH</strong></td>
-        <td>< 6.0 or > 8.5</td>
-        <td>Acid drainage, algal bloom, industrial discharge</td>
-        <td>Investigate source; test for metals or algal toxins</td>
-      </tr>
-      <tr style="border-left: 6px solid #b34343;">
-        <td><strong>pH</strong></td>
-        <td>< 5.0 or > 9.0</td>
-        <td>Severe pollution or bloom</td>
-        <td>🚨 URGENT: Report to EPA/authorities immediately</td>
-      </tr>
-      <tr style="border-left: 6px solid #e68a2e;">
-        <td><strong>Nitrate</strong></td>
-        <td>> 1.0 mg/L (freshwater)</td>
-        <td>Agricultural runoff, sewage, fertiliser</td>
-        <td>Investigate upstream farming or urban sources</td>
-      </tr>
-      <tr style="border-left: 6px solid #b34343;">
-        <td><strong>Nitrate</strong></td>
-        <td>> 5.0 mg/L</td>
-        <td>Severe nutrient pollution</td>
-        <td>🚨 Report to EPA; investigate point sources</td>
-      </tr>
-      <tr style="border-left: 6px solid #e68a2e;">
-        <td><strong>Phosphate</strong></td>
-        <td>> 0.05 mg/L (freshwater)</td>
-        <td>Agricultural runoff, sewage, detergents</td>
-        <td>Investigate upstream sources; test for algal blooms</td>
-      </tr>
-      <tr style="border-left: 6px solid #b34343;">
-        <td><strong>Phosphate</strong></td>
-        <td>> 0.1 mg/L</td>
-        <td>Severe nutrient pollution</td>
-        <td>🚨 Report to EPA; investigate point sources</td>
-      </tr>
-      <tr style="border-left: 6px solid #e68a2e;">
-        <td><strong>Turbidity</strong></td>
-        <td>> 20 NTU</td>
-        <td>Sediment from erosion, construction, or algal bloom</td>
-        <td>Investigate upstream activity; check for sediment sources</td>
-      </tr>
-      <tr style="border-left: 6px solid #b34343;">
-        <td><strong>Turbidity</strong></td>
-        <td>> 100 NTU</td>
-        <td>Severe sediment pollution or algal bloom</td>
-        <td>🚨 Report to EPA; investigate land disturbance</td>
-      </tr>
-      <tr style="border-left: 6px solid #e68a2e;">
-        <td><strong>Temperature</strong></td>
-        <td>> 2°C above natural</td>
-        <td>Thermal pollution from industry, urban runoff</td>
-        <td>Investigate source of heated water</td>
-      </tr>
-      <tr style="border-left: 6px solid #b34343;">
-        <td><strong>Algal bloom</strong></td>
-        <td>Visible scum or colour</td>
-        <td>High nutrients, warm water, sunlight</td>
-        <td>🚨 URGENT: Test for toxins; warn public; report</td>
-      </tr>
-    </table>
-    <div class="tip"><i class="fas fa-info-circle"></i> <strong>Remember:</strong> Trigger values vary by water body type (upland, lowland, marine, etc.). Always refer to the ANZECC guidelines for specific ecosystem-protection levels.</div>
-  `;
-  return triggerHtml;
-}
-
-// ===== INITIALIZATION =====
-document.addEventListener('DOMContentLoaded', function() {
-  // Add simulator event listeners - includes salinity slider!
-  const simControls = ['simTemp', 'simNitrate', 'simPhosphate', 'simLight', 'simTime', 'simSalinitySlider'];
-  simControls.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.addEventListener('input', updateSimulator);
-    }
-  });
-
-  // Add Enter key support for search
-  const searchInput = document.getElementById('globalSearch');
-  if (searchInput) {
-    searchInput.addEventListener('keyup', function(e) {
-      if (e.key === 'Enter') {
-        performSearch();
-      }
-    });
-  }
-
-  // Add trigger levels to the Resources tab (Tab 7)
-  const resourcesTab = document.getElementById('tab7');
-  if (resourcesTab) {
-    const checklist = resourcesTab.querySelector('.checklist-card');
-    if (checklist) {
-      const triggerDiv = document.createElement('div');
-      triggerDiv.innerHTML = createTriggerLevelsReference();
-      checklist.parentNode.insertBefore(triggerDiv, checklist.nextSibling);
-    }
-  }
-
-  // Initialize progress display
-  updateProgressDisplay();
-
-  // Track tab views for progress
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', function() {
-      const onclickAttr = this.getAttribute('onclick');
-      if (onclickAttr) {
-        const match = onclickAttr.match(/'([^']+)'/);
-        if (match) {
-          const tabId = match[1];
-          setTimeout(() => {
-            progressData.tabsViewed.add(tabId);
-            saveProgress();
-          }, 100);
-        }
-      }
-    });
-  });
-
-  // Initialize simulator
-  updateSimulator();
-});
 
 // ===== COMPREHENSIVE GLOSSARY DATA =====
 const glossaryTerms = [
-  // Parameters
-  { term: "pH", category: "parameters", definition: "A scale from 0 to 14 measuring acidity (below 7) or alkalinity (above 7). Neutral is 7.", details: "pH affects chemical reactions and aquatic life. Most aquatic organisms prefer 6.5–8.5. pH below 5 or above 9 can be lethal." },
-  { term: "Electrical Conductivity (EC)", category: "parameters", definition: "A measure of the water's ability to conduct electricity, related to the amount of dissolved salts.", details: "EC indicates mineral content. Freshwater <500 µS/cm, brackish 500–5000, marine ~53,000 µS/cm. High EC can stress freshwater species." },
-  { term: "Turbidity", category: "parameters", definition: "A measure of water clarity, affected by suspended particles like silt and algae. Measured in NTU.", details: "High turbidity reduces light penetration, affecting plants and fish feeding. Can carry pollutants attached to sediment. Healthy water <10 NTU." },
-  { term: "Dissolved Oxygen (DO)", category: "parameters", definition: "The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.", details: "Fish need >4 mg/L (60% saturation). Cold water holds more oxygen. DO below 40% saturation is lethal to most fish." },
-  { term: "Salinity", category: "parameters", definition: "The concentration of dissolved salts in water, measured in parts per thousand (ppt).", details: "Freshwater <0.5 ppt, brackish 0.5–30 ppt, marine ~35 ppt. Salinity affects species distribution and osmoregulation." },
-  { term: "Nutrients", category: "parameters", definition: "Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can cause algal blooms when in excess.", details: "Natural levels: nitrate <1 mg/L, phosphate <0.05 mg/L. Excess nutrients cause eutrophication. Major sources: fertiliser runoff, sewage, animal waste." },
+  { term: "pH", category: "parameters", definition: "A scale from 0 to 14 measuring acidity (below 7) or alkalinity (above 7). Neutral is 7.", details: "pH affects chemical reactions and aquatic life. Sensitivity varies between species and exposure conditions. Very low or very high pH can cause severe stress or mortality." },
+  { term: "Electrical Conductivity (EC)", category: "parameters", definition: "A measure of the water's ability to conduct electricity, related to the amount of dissolved salts.", details: "EC indicates mineral content. Freshwater varies by catchment, brackish 500–5,000, marine roughly 50,000–55,000 µS/cm. High EC can stress freshwater species." },
+  { term: "Turbidity", category: "parameters", definition: "A measure of water clarity, affected by suspended particles like silt and algae. Measured in NTU.", details: "Turbidity is site- and ecosystem-dependent. High turbidity reduces light penetration and can carry pollutants attached to sediment. Compare results with local/reference conditions and consider recent rainfall, flow and catchment disturbance." },
+  { term: "Dissolved Oxygen (DO)", category: "parameters", definition: "The amount of oxygen dissolved in water, critical for aquatic life. Measured in mg/L or % saturation.", details: "Low dissolved oxygen can stress aquatic organisms. Effects depend on species, temperature, duration and other conditions. Cold water holds more oxygen." },
+  { term: "Salinity", category: "parameters", definition: "The concentration of dissolved salts in water, measured in parts per thousand (ppt).", details: "Freshwater <0.5 ppt, brackish 0.5–30 ppt, marine ~35 ppt (approximate teaching categories). Salinity affects species distribution and osmoregulation." },
+  { term: "Nutrients", category: "parameters", definition: "Essential elements like nitrogen (nitrate) and phosphorus (phosphate) that can cause algal blooms when in excess.", details: "Generally low in minimally disturbed waters. Excess nutrients cause eutrophication. Major sources: fertiliser runoff, sewage, animal waste." },
   { term: "Alkalinity", category: "parameters", definition: "The capacity of water to neutralise acids — provides buffering against pH changes.", details: "Important for aquatic life and water treatment. Low alkalinity makes water susceptible to pH swings. Measured in mg/L as CaCO₃." },
-  { term: "TDS (Total Dissolved Solids)", category: "parameters", definition: "The total concentration of dissolved minerals in water, measured in mg/L. Related to EC but expressed differently.", details: "TDS affects taste and aquatic life. Conversion: 1 µS/cm ≈ 0.65 mg/L TDS. High TDS can indicate pollution or saltwater intrusion." },
-  { term: "Hypoxia", category: "parameters", definition: "Low dissolved oxygen conditions (typically < 2 mg/L) that can cause fish kills and stress aquatic life.", details: "Often caused by eutrophication, thermal pollution, or organic loading. Fish kills are common during hypoxic events." },
-  { term: "BOD (Biochemical Oxygen Demand)", category: "parameters", definition: "A measure of the amount of oxygen consumed by microorganisms while decomposing organic matter in water.", details: "High BOD indicates organic pollution (sewage, agricultural runoff). Used in lab testing to assess the strength of wastewater. Healthy waterways have BOD < 2 mg/L." },
-  { term: "Enterococci", category: "parameters", definition: "Bacteria used as an indicator of faecal contamination in recreational waters.", details: "More persistent than E. coli in marine and estuarine waters. Used for swimming beach monitoring. High levels (> 35 CFU/100mL) indicate health risk." },
+  { term: "TDS (Total Dissolved Solids)", category: "parameters", definition: "The total concentration of dissolved minerals in water, measured in mg/L.", details: "TDS affects taste and aquatic life. Conversion from EC varies with water chemistry — a commonly used approximate range is 0.5–0.7, but use the instrument/manufacturer or project-specific factor where available." },
+  { term: "Hypoxia", category: "parameters", definition: "Low dissolved oxygen conditions that can cause stress and mortality in aquatic life.", details: "Often caused by eutrophication, thermal pollution, or organic loading. Effects depend on species, temperature, duration and local conditions." },
+  { term: "BOD (Biochemical Oxygen Demand)", category: "parameters", definition: "A measure of the amount of oxygen consumed by microorganisms while decomposing organic matter in water.", details: "High BOD indicates organic pollution (sewage, agricultural runoff). Used in lab testing. Healthy waterways typically have low BOD." },
+  { term: "Enterococci", category: "parameters", definition: "Bacteria used as an indicator of faecal contamination in recreational waters.", details: "More persistent than E. coli in marine and estuarine waters. Used for swimming beach monitoring." },
   
-  // Equipment
-  { term: "Multi-parameter sonde", category: "equipment", definition: "A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.", details: "Must be calibrated before use. Rinse with distilled water after use. Store sensors with moist pads. Replace batteries regularly." },
+  { term: "Multi-parameter sonde", category: "equipment", definition: "A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.", details: "Must be calibrated before use. Rinse with distilled water after use. Store sensors with moist pads." },
   { term: "Lugols solution", category: "equipment", definition: "An iodine-based preservative used to preserve algal samples for identification and counting.", details: "Add 1% v/v (5mL per 500mL sample). Preserves cell structure and colour. Samples can be stored for up to 6 months." },
-  { term: "Secchi disk", category: "equipment", definition: "A black-and-white disk used to measure water clarity in lakes and marine waters.", details: "Lowered into water until it disappears. Record the depth. Used for assessing algal blooms and sediment. Simple, low-cost method." },
-  { term: "Refractometer", category: "equipment", definition: "A handheld optical instrument that measures salinity (ppt) or specific gravity.", details: "Calibrate with distilled water (0 ppt). Place 2-3 drops on prism, close cover, look through eyepiece. Temperature affects readings." },
-  { term: "Turbidity tube", category: "equipment", definition: "A clear tube with a black-and-white pattern on the base used to estimate turbidity.", details: "Fill with sample, look down the tube, slowly add water until pattern disappears. Read NTU scale at water level. Less precise than electronic meters." },
-  { term: "Sonde", category: "equipment", definition: "Short for 'multi-parameter sonde' — a probe that measures multiple water quality parameters simultaneously.", details: "Common field term — you'll hear 'grab the sonde' regularly. Requires calibration before each use. Rinse with distilled water after use." },
-  { term: "Niskin bottle", category: "equipment", definition: "A device used to collect water samples at specific depths in lakes and oceans.", details: "Triggered by a messenger weight to close at the desired depth. Used for subsurface sampling where surface samples aren't representative." },
-  { term: "Esky / Cooler", category: "equipment", definition: "An insulated container used to keep samples cool during transport from the field to the lab.", details: "Essential for preserving samples. Use with ice packs — never directly on samples. Maintains 2–8°C for bacterial samples." },
+  { term: "Secchi disk", category: "equipment", definition: "A black-and-white disk used to measure water clarity in lakes and marine waters.", details: "Lowered into water until it disappears. Record the depth. Simple, low-cost method." },
+  { term: "Refractometer", category: "equipment", definition: "A handheld optical instrument that measures salinity (ppt) or specific gravity.", details: "Calibrate with distilled water (0 ppt). Temperature affects readings." },
+  { term: "Turbidity tube", category: "equipment", definition: "A clear tube with a black-and-white pattern on the base used to estimate turbidity.", details: "Fill the tube and observe the target at the base. Follow the manufacturer's method — some provide a direct/calibrated NTU scale, others provide a visual depth measurement." },
+  { term: "Sonde", category: "equipment", definition: "Short for 'multi-parameter sonde' — a probe that measures multiple water quality parameters simultaneously.", details: "Requires calibration before each use. Rinse with distilled water after use." },
+  { term: "Niskin bottle", category: "equipment", definition: "A device used to collect water samples at specific depths in lakes and oceans.", details: "Triggered by a messenger weight to close at the desired depth. Used for subsurface sampling." },
+  { term: "Esky / Cooler", category: "equipment", definition: "An insulated container used to keep samples cool during transport from the field to the lab.", details: "Use with ice packs — never directly on samples. Maintains 2–8°C for bacterial samples." },
   
-  // Concepts
-  { term: "Eutrophication", category: "concepts", definition: "The process where excessive nutrients cause algal blooms, which deplete oxygen and harm aquatic life.", details: "Triggers algal blooms, reduces water clarity, causes fish kills. Can produce toxins harmful to humans and animals. Reversing eutrophication takes years." },
-  { term: "Chain of Custody", category: "concepts", definition: "A documented record of who handled a sample from collection to laboratory analysis.", details: "Proves sample integrity. Required for legal proceedings. Documents every person who handled the sample. Critical for compliance and court cases." },
-  { term: "Field blank", category: "concepts", definition: "A sample of distilled water processed in the field exactly like a real sample — used to check for contamination.", details: "Identifies contamination during collection and handling. Should be processed at the same time as real samples. Any positive result indicates contamination." },
-  { term: "Riparian zone", category: "concepts", definition: "The vegetated area alongside waterways. Healthy zones filter runoff, stabilise banks, and provide shade.", details: "Filters sediment and nutrients from runoff. Stabilises banks, prevents erosion. Provides shade, moderates water temperature. Critical for aquatic ecosystem health." },
-  { term: "Cyanobacteria", category: "concepts", definition: "Blue-green algae — some species produce toxins harmful to animals and humans.", details: "Often form blooms in warm, nutrient-rich water. Can produce neurotoxins and liver toxins. Dogs and livestock are particularly vulnerable. Not all species are toxic." },
-  { term: "E. coli", category: "concepts", definition: "Escherichia coli — a bacteria used as an indicator of faecal contamination.", details: "Indicates recent faecal contamination. High levels (>100 CFU/100mL) indicate health risk for swimming. Drinking water should have zero E. coli." },
-  { term: "Eutrophic", category: "concepts", definition: "A water body with high nutrient levels, leading to dense plant growth and algal blooms.", details: "Opposite of oligotrophic. Characterised by low clarity, low DO, and high productivity. Often caused by agricultural runoff or sewage." },
-  { term: "Oligotrophic", category: "concepts", definition: "A water body with low nutrient levels and clear water.", details: "Opposite of eutrophic. Characterised by high clarity, high DO, and low productivity. Typical of pristine mountain lakes and streams." },
-  { term: "Acid sulfate soils", category: "concepts", definition: "Soils containing iron sulfides that produce sulfuric acid when exposed to oxygen, causing acid runoff.", details: "Major issue in coastal Australia. Can drop pH below 4, killing aquatic life. Disturbance during construction or drainage triggers acid release." },
-  { term: "Thermal pollution", category: "concepts", definition: "The discharge of heated water into waterways, reducing dissolved oxygen and stressing aquatic life.", details: "Common from power stations and industrial cooling. Even 2°C above natural can be significant. Warmer water holds less oxygen." },
-  { term: "Point source", category: "concepts", definition: "Pollution that comes from a single, identifiable source, such as a pipe or drain.", details: "Examples: sewage treatment plant outfall, industrial discharge pipe. Easier to regulate and monitor than diffuse sources." },
-  { term: "Diffuse source", category: "concepts", definition: "Pollution that comes from widespread, unidentifiable sources, such as agricultural runoff.", details: "Examples: fertiliser from farms, stormwater from cities. Harder to control than point sources. Managed through land-use practices." },
+  { term: "Eutrophication", category: "concepts", definition: "The process where excessive nutrients cause algal blooms, which can deplete oxygen and harm aquatic life.", details: "Triggers algal blooms, reduces water clarity. Can produce toxins. Reversing eutrophication takes years." },
+  { term: "Chain of Custody", category: "concepts", definition: "A documented record of who handled a sample from collection to laboratory analysis.", details: "Proves sample integrity. Required for legal proceedings." },
+  { term: "Field blank", category: "concepts", definition: "A sample of distilled water processed in the field exactly like a real sample — used to check for contamination.", details: "Identifies contamination during collection and handling." },
+  { term: "QA / QC", category: "concepts", definition: "Quality assurance (QA) is the planned system used to ensure reliable work; quality control (QC) refers to the checks used to detect problems with sampling, equipment or results.", details: "QA is proactive (systems and procedures); QC is reactive (checking outputs). Both are essential for trustworthy data." },
+  { term: "Riparian zone", category: "concepts", definition: "The vegetated area alongside waterways. Healthy zones filter runoff, stabilise banks, and provide shade.", details: "Filters sediment and nutrients, stabilises banks, moderates water temperature." },
+  { term: "Cyanobacteria", category: "concepts", definition: "Blue-green algae — some species produce toxins harmful to animals and humans.", details: "Often form blooms in warm, nutrient-rich water. Not all species are toxic." },
+  { term: "E. coli", category: "concepts", definition: "Escherichia coli — a bacteria used as an indicator of faecal contamination.", details: "Indicates recent faecal contamination. Drinking water should have zero E. coli." },
+  { term: "Eutrophic", category: "concepts", definition: "A water body with high nutrient levels, leading to dense plant growth and algal blooms.", details: "Characterised by low clarity, low DO, and high productivity. Often caused by agricultural runoff or sewage." },
+  { term: "Oligotrophic", category: "concepts", definition: "A water body with low nutrient levels and clear water.", details: "Characterised by high clarity, high DO, and low productivity. Typical of pristine mountain lakes." },
+  { term: "Acid sulfate soils", category: "concepts", definition: "Soils containing iron sulfides that produce sulfuric acid when exposed to oxygen, causing acid runoff.", details: "Major issue in coastal Australia. Disturbance during construction or drainage triggers acid release." },
+  { term: "Thermal pollution", category: "concepts", definition: "The discharge of heated water into waterways, reducing dissolved oxygen and stressing aquatic life.", details: "Common from power stations and industrial cooling. Compare upstream and downstream results before attributing a temperature change to thermal pollution." },
+  { term: "Point source", category: "concepts", definition: "Pollution that comes from a single, identifiable source, such as a pipe or drain.", details: "Examples: sewage treatment plant outfall, industrial discharge pipe. Easier to regulate than diffuse sources." },
+  { term: "Diffuse source", category: "concepts", definition: "Pollution that comes from widespread, unidentifiable sources, such as agricultural runoff.", details: "Examples: fertiliser from farms, stormwater from cities. Harder to control than point sources." },
   
-  // Standards
-  { term: "ANZECC", category: "standards", definition: "Australian and New Zealand Environment and Conservation Council — sets water quality guidelines.", details: "Provides trigger values for ecosystem protection. Used across Australia for assessing water quality. Guidelines updated periodically." },
-  { term: "NTU", category: "standards", definition: "Nephelometric Turbidity Units — the standard unit for measuring turbidity.", details: "Measures light scattered by suspended particles. Lower NTU = clearer water. ANZECC trigger: <10 NTU for most freshwaters." },
+  { term: "ANZG / ANZECC", category: "standards", definition: "Australian and New Zealand Guidelines for Fresh and Marine Water Quality — provides default guideline values for ecosystem protection.", details: "The current ANZG platform has moved beyond simply treating ANZECC 2000 numbers as universal trigger values, using updated data and an ecoregional approach. Guidelines are periodically revised." },
+  { term: "NTU", category: "standards", definition: "Nephelometric Turbidity Units — the standard unit for measuring turbidity.", details: "Measures light scattered by suspended particles. Lower NTU = clearer water. Reference values are site- and ecosystem-dependent." },
   { term: "ppt", category: "standards", definition: "Parts per thousand — used to measure salinity. Marine water is ~35 ppt.", details: "1 ppt = 1 gram of salt per 1,000 grams of water. Freshwater <0.5 ppt. Brackish 0.5–30 ppt. Marine ~35 ppt." },
-  { term: "Nephelometric", category: "standards", definition: "Refers to the measurement of light scattered by particles in a sample — the basis for turbidity measurement.", details: "NTU stands for Nephelometric Turbidity Units. The instrument measures scattered light at 90° to the incident beam." },
-  { term: "ANZECC 2000", category: "standards", definition: "The Australian and New Zealand Guidelines for Fresh and Marine Water Quality (2000 edition).", details: "Provides trigger values for ecosystem protection. Widely used across Australia for assessing water quality. Still the current reference despite being over 20 years old." },
-  { term: "Trigger value", category: "standards", definition: "A guideline value that, when exceeded, indicates potential environmental concern and triggers further investigation.", details: "Not a legally binding limit — it's a warning sign. If a trigger value is exceeded, you investigate the cause. Different values for different ecosystems." }
+  { term: "Nephelometric", category: "standards", definition: "Refers to the measurement of light scattered by particles in a sample — the basis for turbidity measurement.", details: "The instrument measures scattered light at 90° to the incident beam." },
+  { term: "Trigger value", category: "standards", definition: "A guideline value that, when exceeded, indicates potential environmental concern and triggers further investigation.", details: "Not a legally binding limit — it's a warning sign. Different values for different ecosystems. Always use local/site-specific values where available." }
 ];
 
 // ===== RENDER GLOSSARY =====
@@ -1918,12 +1756,10 @@ function renderGlossary(filter = 'all', search = '') {
 
   let filtered = glossaryTerms;
   
-  // Apply category filter
   if (filter !== 'all') {
     filtered = filtered.filter(t => t.category === filter);
   }
   
-  // Apply search filter
   if (search.trim()) {
     const s = search.toLowerCase().trim();
     filtered = filtered.filter(t => 
@@ -1933,7 +1769,6 @@ function renderGlossary(filter = 'all', search = '') {
     );
   }
 
-  // Update count
   if (countEl) {
     countEl.textContent = `Showing ${filtered.length} of ${glossaryTerms.length} terms`;
   }
@@ -1946,10 +1781,8 @@ function renderGlossary(filter = 'all', search = '') {
     return;
   }
 
-  // Sort alphabetically
   filtered.sort((a, b) => a.term.localeCompare(b.term));
 
-  // Generate accordion cards
   container.innerHTML = filtered.map(term => `
     <div class="glossary-item" data-category="${term.category}" style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
       <div class="glossary-header" onclick="toggleGlossary(this)" style="padding:0.6rem 1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; background:white; transition:0.2s; user-select:none;">
@@ -1969,18 +1802,9 @@ function renderGlossary(filter = 'all', search = '') {
   `).join('');
 }
 
-// ===== TOGGLE GLOSSARY CARD =====
 function toggleGlossary(header) {
   const body = header.nextElementSibling;
   const icon = header.querySelector('.fa-chevron-down, .fa-chevron-up');
-  
-  // Close any other open cards (optional - uncomment for accordion behaviour)
-  // document.querySelectorAll('.glossary-body').forEach(b => {
-  //   if (b !== body && b.style.maxHeight !== '0px') {
-  //     b.style.maxHeight = '0px';
-  //     b.previousElementSibling.querySelector('.fa-chevron-down, .fa-chevron-up').className = 'fas fa-chevron-down';
-  //   }
-  // });
   
   if (body.style.maxHeight && body.style.maxHeight !== '0px') {
     body.style.maxHeight = '0px';
@@ -1991,7 +1815,6 @@ function toggleGlossary(header) {
   }
 }
 
-// ===== SEARCH GLOSSARY =====
 function searchGlossary() {
   const input = document.getElementById('glossarySearch');
   const search = input ? input.value : '';
@@ -2002,13 +1825,10 @@ function clearGlossarySearch() {
   const input = document.getElementById('glossarySearch');
   if (input) input.value = '';
   renderGlossary('all', '');
-  // Reset filter buttons
   document.querySelectorAll('#tab7 .btn-outline').forEach(btn => {
     btn.className = 'btn btn-outline';
     btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
   });
-  document.querySelector('#tab7 .btn-primary')?.classList.remove('btn-primary');
-  document.querySelector('#tab7 .btn-primary')?.classList.add('btn-outline');
   const allBtn = document.querySelector('#tab7 .btn-primary');
   if (allBtn) {
     allBtn.className = 'btn btn-primary';
@@ -2017,11 +1837,9 @@ function clearGlossarySearch() {
   currentGlossaryFilter = 'all';
 }
 
-// ===== FILTER GLOSSARY =====
 function filterGlossary(category) {
   currentGlossaryFilter = category;
   
-  // Update button styles
   document.querySelectorAll('#tab7 .btn').forEach(btn => {
     if (btn.textContent.trim().toLowerCase().includes(category === 'all' ? 'all' : category)) {
       btn.className = 'btn btn-primary';
@@ -2036,18 +1854,59 @@ function filterGlossary(category) {
   renderGlossary(category, search);
 }
 
-// ===== INITIALISE GLOSSARY =====
+// ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
+  // Simulator event listeners
+  const simControls = ['simTemp', 'simNitrate', 'simPhosphate', 'simLight', 'simTime', 'simSalinitySlider'];
+  simControls.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', updateSimulator);
+    }
+  });
+
+  // Enter key support for search
+  const searchInput = document.getElementById('globalSearch');
+  if (searchInput) {
+    searchInput.addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+  }
+
+  // Progress display
+  updateProgressDisplay();
+
+  // Track tab views
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      const onclickAttr = this.getAttribute('onclick');
+      if (onclickAttr) {
+        const match = onclickAttr.match(/'([^']+)'/);
+        if (match) {
+          const tabId = match[1];
+          setTimeout(() => {
+            progressData.tabsViewed.add(tabId);
+            saveProgress();
+          }, 100);
+        }
+      }
+    });
+  });
+
+  // Initialize simulator
+  updateSimulator();
+
   // Render glossary
   renderGlossary('all', '');
   
-  // Set up search
-  const searchInput = document.getElementById('glossarySearch');
-  if (searchInput) {
-    searchInput.addEventListener('input', searchGlossary);
+  // Glossary search
+  const glossarySearchInput = document.getElementById('glossarySearch');
+  if (glossarySearchInput) {
+    glossarySearchInput.addEventListener('input', searchGlossary);
   }
 });
 </script>
 </body>
 </html>
-        
