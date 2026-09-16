@@ -195,7 +195,7 @@
   <!-- ===== TAB 1: WHY TEST WATER ===== -->
   <div id="tab0" class="tab-content active">
     <h2><i class="fas fa-question-circle"></i> Why do we test water?</h2>
-    <p style="font-size:1.1rem; margin-bottom:1.5rem;">Water is essential for life, ecosystems, agriculture, and industry. Testing tells us about its health, safety, and suitability for different uses. It's the foundation of good water management.</p>
+    <p style="font-size:1.1rem; margin-bottom:1.5rem;">Water is essential for life, ecosystems, agriculture, and industry. Water testing provides information about water quality, safety and suitability for different uses. It's the foundation of good water management.</p>
 
     <div class="grid-2">
       <div class="card"><i class="fas fa-chart-line"></i><div class="card-title">Monitor change over time</div>
@@ -656,7 +656,7 @@
         <div class="quiz-option"><input type="radio" name="q9" value="A"> Sodium</div>
         <div class="quiz-option"><input type="radio" name="q9" value="B"> Nitrate & Phosphate</div>
         <div class="quiz-option"><input type="radio" name="q9" value="C"> Chloride</div><div class="quiz-feedback"></div></div>
-      <div class="quiz-question" data-correct="A"><div class="quiz-question-text">10. What is a typical DO level for healthy aquatic life?</div>
+      <div class="quiz-question" data-correct="A"><div class="quiz-question-text">10. What is a commonly encountered DO saturation range used as a general field reference in this learning resource?</div>
         <div class="quiz-option"><input type="radio" name="q10" value="A"> 80–110% saturation</div>
         <div class="quiz-option"><input type="radio" name="q10" value="B"> 50–60% saturation</div>
         <div class="quiz-option"><input type="radio" name="q10" value="C"> 30–40% saturation</div><div class="quiz-feedback"></div></div>
@@ -908,6 +908,7 @@
         <div>
           <h4 style="margin: 0 0 0.3rem; color: var(--primary);">⚠️ Educational simulation — not a predictive water-quality model</h4>
           <p style="font-size: 0.9rem; margin: 0;">The relationships used here are simplified for learning and do not represent the full complexity of real aquatic systems. Simulator outputs must not be used to assess actual water quality or replace field measurements. Real water-quality interpretation requires appropriate local or site-specific guideline values and consideration of the full context.</p>
+          <p style="font-size: 0.9rem; margin: 0.5rem 0 0;">Any numeric thresholds used within the simulator are <strong>simplified teaching values only</strong> — they are not guideline values and must not be used as field decision thresholds.</p>
         </div>
       </div>
     </div>
@@ -985,7 +986,7 @@
 
           <div style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
             <button class="btn btn-outline" onclick="setEutrophic()"><i class="fas fa-leaf"></i> Eutrophic</button>
-            <button class="btn btn-outline" onclick="setHealthy()"><i class="fas fa-check-circle"></i> Healthy</button>
+            <button class="btn btn-outline" onclick="setReference()"><i class="fas fa-check-circle"></i> Reference scenario</button>
             <button class="btn btn-outline" onclick="setThermal()"><i class="fas fa-thermometer-half"></i> Thermal</button>
             <button class="btn btn-outline" onclick="setAlgal()"><i class="fas fa-water"></i> Algal Bloom</button>
             <button class="btn btn-outline" onclick="setMarine()"><i class="fas fa-ship"></i> Marine</button>
@@ -1396,7 +1397,7 @@ function setEutrophic() {
   updateSimulator();
 }
 
-function setHealthy() {
+function setReference() {
   document.getElementById('simTemp').value = 15;
   document.getElementById('simNitrate').value = 0.8;
   document.getElementById('simPhosphate').value = 0.04;
