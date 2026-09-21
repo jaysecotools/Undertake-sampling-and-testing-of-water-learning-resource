@@ -1,0 +1,782 @@
+/**
+ * Water Quality Simulator — teaching model.
+ *
+ * Reads the six simulator controls from the DOM, computes a
+ * conceptual estimate of dissolved oxygen (% saturation and mg/L),
+ * pH, and algal turbidity potential, and renders output values,
+ * the turbidity descriptor, and a teaching interpretation.
+ *
+ * This is NOT a predictive model. See inline comments for the
+ * scientific relationships being represented and their limits.
+ *
+ * @returns {void}
+ */
+function updateSimulator() {
+  // ============================================================
+  // WATER QUALITY SIMULATOR
+  // Educational/conceptual model only — NOT a predictive model.
+  //
+  // Controls:
+  //   Temperature °C
+  //   Nitrate mg/L
+  //   Phosphate mg/L
+  //   Light %
+  //   Time of day
+  //   Salinity ppt
+  //
+  // Scientific relationships represented:
+  //
+  //   • Temperature affects oxygen solubility.
+  //   • Salinity affects oxygen solubility.
+  //   • Daylight + available light drive photosynthesis.
+  //   • Photosynthesis produces oxygen and can increase pH.
+  //   • Respiration occurs continuously and consumes oxygen.
+  //   • Night-time respiration can reduce DO and pH.
+  //   • Nutrients support biological productivity potential but
+  //     do NOT directly create oxygen or turbidity.
+  //   • Greater biological productivity can produce larger
+  //     daytime DO increases and night-time DO decreases.
+  //   • Turbidity here represents ALGAL TURBIDITY POTENTIAL,
+  //     not measured field turbidity or sediment turbidity.
+  //
+  // Important limitation:
+  //   Actual DO also depends on atmospheric pressure, reaeration,
+  //   turbulence, flow, depth, organic matter, sediment oxygen
+  //   demand, aquatic community structure and many other factors.
+  //
+  // This simulator deliberately simplifies those processes for
+  // teaching purposes.
+  // ============================================================
+
+  const $ = (id) => document.getElementById(id);
+
+  // ------------------------------------------------------------
+  // 1. Read controls safely
+  // ------------------------------------------------------------
+
+  const tempEl      = $('simTemp');
+  const nitrateEl   = $('simNitrate');
+  const phosphateEl = $('simPhosphate');
+  const lightEl     = $('simLight');
+  const timeEl      = $('simTime');
+  const salinityEl  = $('simSalinitySlider');
+
+  if (
+    !tempEl || !nitrateEl || !phosphateEl ||
+    !lightEl || !timeEl || !salinityEl
+  ) {
+    console.warn(
+      '[updateSimulator] Missing one or more required control elements:',
+      {
+        simTemp:             !!tempEl,
+        simNitrate:          !!nitrateEl,
+        simPhosphate:        !!phosphateEl,
+        simLight:            !!lightEl,
+        simTime:             !!timeEl,
+        simSalinitySlider:   !!salinityEl
+      }
+    );
+    return;
+  }
+
+  const temp      = Number(tempEl.value);
+  const nitrate   = Number(nitrateEl.value);
+  const phosphate = Number(phosphateEl.value);
+  const light     = Number(lightEl.value);
+  const time      = Number(timeEl.value);
+  const salinity  = Number(salinityEl.value);
+
+  // Temperature is constrained for the freshwater oxygen-saturation
+  // polynomial (valid approx. 0–40 °C). The simulator UI is expected
+  // to operate within this range, but we clamp defensively so the
+  // polynomial cannot misbehave at extremes.
+  const tempForSaturation = Math.max(0, Math.min(40, temp));
+
+  // ------------------------------------------------------------
+  // 2. Update displayed control values
+  // ------------------------------------------------------------
+
+  const tempVal      = $('simTempVal');
+  const nitrateVal   = $('simNitrateVal');
+  const phosphateVal = $('simPhosphateVal');
+  const lightVal     = $('simLightVal');
+  const timeVal      = $('simTimeVal');
+  const salinityVal  = $('simSalinityVal');
+
+  if (tempVal) {
+    tempVal.textContent = `${temp.toFixed(1)}°C`;
+  }
+  if (nitrateVal) {
+    nitrateVal.textContent = `${nitrate.toFixed(1)} mg/L`;
+  }
+  if (phosphateVal) {
+    phosphateVal.textContent = `${phosphate.toFixed(2)} mg/L`;
+  }
+  if (lightVal) {
+    lightVal.textContent = `${Math.round(light)}%`;
+  }
+
+  // ------------------------------------------------------------
+  // Time display
+  // ------------------------------------------------------------
+
+  if (timeVal) {
+    const hours   = Math.floor(time);
+    let   minutes = Math.round((time - hours) * 60);
+    let   displayHours = hours;
+
+    // Handle rounding to 60 minutes.
+    if (minutes >= 60) {
+      displayHours += 1;
+      minutes = 0;
+    }
+
+    displayHours = displayHours % 24;
+
+    const ampm      = displayHours >= 12 ? 'PM' : 'AM';
+    const twelveHour = displayHours % 12 || 12;
+
+    const hh = String(displayHours).padStart(2, '0');
+    const mm = String(minutes).padStart(2, '0');
+
+    timeVal.textContent =
+      `${hh}:${mm} (${twelveHour}:${mm} ${ampm})`;
+  }
+
+  if (salinityVal) {
+    salinityVal.textContent = `${salinity.toFixed(1)} ppt`;
+  }
+
+  // ------------------------------------------------------------
+  // 3. Calculate daylight / solar availability
+  // ------------------------------------------------------------
+  //
+  // Simplified teaching assumption:
+  //
+  //   06:00 = sunrise
+  //   12:00 = maximum solar availability
+  //   18:00 = sunset
+  //
+  // Photosynthesis is zero outside the daylight period.
+  //
+  // The real timing of sunrise/sunset varies with latitude,
+  // season, weather and site. This simulator deliberately uses
+  // a fixed conceptual 12-hour daylight period.
+  // ------------------------------------------------------------
+
+  let daylightFactor = 0;
+
+  if (time >= 6 && time <= 18) {
+    daylightFactor =
+      Math.sin(((time - 6) / 12) * Math.PI);
+  }
+
+  // ------------------------------------------------------------
+  // 4. Combine daylight with user-selected light
+  // ------------------------------------------------------------
+  //
+  // The light slider represents the availability of sunlight
+  // during the daylight period.
+  //
+  // At night, daylightFactor = 0, so photosynthesis remains zero
+  // regardless of the light-slider setting.
+  //
+  // A small background component (25%) prevents the simulator
+  // from making moderate daylight conditions appear biologically
+  // completely inactive when the slider is reduced.
+  // ------------------------------------------------------------
+
+  const lightFactor =
+    Math.max(0, Math.min(1, light / 100));
+
+  const effectiveLight =
+    daylightFactor *
+    (0.25 + (0.75 * lightFactor));
+
+  // ------------------------------------------------------------
+  // 5. Nutrient availability / productivity potential
+  // ------------------------------------------------------------
+  //
+  // Nutrients are NOT treated as direct causes of increased DO,
+  // pH or turbidity.
+  //
+  // Instead, nitrate and phosphate contribute to the potential
+  // for biological productivity when sufficient light is present.
+  //
+  // These normalisations are teaching-scale values chosen so that
+  // moderate enrichment reaches the ceiling of this simulator's
+  // conceptual productivity scale. They are NOT ecological
+  // guideline thresholds.
+  // ------------------------------------------------------------
+
+  const nitratePotential =
+    Math.min(nitrate / 3.0, 1);
+
+  const phosphatePotential =
+    Math.min(phosphate / 0.30, 1);
+
+  // Both nutrients are treated as potentially limiting.
+  //
+  // A small background level represents existing biological
+  // activity even when nutrient concentrations are low.
+  //
+  // NOTE: This value also represents *standing* biological
+  // potential (biomass-supported respiration), so it is used
+  // both for photosynthesis (day) and for community respiration
+  // (day and night).
+  const nutrientPotential =
+    0.20 +
+    (0.80 *
+      Math.min(nitratePotential, phosphatePotential));
+
+  // ------------------------------------------------------------
+  // 6. Photosynthetic potential
+  // ------------------------------------------------------------
+  //
+  // Photosynthetic potential requires:
+  //
+  //   daylight
+  //   available light
+  //   nutrient availability
+  //
+  // This does NOT claim that nutrients alone cause algal growth.
+  // ------------------------------------------------------------
+
+  const photosyntheticPotential =
+    effectiveLight * nutrientPotential;
+
+  // ------------------------------------------------------------
+  // 7. Temperature effect on biological metabolism
+  // ------------------------------------------------------------
+  //
+  // Temperature can influence biological reaction rates.
+  //
+  // This is deliberately restrained because actual temperature
+  // responses differ among organisms and ecosystems.
+  //
+  // IMPORTANT:
+  // This factor is separate from oxygen solubility.
+  // ------------------------------------------------------------
+
+  let metabolicTemperatureFactor;
+
+  if (temp <= 15) {
+    metabolicTemperatureFactor =
+      0.85 + (temp / 15) * 0.15;
+  } else {
+    metabolicTemperatureFactor =
+      1.0 + ((temp - 15) / 20) * 0.35;
+  }
+
+  metabolicTemperatureFactor =
+    Math.max(0.75, Math.min(1.35, metabolicTemperatureFactor));
+
+  // ------------------------------------------------------------
+  // 8. Oxygen saturation concentration
+  // ------------------------------------------------------------
+  //
+  // Oxygen saturation concentration is the concentration of
+  // dissolved oxygen that water can hold at equilibrium with
+  // the atmosphere.
+  //
+  // It depends primarily on:
+  //
+  //   • temperature
+  //   • salinity
+  //   • atmospheric pressure
+  //
+  // Atmospheric pressure is not a simulator control, so this
+  // model assumes approximately sea-level pressure.
+  //
+  // The freshwater temperature equation below is a recognised
+  // empirical relationship for oxygen saturation at standard
+  // pressure and zero salinity.
+  //
+  // The salinity adjustment is deliberately simplified for
+  // teaching purposes rather than being presented as a
+  // laboratory-grade seawater solubility equation.
+  // ------------------------------------------------------------
+
+  // Freshwater oxygen saturation at standard pressure.
+  //
+  // Valid approximately 0–40 °C. The temperature used here is
+  // clamped to that range.
+  const freshwaterOxygenSaturation =
+    14.652 -
+    (0.41022  * tempForSaturation) +
+    (0.0079910 * tempForSaturation * tempForSaturation) -
+    (0.000077774 * tempForSaturation * tempForSaturation * tempForSaturation);
+
+  // Simplified salinity correction.
+  //
+  // Increasing salinity reduces oxygen solubility.
+  //
+  // At seawater salinity (≈35 ppt), this produces a reduction
+  // of roughly 18–20%, which is broadly consistent with the
+  // direction and magnitude of the real effect at typical
+  // environmental temperatures.
+  //
+  // The simulator's salinity slider is expected to stay within
+  // a range where this linear approximation is reasonable
+  // (approximately 0–45 ppt).
+  const salinityCorrection =
+    1 - (0.0052 * salinity);
+
+  const oxygenSaturationMgL =
+    Math.max(
+      3,
+      freshwaterOxygenSaturation * salinityCorrection
+    );
+
+  // ------------------------------------------------------------
+  // 9. Respiration
+  // ------------------------------------------------------------
+  //
+  // Respiration consumes oxygen continuously — day and night.
+  //
+  // Two conceptual components are combined:
+  //
+  //   • baseRespiration        — metabolic demand of the
+  //                              general aquatic community.
+  //
+  //   • productivityRespiration — additional oxygen demand
+  //                              associated with standing
+  //                              biological productivity.
+  //
+  // Both scale with temperature. Productivity-linked demand
+  // scales with nutrient-supported biological potential, and
+  // therefore continues through the night — it is NOT tied to
+  // instantaneous photosynthesis.
+  // ------------------------------------------------------------
+
+  const baseRespiration =
+    3.5 * metabolicTemperatureFactor;
+
+  // Additional respiration associated with greater standing
+  // biological productivity.
+  //
+  // Uses nutrientPotential (not photosyntheticPotential) so
+  // that this demand is present at night as well as during the
+  // day. This is what allows the simulator to demonstrate that
+  // more productive systems undergo larger night-time DO
+  // drawdown.
+  const productivityRespiration =
+    nutrientPotential * 5.0 * metabolicTemperatureFactor;
+
+  // ------------------------------------------------------------
+  // 10. Photosynthetic oxygen production
+  // ------------------------------------------------------------
+  //
+  // During daylight, photosynthesis can produce oxygen.
+  //
+  // The effect is intentionally scaled so that the simulator
+  // visibly demonstrates the daily DO cycle.
+  // ------------------------------------------------------------
+
+  const photosynthesisEffect =
+    photosyntheticPotential * 18.0;
+
+  // ------------------------------------------------------------
+  // 11. Net biological oxygen effect
+  // ------------------------------------------------------------
+
+  const netOxygenEffect =
+    photosynthesisEffect -
+    baseRespiration -
+    productivityRespiration;
+
+  // ------------------------------------------------------------
+  // 12. Calculate actual DO
+  // ------------------------------------------------------------
+  //
+  // Begin with a conceptual baseline below saturation.
+  //
+  // The biological effect then moves actual DO:
+  //
+  //   Night:
+  //       respiration > photosynthesis
+  //       -> DO declines
+  //
+  //   Day:
+  //       photosynthesis increases
+  //       -> DO rises
+  //
+  //   Strong photosynthesis:
+  //       DO may exceed 100% saturation
+  //
+  // This is consistent with the recognised possibility of
+  // daytime supersaturation in productive surface waters.
+  // ------------------------------------------------------------
+
+  let doPercent =
+    88 + netOxygenEffect;
+
+  // High temperature can increase biological oxygen demand.
+  //
+  // This is a conceptual metabolic effect and is deliberately
+  // kept separate from the temperature-dependent saturation
+  // concentration calculated above.
+  if (temp > 25) {
+    doPercent -= (temp - 25) * 0.45;
+  }
+
+  // Keep the educational simulation within a useful range.
+  doPercent =
+    Math.max(35, Math.min(125, doPercent));
+
+  // Actual dissolved oxygen concentration.
+  //
+  // This is the quantity represented by:
+  //
+  //     DO % saturation
+  //     ---------------- × saturation concentration
+  //            100
+  //
+  // Therefore temperature and salinity affect the mg/L value
+  // through oxygen saturation, while biological processes alter
+  // the actual DO relative to saturation.
+  const estimatedDOMgL =
+    oxygenSaturationMgL * (doPercent / 100);
+
+  // ------------------------------------------------------------
+  // 13. pH calculation
+  // ------------------------------------------------------------
+  //
+  // Photosynthesis:
+  //
+  //   consumes CO2
+  //   -> can increase pH
+  //
+  // Respiration:
+  //
+  //   produces CO2
+  //   -> can decrease pH
+  //
+  // This is conceptual only.
+  //
+  // Actual pH response depends strongly on alkalinity,
+  // dissolved inorganic carbon, carbonate chemistry,
+  // temperature, gas exchange and other factors.
+  // ------------------------------------------------------------
+
+  const photosynthesisPH =
+    photosyntheticPotential * 0.85;
+
+  const respirationPH =
+    (baseRespiration / 10) +
+    (productivityRespiration / 30);
+
+  // Freshwater baseline pH is ~7.2; marine baseline is higher
+  // (~7.9 at typical seawater salinity). The baseline is shifted
+  // gently with salinity so that the salinity control is at
+  // least directionally consistent with real water chemistry.
+  const baselinePH =
+    7.2 + Math.min(0.7, salinity * 0.02);
+
+  let pH =
+    baselinePH +
+    photosynthesisPH -
+    respirationPH;
+
+  // Mild conceptual temperature effect.
+  //
+  // This does NOT claim that temperature alone determines pH.
+  if (temp > 25) {
+    pH -= (temp - 25) * 0.015;
+  }
+
+  pH = Math.max(5.5, Math.min(9.5, pH));
+
+  // ------------------------------------------------------------
+  // 14. Algal turbidity potential
+  // ------------------------------------------------------------
+  //
+  // This is NOT measured turbidity.
+  //
+  // Real turbidity can result from:
+  //
+  //   • suspended sediment
+  //   • erosion
+  //   • runoff
+  //   • rainfall
+  //   • high flow
+  //   • bank disturbance
+  //   • organic material
+  //   • algae and plankton
+  //
+  // This simulator does not contain enough information to model
+  // those physical sediment processes.
+  //
+  // Therefore the value is explicitly an "algal turbidity
+  // potential" associated with biological productivity.
+  //
+  // Nutrients affect this indirectly through productivity rather
+  // than being added directly to turbidity.
+  // ------------------------------------------------------------
+
+  const algalTurbidityPotential =
+    photosyntheticPotential;
+
+  let turbidity =
+    3 + (algalTurbidityPotential * 35);
+
+  turbidity =
+    Math.max(1, Math.min(45, turbidity));
+
+  // ------------------------------------------------------------
+  // 15. Update output elements
+  // ------------------------------------------------------------
+
+  const doOutput            = $('simDO');
+  const phOutput            = $('simpH');
+  const turbidityOutput     = $('simTurbidity');
+  const salinityOutput      = $('simSalinity');
+  const interpretationOutput = $('simInterpretation');
+
+  if (doOutput) {
+    doOutput.textContent = `${Math.round(doPercent)}%`;
+  }
+
+  if (phOutput) {
+    phOutput.textContent = pH.toFixed(2);
+  }
+
+  if (turbidityOutput) {
+    turbidityOutput.textContent = turbidity.toFixed(1);
+  }
+
+  if (salinityOutput) {
+    salinityOutput.textContent = salinity.toFixed(1);
+  }
+
+  // ------------------------------------------------------------
+  // 16. Update turbidity description
+  // ------------------------------------------------------------
+  //
+  // Preferred: an element with id="simTurbidityLabel" that holds
+  // the descriptive text beneath the numeric value.
+  //
+  // Fallback: the previous heuristic (search the parent of the
+  // numeric output for a small-font div), so this remains a
+  // drop-in replacement in HTML that has not been updated.
+
+  const turbidityLabel = $('simTurbidityLabel');
+
+  if (turbidityLabel) {
+    turbidityLabel.textContent = 'Algal turbidity potential';
+  } else if (turbidityOutput && turbidityOutput.parentElement) {
+    const smallDivs =
+      turbidityOutput.parentElement
+        .querySelectorAll('div[style*="font-size:0.7rem"]');
+
+    if (smallDivs.length > 1) {
+      smallDivs[1].textContent = 'Algal turbidity potential';
+    }
+  }
+
+  // ------------------------------------------------------------
+  // 17. Build teaching interpretation
+  // ------------------------------------------------------------
+
+  const messages = [];
+
+  // ------------------------------------------------------------
+  // Time of day
+  // ------------------------------------------------------------
+
+  if (time < 6 || time > 18) {
+    messages.push(
+      '🌙 <strong>Night-time:</strong> ' +
+      'photosynthesis is inactive in this simplified model, ' +
+      'while respiration continues. DO and pH therefore tend ' +
+      'to decline overnight.'
+    );
+  } else if (time >= 6 && time < 10) {
+    messages.push(
+      '🌅 <strong>Morning:</strong> ' +
+      'daylight is increasing and photosynthesis is becoming ' +
+      'more active. DO and pH can begin rising after the ' +
+      'overnight minimum.'
+    );
+  } else if (time >= 10 && time <= 15) {
+    messages.push(
+      '☀️ <strong>Daylight:</strong> ' +
+      'photosynthesis is active. It produces oxygen and removes ' +
+      'CO₂, which can increase DO and pH.'
+    );
+  } else {
+    messages.push(
+      '🌇 <strong>Afternoon/evening:</strong> ' +
+      'available light is declining, so photosynthetic oxygen ' +
+      'production is declining. DO may remain elevated for a ' +
+      'time before respiration causes it to fall.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Temperature
+  // ------------------------------------------------------------
+
+  if (temp >= 25) {
+    messages.push(
+      '🌡️ <strong>Warm water:</strong> ' +
+      'warm water holds less oxygen at saturation than cooler ' +
+      'water. The simplified saturation estimate is ' +
+      `${oxygenSaturationMgL.toFixed(1)} mg/L at this temperature ` +
+      'and salinity.'
+    );
+  } else if (temp <= 10) {
+    messages.push(
+      '❄️ <strong>Cooler water:</strong> ' +
+      'cooler water can hold more dissolved oxygen at saturation. ' +
+      'The simplified saturation estimate is ' +
+      `${oxygenSaturationMgL.toFixed(1)} mg/L at this temperature ` +
+      'and salinity.'
+    );
+  } else {
+    messages.push(
+      '🌡️ <strong>Oxygen saturation:</strong> ' +
+      'the simplified saturation concentration is ' +
+      `${oxygenSaturationMgL.toFixed(1)} mg/L at this temperature ` +
+      'and salinity.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Salinity
+  // ------------------------------------------------------------
+
+  if (salinity >= 30) {
+    messages.push(
+      '🌊 <strong>Marine-range salinity:</strong> ' +
+      'dissolved salts reduce oxygen solubility compared with ' +
+      'freshwater at the same temperature.'
+    );
+  } else if (salinity > 0.5) {
+    messages.push(
+      '🧂 <strong>Brackish-range salinity:</strong> ' +
+      'dissolved salts reduce oxygen solubility compared with ' +
+      'freshwater.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Nutrients
+  // ------------------------------------------------------------
+
+  if (nitrate >= 3 || phosphate >= 0.30) {
+    messages.push(
+      '🧪 <strong>Nutrient availability:</strong> ' +
+      'availability is relatively high in this teaching model. ' +
+      'If sufficient light and other conditions are present, ' +
+      'this can support greater biological productivity. ' +
+      'Nutrients do not directly add oxygen to the water.'
+    );
+  } else if (nitrate <= 0.2 && phosphate <= 0.02) {
+    messages.push(
+      '🧪 <strong>Nutrient availability:</strong> ' +
+      'availability is relatively low in this teaching model, ' +
+      'limiting the potential for nutrient-supported biological ' +
+      'productivity.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Biological productivity
+  // ------------------------------------------------------------
+
+  if (photosyntheticPotential >= 0.65) {
+    messages.push(
+      '🌿 <strong>High photosynthetic potential:</strong> ' +
+      'strong biological activity under these conditions could ' +
+      'raise daytime DO and pH. After dark, respiration continues ' +
+      'and can subsequently reduce DO.'
+    );
+  } else if (photosyntheticPotential >= 0.30) {
+    messages.push(
+      '🌿 <strong>Moderate photosynthetic potential:</strong> ' +
+      'biological activity may have a noticeable effect on ' +
+      'daytime DO and pH.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Turbidity
+  // ------------------------------------------------------------
+
+  if (turbidity >= 20) {
+    messages.push(
+      '💧 <strong>Elevated algal turbidity potential:</strong> ' +
+      'this does NOT represent measured field turbidity. Real ' +
+      'turbidity may instead be caused by erosion, runoff, ' +
+      'rainfall, suspended sediment, flow, disturbance or ' +
+      'suspended organic material.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // DO interpretation
+  // ------------------------------------------------------------
+
+  if (doPercent < 60) {
+    messages.push(
+      '⚠️ <strong>Simulated DO:</strong> ' +
+      'below the simplified 60% teaching flag used elsewhere ' +
+      'in this resource. This is NOT a universal guideline or ' +
+      'field decision threshold.'
+    );
+  } else if (doPercent < 80) {
+    messages.push(
+      'ℹ️ <strong>Simulated DO:</strong> ' +
+      'below the general reference range used elsewhere in this ' +
+      'learning resource. Real interpretation requires local ' +
+      'conditions, timing and appropriate reference data.'
+    );
+  } else if (doPercent > 110) {
+    messages.push(
+      'ℹ️ <strong>Supersaturation:</strong> ' +
+      'strong daylight photosynthesis can produce DO above ' +
+      '100% saturation in productive surface waters. Real ' +
+      'measurements should be checked against temperature, ' +
+      'salinity, atmospheric pressure and instrument performance.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // pH interpretation
+  // ------------------------------------------------------------
+
+  if (pH > 8.5) {
+    messages.push(
+      '⚗️ <strong>Simulated pH:</strong> ' +
+      'relatively high. Strong photosynthesis can raise pH by ' +
+      'removing CO₂, although the actual pH response depends ' +
+      'strongly on alkalinity and carbonate chemistry.'
+    );
+  } else if (pH < 6.5) {
+    messages.push(
+      '⚗️ <strong>Simulated pH:</strong> ' +
+      'relatively low. Real interpretation requires the expected ' +
+      'local range and consideration of natural and catchment-' +
+      'specific conditions.'
+    );
+  }
+
+  // ------------------------------------------------------------
+  // Final disclaimer
+  // ------------------------------------------------------------
+
+  messages.push(
+    '<strong>Teaching reminder:</strong> ' +
+    'These relationships are simplified. Actual water quality ' +
+    'depends on mixing, flow, depth, atmospheric pressure, ' +
+    'alkalinity, organic matter, sediment, biological communities, ' +
+    'weather, gas exchange and many other factors. Use field ' +
+    'measurements and appropriate local/site-specific guidelines ' +
+    'for real decisions.'
+  );
+
+  if (interpretationOutput) {
+    interpretationOutput.innerHTML = messages.join('<br><br>');
+  }
+}
