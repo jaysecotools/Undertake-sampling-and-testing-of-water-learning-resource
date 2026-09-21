@@ -141,6 +141,7 @@
     .warning { background: #fdf0e0; border-radius: 12px; padding: 0.8rem 1.2rem; margin: 0.8rem 0; border-left: 6px solid #e68a2e; }
     .resource-link { color: var(--primary); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent); }
     .resource-link:hover { color: var(--accent); }
+    mark.search-highlight { background: #fdf0a0; color: inherit; padding: 0 2px; border-radius: 2px; }
     .progress-container { background: #e0e0e0; border-radius: 20px; overflow: hidden; margin: 1rem 0; height: 12px; }
     .progress-fill { background: var(--primary); height: 100%; transition: width 0.5s; }
     .accordion { background: var(--bg); border-radius: var(--radius); margin: 0.8rem 0; overflow: hidden; border: 1px solid var(--border); }
@@ -648,10 +649,10 @@
         <div class="quiz-option"><input type="radio" name="q7" value="A"> Turbidity</div>
         <div class="quiz-option"><input type="radio" name="q7" value="B"> Salinity (ppt)</div>
         <div class="quiz-option"><input type="radio" name="q7" value="C"> Dissolved oxygen</div><div class="quiz-feedback"></div></div>
-      <div class="quiz-question" data-correct="C"><div class="quiz-question-text">8. How much Lugols preservative is added to a 500mL algal sample?</div>
-        <div class="quiz-option"><input type="radio" name="q8" value="A"> 1mL</div>
-        <div class="quiz-option"><input type="radio" name="q8" value="B"> 2.5mL</div>
-        <div class="quiz-option"><input type="radio" name="q8" value="C"> 5mL</div><div class="quiz-feedback"></div></div>
+      <div class="quiz-question" data-correct="C"><div class="quiz-question-text">8. What does a laboratory or project method commonly specify as the Lugols dose for a 500 mL algal sample?</div>
+        <div class="quiz-option"><input type="radio" name="q8" value="A"> Add no preservative</div>
+        <div class="quiz-option"><input type="radio" name="q8" value="B"> Add approximately 10% of the sample volume</div>
+        <div class="quiz-option"><input type="radio" name="q8" value="C"> Commonly around 1% of the sample volume (e.g. ~5 mL per 500 mL) — follow the laboratory's specified method</div><div class="quiz-feedback"></div></div>
       <div class="quiz-question" data-correct="B"><div class="quiz-question-text">9. Which nutrient in excess can cause eutrophication?</div>
         <div class="quiz-option"><input type="radio" name="q9" value="A"> Sodium</div>
         <div class="quiz-option"><input type="radio" name="q9" value="B"> Nitrate & Phosphate</div>
@@ -666,7 +667,7 @@
         <div class="quiz-option"><input type="radio" name="q11" value="C"> Stormwater from a city street</div><div class="quiz-feedback"></div></div>
       <div class="quiz-question" data-correct="B"><div class="quiz-question-text">12. What is the first thing you should do if your DO reading is unstable?</div>
         <div class="quiz-option"><input type="radio" name="q12" value="A"> Record the average value</div>
-        <div class="quiz-option"><input type="radio" name="q12" value="B"> Check calibration and for trapped air bubbles</div>
+        <div class="quiz-option"><input type="radio" name="q12" value="B"> Check calibration, check for trapped air bubbles, and allow the reading to stabilise</div>
         <div class="quiz-option"><input type="radio" name="q12" value="C"> Replace the probe</div><div class="quiz-feedback"></div></div>
       <button class="btn btn-primary" onclick="checkQuiz()"><i class="fas fa-check"></i> Check answers</button>
       <button class="btn btn-outline" onclick="resetQuiz()" style="background:rgba(255,255,255,0.15); color:white; border-color:rgba(255,255,255,0.4);"><i class="fas fa-undo"></i> Reset</button>
@@ -675,27 +676,27 @@
 
     <h3>Real-world scenarios</h3>
     <div class="scenario"><h4>🌧️ You arrive at a river after heavy rain</h4><p>The water is brown and muddy. Your turbidity reading is 85 NTU — normally it's around 5 NTU. What should you do?</p>
-      <div class="scenario-options" id="scen1opts"><div class="scenario-option" onclick="selectScen(1,'A')">A) Record the reading and note recent rainfall in your field notes.</div>
-      <div class="scenario-option" onclick="selectScen(1,'B')">B) Discard the sample and come back another day.</div>
-      <div class="scenario-option" onclick="selectScen(1,'C')">C) Add more preservative to fix the turbidity.</div></div>
+      <div class="scenario-options" id="scen1opts"><div class="scenario-option" onclick="selectScen(event, 1, 'A')">A) Record the reading and note recent rainfall in your field notes.</div>
+      <div class="scenario-option" onclick="selectScen(event, 1, 'B')">B) Discard the sample and come back another day.</div>
+      <div class="scenario-option" onclick="selectScen(event, 1, 'C')">C) Add more preservative to fix the turbidity.</div></div>
       <div id="scen1fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(1)">Reset</button></div>
 
     <div class="scenario"><h4>🧪 Your DO reading is fluctuating wildly</h4><p>You're at a marine site and the DO reading keeps jumping between 70% and 110%. What's your first step?</p>
-      <div class="scenario-options" id="scen2opts"><div class="scenario-option" onclick="selectScen(2,'A')">A) Replace the probe immediately.</div>
-      <div class="scenario-option" onclick="selectScen(2,'B')">B) Check the calibration, ensure no bubbles are trapped, and wait for the reading to stabilise.</div>
-      <div class="scenario-option" onclick="selectScen(2,'C')">C) Record the average value and move on.</div></div>
+      <div class="scenario-options" id="scen2opts"><div class="scenario-option" onclick="selectScen(event, 2, 'A')">A) Replace the probe immediately.</div>
+      <div class="scenario-option" onclick="selectScen(event, 2, 'B')">B) Check the calibration, ensure no bubbles are trapped, and wait for the reading to stabilise.</div>
+      <div class="scenario-option" onclick="selectScen(event, 2, 'C')">C) Record the average value and move on.</div></div>
       <div id="scen2fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(2)">Reset</button></div>
 
     <div class="scenario"><h4>🌿 You notice a green scum on a farm dam</h4><p>You suspect an algal bloom. What additional tests or observations would you make?</p>
-      <div class="scenario-options" id="scen3opts"><div class="scenario-option" onclick="selectScen(3,'A')">A) Ignore it — algae are normal in farm dams.</div>
-      <div class="scenario-option" onclick="selectScen(3,'B')">B) Collect an algal sample for identification, test for nutrients (nitrate/phosphate), measure pH and DO, and note any odours.</div>
-      <div class="scenario-option" onclick="selectScen(3,'C')">C) Add fertiliser to encourage more growth.</div></div>
+      <div class="scenario-options" id="scen3opts"><div class="scenario-option" onclick="selectScen(event, 3, 'A')">A) Ignore it — algae are normal in farm dams.</div>
+      <div class="scenario-option" onclick="selectScen(event, 3, 'B')">B) Collect an algal sample for identification, test for nutrients (nitrate/phosphate), measure pH and DO, and note any odours.</div>
+      <div class="scenario-option" onclick="selectScen(event, 3, 'C')">C) Add fertiliser to encourage more growth.</div></div>
       <div id="scen3fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(3)">Reset</button></div>
 
     <div class="scenario"><h4>🏭 You discover an oily sheen on a stream near an industrial area</h4><p>What is your immediate response?</p>
-      <div class="scenario-options" id="scen4opts"><div class="scenario-option" onclick="selectScen(4,'A')">A) Continue sampling as normal — it's probably natural.</div>
-      <div class="scenario-option" onclick="selectScen(4,'B')">B) Stop sampling, report to your supervisor immediately, take photos, record the location, and avoid contact with the water.</div>
-      <div class="scenario-option" onclick="selectScen(4,'C')">C) Collect a sample for analysis and then report it.</div></div>
+      <div class="scenario-options" id="scen4opts"><div class="scenario-option" onclick="selectScen(event, 4, 'A')">A) Continue sampling as normal — it's probably natural.</div>
+      <div class="scenario-option" onclick="selectScen(event, 4, 'B')">B) Stop sampling, report to your supervisor immediately, take photos, record the location, and avoid contact with the water.</div>
+      <div class="scenario-option" onclick="selectScen(event, 4, 'C')">C) Collect a sample for analysis and then report it.</div></div>
       <div id="scen4fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScen(4)">Reset</button></div>
 
     <h3>Your progress</h3>
@@ -737,11 +738,11 @@
     <h2><i class="fas fa-book"></i> Resources & glossary</h2>
 
     <div class="card"><i class="fas fa-glossary"></i><div class="card-title">Key terms</div>
-      
+
       <!-- Search bar -->
       <div style="margin-bottom:1rem;">
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-          <input type="text" id="glossarySearch" placeholder="🔍 Search glossary..." 
+          <input type="text" id="glossarySearch" placeholder="🔍 Search glossary..."
                  style="flex:1; padding:0.6rem 1rem; border:2px solid var(--border); border-radius:60px; font-size:0.9rem; min-width:150px;">
           <button class="btn btn-outline" onclick="clearGlossarySearch()" style="font-size:0.8rem; padding:0.3rem 1rem;">
             <i class="fas fa-times"></i> Clear
@@ -752,11 +753,11 @@
 
       <!-- Category filters -->
       <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem;">
-        <button class="btn btn-primary" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('all')">📋 All</button>
-        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('parameters')">📊 Parameters</button>
-        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('equipment')">🧪 Equipment</button>
-        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('concepts')">📋 Concepts</button>
-        <button class="btn btn-outline" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('standards')">📜 Standards</button>
+        <button class="btn btn-primary" data-category="all" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('all')">📋 All</button>
+        <button class="btn btn-outline" data-category="parameters" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('parameters')">📊 Parameters</button>
+        <button class="btn btn-outline" data-category="equipment" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('equipment')">🧪 Equipment</button>
+        <button class="btn btn-outline" data-category="concepts" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('concepts')">📋 Concepts</button>
+        <button class="btn btn-outline" data-category="standards" style="font-size:0.7rem; padding:0.2rem 0.8rem;" onclick="filterGlossary('standards')">📜 Standards</button>
       </div>
 
       <!-- Glossary accordion cards -->
@@ -958,7 +959,7 @@
             <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
               <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Dissolved Oxygen</div>
               <div id="simDO" style="font-size:2rem; font-weight:800; color:#2c7840;">94%</div>
-              <div style="font-size:0.7rem; color:var(--text-light);">Saturation</div>
+              <div id="simDOMgL" style="font-size:0.7rem; color:var(--text-light);">9.4 mg/L</div>
             </div>
             <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
               <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">pH</div>
@@ -968,7 +969,7 @@
             <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
               <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Turbidity (NTU)</div>
               <div id="simTurbidity" style="font-size:2rem; font-weight:800; color:#b07d44;">12</div>
-              <div style="font-size:0.7rem; color:var(--text-light);">Estimated from nutrients</div>
+              <div id="simTurbidityLabel" style="font-size:0.7rem; color:var(--text-light);">Algal turbidity potential</div>
             </div>
             <div style="background:var(--bg); border-radius:12px; padding:0.8rem; text-align:center; border:2px solid var(--border);">
               <div style="font-size:0.7rem; text-transform:uppercase; color:var(--text-light);">Salinity (ppt)</div>
@@ -1034,19 +1035,23 @@ function toggleAccordion(header) {
 }
 
 // ===== QUIZ =====
+let quizScoreValue = 0;
+let quizTotalValue = 12;
+
 function checkQuiz() {
-  let score = 0, total = 12;
+  let score = 0;
+  const total = quizTotalValue;
   const questions = document.querySelectorAll('.quiz-question');
   questions.forEach((q) => {
     const radios = q.querySelectorAll('input[type="radio"]');
     const selected = Array.from(radios).find(r => r.checked);
     const fb = q.querySelector('.quiz-feedback');
     const correct = q.dataset.correct;
-    if(selected && selected.value === correct) {
+    if (selected && selected.value === correct) {
       fb.innerHTML = '✓ Correct';
       fb.className = 'feedback-correct';
       score++;
-    } else if(selected) {
+    } else if (selected) {
       fb.innerHTML = '✗ Incorrect. Review the material.';
       fb.className = 'feedback-incorrect';
     } else {
@@ -1055,20 +1060,28 @@ function checkQuiz() {
     }
     fb.style.display = 'inline-block';
   });
-  document.getElementById('quizScore').innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? '🏆 Perfect score!' : score>=10 ? '🌟 Excellent!' : 'Review the tabs and try again.'}`;
+  quizScoreValue = score;
+  document.getElementById('quizScore').innerHTML =
+    `<strong>Score: ${score}/${total}</strong> ` +
+    (score === total ? '🏆 Perfect score!' : score >= 10 ? '🌟 Excellent!' : 'Review the tabs and try again.');
 }
 
 function resetQuiz() {
   document.querySelectorAll('.quiz-question input[type="radio"]').forEach(r => r.checked = false);
   document.querySelectorAll('.quiz-feedback').forEach(f => { f.innerHTML = ''; f.style.display = 'none'; f.className = 'quiz-feedback'; });
   document.getElementById('quizScore').innerHTML = '';
+  quizScoreValue = 0;
 }
 
 // ===== SCENARIOS =====
-function selectScen(num, choice) {
+function selectScen(evt, num, choice) {
   const opts = document.querySelectorAll(`#scen${num}opts .scenario-option`);
   opts.forEach(o => o.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
+
+  if (evt && evt.currentTarget) {
+    evt.currentTarget.classList.add('selected');
+  }
+
   const fb = document.getElementById(`scen${num}fb`);
   const msgs = {
     1: { A: '✅ Correct: record the reading and note recent rainfall. This is valuable data — it shows how rainfall affects turbidity.',
@@ -1084,8 +1097,11 @@ function selectScen(num, choice) {
         B: '✅ Correct: stop, report, document, and avoid contact. This is a potential pollution incident.',
         C: '❌ Do not collect a sample unless you are trained, authorised and the sampling procedure requires it. First make the situation safe and follow workplace incident/reporting procedures.' }
   };
-  fb.innerHTML = `<strong>Feedback:</strong> ${msgs[num]?.[choice] || 'Review the scenario and try again.'}`;
-  fb.style.display = 'block';
+
+  if (fb) {
+    fb.innerHTML = `<strong>Feedback:</strong> ${msgs[num]?.[choice] || 'Review the scenario and try again.'}`;
+    fb.style.display = 'block';
+  }
 
   if (choice === 'B') {
     const scenKey = `scenario_${num}`;
@@ -1096,7 +1112,7 @@ function selectScen(num, choice) {
         if (localStorage.getItem(`scenario_${i}`)) completed++;
       }
       progressData.scenariosCompleted = completed;
-      saveProgress();
+      saveProgress({ silent: true });
     }
   }
 }
@@ -1107,7 +1123,9 @@ function resetScen(num) {
 }
 
 // ===== PROGRESS TRACKER =====
-let progressData = {
+const PROGRESS_STORAGE_KEY = 'waterQualityProgress';
+
+const progressData = {
   quizScore: 0,
   quizTotal: 12,
   scenariosCompleted: 0,
@@ -1115,159 +1133,277 @@ let progressData = {
   overallProgress: 0
 };
 
+/** Serialise progressData for localStorage (Sets are not JSON-serialisable). */
+function serialiseProgress() {
+  return {
+    quizScore: progressData.quizScore,
+    quizTotal: progressData.quizTotal,
+    scenariosCompleted: progressData.scenariosCompleted,
+    tabsViewed: Array.from(progressData.tabsViewed),
+    overallProgress: progressData.overallProgress
+  };
+}
+
+/** Compute the derived overall progress percentage (clamped to 0–100). */
+function computeOverallProgress() {
+  const total = progressData.quizTotal || 12;
+  const quizPercent = (progressData.quizScore / total) * 40;
+  const scenarioPercent = (progressData.scenariosCompleted / 4) * 30;
+  const tabPercent = (Math.min(progressData.tabsViewed.size, 9) / 9) * 30;
+  return Math.max(0, Math.min(100, Math.round(quizPercent + scenarioPercent + tabPercent)));
+}
+
+/** Render current progressData into the progress-tile DOM. */
 function updateProgressDisplay() {
-  const saved = localStorage.getItem('waterQualityProgress');
-  if (saved) {
-    try {
-      const data = JSON.parse(saved);
-      progressData.quizScore = data.quizScore || 0;
-      progressData.scenariosCompleted = data.scenariosCompleted || 0;
-      if (data.tabsViewed) progressData.tabsViewed = new Set(data.tabsViewed);
-      progressData.overallProgress = data.overallProgress || 0;
-    } catch(e) {}
-  }
-  
   const quizEl = document.getElementById('progressQuiz');
   const scenariosEl = document.getElementById('progressScenarios');
   const tabsEl = document.getElementById('progressTabs');
   const overallEl = document.getElementById('progressOverall');
-  
+
   if (quizEl) quizEl.textContent = `${progressData.quizScore}/${progressData.quizTotal}`;
   if (scenariosEl) scenariosEl.textContent = `${progressData.scenariosCompleted}/4`;
   if (tabsEl) tabsEl.textContent = `${progressData.tabsViewed.size}/9`;
   if (overallEl) overallEl.textContent = `${progressData.overallProgress}%`;
 }
 
-function saveProgress() {
-  const quizScoreElement = document.getElementById('quizScore');
-  if (quizScoreElement) {
-    const match = quizScoreElement.textContent.match(/(\d+)\/(\d+)/);
-    if (match) {
-      progressData.quizScore = parseInt(match[1]);
-      progressData.quizTotal = parseInt(match[2]);
-    }
-  }
-  
+/** Save current progress to localStorage. */
+function saveProgress(options = {}) {
+  progressData.quizScore = quizScoreValue;
+  progressData.quizTotal = quizTotalValue;
+
   document.querySelectorAll('.tab-content').forEach(tab => {
-    if (tab.style.display !== 'none' || tab.classList.contains('active')) {
+    if (tab.classList.contains('active') || tab.style.display === 'block') {
       progressData.tabsViewed.add(tab.id);
     }
   });
-  
-  const quizPercent = (progressData.quizScore / progressData.quizTotal) * 40;
-  const scenarioPercent = (progressData.scenariosCompleted / 4) * 30;
-  const tabPercent = (progressData.tabsViewed.size / 9) * 30;
-  progressData.overallProgress = Math.round(quizPercent + scenarioPercent + tabPercent);
-  
-  localStorage.setItem('waterQualityProgress', JSON.stringify(progressData));
-  const msgEl = document.getElementById('progressMessage');
-  if (msgEl) {
-    msgEl.innerHTML = '✅ Progress saved successfully!';
-    msgEl.style.color = '#2c7840';
+
+  progressData.overallProgress = computeOverallProgress();
+
+  try {
+    localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(serialiseProgress()));
+    if (!options.silent) {
+      const msgEl = document.getElementById('progressMessage');
+      if (msgEl) {
+        msgEl.innerHTML = '✅ Progress saved successfully!';
+        msgEl.style.color = '#2c7840';
+      }
+    }
+  } catch (e) {
+    console.warn('[saveProgress] Could not save progress:', e);
   }
+
   updateProgressDisplay();
 }
 
+/** Load progress from localStorage into progressData, then re-render. */
 function loadProgress() {
-  const saved = localStorage.getItem('waterQualityProgress');
   const msgEl = document.getElementById('progressMessage');
-  if (saved) {
-    try {
-      const data = JSON.parse(saved);
-      progressData = {
-        quizScore: data.quizScore || 0,
-        quizTotal: data.quizTotal || 12,
-        scenariosCompleted: data.scenariosCompleted || 0,
-        tabsViewed: new Set(data.tabsViewed || []),
-        overallProgress: data.overallProgress || 0
-      };
-      if (msgEl) {
-        msgEl.innerHTML = '✅ Progress loaded successfully!';
-        msgEl.style.color = '#2c7840';
-      }
-      updateProgressDisplay();
-    } catch(e) {
-      if (msgEl) {
-        msgEl.innerHTML = '❌ Error loading progress.';
-        msgEl.style.color = '#b34343';
-      }
-    }
-  } else {
+  const saved = localStorage.getItem(PROGRESS_STORAGE_KEY);
+
+  if (!saved) {
     if (msgEl) {
       msgEl.innerHTML = 'ℹ️ No saved progress found.';
       msgEl.style.color = '#e68a2e';
     }
+    return;
   }
-}
 
-function clearProgress() {
-  if (confirm('Are you sure you want to clear all saved progress?')) {
-    localStorage.removeItem('waterQualityProgress');
-    progressData = {
-      quizScore: 0,
-      quizTotal: 12,
-      scenariosCompleted: 0,
-      tabsViewed: new Set(),
-      overallProgress: 0
-    };
-    const msgEl = document.getElementById('progressMessage');
+  try {
+    const data = JSON.parse(saved);
+    progressData.quizScore = data.quizScore || 0;
+    progressData.quizTotal = data.quizTotal || 12;
+    progressData.scenariosCompleted = data.scenariosCompleted || 0;
+    progressData.tabsViewed = new Set(data.tabsViewed || []);
+    progressData.overallProgress = data.overallProgress || computeOverallProgress();
+
+    quizScoreValue = progressData.quizScore;
+    quizTotalValue = progressData.quizTotal;
+
     if (msgEl) {
-      msgEl.innerHTML = '🗑️ Progress cleared.';
+      msgEl.innerHTML = '✅ Progress loaded successfully!';
+      msgEl.style.color = '#2c7840';
+    }
+  } catch (e) {
+    console.warn('[loadProgress] Could not load progress:', e);
+    if (msgEl) {
+      msgEl.innerHTML = '❌ Error loading progress.';
       msgEl.style.color = '#b34343';
     }
-    updateProgressDisplay();
+    return;
   }
+
+  updateProgressDisplay();
+}
+
+/** Clear saved progress and reset state. */
+function clearProgress() {
+  if (!confirm('Are you sure you want to clear all saved progress?')) {
+    return;
+  }
+  localStorage.removeItem(PROGRESS_STORAGE_KEY);
+  for (let i = 1; i <= 4; i++) {
+    localStorage.removeItem(`scenario_${i}`);
+  }
+  progressData.quizScore = 0;
+  progressData.quizTotal = 12;
+  progressData.scenariosCompleted = 0;
+  progressData.tabsViewed = new Set();
+  progressData.overallProgress = 0;
+  quizScoreValue = 0;
+  quizTotalValue = 12;
+
+  const msgEl = document.getElementById('progressMessage');
+  if (msgEl) {
+    msgEl.innerHTML = '🗑️ Progress cleared.';
+    msgEl.style.color = '#b34343';
+  }
+  updateProgressDisplay();
 }
 
 // ===== SEARCH FUNCTIONS =====
+
+/**
+ * Remove all <mark class="search-highlight"> wrappers, restoring the
+ * original text content. Uses DOM manipulation (not innerHTML regex)
+ * so that event listeners on descendant elements are preserved.
+ */
+function removeSearchHighlights() {
+  document.querySelectorAll('mark.search-highlight').forEach(mark => {
+    const parent = mark.parentNode;
+    while (mark.firstChild) {
+      parent.insertBefore(mark.firstChild, mark);
+    }
+    parent.removeChild(mark);
+    parent.normalize();
+  });
+}
+
+/**
+ * Wrap every case-insensitive occurrence of `query` in each text node
+ * beneath `root` with a <mark class="search-highlight"> element.
+ * Returns the number of text-node matches found.
+ */
+function highlightMatchesIn(root, query) {
+  if (!query) return 0;
+
+  const lowerQuery = query.toLowerCase();
+  let matchCount = 0;
+
+  const walker = document.createTreeWalker(
+    root,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        const parentName = node.parentNode && node.parentNode.nodeName;
+        if (parentName === 'SCRIPT' || parentName === 'STYLE' || parentName === 'MARK') {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    }
+  );
+
+  const textNodes = [];
+  while (walker.nextNode()) {
+    textNodes.push(walker.currentNode);
+  }
+
+  textNodes.forEach(node => {
+    const text = node.nodeValue;
+    const lower = text.toLowerCase();
+    if (lower.indexOf(lowerQuery) === -1) return;
+
+    const frag = document.createDocumentFragment();
+    let cursor = 0;
+    let idx;
+
+    while ((idx = lower.indexOf(lowerQuery, cursor)) !== -1) {
+      if (idx > cursor) {
+        frag.appendChild(document.createTextNode(text.slice(cursor, idx)));
+      }
+      const mark = document.createElement('mark');
+      mark.className = 'search-highlight';
+      mark.textContent = text.slice(idx, idx + query.length);
+      frag.appendChild(mark);
+      cursor = idx + query.length;
+      matchCount++;
+    }
+
+    if (cursor < text.length) {
+      frag.appendChild(document.createTextNode(text.slice(cursor)));
+    }
+
+    node.parentNode.replaceChild(frag, node);
+  });
+
+  return matchCount;
+}
+
 function performSearch() {
-  const query = document.getElementById('globalSearch').value.toLowerCase().trim();
-  if (!query) {
+  const rawQuery = document.getElementById('globalSearch').value.trim();
+  const resultsCountEl = document.getElementById('searchResultsCount');
+
+  removeSearchHighlights();
+
+  if (!rawQuery) {
     clearSearch();
     return;
   }
 
+  const query = rawQuery.toLowerCase();
   let totalMatches = 0;
   const tabContents = document.querySelectorAll('.tab-content');
-  
+
   tabContents.forEach(tab => {
     const text = tab.textContent.toLowerCase();
     if (text.includes(query)) {
       tab.style.display = 'block';
-      
       const elements = tab.querySelectorAll('p, li, td, .card-title, h2, h3, h4');
       elements.forEach(el => {
-        const originalHtml = el.innerHTML;
-        if (el.textContent.toLowerCase().includes(query)) {
-          const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-          el.innerHTML = originalHtml.replace(regex, '<span style="background:#fdf0a0; padding:0 2px; border-radius:2px;">$1</span>');
-          totalMatches++;
-        }
+        totalMatches += highlightMatchesIn(el, rawQuery);
       });
     } else {
       tab.style.display = 'none';
     }
   });
 
-  const firstVisible = document.querySelector('.tab-content[style*="display: block"]');
+  const firstVisible = Array.from(tabContents).find(
+    tab => tab.style.display === 'block'
+  );
   if (firstVisible) {
     const tabId = firstVisible.id;
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelector(`.tab[onclick*="${tabId}"]`)?.classList.add('active');
+    const matchingTab = Array.from(document.querySelectorAll('.tab'))
+      .find(t => (t.getAttribute('onclick') || '').includes(tabId));
+    if (matchingTab) matchingTab.classList.add('active');
   }
 
-  document.getElementById('searchResultsCount').textContent = `Found ${totalMatches} matches`;
+  if (resultsCountEl) {
+    resultsCountEl.textContent = `Found ${totalMatches} matches`;
+  }
 }
 
 function clearSearch() {
-  document.getElementById('globalSearch').value = '';
-  document.getElementById('searchResultsCount').textContent = '';
+  const input = document.getElementById('globalSearch');
+  const resultsCountEl = document.getElementById('searchResultsCount');
+
+  if (input) input.value = '';
+  if (resultsCountEl) resultsCountEl.textContent = '';
+
+  removeSearchHighlights();
+
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = '';
-    tab.querySelectorAll('p, li, td, .card-title, h2, h3, h4').forEach(el => {
-      el.innerHTML = el.innerHTML.replace(/<span style="background:#fdf0a0; padding:0 2px; border-radius:2px;">(.*?)<\/span>/g, '$1');
-    });
   });
+
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  const firstTab = document.querySelector('.tab');
+  if (firstTab) firstTab.classList.add('active');
+  const firstContent = document.getElementById('tab0');
+  if (firstContent) firstContent.classList.add('active');
 }
 
 /**
@@ -1359,9 +1495,7 @@ function updateSimulator() {
   const salinity  = Number(salinityEl.value);
 
   // Temperature is constrained for the freshwater oxygen-saturation
-  // polynomial (valid approx. 0–40 °C). The simulator UI is expected
-  // to operate within this range, but we clamp defensively so the
-  // polynomial cannot misbehave at extremes.
+  // polynomial (valid approx. 0–40 °C).
   const tempForSaturation = Math.max(0, Math.min(40, temp));
 
   // ------------------------------------------------------------
@@ -1397,7 +1531,6 @@ function updateSimulator() {
     let   minutes = Math.round((time - hours) * 60);
     let   displayHours = hours;
 
-    // Handle rounding to 60 minutes.
     if (minutes >= 60) {
       displayHours += 1;
       minutes = 0;
@@ -1422,19 +1555,6 @@ function updateSimulator() {
   // ------------------------------------------------------------
   // 3. Calculate daylight / solar availability
   // ------------------------------------------------------------
-  //
-  // Simplified teaching assumption:
-  //
-  //   06:00 = sunrise
-  //   12:00 = maximum solar availability
-  //   18:00 = sunset
-  //
-  // Photosynthesis is zero outside the daylight period.
-  //
-  // The real timing of sunrise/sunset varies with latitude,
-  // season, weather and site. This simulator deliberately uses
-  // a fixed conceptual 12-hour daylight period.
-  // ------------------------------------------------------------
 
   let daylightFactor = 0;
 
@@ -1445,17 +1565,6 @@ function updateSimulator() {
 
   // ------------------------------------------------------------
   // 4. Combine daylight with user-selected light
-  // ------------------------------------------------------------
-  //
-  // The light slider represents the availability of sunlight
-  // during the daylight period.
-  //
-  // At night, daylightFactor = 0, so photosynthesis remains zero
-  // regardless of the light-slider setting.
-  //
-  // A small background component (25%) prevents the simulator
-  // from making moderate daylight conditions appear biologically
-  // completely inactive when the slider is reduced.
   // ------------------------------------------------------------
 
   const lightFactor =
@@ -1468,18 +1577,6 @@ function updateSimulator() {
   // ------------------------------------------------------------
   // 5. Nutrient availability / productivity potential
   // ------------------------------------------------------------
-  //
-  // Nutrients are NOT treated as direct causes of increased DO,
-  // pH or turbidity.
-  //
-  // Instead, nitrate and phosphate contribute to the potential
-  // for biological productivity when sufficient light is present.
-  //
-  // These normalisations are teaching-scale values chosen so that
-  // moderate enrichment reaches the ceiling of this simulator's
-  // conceptual productivity scale. They are NOT ecological
-  // guideline thresholds.
-  // ------------------------------------------------------------
 
   const nitratePotential =
     Math.min(nitrate / 3.0, 1);
@@ -1487,15 +1584,6 @@ function updateSimulator() {
   const phosphatePotential =
     Math.min(phosphate / 0.30, 1);
 
-  // Both nutrients are treated as potentially limiting.
-  //
-  // A small background level represents existing biological
-  // activity even when nutrient concentrations are low.
-  //
-  // NOTE: This value also represents *standing* biological
-  // potential (biomass-supported respiration), so it is used
-  // both for photosynthesis (day) and for community respiration
-  // (day and night).
   const nutrientPotential =
     0.20 +
     (0.80 *
@@ -1504,30 +1592,12 @@ function updateSimulator() {
   // ------------------------------------------------------------
   // 6. Photosynthetic potential
   // ------------------------------------------------------------
-  //
-  // Photosynthetic potential requires:
-  //
-  //   daylight
-  //   available light
-  //   nutrient availability
-  //
-  // This does NOT claim that nutrients alone cause algal growth.
-  // ------------------------------------------------------------
 
   const photosyntheticPotential =
     effectiveLight * nutrientPotential;
 
   // ------------------------------------------------------------
   // 7. Temperature effect on biological metabolism
-  // ------------------------------------------------------------
-  //
-  // Temperature can influence biological reaction rates.
-  //
-  // This is deliberately restrained because actual temperature
-  // responses differ among organisms and ecosystems.
-  //
-  // IMPORTANT:
-  // This factor is separate from oxygen solubility.
   // ------------------------------------------------------------
 
   let metabolicTemperatureFactor;
@@ -1546,51 +1616,13 @@ function updateSimulator() {
   // ------------------------------------------------------------
   // 8. Oxygen saturation concentration
   // ------------------------------------------------------------
-  //
-  // Oxygen saturation concentration is the concentration of
-  // dissolved oxygen that water can hold at equilibrium with
-  // the atmosphere.
-  //
-  // It depends primarily on:
-  //
-  //   • temperature
-  //   • salinity
-  //   • atmospheric pressure
-  //
-  // Atmospheric pressure is not a simulator control, so this
-  // model assumes approximately sea-level pressure.
-  //
-  // The freshwater temperature equation below is a recognised
-  // empirical relationship for oxygen saturation at standard
-  // pressure and zero salinity.
-  //
-  // The salinity adjustment is deliberately simplified for
-  // teaching purposes rather than being presented as a
-  // laboratory-grade seawater solubility equation.
-  // ------------------------------------------------------------
 
-  // Freshwater oxygen saturation at standard pressure.
-  //
-  // Valid approximately 0–40 °C. The temperature used here is
-  // clamped to that range.
   const freshwaterOxygenSaturation =
     14.652 -
     (0.41022  * tempForSaturation) +
     (0.0079910 * tempForSaturation * tempForSaturation) -
     (0.000077774 * tempForSaturation * tempForSaturation * tempForSaturation);
 
-  // Simplified salinity correction.
-  //
-  // Increasing salinity reduces oxygen solubility.
-  //
-  // At seawater salinity (≈35 ppt), this produces a reduction
-  // of roughly 18–20%, which is broadly consistent with the
-  // direction and magnitude of the real effect at typical
-  // environmental temperatures.
-  //
-  // The simulator's salinity slider is expected to stay within
-  // a range where this linear approximation is reasonable
-  // (approximately 0–45 ppt).
   const salinityCorrection =
     1 - (0.0052 * salinity);
 
@@ -1603,46 +1635,15 @@ function updateSimulator() {
   // ------------------------------------------------------------
   // 9. Respiration
   // ------------------------------------------------------------
-  //
-  // Respiration consumes oxygen continuously — day and night.
-  //
-  // Two conceptual components are combined:
-  //
-  //   • baseRespiration        — metabolic demand of the
-  //                              general aquatic community.
-  //
-  //   • productivityRespiration — additional oxygen demand
-  //                              associated with standing
-  //                              biological productivity.
-  //
-  // Both scale with temperature. Productivity-linked demand
-  // scales with nutrient-supported biological potential, and
-  // therefore continues through the night — it is NOT tied to
-  // instantaneous photosynthesis.
-  // ------------------------------------------------------------
 
   const baseRespiration =
     3.5 * metabolicTemperatureFactor;
 
-  // Additional respiration associated with greater standing
-  // biological productivity.
-  //
-  // Uses nutrientPotential (not photosyntheticPotential) so
-  // that this demand is present at night as well as during the
-  // day. This is what allows the simulator to demonstrate that
-  // more productive systems undergo larger night-time DO
-  // drawdown.
   const productivityRespiration =
     nutrientPotential * 5.0 * metabolicTemperatureFactor;
 
   // ------------------------------------------------------------
   // 10. Photosynthetic oxygen production
-  // ------------------------------------------------------------
-  //
-  // During daylight, photosynthesis can produce oxygen.
-  //
-  // The effect is intentionally scaled so that the simulator
-  // visibly demonstrates the daily DO cycle.
   // ------------------------------------------------------------
 
   const photosynthesisEffect =
@@ -1660,75 +1661,22 @@ function updateSimulator() {
   // ------------------------------------------------------------
   // 12. Calculate actual DO
   // ------------------------------------------------------------
-  //
-  // Begin with a conceptual baseline below saturation.
-  //
-  // The biological effect then moves actual DO:
-  //
-  //   Night:
-  //       respiration > photosynthesis
-  //       -> DO declines
-  //
-  //   Day:
-  //       photosynthesis increases
-  //       -> DO rises
-  //
-  //   Strong photosynthesis:
-  //       DO may exceed 100% saturation
-  //
-  // This is consistent with the recognised possibility of
-  // daytime supersaturation in productive surface waters.
-  // ------------------------------------------------------------
 
   let doPercent =
     88 + netOxygenEffect;
 
-  // High temperature can increase biological oxygen demand.
-  //
-  // This is a conceptual metabolic effect and is deliberately
-  // kept separate from the temperature-dependent saturation
-  // concentration calculated above.
   if (temp > 25) {
     doPercent -= (temp - 25) * 0.45;
   }
 
-  // Keep the educational simulation within a useful range.
   doPercent =
     Math.max(35, Math.min(125, doPercent));
 
-  // Actual dissolved oxygen concentration.
-  //
-  // This is the quantity represented by:
-  //
-  //     DO % saturation
-  //     ---------------- × saturation concentration
-  //            100
-  //
-  // Therefore temperature and salinity affect the mg/L value
-  // through oxygen saturation, while biological processes alter
-  // the actual DO relative to saturation.
   const estimatedDOMgL =
     oxygenSaturationMgL * (doPercent / 100);
 
   // ------------------------------------------------------------
   // 13. pH calculation
-  // ------------------------------------------------------------
-  //
-  // Photosynthesis:
-  //
-  //   consumes CO2
-  //   -> can increase pH
-  //
-  // Respiration:
-  //
-  //   produces CO2
-  //   -> can decrease pH
-  //
-  // This is conceptual only.
-  //
-  // Actual pH response depends strongly on alkalinity,
-  // dissolved inorganic carbon, carbonate chemistry,
-  // temperature, gas exchange and other factors.
   // ------------------------------------------------------------
 
   const photosynthesisPH =
@@ -1738,10 +1686,6 @@ function updateSimulator() {
     (baseRespiration / 10) +
     (productivityRespiration / 30);
 
-  // Freshwater baseline pH is ~7.2; marine baseline is higher
-  // (~7.9 at typical seawater salinity). The baseline is shifted
-  // gently with salinity so that the salinity control is at
-  // least directionally consistent with real water chemistry.
   const baselinePH =
     7.2 + Math.min(0.7, salinity * 0.02);
 
@@ -1750,9 +1694,6 @@ function updateSimulator() {
     photosynthesisPH -
     respirationPH;
 
-  // Mild conceptual temperature effect.
-  //
-  // This does NOT claim that temperature alone determines pH.
   if (temp > 25) {
     pH -= (temp - 25) * 0.015;
   }
@@ -1761,29 +1702,6 @@ function updateSimulator() {
 
   // ------------------------------------------------------------
   // 14. Algal turbidity potential
-  // ------------------------------------------------------------
-  //
-  // This is NOT measured turbidity.
-  //
-  // Real turbidity can result from:
-  //
-  //   • suspended sediment
-  //   • erosion
-  //   • runoff
-  //   • rainfall
-  //   • high flow
-  //   • bank disturbance
-  //   • organic material
-  //   • algae and plankton
-  //
-  // This simulator does not contain enough information to model
-  // those physical sediment processes.
-  //
-  // Therefore the value is explicitly an "algal turbidity
-  // potential" associated with biological productivity.
-  //
-  // Nutrients affect this indirectly through productivity rather
-  // than being added directly to turbidity.
   // ------------------------------------------------------------
 
   const algalTurbidityPotential =
@@ -1809,6 +1727,11 @@ function updateSimulator() {
     doOutput.textContent = `${Math.round(doPercent)}%`;
   }
 
+  const doMgLOutput = $('simDOMgL');
+  if (doMgLOutput) {
+    doMgLOutput.textContent = `${estimatedDOMgL.toFixed(1)} mg/L`;
+  }
+
   if (phOutput) {
     phOutput.textContent = pH.toFixed(2);
   }
@@ -1824,26 +1747,10 @@ function updateSimulator() {
   // ------------------------------------------------------------
   // 16. Update turbidity description
   // ------------------------------------------------------------
-  //
-  // Preferred: an element with id="simTurbidityLabel" that holds
-  // the descriptive text beneath the numeric value.
-  //
-  // Fallback: the previous heuristic (search the parent of the
-  // numeric output for a small-font div), so this remains a
-  // drop-in replacement in HTML that has not been updated.
 
   const turbidityLabel = $('simTurbidityLabel');
-
   if (turbidityLabel) {
     turbidityLabel.textContent = 'Algal turbidity potential';
-  } else if (turbidityOutput && turbidityOutput.parentElement) {
-    const smallDivs =
-      turbidityOutput.parentElement
-        .querySelectorAll('div[style*="font-size:0.7rem"]');
-
-    if (smallDivs.length > 1) {
-      smallDivs[1].textContent = 'Algal turbidity potential';
-    }
   }
 
   // ------------------------------------------------------------
@@ -1852,10 +1759,7 @@ function updateSimulator() {
 
   const messages = [];
 
-  // ------------------------------------------------------------
   // Time of day
-  // ------------------------------------------------------------
-
   if (time < 6 || time > 18) {
     messages.push(
       '🌙 <strong>Night-time:</strong> ' +
@@ -1885,10 +1789,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // Temperature
-  // ------------------------------------------------------------
-
   if (temp >= 25) {
     messages.push(
       '🌡️ <strong>Warm water:</strong> ' +
@@ -1914,10 +1815,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // Salinity
-  // ------------------------------------------------------------
-
   if (salinity >= 30) {
     messages.push(
       '🌊 <strong>Marine-range salinity:</strong> ' +
@@ -1932,10 +1830,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // Nutrients
-  // ------------------------------------------------------------
-
   if (nitrate >= 3 || phosphate >= 0.30) {
     messages.push(
       '🧪 <strong>Nutrient availability:</strong> ' +
@@ -1953,10 +1848,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // Biological productivity
-  // ------------------------------------------------------------
-
   if (photosyntheticPotential >= 0.65) {
     messages.push(
       '🌿 <strong>High photosynthetic potential:</strong> ' +
@@ -1972,10 +1864,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // Turbidity
-  // ------------------------------------------------------------
-
   if (turbidity >= 20) {
     messages.push(
       '💧 <strong>Elevated algal turbidity potential:</strong> ' +
@@ -1986,10 +1875,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // DO interpretation
-  // ------------------------------------------------------------
-
   if (doPercent < 60) {
     messages.push(
       '⚠️ <strong>Simulated DO:</strong> ' +
@@ -2014,10 +1900,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // pH interpretation
-  // ------------------------------------------------------------
-
   if (pH > 8.5) {
     messages.push(
       '⚗️ <strong>Simulated pH:</strong> ' +
@@ -2034,10 +1917,7 @@ function updateSimulator() {
     );
   }
 
-  // ------------------------------------------------------------
   // Final disclaimer
-  // ------------------------------------------------------------
-
   messages.push(
     '<strong>Teaching reminder:</strong> ' +
     'These relationships are simplified. Actual water quality ' +
@@ -2410,7 +2290,7 @@ const glossaryTerms = [
   { term: "Hypoxia", category: "parameters", definition: "Low dissolved oxygen conditions that can cause stress and mortality in aquatic life.", details: "Often caused by eutrophication, thermal pollution, or organic loading. Effects depend on species, temperature, duration and local conditions." },
   { term: "BOD (Biochemical Oxygen Demand)", category: "parameters", definition: "A measure of the amount of oxygen consumed by microorganisms while decomposing organic matter in water.", details: "High BOD indicates organic pollution (sewage, agricultural runoff). Used in lab testing. Healthy waterways typically have low BOD." },
   { term: "Enterococci", category: "parameters", definition: "Bacteria used as an indicator of faecal contamination in recreational waters.", details: "More persistent than E. coli in marine and estuarine waters. Used for swimming beach monitoring." },
-  
+
   { term: "Multi-parameter sonde", category: "equipment", definition: "A single probe that measures multiple parameters (pH, EC, DO, temperature, etc.) simultaneously.", details: "Must be calibrated before use. Rinse with distilled water after use. Store sensors with moist pads." },
   { term: "Lugols solution", category: "equipment", definition: "An iodine-based preservative used to preserve algal samples for identification and counting.", details: "Typically added at 1% v/v (5mL per 500mL sample) but always follow the laboratory's specified method. Preserves cell structure and colour." },
   { term: "Secchi disk", category: "equipment", definition: "A black-and-white disk used to measure water clarity in lakes and marine waters.", details: "Lowered into water until it disappears. Record the depth. Simple, low-cost method." },
@@ -2419,7 +2299,7 @@ const glossaryTerms = [
   { term: "Sonde", category: "equipment", definition: "Short for 'multi-parameter sonde' — a probe that measures multiple water quality parameters simultaneously.", details: "Requires calibration before each use. Rinse with distilled water after use." },
   { term: "Niskin bottle", category: "equipment", definition: "A device used to collect water samples at specific depths in lakes and oceans.", details: "Triggered by a messenger weight to close at the desired depth. Used for subsurface sampling." },
   { term: "Esky / Cooler", category: "equipment", definition: "An insulated container used to keep samples cool during transport from the field to the lab.", details: "Use with ice packs — never directly on samples. Maintains 2–8°C for bacterial samples." },
-  
+
   { term: "Eutrophication", category: "concepts", definition: "The process where excessive nutrients cause algal blooms, which can deplete oxygen and harm aquatic life.", details: "Triggers algal blooms, reduces water clarity. Can produce toxins. Reversing eutrophication takes years." },
   { term: "Chain of Custody", category: "concepts", definition: "A documented record of who handled a sample from collection to laboratory analysis.", details: "Provides a record of sample custody and handling. Helps demonstrate traceability and integrity." },
   { term: "Field blank", category: "concepts", definition: "A sample of distilled water processed in the field exactly like a real sample — used to check for contamination.", details: "Identifies contamination during collection and handling." },
@@ -2433,7 +2313,7 @@ const glossaryTerms = [
   { term: "Thermal pollution", category: "concepts", definition: "The discharge of heated water into waterways, reducing dissolved oxygen and stressing aquatic life.", details: "Common from power stations and industrial cooling. Compare upstream and downstream results before attributing a temperature change to thermal pollution." },
   { term: "Point source", category: "concepts", definition: "Pollution that comes from a single, identifiable source, such as a pipe or drain.", details: "Examples: sewage treatment plant outfall, industrial discharge pipe. Easier to regulate than diffuse sources." },
   { term: "Diffuse source", category: "concepts", definition: "Pollution that comes from widespread, unidentifiable sources, such as agricultural runoff.", details: "Examples: fertiliser from farms, stormwater from cities. Harder to control than point sources." },
-  
+
   { term: "ANZG / ANZECC", category: "standards", definition: "Australian and New Zealand Guidelines for Fresh and Marine Water Quality — provides default guideline values for ecosystem protection.", details: "The current ANZG platform has moved beyond simply treating ANZECC 2000 numbers as universal trigger values, using updated data and an ecoregional approach. Guidelines are periodically revised." },
   { term: "NTU", category: "standards", definition: "Nephelometric Turbidity Units — the standard unit for measuring turbidity.", details: "Measures light scattered by suspended particles. Lower NTU = clearer water. Reference values are site- and ecosystem-dependent." },
   { term: "ppt", category: "standards", definition: "Parts per thousand — used to measure salinity. Marine water is ~35 ppt.", details: "1 ppt = 1 gram of salt per 1,000 grams of water. Freshwater <0.5 ppt. Brackish 0.5–30 ppt. Marine ~35 ppt." },
@@ -2450,16 +2330,16 @@ function renderGlossary(filter = 'all', search = '') {
   if (!container) return;
 
   let filtered = glossaryTerms;
-  
+
   if (filter !== 'all') {
     filtered = filtered.filter(t => t.category === filter);
   }
-  
+
   if (search.trim()) {
     const s = search.toLowerCase().trim();
-    filtered = filtered.filter(t => 
-      t.term.toLowerCase().includes(s) || 
-      t.definition.toLowerCase().includes(s) || 
+    filtered = filtered.filter(t =>
+      t.term.toLowerCase().includes(s) ||
+      t.definition.toLowerCase().includes(s) ||
       (t.details && t.details.toLowerCase().includes(s))
     );
   }
@@ -2476,7 +2356,7 @@ function renderGlossary(filter = 'all', search = '') {
     return;
   }
 
-  filtered.sort((a, b) => a.term.localeCompare(b.term));
+  filtered = [...filtered].sort((a, b) => a.term.localeCompare(b.term));
 
   container.innerHTML = filtered.map(term => `
     <div class="glossary-item" data-category="${term.category}" style="background:var(--bg); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
@@ -2500,7 +2380,7 @@ function renderGlossary(filter = 'all', search = '') {
 function toggleGlossary(header) {
   const body = header.nextElementSibling;
   const icon = header.querySelector('.fa-chevron-down, .fa-chevron-up');
-  
+
   if (body.style.maxHeight && body.style.maxHeight !== '0px') {
     body.style.maxHeight = '0px';
     if (icon) icon.className = 'fas fa-chevron-down';
@@ -2516,35 +2396,26 @@ function searchGlossary() {
   renderGlossary(currentGlossaryFilter, search);
 }
 
+/** Visually mark the currently active filter button and clear others. */
+function setActiveGlossaryFilterButton(category) {
+  document.querySelectorAll('#tab7 [data-category]').forEach(btn => {
+    const isActive = btn.dataset.category === category;
+    btn.className = isActive ? 'btn btn-primary' : 'btn btn-outline';
+    btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
+  });
+}
+
 function clearGlossarySearch() {
   const input = document.getElementById('glossarySearch');
   if (input) input.value = '';
-  renderGlossary('all', '');
-  document.querySelectorAll('#tab7 .btn-outline').forEach(btn => {
-    btn.className = 'btn btn-outline';
-    btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
-  });
-  const allBtn = document.querySelector('#tab7 .btn-primary');
-  if (allBtn) {
-    allBtn.className = 'btn btn-primary';
-    allBtn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
-  }
   currentGlossaryFilter = 'all';
+  setActiveGlossaryFilterButton('all');
+  renderGlossary('all', '');
 }
 
 function filterGlossary(category) {
   currentGlossaryFilter = category;
-  
-  document.querySelectorAll('#tab7 .btn').forEach(btn => {
-    if (btn.textContent.trim().toLowerCase().includes(category === 'all' ? 'all' : category)) {
-      btn.className = 'btn btn-primary';
-      btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
-    } else {
-      btn.className = 'btn btn-outline';
-      btn.style.cssText = 'font-size:0.7rem; padding:0.2rem 0.8rem;';
-    }
-  });
-  
+  setActiveGlossaryFilterButton(category);
   const search = document.getElementById('glossarySearch')?.value || '';
   renderGlossary(category, search);
 }
@@ -2570,32 +2441,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Progress display
-  updateProgressDisplay();
-
-  // Track tab views
+  // Track tab views (synchronous — no need to wait for DOM update).
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', function() {
-      const onclickAttr = this.getAttribute('onclick');
-      if (onclickAttr) {
-        const match = onclickAttr.match(/'([^']+)'/);
-        if (match) {
-          const tabId = match[1];
-          setTimeout(() => {
-            progressData.tabsViewed.add(tabId);
-            saveProgress();
-          }, 100);
-        }
+      const onclickAttr = this.getAttribute('onclick') || '';
+      const match = onclickAttr.match(/'([^']+)'/);
+      if (match) {
+        const tabId = match[1];
+        progressData.tabsViewed.add(tabId);
+        saveProgress({ silent: true });
       }
     });
   });
+
+  // Restore saved progress on first load so the counters reflect stored state.
+  loadProgress();
+
+  // Ensure the first tab is registered as viewed on initial load.
+  if (!progressData.tabsViewed.has('tab0')) {
+    progressData.tabsViewed.add('tab0');
+    saveProgress({ silent: true });
+  }
 
   // Initialize simulator
   updateSimulator();
 
   // Render glossary
   renderGlossary('all', '');
-  
+
   // Glossary search
   const glossarySearchInput = document.getElementById('glossarySearch');
   if (glossarySearchInput) {
